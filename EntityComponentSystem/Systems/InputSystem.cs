@@ -5,7 +5,7 @@ using VoxelGame.EntityComponentSystem.Components;
 
 namespace VoxelGame.EntityComponentSystem.Systems
 {
-    public class InputSystem
+    public class InputSystem : System
 {
     public void Update(EntityManager entityManager, KeyboardState kInput, MouseState mInput, FrameEventArgs args)
     {

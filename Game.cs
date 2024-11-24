@@ -14,9 +14,9 @@ namespace VoxelGame
 {
     public class Game : GameWindow
     {
-        private EntityManager? _entityManager;
-        private RenderSystem? _renderSystem;
-        private InputSystem? _inputSystem;
+        private EntityManager _entityManager;
+        private RenderSystem _renderSystem;
+        private InputSystem _inputSystem;
 
         private int _width,
             _height;
@@ -120,7 +120,6 @@ namespace VoxelGame
             KeyboardState kInput = KeyboardState;
             MouseState mInput = MouseState;
 
-            //_camera.Update(kInput, mInput, args);
             _inputSystem.Update(_entityManager, kInput, mInput, args);
         }
     }

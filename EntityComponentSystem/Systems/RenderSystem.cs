@@ -5,7 +5,7 @@ using VoxelGame.GraphicsPipeline;
 
 namespace VoxelGame.EntityComponentSystem.Systems
 {
-    public class RenderSystem
+    public class RenderSystem : System
     {
         private ShaderProgram _shaderProgram;
 
