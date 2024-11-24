@@ -1,13 +1,6 @@
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 
-public class TransformComponent(Vector3 position, Quaternion rotation, Vector3 scale) : Component
-{
-    public Vector3 Position = position;
-    public Quaternion Rotation = rotation;
-    public Vector3 Scale = scale;
-}
-
 public class MeshComponent : Component
 {
     public List<Vector3> Vertices;
@@ -64,39 +57,5 @@ public class MeshComponent : Component
             IBO.Dispose();
             buffersInitialized = false;
         }
-    }
-}
-
-public class TextureComponent : Component
-{
-    public Texture Texture;
-
-    public TextureComponent(Texture texture)
-    {
-        Texture = texture;
-    }
-}
-
-public class CameraComponent : Component
-{
-    public float Speed = 8f;
-    public float Sensitivity = 0.2f;
-    public Vector3 Front = -Vector3.UnitZ;
-    public Vector3 Up = Vector3.UnitY;
-    public Vector3 Right = Vector3.UnitX;
-
-    public float Pitch = 0f;
-    public float Yaw = -90f;
-
-    public bool FirstMove = true;
-    public Vector2 LastMousePosition;
-
-    public CameraComponent()
-    {
-    }
-
-    public Matrix4 GetViewMatrix(Vector3 position)
-    {
-        return Matrix4.LookAt(position, position + Front, Up);
     }
 }
