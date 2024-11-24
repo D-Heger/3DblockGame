@@ -14,12 +14,17 @@ namespace VoxelGame
 {
     public class Game : GameWindow
     {
+        private int _width,
+            _height;
+
+        private double _time;
+        private int _frames;
+
+        private string _title = "3D Voxel Game";
+
         private EntityManager _entityManager;
         private RenderSystem _renderSystem;
         private InputSystem _inputSystem;
-
-        private int _width,
-            _height;
 
         public Game(int width, int height)
             : base(GameWindowSettings.Default, NativeWindowSettings.Default)
@@ -28,6 +33,11 @@ namespace VoxelGame
             _height = height;
 
             CenterWindow(new Vector2i(width, height));
+
+            Title = _title;
+
+            _time = 0;
+            _frames = 0;
         }
 
         protected override void OnResize(ResizeEventArgs e)
@@ -116,6 +126,16 @@ namespace VoxelGame
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
             base.OnUpdateFrame(args);
+
+            _time += args.Time;
+            _frames++;
+
+            if (_time >= 1.0)
+            {
+                Title = $"{_title} | FPS: {_frames}";
+                _frames = 0;
+                _time -= 1.0;
+            }
 
             KeyboardState kInput = KeyboardState;
             MouseState mInput = MouseState;
