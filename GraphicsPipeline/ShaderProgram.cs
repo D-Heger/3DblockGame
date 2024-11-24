@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK.Graphics.OpenGL4;
-using static FileUtils;
+﻿using OpenTK.Graphics.OpenGL4;
+using static VoxelGame.Utils.FileUtils;
 
-public class ShaderProgram
+namespace VoxelGame.GraphicsPipeline
+{
+    public class ShaderProgram
 {
     public int ID;
 
@@ -51,4 +48,6 @@ public class ShaderProgram
     {
         GL.DeleteShader(ID);
     }
+}
+
 }

@@ -1,90 +1,96 @@
 using OpenTK.Mathematics;
 
-public class EntityManager
+namespace VoxelGame.EntityComponentSystem
 {
-    private int _nextEntityId = 0;
-    private Dictionary<int, List<Component>> _entityComponents = [];
-    private Dictionary<Type, Dictionary<int, Component>> _componentsByType = [];
-
-    public Dictionary<int, Vector3> EntityPositions = [];
-
-    public int CreateEntity()
+    public class EntityManager
     {
-        int entityId = _nextEntityId++;
-        _entityComponents[entityId] = [];
-        return entityId;
-    }
+        private int _nextEntityId = 0;
+        private Dictionary<int, List<Component>> _entityComponents = [];
+        private Dictionary<Type, Dictionary<int, Component>> _componentsByType = [];
 
-    public void AddComponent<T>(int entityId, T component) where T : Component
-    {
-        if (!_entityComponents.ContainsKey(entityId))
+        public Dictionary<int, Vector3> EntityPositions = [];
+
+        public int CreateEntity()
         {
-            throw new Exception("Entity does not exist");
+            int entityId = _nextEntityId++;
+            _entityComponents[entityId] = [];
+            return entityId;
         }
 
-        _entityComponents[entityId].Add(component);
-
-        Type type = typeof(T);
-        if (!_componentsByType.ContainsKey(type))
+        public void AddComponent<T>(int entityId, T component)
+            where T : Component
         {
-            _componentsByType[type] = [];
+            if (!_entityComponents.ContainsKey(entityId))
+            {
+                throw new Exception("Entity does not exist");
+            }
+
+            _entityComponents[entityId].Add(component);
+
+            Type type = typeof(T);
+            if (!_componentsByType.ContainsKey(type))
+            {
+                _componentsByType[type] = [];
+            }
+            _componentsByType[type][entityId] = component;
         }
-        _componentsByType[type][entityId] = component;
-    }
 
-    public T GetComponent<T>(int entityId) where T : Component
-    {
-        if (!_entityComponents.ContainsKey(entityId))
+        public T GetComponent<T>(int entityId)
+            where T : Component
         {
-            throw new Exception("Entity does not exist");
+            if (!_entityComponents.ContainsKey(entityId))
+            {
+                throw new Exception("Entity does not exist");
+            }
+
+            foreach (var comp in _entityComponents[entityId])
+            {
+                if (comp is T t)
+                    return t;
+            }
+            return null;
         }
 
-        foreach (var comp in _entityComponents[entityId])
+        public IEnumerable<int> GetEntitiesWithComponent<T>()
+            where T : Component
         {
-            if (comp is T t)
-                return t;
+            Type type = typeof(T);
+            if (_componentsByType.ContainsKey(type))
+            {
+                return _componentsByType[type].Keys;
+            }
+            else
+            {
+                return [];
+            }
         }
-        return null;
-    }
 
-    public IEnumerable<int> GetEntitiesWithComponent<T>() where T : Component
-    {
-        Type type = typeof(T);
-        if (_componentsByType.ContainsKey(type))
+        public IEnumerable<int> GetEntitiesWithComponents<T1, T2>()
+            where T1 : Component
+            where T2 : Component
         {
-            return _componentsByType[type].Keys;
+            var entities1 = GetEntitiesWithComponent<T1>();
+            var entities2 = GetEntitiesWithComponent<T2>();
+            return entities1.Intersect(entities2);
         }
-        else
+
+        public void SetEntityPosition(int entityID, Vector3 position)
         {
-            return [];
+            EntityPositions[entityID] = position;
         }
-    }
 
-    public IEnumerable<int> GetEntitiesWithComponents<T1, T2>()
-        where T1 : Component
-        where T2 : Component
-    {
-        var entities1 = GetEntitiesWithComponent<T1>();
-        var entities2 = GetEntitiesWithComponent<T2>();
-        return entities1.Intersect(entities2);
-    }
-
-    public void SetEntityPosition(int entityID, Vector3 position)
-    {
-        EntityPositions[entityID] = position;
-    }
-
-    public Vector3 GetEntityPosition(int entityID)
-    {
-        return EntityPositions[entityID];
-    }
-
-    public void RemoveEntity(int entityID)
-    {
-        _entityComponents.Remove(entityID);
-        foreach (var components in _componentsByType.Values)
+        public Vector3 GetEntityPosition(int entityID)
         {
-            components.Remove(entityID);
+            return EntityPositions[entityID];
+        }
+
+        public void RemoveEntity(int entityID)
+        {
+            _entityComponents.Remove(entityID);
+            foreach (var components in _componentsByType.Values)
+            {
+                components.Remove(entityID);
+            }
         }
     }
 }

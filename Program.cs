@@ -1,11 +1,14 @@
-﻿public class Program
+﻿namespace VoxelGame
 {
-    // Entry point of the program
-    static void Main(string[] args)
+    public class Program
     {
-        // Creates game object and disposes of it after leaving the scope
-        using Game game = new(1280, 720);
-        // running the game
-        game.Run();
+        // Entry point of the program
+        static void Main(string[] args)
+        {
+            // Creates game object and disposes of it after leaving the scope
+            using Game game = new(1280, 720);
+            // running the game
+            game.Run();
+        }
     }
 }

@@ -1,8 +1,11 @@
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using VoxelGame.EntityComponentSystem.Components;
 
-public class InputSystem
+namespace VoxelGame.EntityComponentSystem.Systems
+{
+    public class InputSystem
 {
     public void Update(EntityManager entityManager, KeyboardState kInput, MouseState mInput, FrameEventArgs args)
     {
@@ -92,4 +95,5 @@ public class InputSystem
         cameraComponent.Right = Vector3.Normalize(Vector3.Cross(cameraComponent.Front, Vector3.UnitY));
         cameraComponent.Up = Vector3.Normalize(Vector3.Cross(cameraComponent.Right, cameraComponent.Front));
     }
+}
 }

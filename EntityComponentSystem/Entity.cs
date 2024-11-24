@@ -1,4 +1,7 @@
-public class Entity(int id)
+namespace VoxelGame.EntityComponentSystem
 {
-    public int ID { get; private set; } = id;
+    public class Entity(int id)
+    {
+        public int ID { get; private set; } = id;
+    }
 }
