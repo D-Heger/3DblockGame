@@ -29,7 +29,7 @@ public class VertexArrayObject
         GL.BindVertexArray(ID);
     }
 
-    public static void Unbind()
+    public void Unbind()
     {
         GL.BindVertexArray(0);
     }
