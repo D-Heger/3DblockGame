@@ -15,6 +15,17 @@ public class InputSystem
             var cameraComponent = entityManager.GetComponent<CameraComponent>(entity);
             var transformComponent = entityManager.GetComponent<TransformComponent>(entity);
 
+            if (cameraComponent == null || transformComponent == null)
+            {
+                Console.WriteLine("Camera entity missing components.");
+                continue;
+            }
+
+            if (kInput.IsKeyDown(Keys.Escape))
+            {
+                Environment.Exit(0);
+            }
+
             // Handle keyboard input for movement
             if (kInput.IsKeyDown(Keys.W))
             {
