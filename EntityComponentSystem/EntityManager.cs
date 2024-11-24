@@ -1,8 +1,12 @@
+using OpenTK.Mathematics;
+
 public class EntityManager
 {
     private int _nextEntityId = 0;
     private Dictionary<int, List<Component>> _entityComponents = [];
     private Dictionary<Type, Dictionary<int, Component>> _componentsByType = [];
+
+    public Dictionary<int, Vector3> EntityPositions = [];
 
     public int CreateEntity()
     {
@@ -63,5 +67,24 @@ public class EntityManager
         var entities1 = GetEntitiesWithComponent<T1>();
         var entities2 = GetEntitiesWithComponent<T2>();
         return entities1.Intersect(entities2);
+    }
+
+    public void SetEntityPosition(int entityID, Vector3 position)
+    {
+        EntityPositions[entityID] = position;
+    }
+
+    public Vector3 GetEntityPosition(int entityID)
+    {
+        return EntityPositions[entityID];
+    }
+
+    public void RemoveEntity(int entityID)
+    {
+        _entityComponents.Remove(entityID);
+        foreach (var components in _componentsByType.Values)
+        {
+            components.Remove(entityID);
+        }
     }
 }
