@@ -39,18 +39,19 @@ public class Texture
             (int)TextureMagFilter.Nearest
         );
 
-        var dirtTexture = LoadTexture(filepath);
+        var blockTexture = LoadTexture(filepath);
+        if (blockTexture == null) Console.WriteLine("Texture loading failed!");
 
         GL.TexImage2D(
             TextureTarget.Texture2D,
             0,
             PixelInternalFormat.Rgba,
-            dirtTexture.Width,
-            dirtTexture.Height,
+            blockTexture.Width,
+            blockTexture.Height,
             0,
             PixelFormat.Rgba,
             PixelType.UnsignedByte,
-            dirtTexture.Data
+            blockTexture.Data
         );
 
         Unbind();

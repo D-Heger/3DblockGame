@@ -11,15 +11,14 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
-internal class Game : GameWindow
+public class Game : GameWindow
 {
-    private Chunk _chunk;
     private ShaderProgram _program;
     private Camera _camera;
+    private Chunk _chunk;
 
     private int _width,
         _height;
-
 
     public Game(int width, int height)
         : base(GameWindowSettings.Default, NativeWindowSettings.Default)
@@ -42,23 +41,23 @@ internal class Game : GameWindow
     {
         base.OnLoad();
 
-        _chunk = new Chunk(new Vector3(0, 0, 0));
         _program = new ShaderProgram("Default", "Default");
 
         GL.Enable(EnableCap.DepthTest);
-
         GL.FrontFace(FrontFaceDirection.Cw);
         GL.Enable(EnableCap.CullFace);
         GL.CullFace(CullFaceMode.Back);
 
-        _camera = new Camera(_width, _height, Vector3.Zero);
+        _camera = new Camera(_width, _height, new Vector3(8, 10, 8)); // Near the center of the first chunk
+
         CursorState = CursorState.Grabbed;
+
+        _chunk = new Chunk(Vector3.Zero);
     }
 
     protected override void OnUnload()
     {
         base.OnUnload();
-
         _chunk.Dispose();
     }
 
@@ -78,11 +77,11 @@ internal class Game : GameWindow
         GL.UniformMatrix4(modelLocation, true, ref model);
         GL.UniformMatrix4(viewLocation, true, ref view);
         GL.UniformMatrix4(projectionLocation, true, ref projection);
+        //Console.WriteLine($"Model: {model}, View: {view}, Projection: {projection}");
 
         _chunk.RenderChunk(_program);
 
         Context.SwapBuffers();
-
         base.OnRenderFrame(args);
     }
 

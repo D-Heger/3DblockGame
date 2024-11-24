@@ -12,7 +12,8 @@ internal class Chunk
     public List<Vector2> ChunkTextureCoordinates;
     public List<uint> ChunkIndices;
 
-    private const sbyte SIZE = 16;
+    private const sbyte _SIZE = 16; // Add this line to expose the chunk size
+    public static sbyte SIZE => _SIZE; // Public getter for chunk size
     private const short HEIGHT = 384;
     public Vector3 Position;
 
@@ -214,6 +215,14 @@ internal class Chunk
 
     public void BuildChunk()
     {
+        //Console.WriteLine($"Building chunk at {Position}");
+        //Console.WriteLine($"Vertices: {ChunkVertices.Count}, Indices: {ChunkIndices.Count}");
+
+        if (ChunkVertices.Count == 0 || ChunkIndices.Count == 0)
+        {
+            //Console.WriteLine("Error: No vertices or indices generated!");
+        }
+
         _chunkVertexArrayObject = new VertexArrayObject();
         _chunkVertexArrayObject.Bind();
 
@@ -236,6 +245,8 @@ internal class Chunk
         _chunkVertexArrayObject.Bind();
         _chunkIndexBufferObject.Bind();
         _texture.Bind();
+
+        Console.WriteLine($"Drawing chunk: {ChunkIndices.Count} indices");
         GL.DrawElements(
             PrimitiveType.Triangles,
             ChunkIndices.Count,

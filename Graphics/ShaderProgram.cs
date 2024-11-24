@@ -17,10 +17,16 @@ public class ShaderProgram
         int vertexShader = GL.CreateShader(ShaderType.VertexShader);
         GL.ShaderSource(vertexShader, LoadVertexShader(vertexFilePath));
         GL.CompileShader(vertexShader);
+        GL.GetShader(vertexShader, ShaderParameter.CompileStatus, out int vertexStatus);
+        if (vertexStatus == 0)
+            Console.WriteLine($"Vertex Shader Error: {GL.GetShaderInfoLog(vertexShader)}");
 
         int fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
         GL.ShaderSource(fragmentShader, LoadFragmentShader(fragmentFilePath));
         GL.CompileShader(fragmentShader);
+        GL.GetShader(fragmentShader, ShaderParameter.CompileStatus, out int fragmentStatus);
+        if (fragmentStatus == 0)
+            Console.WriteLine($"Fragment Shader Error: {GL.GetShaderInfoLog(fragmentShader)}");
 
         GL.AttachShader(ID, vertexShader);
         GL.AttachShader(ID, fragmentShader);

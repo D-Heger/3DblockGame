@@ -7,7 +7,7 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
-internal class Camera(float width, float height, Vector3 position)
+public class Camera(float width, float height, Vector3 position)
 {
     private float _speed = 8f;
     private float _width = width;
