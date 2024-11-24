@@ -5,9 +5,6 @@ namespace VoxelGame.World
 {
     public static class ChunkGenerator
     {
-        private const int SIZE = 16;
-        private const int HEIGHT = 384;
-
         public static ChunkMeshData GenerateChunkMesh(Vector3 chunkPosition)
         {
             ChunkMeshData chunkMeshData = new();
@@ -21,11 +18,11 @@ namespace VoxelGame.World
 
         private static float[,] GenerateHeightMap()
         {
-            float[,] heightMap = new float[SIZE, SIZE];
+            float[,] heightMap = new float[Chunk.SIZE, Chunk.SIZE];
             SimplexNoise.Noise.Seed = 123456;
-            for (int x = 0; x < SIZE; x++)
+            for (int x = 0; x < Chunk.SIZE; x++)
             {
-                for (int z = 0; z < SIZE; z++)
+                for (int z = 0; z < Chunk.SIZE; z++)
                 {
                     heightMap[x, z] = SimplexNoise.Noise.CalcPixel2D(x, z, 0.01f);
                 }
@@ -35,13 +32,13 @@ namespace VoxelGame.World
 
         private static Block[,,] GenerateBlocks(float[,] heightMap)
         {
-            Block[,,] blocks = new Block[SIZE, HEIGHT, SIZE];
-            for (int x = 0; x < SIZE; x++)
+            Block[,,] blocks = new Block[Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE];
+            for (int x = 0; x < Chunk.SIZE; x++)
             {
-                for (int z = 0; z < SIZE; z++)
+                for (int z = 0; z < Chunk.SIZE; z++)
                 {
                     int columnHeight = (int)(heightMap[x, z] / 10);
-                    for (int y = 0; y < HEIGHT; y++)
+                    for (int y = 0; y < Chunk.HEIGHT; y++)
                     {
                         BlockType type =
                             y < columnHeight - 1 ? BlockType.DIRT
@@ -57,11 +54,11 @@ namespace VoxelGame.World
         private static void GenerateFaces(Block[,,] blocks, ChunkMeshData chunkMeshData)
         {
             uint totalIndexCount = 0;
-            for (int x = 0; x < SIZE; x++)
+            for (int x = 0; x < Chunk.SIZE; x++)
             {
-                for (int z = 0; z < SIZE; z++)
+                for (int z = 0; z < Chunk.SIZE; z++)
                 {
-                    for (int y = 0; y < HEIGHT; y++)
+                    for (int y = 0; y < Chunk.HEIGHT; y++)
                     {
                         Block block = blocks[x, y, z];
                         if (block.Type != BlockType.AIR)
@@ -95,7 +92,7 @@ namespace VoxelGame.World
                 AddFace(block, Faces.LEFT, chunkMeshData, ref totalIndexCount);
 
             // Right Face
-            if (x == SIZE - 1 || blocks[x + 1, y, z].Type == BlockType.AIR)
+            if (x == Chunk.SIZE - 1 || blocks[x + 1, y, z].Type == BlockType.AIR)
                 AddFace(block, Faces.RIGHT, chunkMeshData, ref totalIndexCount);
 
             // Bottom Face
@@ -103,7 +100,7 @@ namespace VoxelGame.World
                 AddFace(block, Faces.BOTTOM, chunkMeshData, ref totalIndexCount);
 
             // Top Face
-            if (y == HEIGHT - 1 || blocks[x, y + 1, z].Type == BlockType.AIR)
+            if (y == Chunk.HEIGHT - 1 || blocks[x, y + 1, z].Type == BlockType.AIR)
                 AddFace(block, Faces.TOP, chunkMeshData, ref totalIndexCount);
 
             // Back Face
@@ -111,7 +108,7 @@ namespace VoxelGame.World
                 AddFace(block, Faces.BACK, chunkMeshData, ref totalIndexCount);
 
             // Front Face
-            if (z == SIZE - 1 || blocks[x, y, z + 1].Type == BlockType.AIR)
+            if (z == Chunk.SIZE - 1 || blocks[x, y, z + 1].Type == BlockType.AIR)
                 AddFace(block, Faces.FRONT, chunkMeshData, ref totalIndexCount);
         }
 

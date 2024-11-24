@@ -65,6 +65,20 @@ namespace VoxelGame.EntityComponentSystem
             }
         }
 
+        public int GetEntityWithComponent<T>()
+            where T : Component
+        {
+            Type type = typeof(T);
+            if (_componentsByType.ContainsKey(type))
+            {
+                return _componentsByType[type].Keys.First();
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         public IEnumerable<int> GetEntitiesWithComponents<T1, T2>()
             where T1 : Component
             where T2 : Component

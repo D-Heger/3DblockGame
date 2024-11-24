@@ -25,6 +25,9 @@ namespace VoxelGame
         private EntityManager _entityManager;
         private RenderSystem _renderSystem;
         private InputSystem _inputSystem;
+        private ChunkGenerationSystem _chunkGenerationSystem;
+
+        private Vector3 _lastPlayerChunkPosition;
 
         public Game(int width, int height)
             : base(GameWindowSettings.Default, NativeWindowSettings.Default)
@@ -52,9 +55,11 @@ namespace VoxelGame
         {
             base.OnLoad();
 
+            // Initialize systems
             _entityManager = new EntityManager();
             _renderSystem = new RenderSystem();
             _inputSystem = new InputSystem();
+            _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager);
 
             // Create camera entity
             int cameraEntity = _entityManager.CreateEntity();
@@ -63,27 +68,12 @@ namespace VoxelGame
                 new TransformComponent(new Vector3(8, 10, 8), Quaternion.Identity, Vector3.One)
             );
             _entityManager.AddComponent(cameraEntity, new CameraComponent());
-
-            // Create chunk entity
-            int chunkEntity = _entityManager.CreateEntity();
-            _entityManager.AddComponent(
-                chunkEntity,
-                new TransformComponent(Vector3.Zero, Quaternion.Identity, Vector3.One)
-            );
-
-            // Generate chunk mesh data
-            ChunkMeshData chunkMeshData = ChunkGenerator.GenerateChunkMesh(Vector3.Zero);
-            _entityManager.AddComponent(
-                chunkEntity,
-                new MeshComponent(chunkMeshData.Vertices, chunkMeshData.UVs, chunkMeshData.Indices)
-            );
-
-            // Add texture component
-            Texture chunkTexture = new Texture("atlas");
-            _entityManager.AddComponent(chunkEntity, new TextureComponent(chunkTexture));
-
-            // Set cursor state
             CursorState = CursorState.Grabbed;
+
+            // Generate initial chunks
+            _chunkGenerationSystem.GenerateInitialChunks(Vector3.Zero, 2);
+
+            _lastPlayerChunkPosition = Vector3.Zero;
         }
 
         protected override void OnUnload()
@@ -141,6 +131,21 @@ namespace VoxelGame
             MouseState mInput = MouseState;
 
             _inputSystem.Update(_entityManager, kInput, mInput, args);
+
+            var cameraEntity = _entityManager.GetEntitiesWithComponent<CameraComponent>();
+            var cameraTransform = _entityManager.GetComponent<TransformComponent>(cameraEntity.First());
+
+            Vector3 playerChunkPosition = new Vector3(
+                (int)(cameraTransform.Position.X / Chunk.SIZE) * Chunk.SIZE,
+                0,
+                (int)(cameraTransform.Position.Z / Chunk.SIZE) * Chunk.SIZE
+            );
+
+            if (playerChunkPosition != _lastPlayerChunkPosition)
+            {
+                _chunkGenerationSystem.UpdateChunks(playerChunkPosition, 2);
+                _lastPlayerChunkPosition = playerChunkPosition;
+            }
         }
     }
 }
