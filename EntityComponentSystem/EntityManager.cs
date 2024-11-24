@@ -1,20 +1,3 @@
-// Entity.cs
-public class Entity
-{
-    public int ID { get; private set; }
-
-    public Entity(int id)
-    {
-        ID = id;
-    }
-}
-
-// Component.cs
-public abstract class Component
-{
-}
-
-// EntityManager.cs
 public class EntityManager
 {
     private int _nextEntityId = 0;
