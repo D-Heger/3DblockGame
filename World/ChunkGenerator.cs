@@ -12,14 +12,14 @@ namespace VoxelGame.World
         {
             ChunkMeshData chunkMeshData = new();
 
-            float[,] heightMap = GenerateHeightMap();
+            float[,] heightMap = GenerateHeightMap((int)chunkPosition.X, (int)chunkPosition.Z);
             BlockType[,,] blocks = GenerateBlocks(heightMap);
             GenerateFaces(blocks, chunkMeshData);
 
             return chunkMeshData;
         }
 
-        private static float[,] GenerateHeightMap()
+        private static float[,] GenerateHeightMap(int offsetX, int offsetZ)
         {
             int size = Chunk.SIZE;
             float[,] heightMap = new float[size, size];
@@ -32,7 +32,8 @@ namespace VoxelGame.World
                 {
                     for (int z = 0; z < size; z++)
                     {
-                        heightMap[x, z] = SimplexNoise.Noise.CalcPixel2D(x, z, 0.01f);
+                        float noiseValue = SimplexNoise.Noise.CalcPixel2D(x + offsetX, z + offsetZ, 0.01f);
+                        heightMap[x, z] = noiseValue;
                     }
                 }
             );
