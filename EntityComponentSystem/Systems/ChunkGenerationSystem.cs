@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using OpenTK.Mathematics;
 using VoxelGame.EntityComponentSystem;
@@ -9,20 +10,12 @@ using VoxelGame.World.Data;
 
 namespace VoxelGame.EntityComponentSystem.Systems
 {
-    public class ChunkGenerationSystem : System
+    public class ChunkGenerationSystem(EntityManager entityManager) : System
     {
-        private EntityManager _entityManager;
-        private ConcurrentDictionary<Vector3, int> _chunkEntities;
-        private ConcurrentQueue<Vector3> _chunksToGenerate;
-        private HashSet<Vector3> _activeChunkPositions;
-
-        public ChunkGenerationSystem(EntityManager entityManager)
-        {
-            _entityManager = entityManager;
-            _chunkEntities = new ConcurrentDictionary<Vector3, int>();
-            _chunksToGenerate = new ConcurrentQueue<Vector3>();
-            _activeChunkPositions = [];
-        }
+        private EntityManager _entityManager = entityManager;
+        private ConcurrentDictionary<Vector3, int> _chunkEntities = new();
+        private ConcurrentQueue<Vector3> _chunksToGenerate = new();
+        private HashSet<Vector3> _activeChunkPositions = [];
 
         public void GenerateInitialChunks(Vector3 origin, int radius)
         {
