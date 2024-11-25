@@ -28,7 +28,7 @@ namespace VoxelGame
         private ChunkGenerationSystem _chunkGenerationSystem;
 
         private Vector3 _lastPlayerChunkPosition;
-        private int _viewDistance = 4;
+        private int _viewDistance = 16;
 
         public Game(int width, int height)
             : base(GameWindowSettings.Default, NativeWindowSettings.Default)
@@ -123,7 +123,7 @@ namespace VoxelGame
 
             if (_time >= 1.0)
             {
-                Title = $"{_title} | FPS: {_frames}";
+                Title = $"{_title} | FPS: {_frames} | Entities: {_entityManager.EntityCount}";
                 _frames = 0;
                 _time -= 1.0;
             }

@@ -10,12 +10,22 @@ using VoxelGame.World.Data;
 
 namespace VoxelGame.EntityComponentSystem.Systems
 {
-    public class ChunkGenerationSystem(EntityManager entityManager) : System
+    public class ChunkGenerationSystem : System
     {
-        private EntityManager _entityManager = entityManager;
-        private ConcurrentDictionary<Vector3, int> _chunkEntities = new();
-        private ConcurrentQueue<Vector3> _chunksToGenerate = new();
-        private HashSet<Vector3> _activeChunkPositions = [];
+        private EntityManager _entityManager;
+        private ConcurrentDictionary<Vector3, int> _chunkEntities;
+        private ConcurrentQueue<Vector3> _chunksToGenerate;
+        private HashSet<Vector3> _activeChunkPositions;
+        private Texture _sharedTexture;
+
+        public ChunkGenerationSystem(EntityManager entityManager)
+        {
+            _entityManager = entityManager;
+            _chunkEntities = new();
+            _chunksToGenerate = new();
+            _activeChunkPositions = [];
+            _sharedTexture = new Texture("atlas");
+        }
 
         public void GenerateInitialChunks(Vector3 origin, int radius)
         {
@@ -112,9 +122,8 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 new MeshComponent(chunkMeshData.Vertices, chunkMeshData.UVs, chunkMeshData.Indices)
             );
 
-            // Add TextureComponent
-            Texture chunkTexture = new Texture("atlas");
-            _entityManager.AddComponent(chunkEntity, new TextureComponent(chunkTexture));
+            // Add TextureComponent with shared texture
+            _entityManager.AddComponent(chunkEntity, new TextureComponent(_sharedTexture));
 
             // Store the chunk entity
             _chunkEntities[chunkPosition] = chunkEntity;

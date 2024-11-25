@@ -17,6 +17,8 @@ namespace VoxelGame.EntityComponentSystem
             return entityId;
         }
 
+        public int EntityCount => _entityComponents.Count;
+
         public void AddComponent<T>(int entityId, T component)
             where T : Component
         {
