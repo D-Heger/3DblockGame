@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using OpenTK.Mathematics;
 using VoxelGame.World.Data;
 
@@ -72,32 +73,54 @@ namespace VoxelGame.World
 
         private static void GenerateFaces(BlockType[,,] blocks, ChunkMeshData chunkMeshData)
         {
-            uint totalIndexCount = 0;
+            int chunkSize = Chunk.SIZE;
+            int chunkHeight = Chunk.HEIGHT;
+
+            // Thread-local storage for mesh data
+            ConcurrentBag<FaceData> faceDataBag = [];
 
             Parallel.For(
                 0,
-                Chunk.SIZE,
+                chunkSize,
                 x =>
                 {
-                    for (int z = 0; z < Chunk.SIZE; z++)
+                    List<FaceData> localFaceData = [];
+
+                    for (int z = 0; z < chunkSize; z++)
                     {
-                        for (int y = 0; y < Chunk.HEIGHT; y++)
+                        for (int y = 0; y < chunkHeight; y++)
                         {
                             if (blocks[x, y, z] != BlockType.AIR)
                             {
-                                AddVisibleFaces(
-                                    x,
-                                    y,
-                                    z,
-                                    blocks,
-                                    chunkMeshData,
-                                    ref totalIndexCount
-                                );
+                                AddVisibleFaces(x, y, z, blocks, localFaceData);
                             }
                         }
                     }
+
+                    // Add local data to the concurrent bag
+                    foreach (var faceData in localFaceData)
+                    {
+                        faceDataBag.Add(faceData);
+                    }
                 }
             );
+
+            // After parallel loop, merge all face data
+            uint totalIndexCount = 0;
+            foreach (var faceData in faceDataBag)
+            {
+                chunkMeshData.Vertices.AddRange(faceData.Vertices);
+                chunkMeshData.UVs.AddRange(faceData.TextureCoordinates);
+
+                chunkMeshData.Indices.Add(0 + totalIndexCount);
+                chunkMeshData.Indices.Add(1 + totalIndexCount);
+                chunkMeshData.Indices.Add(2 + totalIndexCount);
+                chunkMeshData.Indices.Add(2 + totalIndexCount);
+                chunkMeshData.Indices.Add(3 + totalIndexCount);
+                chunkMeshData.Indices.Add(0 + totalIndexCount);
+
+                totalIndexCount += 4;
+            }
         }
 
         private static void AddVisibleFaces(
@@ -105,104 +128,30 @@ namespace VoxelGame.World
             int y,
             int z,
             BlockType[,,] blocks,
-            ChunkMeshData chunkMeshData,
-            ref uint totalIndexCount
+            List<FaceData> localFaceData
         )
         {
-            Vector3 blockPosition = new Vector3(x, y, z);
+            Vector3 blockPosition = new(x, y, z);
+            Block block = new(blockPosition, blocks[x, y, z]);
 
             // Check each face to see if it should be added
             if (x == 0 || blocks[x - 1, y, z] == BlockType.AIR)
-                AddFace(
-                    x,
-                    y,
-                    z,
-                    Faces.LEFT,
-                    new Block(blockPosition, blocks[x, y, z]),
-                    chunkMeshData,
-                    ref totalIndexCount
-                );
+                localFaceData.Add(block.GetFace(Faces.LEFT));
 
             if (x == Chunk.SIZE - 1 || blocks[x + 1, y, z] == BlockType.AIR)
-                AddFace(
-                    x,
-                    y,
-                    z,
-                    Faces.RIGHT,
-                    new Block(blockPosition, blocks[x, y, z]),
-                    chunkMeshData,
-                    ref totalIndexCount
-                );
+                localFaceData.Add(block.GetFace(Faces.RIGHT));
 
             if (y == 0 || blocks[x, y - 1, z] == BlockType.AIR)
-                AddFace(
-                    x,
-                    y,
-                    z,
-                    Faces.BOTTOM,
-                    new Block(blockPosition, blocks[x, y, z]),
-                    chunkMeshData,
-                    ref totalIndexCount
-                );
+                localFaceData.Add(block.GetFace(Faces.BOTTOM));
 
             if (y == Chunk.HEIGHT - 1 || blocks[x, y + 1, z] == BlockType.AIR)
-                AddFace(
-                    x,
-                    y,
-                    z,
-                    Faces.TOP,
-                    new Block(blockPosition, blocks[x, y, z]),
-                    chunkMeshData,
-                    ref totalIndexCount
-                );
+                localFaceData.Add(block.GetFace(Faces.TOP));
 
             if (z == 0 || blocks[x, y, z - 1] == BlockType.AIR)
-                AddFace(
-                    x,
-                    y,
-                    z,
-                    Faces.BACK,
-                    new Block(blockPosition, blocks[x, y, z]),
-                    chunkMeshData,
-                    ref totalIndexCount
-                );
+                localFaceData.Add(block.GetFace(Faces.BACK));
 
             if (z == Chunk.SIZE - 1 || blocks[x, y, z + 1] == BlockType.AIR)
-                AddFace(
-                    x,
-                    y,
-                    z,
-                    Faces.FRONT,
-                    new Block(blockPosition, blocks[x, y, z]),
-                    chunkMeshData,
-                    ref totalIndexCount
-                );
-        }
-
-        private static void AddFace(
-            int x,
-            int y,
-            int z,
-            Faces face,
-            Block block,
-            ChunkMeshData chunkMeshData,
-            ref uint totalIndexCount
-        )
-        {
-            var faceData = block.GetFace(face);
-
-            lock (chunkMeshData)
-            {
-                chunkMeshData.Vertices.AddRange(faceData.Vertices);
-                chunkMeshData.UVs.AddRange(faceData.TextureCoordinates);
-                chunkMeshData.Indices.Add(0 + totalIndexCount);
-                chunkMeshData.Indices.Add(1 + totalIndexCount);
-                chunkMeshData.Indices.Add(2 + totalIndexCount);
-                chunkMeshData.Indices.Add(2 + totalIndexCount);
-                chunkMeshData.Indices.Add(3 + totalIndexCount);
-                chunkMeshData.Indices.Add(0 + totalIndexCount);
-                totalIndexCount += 4;
-            }
+                localFaceData.Add(block.GetFace(Faces.FRONT));
         }
     }
 }
