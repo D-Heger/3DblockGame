@@ -106,5 +106,10 @@ namespace VoxelGame.EntityComponentSystem
                 components.Remove(entityID);
             }
         }
+
+        public bool EntityExists(int entityID)
+        {
+            return _entityComponents.ContainsKey(entityID);
+        }
     }
 }
