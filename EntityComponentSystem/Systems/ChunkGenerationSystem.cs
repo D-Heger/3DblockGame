@@ -1,6 +1,6 @@
-using OpenTK.Mathematics;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using OpenTK.Mathematics;
 using VoxelGame.EntityComponentSystem;
 using VoxelGame.EntityComponentSystem.Components;
 using VoxelGame.GraphicsPipeline;
@@ -31,11 +31,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
             {
                 for (int z = -radius; z <= radius; z++)
                 {
-                    Vector3 chunkPosition = new(
-                        x * size,
-                        0,
-                        z * size
-                    );
+                    Vector3 chunkPosition = new(x * size, 0, z * size);
                     _chunksToGenerate.Enqueue(chunkPosition);
                 }
             }
@@ -46,11 +42,12 @@ namespace VoxelGame.EntityComponentSystem.Systems
         public void UpdateChunks(Vector3 playerPosition, int renderDistance)
         {
             int size = Chunk.SIZE;
-            Vector3 playerChunkPosition = new(
-                (int)(playerPosition.X / size) * size,
-                0,
-                (int)(playerPosition.Z / size) * size
-            );
+            Vector3 playerChunkPosition =
+                new(
+                    (int)(playerPosition.X / size) * size,
+                    0,
+                    (int)(playerPosition.Z / size) * size
+                );
 
             List<Vector3> chunksToRemove = [];
 
@@ -74,8 +71,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 for (int z = -renderDistance; z <= renderDistance; z++)
                 {
                     Vector3 chunkPosition =
-                        playerChunkPosition
-                        + new Vector3(x * size, 0, z * size);
+                        playerChunkPosition + new Vector3(x * size, 0, z * size);
 
                     if (!_activeChunkPositions.Contains(chunkPosition))
                     {
