@@ -2,16 +2,24 @@ using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 using VoxelGame.EntityComponentSystem.Components;
 using VoxelGame.GraphicsPipeline;
+using VoxelGame.World;
 
 namespace VoxelGame.EntityComponentSystem.Systems
 {
     public class RenderSystem : System
     {
         private ShaderProgram _shaderProgram;
+        private Frustum _frustum;
+        private int _width;
+        private int _height;
 
-        public RenderSystem()
+        public RenderSystem(int width, int height)
         {
+            _width = width;
+            _height = height;
             _shaderProgram = new ShaderProgram("Default", "Default");
+            _frustum = new Frustum();
+
             GL.Enable(EnableCap.DepthTest);
             GL.FrontFace(FrontFaceDirection.Cw);
             GL.Enable(EnableCap.CullFace);
@@ -36,12 +44,11 @@ namespace VoxelGame.EntityComponentSystem.Systems
             var cameraComponent = entityManager.GetComponent<CameraComponent>(cameraEntity);
 
             Matrix4 view = cameraComponent.GetViewMatrix(cameraTransform.Position);
-            Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(
-                MathHelper.DegreesToRadians(45.0f),
-                (float)cameraComponent.ScreenWidth / cameraComponent.ScreenHeight,
-                0.1f,
-                1000f
-            );
+            Matrix4 projection = cameraComponent.GetProjectionMatrix((float)_width / _height);
+            Matrix4 viewProjection = view * projection;
+
+            // Update frustum
+            _frustum.UpdateFrustum(viewProjection);
 
             // Bind shader program once
             _shaderProgram.Bind();
@@ -73,6 +80,18 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 {
                     var meshComponent = entityManager.GetComponent<MeshComponent>(entity);
                     var transformComponent = entityManager.GetComponent<TransformComponent>(entity);
+
+                    // Frustum culling
+                    Vector3 chunkPosition = transformComponent.Position;
+                    int chunkSize = Chunk.SIZE;
+                    int chunkHeight = Chunk.HEIGHT;
+                    Vector3 min = chunkPosition;
+                    Vector3 max = chunkPosition + new Vector3(chunkSize, chunkHeight, chunkSize);
+
+                    if (!_frustum.IsBoxInsideFrustum(min, max))
+                    {
+                        continue; // Skip rendering this chunk
+                    }
 
                     // Set model matrix uniform
                     Matrix4 model = Matrix4.CreateTranslation(transformComponent.Position);

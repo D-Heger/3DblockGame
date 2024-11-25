@@ -58,7 +58,7 @@ namespace VoxelGame
 
             // Initialize systems
             _entityManager = new EntityManager();
-            _renderSystem = new RenderSystem();
+            _renderSystem = new RenderSystem(_width, _height);
             _inputSystem = new InputSystem();
             _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager);
 
