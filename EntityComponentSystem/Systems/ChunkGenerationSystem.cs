@@ -1,4 +1,7 @@
 using OpenTK.Mathematics;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using VoxelGame.EntityComponentSystem;
 using VoxelGame.EntityComponentSystem.Components;
 using VoxelGame.GraphicsPipeline;
 using VoxelGame.World;
@@ -9,29 +12,88 @@ namespace VoxelGame.EntityComponentSystem.Systems
     public class ChunkGenerationSystem : System
     {
         private EntityManager _entityManager;
-        private Dictionary<Vector3, int> _chunkEntities;
+        private ConcurrentDictionary<Vector3, int> _chunkEntities;
+        private ConcurrentQueue<Vector3> _chunksToGenerate;
         private HashSet<Vector3> _activeChunkPositions;
 
         public ChunkGenerationSystem(EntityManager entityManager)
         {
             _entityManager = entityManager;
-            _chunkEntities = [];
+            _chunkEntities = new ConcurrentDictionary<Vector3, int>();
+            _chunksToGenerate = new ConcurrentQueue<Vector3>();
             _activeChunkPositions = [];
         }
 
         public void GenerateInitialChunks(Vector3 origin, int radius)
         {
+            int size = Chunk.SIZE;
             for (int x = -radius; x <= radius; x++)
             {
                 for (int z = -radius; z <= radius; z++)
                 {
-                    Vector3 chunkPosition = new Vector3(
-                        x * Chunk.SIZE,
+                    Vector3 chunkPosition = new(
+                        x * size,
                         0,
-                        z * Chunk.SIZE
+                        z * size
                     );
-                    GenerateChunk(chunkPosition);
+                    _chunksToGenerate.Enqueue(chunkPosition);
                 }
+            }
+
+            ProcessChunkQueue();
+        }
+
+        public void UpdateChunks(Vector3 playerPosition, int renderDistance)
+        {
+            int size = Chunk.SIZE;
+            Vector3 playerChunkPosition = new(
+                (int)(playerPosition.X / size) * size,
+                0,
+                (int)(playerPosition.Z / size) * size
+            );
+
+            List<Vector3> chunksToRemove = [];
+
+            // Remove chunks that are out of range
+            foreach (var chunkPos in _activeChunkPositions)
+            {
+                if (Vector3.Distance(chunkPos, playerChunkPosition) > renderDistance * size)
+                {
+                    chunksToRemove.Add(chunkPos);
+                }
+            }
+
+            foreach (var chunkPos in chunksToRemove)
+            {
+                RemoveChunk(chunkPos);
+            }
+
+            // Add new chunks within render distance
+            for (int x = -renderDistance; x <= renderDistance; x++)
+            {
+                for (int z = -renderDistance; z <= renderDistance; z++)
+                {
+                    Vector3 chunkPosition =
+                        playerChunkPosition
+                        + new Vector3(x * size, 0, z * size);
+
+                    if (!_activeChunkPositions.Contains(chunkPosition))
+                    {
+                        _chunksToGenerate.Enqueue(chunkPosition);
+                    }
+                }
+            }
+
+            ProcessChunkQueue();
+        }
+
+        private void ProcessChunkQueue()
+        {
+            while (_chunksToGenerate.TryDequeue(out Vector3 chunkPosition))
+            {
+                // Chunk generation should be scheduled to occur on the main thread
+                // because OpenGL resources must be created and accessed only on the main thread.
+                GenerateChunk(chunkPosition);
             }
         }
 
@@ -52,7 +114,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 new TransformComponent(chunkPosition, Quaternion.Identity, Vector3.One)
             );
 
-            // Generate chunk mesh data asynchronously to avoid blocking the main thread
+            // Generate chunk mesh data
             ChunkMeshData chunkMeshData = ChunkGenerator.GenerateChunkMesh(chunkPosition);
 
             // Add MeshComponent
@@ -70,55 +132,12 @@ namespace VoxelGame.EntityComponentSystem.Systems
             _activeChunkPositions.Add(chunkPosition);
         }
 
-        public void UpdateChunks(Vector3 playerPosition, int renderDistance)
-        {
-            Vector3 playerChunkPosition = new Vector3(
-                (int)(playerPosition.X / Chunk.SIZE) * Chunk.SIZE,
-                0,
-                (int)(playerPosition.Z / Chunk.SIZE) * Chunk.SIZE
-            );
-
-            List<Vector3> chunksToRemove = new List<Vector3>();
-
-            // Remove chunks that are out of range
-            foreach (var chunkPos in _activeChunkPositions)
-            {
-                if (
-                    Vector3.Distance(chunkPos, playerChunkPosition)
-                    > renderDistance * Chunk.SIZE
-                )
-                {
-                    chunksToRemove.Add(chunkPos);
-                }
-            }
-
-            foreach (var chunkPos in chunksToRemove)
-            {
-                RemoveChunk(chunkPos);
-            }
-
-            // Generate new chunks within render distance using a spatial hashing approach
-            for (int x = -renderDistance; x <= renderDistance; x++)
-            {
-                for (int z = -renderDistance; z <= renderDistance; z++)
-                {
-                    Vector3 chunkPosition =
-                        playerChunkPosition
-                        + new Vector3(x * Chunk.SIZE, 0, z * Chunk.SIZE);
-                    if (!_activeChunkPositions.Contains(chunkPosition))
-                    {
-                        GenerateChunk(chunkPosition);
-                    }
-                }
-            }
-        }
-
         private void RemoveChunk(Vector3 chunkPosition)
         {
             if (_chunkEntities.TryGetValue(chunkPosition, out int chunkEntity))
             {
                 _entityManager.RemoveEntity(chunkEntity);
-                _chunkEntities.Remove(chunkPosition);
+                _chunkEntities.TryRemove(chunkPosition, out _);
                 _activeChunkPositions.Remove(chunkPosition);
             }
         }
