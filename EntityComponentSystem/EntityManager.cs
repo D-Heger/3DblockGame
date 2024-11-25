@@ -88,6 +88,17 @@ namespace VoxelGame.EntityComponentSystem
             return entities1.Intersect(entities2);
         }
 
+        public IEnumerable<int> GetEntitiesWithComponents<T1, T2, T3>()
+            where T1 : Component
+            where T2 : Component
+            where T3 : Component
+        {
+            var entities1 = GetEntitiesWithComponent<T1>();
+            var entities2 = GetEntitiesWithComponent<T2>();
+            var entities3 = GetEntitiesWithComponent<T3>();
+            return entities1.Intersect(entities2).Intersect(entities3);
+        }
+
         public void SetEntityPosition(int entityID, Vector3 position)
         {
             EntityPositions[entityID] = position;

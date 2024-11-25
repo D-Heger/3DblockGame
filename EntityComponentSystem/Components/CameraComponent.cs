@@ -16,6 +16,9 @@ namespace VoxelGame.EntityComponentSystem.Components
         public bool FirstMove = true;
         public Vector2 LastMousePosition;
 
+        public int ScreenWidth = 1280;
+        public int ScreenHeight = 720;
+
         public CameraComponent() { }
 
         public Matrix4 GetViewMatrix(Vector3 position)
