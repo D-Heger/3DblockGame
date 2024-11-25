@@ -10,7 +10,7 @@ namespace VoxelGame.World
             ChunkMeshData chunkMeshData = new();
 
             float[,] heightMap = GenerateHeightMap();
-            Block[,,] blocks = GenerateBlocks(heightMap);
+            BlockType[,,] blocks = GenerateBlocks(heightMap);
             GenerateFaces(blocks, chunkMeshData);
 
             return chunkMeshData;
@@ -20,115 +20,189 @@ namespace VoxelGame.World
         {
             float[,] heightMap = new float[Chunk.SIZE, Chunk.SIZE];
             SimplexNoise.Noise.Seed = 123456;
-            for (int x = 0; x < Chunk.SIZE; x++)
-            {
-                for (int z = 0; z < Chunk.SIZE; z++)
+
+            Parallel.For(
+                0,
+                Chunk.SIZE,
+                x =>
                 {
-                    heightMap[x, z] = SimplexNoise.Noise.CalcPixel2D(x, z, 0.01f);
+                    for (int z = 0; z < Chunk.SIZE; z++)
+                    {
+                        heightMap[x, z] = SimplexNoise.Noise.CalcPixel2D(x, z, 0.01f);
+                    }
                 }
-            }
+            );
+
             return heightMap;
         }
 
-        private static Block[,,] GenerateBlocks(float[,] heightMap)
+        private static BlockType[,,] GenerateBlocks(float[,] heightMap)
         {
-            Block[,,] blocks = new Block[Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE];
-            for (int x = 0; x < Chunk.SIZE; x++)
-            {
-                for (int z = 0; z < Chunk.SIZE; z++)
-                {
-                    int columnHeight = (int)(heightMap[x, z] / 10);
-                    for (int y = 0; y < Chunk.HEIGHT; y++)
-                    {
-                        BlockType type =
-                            y < columnHeight - 1 ? BlockType.DIRT
-                            : y == columnHeight - 1 ? BlockType.GRASS
-                            : BlockType.AIR;
-                        blocks[x, y, z] = new Block(new Vector3(x, y, z), type);
-                    }
-                }
-            }
-            return blocks;
-        }
+            BlockType[,,] blocks = new BlockType[Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE];
 
-        private static void GenerateFaces(Block[,,] blocks, ChunkMeshData chunkMeshData)
-        {
-            uint totalIndexCount = 0;
-            for (int x = 0; x < Chunk.SIZE; x++)
-            {
-                for (int z = 0; z < Chunk.SIZE; z++)
+            Parallel.For(
+                0,
+                Chunk.SIZE,
+                x =>
                 {
-                    for (int y = 0; y < Chunk.HEIGHT; y++)
+                    for (int z = 0; z < Chunk.SIZE; z++)
                     {
-                        Block block = blocks[x, y, z];
-                        if (block.Type != BlockType.AIR)
+                        int columnHeight = (int)(heightMap[x, z] / 10);
+                        for (int y = 0; y < Chunk.HEIGHT; y++)
                         {
-                            AddVisibleFaces(
-                                block,
-                                blocks,
-                                chunkMeshData,
-                                ref totalIndexCount,
-                                x,
-                                y,
-                                z
-                            );
+                            if (y < columnHeight - 1)
+                            {
+                                blocks[x, y, z] = BlockType.DIRT;
+                            }
+                            else if (y == columnHeight - 1)
+                            {
+                                blocks[x, y, z] = BlockType.GRASS;
+                            }
+                            else
+                            {
+                                blocks[x, y, z] = BlockType.AIR;
+                            }
                         }
                     }
                 }
-            }
+            );
+
+            return blocks;
+        }
+
+        private static void GenerateFaces(BlockType[,,] blocks, ChunkMeshData chunkMeshData)
+        {
+            uint totalIndexCount = 0;
+
+            Parallel.For(
+                0,
+                Chunk.SIZE,
+                x =>
+                {
+                    for (int z = 0; z < Chunk.SIZE; z++)
+                    {
+                        for (int y = 0; y < Chunk.HEIGHT; y++)
+                        {
+                            if (blocks[x, y, z] != BlockType.AIR)
+                            {
+                                AddVisibleFaces(
+                                    x,
+                                    y,
+                                    z,
+                                    blocks,
+                                    chunkMeshData,
+                                    ref totalIndexCount
+                                );
+                            }
+                        }
+                    }
+                }
+            );
         }
 
         private static void AddVisibleFaces(
-            Block block,
-            Block[,,] blocks,
-            ChunkMeshData chunkMeshData,
-            ref uint totalIndexCount,
             int x,
             int y,
-            int z
+            int z,
+            BlockType[,,] blocks,
+            ChunkMeshData chunkMeshData,
+            ref uint totalIndexCount
         )
         {
-            if (x == 0 || blocks[x - 1, y, z].Type == BlockType.AIR)
-                AddFace(block, Faces.LEFT, chunkMeshData, ref totalIndexCount);
+            Vector3 blockPosition = new Vector3(x, y, z);
 
-            // Right Face
-            if (x == Chunk.SIZE - 1 || blocks[x + 1, y, z].Type == BlockType.AIR)
-                AddFace(block, Faces.RIGHT, chunkMeshData, ref totalIndexCount);
+            // Check each face to see if it should be added
+            if (x == 0 || blocks[x - 1, y, z] == BlockType.AIR)
+                AddFace(
+                    x,
+                    y,
+                    z,
+                    Faces.LEFT,
+                    new Block(blockPosition, blocks[x, y, z]),
+                    chunkMeshData,
+                    ref totalIndexCount
+                );
 
-            // Bottom Face
-            if (y == 0 || blocks[x, y - 1, z].Type == BlockType.AIR)
-                AddFace(block, Faces.BOTTOM, chunkMeshData, ref totalIndexCount);
+            if (x == Chunk.SIZE - 1 || blocks[x + 1, y, z] == BlockType.AIR)
+                AddFace(
+                    x,
+                    y,
+                    z,
+                    Faces.RIGHT,
+                    new Block(blockPosition, blocks[x, y, z]),
+                    chunkMeshData,
+                    ref totalIndexCount
+                );
 
-            // Top Face
-            if (y == Chunk.HEIGHT - 1 || blocks[x, y + 1, z].Type == BlockType.AIR)
-                AddFace(block, Faces.TOP, chunkMeshData, ref totalIndexCount);
+            if (y == 0 || blocks[x, y - 1, z] == BlockType.AIR)
+                AddFace(
+                    x,
+                    y,
+                    z,
+                    Faces.BOTTOM,
+                    new Block(blockPosition, blocks[x, y, z]),
+                    chunkMeshData,
+                    ref totalIndexCount
+                );
 
-            // Back Face
-            if (z == 0 || blocks[x, y, z - 1].Type == BlockType.AIR)
-                AddFace(block, Faces.BACK, chunkMeshData, ref totalIndexCount);
+            if (y == Chunk.HEIGHT - 1 || blocks[x, y + 1, z] == BlockType.AIR)
+                AddFace(
+                    x,
+                    y,
+                    z,
+                    Faces.TOP,
+                    new Block(blockPosition, blocks[x, y, z]),
+                    chunkMeshData,
+                    ref totalIndexCount
+                );
 
-            // Front Face
-            if (z == Chunk.SIZE - 1 || blocks[x, y, z + 1].Type == BlockType.AIR)
-                AddFace(block, Faces.FRONT, chunkMeshData, ref totalIndexCount);
+            if (z == 0 || blocks[x, y, z - 1] == BlockType.AIR)
+                AddFace(
+                    x,
+                    y,
+                    z,
+                    Faces.BACK,
+                    new Block(blockPosition, blocks[x, y, z]),
+                    chunkMeshData,
+                    ref totalIndexCount
+                );
+
+            if (z == Chunk.SIZE - 1 || blocks[x, y, z + 1] == BlockType.AIR)
+                AddFace(
+                    x,
+                    y,
+                    z,
+                    Faces.FRONT,
+                    new Block(blockPosition, blocks[x, y, z]),
+                    chunkMeshData,
+                    ref totalIndexCount
+                );
         }
 
         private static void AddFace(
-            Block block,
+            int x,
+            int y,
+            int z,
             Faces face,
+            Block block,
             ChunkMeshData chunkMeshData,
             ref uint totalIndexCount
         )
         {
             var faceData = block.GetFace(face);
-            chunkMeshData.Vertices.AddRange(faceData.Vertices);
-            chunkMeshData.UVs.AddRange(faceData.TextureCoordinates);
-            chunkMeshData.Indices.Add(0 + totalIndexCount);
-            chunkMeshData.Indices.Add(1 + totalIndexCount);
-            chunkMeshData.Indices.Add(2 + totalIndexCount);
-            chunkMeshData.Indices.Add(2 + totalIndexCount);
-            chunkMeshData.Indices.Add(3 + totalIndexCount);
-            chunkMeshData.Indices.Add(0 + totalIndexCount);
-            totalIndexCount += 4;
+
+            lock (chunkMeshData)
+            {
+                chunkMeshData.Vertices.AddRange(faceData.Vertices);
+                chunkMeshData.UVs.AddRange(faceData.TextureCoordinates);
+                chunkMeshData.Indices.Add(0 + totalIndexCount);
+                chunkMeshData.Indices.Add(1 + totalIndexCount);
+                chunkMeshData.Indices.Add(2 + totalIndexCount);
+                chunkMeshData.Indices.Add(2 + totalIndexCount);
+                chunkMeshData.Indices.Add(3 + totalIndexCount);
+                chunkMeshData.Indices.Add(0 + totalIndexCount);
+                totalIndexCount += 4;
+            }
         }
     }
 }
