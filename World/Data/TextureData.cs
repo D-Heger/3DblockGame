@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK.Mathematics;
-using VoxelGame.World;
-using VoxelGame.World.Data;
+﻿using OpenTK.Mathematics;
 
 namespace VoxelGame.World.Data
 {
     public static class TextureData
     {
-        public static Dictionary<BlockType, Dictionary<Faces, Vector2>> blockTypeUVCoord =
+        public static readonly Dictionary<BlockType, Dictionary<Faces, Vector2>> blockTypeUVCoord =
             new()
             {
                 {
@@ -39,5 +32,17 @@ namespace VoxelGame.World.Data
                     }
                 },
             };
+
+        public static List<Vector2> GetUVs(BlockType blockType, Faces face)
+        {
+            Vector2 faceCoord = blockTypeUVCoord[blockType][face];
+            return
+            [
+                new Vector2((faceCoord.X + 1f) / 16f, (faceCoord.Y + 1f) / 16f),
+                new Vector2(faceCoord.X / 16f, (faceCoord.Y + 1f) / 16f),
+                new Vector2(faceCoord.X / 16f, faceCoord.Y / 16f),
+                new Vector2((faceCoord.X + 1f) / 16f, faceCoord.Y / 16f),
+            ];
+        }
     }
 }

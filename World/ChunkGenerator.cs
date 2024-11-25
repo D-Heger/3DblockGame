@@ -1,11 +1,13 @@
-using System.Collections.Concurrent;
 using OpenTK.Mathematics;
 using VoxelGame.World.Data;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace VoxelGame.World
 {
     public static class ChunkGenerator
     {
+
         public static ChunkMeshData GenerateChunkMesh(Vector3 chunkPosition)
         {
             ChunkMeshData chunkMeshData = new();
@@ -19,16 +21,16 @@ namespace VoxelGame.World
 
         private static float[,] GenerateHeightMap()
         {
-            int chunkSize = Chunk.SIZE;
-            float[,] heightMap = new float[chunkSize, chunkSize];
+            int size = Chunk.SIZE;
+            float[,] heightMap = new float[size, size];
             SimplexNoise.Noise.Seed = 123456;
 
             Parallel.For(
                 0,
-                chunkSize,
+                size,
                 x =>
                 {
-                    for (int z = 0; z < chunkSize; z++)
+                    for (int z = 0; z < size; z++)
                     {
                         heightMap[x, z] = SimplexNoise.Noise.CalcPixel2D(x, z, 0.01f);
                     }
@@ -40,19 +42,19 @@ namespace VoxelGame.World
 
         private static BlockType[,,] GenerateBlocks(float[,] heightMap)
         {
-            int chunkSize = Chunk.SIZE;
-            int chunkHeight = Chunk.HEIGHT;
-            BlockType[,,] blocks = new BlockType[chunkSize, chunkHeight, chunkSize];
+            int size = Chunk.SIZE;
+            int heigh = Chunk.HEIGHT;
+            BlockType[,,] blocks = new BlockType[size, heigh, size];
 
             Parallel.For(
                 0,
-                chunkSize,
+                size,
                 x =>
                 {
-                    for (int z = 0; z < chunkSize; z++)
+                    for (int z = 0; z < size; z++)
                     {
                         int columnHeight = (int)(heightMap[x, z] / 10);
-                        for (int y = 0; y < chunkHeight; y++)
+                        for (int y = 0; y < heigh; y++)
                         {
                             if (y < columnHeight - 1)
                             {
@@ -76,54 +78,44 @@ namespace VoxelGame.World
 
         private static void GenerateFaces(BlockType[,,] blocks, ChunkMeshData chunkMeshData)
         {
-            int chunkSize = Chunk.SIZE;
-            int chunkHeight = Chunk.HEIGHT;
-
-            // Thread-local storage for mesh data
-            ConcurrentBag<FaceData> faceDataBag = [];
+            int size = Chunk.SIZE;
+            int height = Chunk.HEIGHT;
+            object lockObj = new();
 
             Parallel.For(
                 0,
-                chunkSize,
-                x =>
+                size,
+                () => new PerThreadMeshData(),
+                (x, state, localMeshData) =>
                 {
-                    List<FaceData> localFaceData = [];
-
-                    for (int z = 0; z < chunkSize; z++)
+                    for (int z = 0; z < size; z++)
                     {
-                        for (int y = 0; y < chunkHeight; y++)
+                        for (int y = 0; y < height; y++)
                         {
                             if (blocks[x, y, z] != BlockType.AIR)
                             {
-                                AddVisibleFaces(x, y, z, blocks, localFaceData);
+                                AddVisibleFaces(x, y, z, blocks, localMeshData);
                             }
                         }
                     }
-
-                    // Add local data to the concurrent bag
-                    foreach (var faceData in localFaceData)
+                    return localMeshData;
+                },
+                localMeshData =>
+                {
+                    lock (lockObj)
                     {
-                        faceDataBag.Add(faceData);
+                        uint indexOffset = (uint)chunkMeshData.Vertices.Count;
+                        chunkMeshData.Vertices.AddRange(localMeshData.Vertices);
+                        chunkMeshData.UVs.AddRange(localMeshData.UVs);
+
+                        // Adjust indices
+                        foreach (var index in localMeshData.Indices)
+                        {
+                            chunkMeshData.Indices.Add(index + indexOffset);
+                        }
                     }
                 }
             );
-
-            // After parallel loop, merge all face data
-            uint totalIndexCount = 0;
-            foreach (var faceData in faceDataBag)
-            {
-                chunkMeshData.Vertices.AddRange(faceData.Vertices);
-                chunkMeshData.UVs.AddRange(faceData.TextureCoordinates);
-
-                chunkMeshData.Indices.Add(0 + totalIndexCount);
-                chunkMeshData.Indices.Add(1 + totalIndexCount);
-                chunkMeshData.Indices.Add(2 + totalIndexCount);
-                chunkMeshData.Indices.Add(2 + totalIndexCount);
-                chunkMeshData.Indices.Add(3 + totalIndexCount);
-                chunkMeshData.Indices.Add(0 + totalIndexCount);
-
-                totalIndexCount += 4;
-            }
         }
 
         private static void AddVisibleFaces(
@@ -131,30 +123,72 @@ namespace VoxelGame.World
             int y,
             int z,
             BlockType[,,] blocks,
-            List<FaceData> localFaceData
+            PerThreadMeshData localMeshData
         )
         {
-            Vector3 blockPosition = new(x, y, z);
-            Block block = new(blockPosition, blocks[x, y, z]);
+            BlockType blockType = blocks[x, y, z];
 
             // Check each face to see if it should be added
             if (x == 0 || blocks[x - 1, y, z] == BlockType.AIR)
-                localFaceData.Add(block.GetFace(Faces.LEFT));
+                AddFace(x, y, z, Faces.LEFT, blockType, localMeshData);
 
             if (x == Chunk.SIZE - 1 || blocks[x + 1, y, z] == BlockType.AIR)
-                localFaceData.Add(block.GetFace(Faces.RIGHT));
+                AddFace(x, y, z, Faces.RIGHT, blockType, localMeshData);
 
             if (y == 0 || blocks[x, y - 1, z] == BlockType.AIR)
-                localFaceData.Add(block.GetFace(Faces.BOTTOM));
+                AddFace(x, y, z, Faces.BOTTOM, blockType, localMeshData);
 
             if (y == Chunk.HEIGHT - 1 || blocks[x, y + 1, z] == BlockType.AIR)
-                localFaceData.Add(block.GetFace(Faces.TOP));
+                AddFace(x, y, z, Faces.TOP, blockType, localMeshData);
 
             if (z == 0 || blocks[x, y, z - 1] == BlockType.AIR)
-                localFaceData.Add(block.GetFace(Faces.BACK));
+                AddFace(x, y, z, Faces.BACK, blockType, localMeshData);
 
             if (z == Chunk.SIZE - 1 || blocks[x, y, z + 1] == BlockType.AIR)
-                localFaceData.Add(block.GetFace(Faces.FRONT));
+                AddFace(x, y, z, Faces.FRONT, blockType, localMeshData);
         }
+
+        private static void AddFace(
+            int x,
+            int y,
+            int z,
+            Faces face,
+            BlockType blockType,
+            PerThreadMeshData localMeshData
+        )
+        {
+            // Get the raw vertex data for the face
+            List<Vector3> faceVertices = FaceDataRaw.rawVertexData[face];
+
+            // Transform the vertices by adding the block position
+            foreach (var vert in faceVertices)
+            {
+                localMeshData.Vertices.Add(vert + new Vector3(x, y, z));
+            }
+
+            // Get the UV coordinates for the block type and face
+            List<Vector2> uvCoords = TextureData.GetUVs(blockType, face);
+            localMeshData.UVs.AddRange(uvCoords);
+
+            uint baseIndex = localMeshData.TotalIndexCount;
+
+            localMeshData.Indices.Add(0 + baseIndex);
+            localMeshData.Indices.Add(1 + baseIndex);
+            localMeshData.Indices.Add(2 + baseIndex);
+            localMeshData.Indices.Add(2 + baseIndex);
+            localMeshData.Indices.Add(3 + baseIndex);
+            localMeshData.Indices.Add(0 + baseIndex);
+
+            localMeshData.TotalIndexCount += 4;
+        }
+    }
+
+    // Class to hold per-thread mesh data
+    class PerThreadMeshData
+    {
+        public List<Vector3> Vertices = [];
+        public List<Vector2> UVs = [];
+        public List<uint> Indices = [];
+        public uint TotalIndexCount = 0;
     }
 }
