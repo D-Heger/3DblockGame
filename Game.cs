@@ -28,6 +28,7 @@ namespace VoxelGame
         private ChunkGenerationSystem _chunkGenerationSystem;
 
         private Vector3 _lastPlayerChunkPosition;
+        private int _viewDistance = 4;
 
         public Game(int width, int height)
             : base(GameWindowSettings.Default, NativeWindowSettings.Default)
@@ -71,7 +72,7 @@ namespace VoxelGame
             CursorState = CursorState.Grabbed;
 
             // Generate initial chunks
-            _chunkGenerationSystem.GenerateInitialChunks(Vector3.Zero, 2);
+            _chunkGenerationSystem.GenerateInitialChunks(Vector3.Zero, _viewDistance);
 
             _lastPlayerChunkPosition = Vector3.Zero;
         }
@@ -143,7 +144,7 @@ namespace VoxelGame
 
             if (playerChunkPosition != _lastPlayerChunkPosition)
             {
-                _chunkGenerationSystem.UpdateChunks(playerChunkPosition, 2);
+                _chunkGenerationSystem.UpdateChunks(playerChunkPosition, _viewDistance);
                 _lastPlayerChunkPosition = playerChunkPosition;
             }
         }
