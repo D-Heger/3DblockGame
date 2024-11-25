@@ -1,13 +1,12 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using OpenTK.Mathematics;
 using VoxelGame.World.Data;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace VoxelGame.World
 {
     public static class ChunkGenerator
     {
-
         public static ChunkMeshData GenerateChunkMesh(Vector3 chunkPosition)
         {
             ChunkMeshData chunkMeshData = new();
@@ -32,7 +31,11 @@ namespace VoxelGame.World
                 {
                     for (int z = 0; z < size; z++)
                     {
-                        float noiseValue = SimplexNoise.Noise.CalcPixel2D(x + offsetX, z + offsetZ, 0.01f);
+                        float noiseValue = SimplexNoise.Noise.CalcPixel2D(
+                            x + offsetX,
+                            z + offsetZ,
+                            0.01f
+                        );
                         heightMap[x, z] = noiseValue;
                     }
                 }
@@ -54,14 +57,22 @@ namespace VoxelGame.World
                 {
                     for (int z = 0; z < size; z++)
                     {
-                        int columnHeight = (int)(heightMap[x, z] / 10);
+                        int columnHeight = (int)(heightMap[x, z] / 16);
                         for (int y = 0; y < heigh; y++)
                         {
-                            if (y < columnHeight - 1)
+                            if (y <= columnHeight)
+                            {
+                                blocks[x, y, z] = BlockType.STONE;
+                            }
+                            else if (y == columnHeight + 1)
                             {
                                 blocks[x, y, z] = BlockType.DIRT;
                             }
-                            else if (y == columnHeight - 1)
+                            else if (y == columnHeight + 2)
+                            {
+                                blocks[x, y, z] = BlockType.SAND;
+                            }
+                            else if (y == columnHeight + 3)
                             {
                                 blocks[x, y, z] = BlockType.GRASS;
                             }

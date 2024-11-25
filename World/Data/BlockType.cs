@@ -5,5 +5,9 @@ namespace VoxelGame.World.Data
         DIRT,
         GRASS,
         AIR,
+        STONE,
+        SAND,
+        WATER,
+        
     }
 }
