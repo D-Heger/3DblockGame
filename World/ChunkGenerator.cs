@@ -1,20 +1,26 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using OpenTK.Mathematics;
+using VoxelGame.EntityComponentSystem.Systems;
 using VoxelGame.World.Data;
 
 namespace VoxelGame.World
 {
     public static class ChunkGenerator
     {
-        public static ChunkMeshData GenerateChunkMesh(Vector3 chunkPosition)
+        public static ChunkMeshData GenerateChunkMesh(
+            Vector3 chunkPosition,
+            WorldSystem worldSystem,
+            out ChunkData chunkData
+        )
         {
             ChunkMeshData chunkMeshData = new();
 
             float[,] heightMap = GenerateHeightMap((int)chunkPosition.X, (int)chunkPosition.Z);
             BlockType[,,] blocks = GenerateBlocks(heightMap);
-            GenerateFaces(blocks, chunkMeshData);
+            GenerateFaces(blocks, chunkPosition, chunkMeshData, worldSystem);
 
+            chunkData = new ChunkData(blocks);
             return chunkMeshData;
         }
 
@@ -88,7 +94,12 @@ namespace VoxelGame.World
             return blocks;
         }
 
-        private static void GenerateFaces(BlockType[,,] blocks, ChunkMeshData chunkMeshData)
+        private static void GenerateFaces(
+            BlockType[,,] blocks,
+            Vector3 chunkPosition,
+            ChunkMeshData chunkMeshData,
+            WorldSystem worldSystem
+        )
         {
             int size = Chunk.SIZE;
             int height = Chunk.HEIGHT;
@@ -106,7 +117,15 @@ namespace VoxelGame.World
                         {
                             if (blocks[x, y, z] != BlockType.AIR)
                             {
-                                AddVisibleFaces(x, y, z, blocks, localMeshData);
+                                AddVisibleFaces(
+                                    x,
+                                    y,
+                                    z,
+                                    blocks,
+                                    chunkPosition,
+                                    localMeshData,
+                                    worldSystem
+                                );
                             }
                         }
                     }
@@ -135,29 +154,117 @@ namespace VoxelGame.World
             int y,
             int z,
             BlockType[,,] blocks,
-            PerThreadMeshData localMeshData
+            Vector3 chunkPosition,
+            PerThreadMeshData localMeshData,
+            WorldSystem worldSystem
         )
         {
             BlockType blockType = blocks[x, y, z];
 
-            // Check each face to see if it should be added
-            if (x == 0 || blocks[x - 1, y, z] == BlockType.AIR)
-                AddFace(x, y, z, Faces.LEFT, blockType, localMeshData);
-
-            if (x == Chunk.SIZE - 1 || blocks[x + 1, y, z] == BlockType.AIR)
-                AddFace(x, y, z, Faces.RIGHT, blockType, localMeshData);
-
-            if (y == 0 || blocks[x, y - 1, z] == BlockType.AIR)
-                AddFace(x, y, z, Faces.BOTTOM, blockType, localMeshData);
-
-            if (y == Chunk.HEIGHT - 1 || blocks[x, y + 1, z] == BlockType.AIR)
-                AddFace(x, y, z, Faces.TOP, blockType, localMeshData);
-
-            if (z == 0 || blocks[x, y, z - 1] == BlockType.AIR)
-                AddFace(x, y, z, Faces.BACK, blockType, localMeshData);
-
-            if (z == Chunk.SIZE - 1 || blocks[x, y, z + 1] == BlockType.AIR)
+            if (IsFaceVisible(x, y, z + 1, blocks, chunkPosition, worldSystem))
+            {
                 AddFace(x, y, z, Faces.FRONT, blockType, localMeshData);
+            }
+
+            if (IsFaceVisible(x, y, z - 1, blocks, chunkPosition, worldSystem))
+            {
+                AddFace(x, y, z, Faces.BACK, blockType, localMeshData);
+            }
+
+            if (IsFaceVisible(x + 1, y, z, blocks, chunkPosition, worldSystem))
+            {
+                AddFace(x, y, z, Faces.RIGHT, blockType, localMeshData);
+            }
+
+            if (IsFaceVisible(x - 1, y, z, blocks, chunkPosition, worldSystem))
+            {
+                AddFace(x, y, z, Faces.LEFT, blockType, localMeshData);
+            }
+
+            if (IsFaceVisible(x, y + 1, z, blocks, chunkPosition, worldSystem))
+            {
+                AddFace(x, y, z, Faces.TOP, blockType, localMeshData);
+            }
+
+            if (IsFaceVisible(x, y - 1, z, blocks, chunkPosition, worldSystem))
+            {
+                AddFace(x, y, z, Faces.BOTTOM, blockType, localMeshData);
+            }
+        }
+
+        private static bool IsFaceVisible(
+            int x,
+            int y,
+            int z,
+            BlockType[,,] blocks,
+            Vector3 chunkPosition,
+            WorldSystem worldSystem
+        )
+        {
+            int size = Chunk.SIZE;
+            int height = Chunk.HEIGHT;
+
+            // Check if the coordinates are within the current chunk bounds
+            if (x >= 0 && x < size && y >= 0 && y < height && z >= 0 && z < size)
+            {
+                // If the block is air, the face is visible
+                return blocks[x, y, z] == BlockType.AIR;
+            }
+            else
+            {
+                // Determine the neighboring chunk's position
+                Vector3 neighbourChunkPosition = chunkPosition;
+
+                int neighbourX = x;
+                int neighbourY = y;
+                int neighbourZ = z;
+
+                // Adjust the neighboring chunk position and local coordinates
+                if (x < 0)
+                {
+                    neighbourChunkPosition += new Vector3(-size, 0, 0);
+                    neighbourX = x + size; // Wrap to the other side of the neighboring chunk
+                }
+                else if (x >= size)
+                {
+                    neighbourChunkPosition += new Vector3(size, 0, 0);
+                    neighbourX = x - size; // Wrap to the other side of the neighboring chunk
+                }
+
+                if (y < 0 || y >= height)
+                {
+                    // If y is out of bounds, there is no neighboring chunk vertically.
+                    // Assume the face is visible, as there is no block above or below the chunk.
+                    return true;
+                }
+
+                if (z < 0)
+                {
+                    neighbourChunkPosition += new Vector3(0, 0, -size);
+                    neighbourZ = z + size; // Wrap to the other side of the neighboring chunk
+                }
+                else if (z >= size)
+                {
+                    neighbourChunkPosition += new Vector3(0, 0, size);
+                    neighbourZ = z - size; // Wrap to the other side of the neighboring chunk
+                }
+
+                // Check if the neighboring chunk exists in the world
+                if (worldSystem.ChunkExists(neighbourChunkPosition))
+                {
+                    // Get the neighboring chunk's data
+                    ChunkData neighbourChunk = worldSystem.GetChunk(neighbourChunkPosition);
+
+                    // Check if the corresponding block in the neighboring chunk is air
+                    return neighbourChunk.Blocks[neighbourX, neighbourY, neighbourZ]
+                        == BlockType.AIR;
+                }
+                else
+                {
+                    // If the neighboring chunk does not exist, assume the face is visible
+                    return true;
+                }
+            }
         }
 
         private static void AddFace(

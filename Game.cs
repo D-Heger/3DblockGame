@@ -25,6 +25,7 @@ namespace VoxelGame
         private EntityManager _entityManager;
         private RenderSystem _renderSystem;
         private InputSystem _inputSystem;
+        private WorldSystem _worldSystem;
         private ChunkGenerationSystem _chunkGenerationSystem;
 
         private Vector3 _lastPlayerChunkPosition;
@@ -60,7 +61,8 @@ namespace VoxelGame
             _entityManager = new EntityManager();
             _renderSystem = new RenderSystem(_width, _height);
             _inputSystem = new InputSystem();
-            _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager);
+            _worldSystem = new WorldSystem();
+            _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager, _worldSystem);
 
             // Create camera entity
             int cameraEntity = _entityManager.CreateEntity();
