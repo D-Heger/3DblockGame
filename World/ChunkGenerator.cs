@@ -19,15 +19,16 @@ namespace VoxelGame.World
 
         private static float[,] GenerateHeightMap()
         {
-            float[,] heightMap = new float[Chunk.SIZE, Chunk.SIZE];
+            int chunkSize = Chunk.SIZE;
+            float[,] heightMap = new float[chunkSize, chunkSize];
             SimplexNoise.Noise.Seed = 123456;
 
             Parallel.For(
                 0,
-                Chunk.SIZE,
+                chunkSize,
                 x =>
                 {
-                    for (int z = 0; z < Chunk.SIZE; z++)
+                    for (int z = 0; z < chunkSize; z++)
                     {
                         heightMap[x, z] = SimplexNoise.Noise.CalcPixel2D(x, z, 0.01f);
                     }
@@ -39,17 +40,19 @@ namespace VoxelGame.World
 
         private static BlockType[,,] GenerateBlocks(float[,] heightMap)
         {
-            BlockType[,,] blocks = new BlockType[Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE];
+            int chunkSize = Chunk.SIZE;
+            int chunkHeight = Chunk.HEIGHT;
+            BlockType[,,] blocks = new BlockType[chunkSize, chunkHeight, chunkSize];
 
             Parallel.For(
                 0,
-                Chunk.SIZE,
+                chunkSize,
                 x =>
                 {
-                    for (int z = 0; z < Chunk.SIZE; z++)
+                    for (int z = 0; z < chunkSize; z++)
                     {
                         int columnHeight = (int)(heightMap[x, z] / 10);
-                        for (int y = 0; y < Chunk.HEIGHT; y++)
+                        for (int y = 0; y < chunkHeight; y++)
                         {
                             if (y < columnHeight - 1)
                             {
