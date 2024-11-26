@@ -29,7 +29,7 @@ namespace VoxelGame
         private ChunkGenerationSystem _chunkGenerationSystem;
 
         private Vector3 _lastPlayerChunkPosition;
-        private int _viewDistance = 16;
+        private int _viewDistance = 32;
 
         public Game(int width, int height)
             : base(GameWindowSettings.Default, NativeWindowSettings.Default)
@@ -74,7 +74,7 @@ namespace VoxelGame
             CursorState = CursorState.Grabbed;
 
             // Generate initial chunks
-            _chunkGenerationSystem.GenerateInitialChunks(Vector3.Zero, _viewDistance);
+            _chunkGenerationSystem.GenerateInitialChunks(ChunkPosition.Zero(), _viewDistance);
 
             _lastPlayerChunkPosition = Vector3.Zero;
         }
@@ -138,17 +138,14 @@ namespace VoxelGame
             var cameraEntity = _entityManager.GetEntitiesWithComponent<CameraComponent>();
             var cameraTransform = _entityManager.GetComponent<TransformComponent>(cameraEntity.First());
 
-            Vector3 playerChunkPosition = new Vector3(
+            Vector3 playerChunkPosition = new(
                 (int)(cameraTransform.Position.X / Chunk.SIZE) * Chunk.SIZE,
                 0,
                 (int)(cameraTransform.Position.Z / Chunk.SIZE) * Chunk.SIZE
             );
 
-            if (playerChunkPosition != _lastPlayerChunkPosition)
-            {
-                _chunkGenerationSystem.UpdateChunks(playerChunkPosition, _viewDistance);
-                _lastPlayerChunkPosition = playerChunkPosition;
-            }
+            _chunkGenerationSystem.Update();
+            _chunkGenerationSystem.UpdateChunks(playerChunkPosition, _viewDistance);
         }
     }
 }

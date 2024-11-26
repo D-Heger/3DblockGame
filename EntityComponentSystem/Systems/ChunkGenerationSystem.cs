@@ -1,5 +1,4 @@
 using System.Collections.Concurrent;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using OpenTK.Mathematics;
 using VoxelGame.EntityComponentSystem;
@@ -14,37 +13,40 @@ namespace VoxelGame.EntityComponentSystem.Systems
     {
         private readonly EntityManager _entityManager = entityManager;
         private readonly WorldSystem _worldSystem = worldSystem;
-        private readonly ConcurrentDictionary<Vector3, int> _chunkEntities = new();
-        private readonly ConcurrentQueue<Vector3> _chunksToGenerate = new();
-        private readonly HashSet<Vector3> _activeChunkPositions = [];
+        private readonly ConcurrentDictionary<ChunkPosition, int> _chunkEntities = new();
+        private readonly ConcurrentQueue<ChunkPosition> _chunksToGenerate = new();
+        private readonly HashSet<ChunkPosition> _activeChunkPositions = [];
+        private readonly ConcurrentQueue<(ChunkPosition chunkPosition, ChunkMeshData chunkMeshData, ChunkData chunkData)> _chunksAwaitingMainThreadProcessing = new();
         private readonly Texture _sharedTexture = new("atlas");
 
-        public void GenerateInitialChunks(Vector3 origin, int radius)
+        public void GenerateInitialChunks(ChunkPosition origin, int radius)
         {
             int size = Chunk.SIZE;
             for (int x = -radius; x <= radius; x++)
             {
                 for (int z = -radius; z <= radius; z++)
                 {
-                    Vector3 chunkPosition = new(x * size, 0, z * size);
+                    ChunkPosition chunkPosition = new(origin.X + x * size, 0, origin.Z + z * size);
                     _chunksToGenerate.Enqueue(chunkPosition);
+                    _activeChunkPositions.Add(chunkPosition);
                 }
             }
 
-            ProcessChunkQueue();
+            StartChunkGeneration();
         }
 
-        private void ProcessChunkQueue()
+        private void StartChunkGeneration()
         {
-            while (_chunksToGenerate.TryDequeue(out Vector3 chunkPosition))
+            Task.Run(() =>
             {
-                // Chunk generation should be scheduled to occur on the main thread
-                // because OpenGL resources must be created and accessed only on the main thread.
-                GenerateChunk(chunkPosition);
-            }
+                while (_chunksToGenerate.TryDequeue(out ChunkPosition chunkPosition))
+                {
+                    GenerateChunkData(chunkPosition);
+                }
+            });
         }
 
-        public void GenerateChunk(Vector3 chunkPosition)
+        private void GenerateChunkData(ChunkPosition chunkPosition)
         {
             // Check if the chunk already exists
             if (_chunkEntities.ContainsKey(chunkPosition))
@@ -52,17 +54,37 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 return;
             }
 
+            // Generate chunk mesh data & store the blocks
+            Vector3 chunkPositionVector3 = new(chunkPosition.X, chunkPosition.Y, chunkPosition.Z);
+
+            ChunkMeshData chunkMeshData = ChunkGenerator.GenerateChunkMesh(chunkPositionVector3, _worldSystem, out ChunkData chunkData);
+
+            // Enqueue for main thread processing
+            _chunksAwaitingMainThreadProcessing.Enqueue((chunkPosition, chunkMeshData, chunkData));
+        }
+
+        public void Update()
+        {
+            // Process chunks that have their data generated and need OpenGL resources
+            while (_chunksAwaitingMainThreadProcessing.TryDequeue(out var item))
+            {
+                var (chunkPosition, chunkMeshData, chunkData) = item;
+                CreateChunkEntity(chunkPosition, chunkMeshData, chunkData);
+            }
+        }
+
+        private void CreateChunkEntity(ChunkPosition chunkPosition, ChunkMeshData chunkMeshData, ChunkData chunkData)
+        {
             // Create a new chunk entity
             int chunkEntity = _entityManager.CreateEntity();
+
+            Vector3 chunkPositionVector3 = new(chunkPosition.X, chunkPosition.Y, chunkPosition.Z);
 
             // Add TransformComponent
             _entityManager.AddComponent(
                 chunkEntity,
-                new TransformComponent(chunkPosition, Quaternion.Identity, Vector3.One)
+                new TransformComponent(chunkPositionVector3, Quaternion.Identity, Vector3.One)
             );
-
-            // Generate chunk mesh data & store the blocks
-            ChunkMeshData chunkMeshData = ChunkGenerator.GenerateChunkMesh(chunkPosition, _worldSystem, out ChunkData chunkData);
 
             // Add MeshComponent
             _entityManager.AddComponent(
@@ -75,65 +97,90 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
             // Store the chunk entity
             _chunkEntities[chunkPosition] = chunkEntity;
-            _activeChunkPositions.Add(chunkPosition);
 
             // Add the chunk to the world system
-            _worldSystem.AddChunk(chunkPosition, chunkData);
+            _worldSystem.AddChunk(chunkPositionVector3, chunkData);
         }
 
         public void UpdateChunks(Vector3 playerPosition, int renderDistance)
         {
             int size = Chunk.SIZE;
-            Vector3 playerChunkPosition =
-                new(
-                    (int)(playerPosition.X / size) * size,
-                    0,
-                    (int)(playerPosition.Z / size) * size
-                );
+            int playerChunkX = (int)(playerPosition.X / size) * size;
+            int playerChunkZ = (int)(playerPosition.Z / size) * size;
 
-            List<Vector3> chunksToRemove = [];
+            ChunkPosition playerChunkPosition = new(playerChunkX, 0, playerChunkZ);
 
-            // Remove chunks that are out of range
-            foreach (var chunkPos in _activeChunkPositions)
-            {
-                if (Vector3.Distance(chunkPos, playerChunkPosition) > renderDistance * size)
-                {
-                    chunksToRemove.Add(chunkPos);
-                }
-            }
-
-            foreach (var chunkPos in chunksToRemove)
-            {
-                RemoveChunk(chunkPos);
-            }
+            HashSet<ChunkPosition> newActiveChunks = [];
 
             // Add new chunks within render distance
             for (int x = -renderDistance; x <= renderDistance; x++)
             {
                 for (int z = -renderDistance; z <= renderDistance; z++)
                 {
-                    Vector3 chunkPosition =
-                        playerChunkPosition + new Vector3(x * size, 0, z * size);
+                    int chunkX = playerChunkPosition.X + x * size;
+                    int chunkZ = playerChunkPosition.Z + z * size;
+
+                    ChunkPosition chunkPosition = new(chunkX, 0, chunkZ);
+                    newActiveChunks.Add(chunkPosition);
 
                     if (!_activeChunkPositions.Contains(chunkPosition))
                     {
                         _chunksToGenerate.Enqueue(chunkPosition);
+                        _activeChunkPositions.Add(chunkPosition);
                     }
                 }
             }
 
-            ProcessChunkQueue();
+            // Remove chunks that are no longer in the active set
+            foreach (var chunkPos in _activeChunkPositions)
+            {
+                if (!newActiveChunks.Contains(chunkPos))
+                {
+                    RemoveChunk(chunkPos);
+                }
+            }
+
+            _activeChunkPositions.Clear();
+            foreach (var chunkPos in newActiveChunks)
+            {
+                _activeChunkPositions.Add(chunkPos);
+            }
+
+            StartChunkGeneration();
         }
 
-        private void RemoveChunk(Vector3 chunkPosition)
+        private void RemoveChunk(ChunkPosition chunkPosition)
         {
             if (_chunkEntities.TryGetValue(chunkPosition, out int chunkEntity))
             {
                 _entityManager.RemoveEntity(chunkEntity);
                 _chunkEntities.TryRemove(chunkPosition, out _);
-                _activeChunkPositions.Remove(chunkPosition);
-                _worldSystem.RemoveChunk(chunkPosition);
+                _worldSystem.RemoveChunk(new Vector3(chunkPosition.X, chunkPosition.Y, chunkPosition.Z));
             }
         }
+    }
+
+    public struct ChunkPosition(int x, int y, int z)
+    {
+        public int X = x;
+        public int Y = y;
+        public int Z = z;
+
+        public static ChunkPosition Zero() => new(0, 0, 0);
+
+        public override bool Equals(object obj) =>
+            obj is ChunkPosition other &&
+            X == other.X &&
+            Y == other.Y &&
+            Z == other.Z;
+
+        public override readonly int GetHashCode() =>
+            HashCode.Combine(X, Y, Z);
+
+        public static bool operator ==(ChunkPosition left, ChunkPosition right) =>
+            left.Equals(right);
+
+        public static bool operator !=(ChunkPosition left, ChunkPosition right) =>
+            !(left == right);
     }
 }
