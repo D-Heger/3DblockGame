@@ -12,8 +12,8 @@ namespace VoxelGame.EntityComponentSystem.Systems
 {
     public class ChunkGenerationSystem(EntityManager entityManager, WorldSystem worldSystem) : System
     {
-        private EntityManager _entityManager = entityManager;
-        private WorldSystem _worldSystem = worldSystem;
+        private readonly EntityManager _entityManager = entityManager;
+        private readonly WorldSystem _worldSystem = worldSystem;
         private readonly ConcurrentDictionary<Vector3, int> _chunkEntities = new();
         private readonly ConcurrentQueue<Vector3> _chunksToGenerate = new();
         private readonly HashSet<Vector3> _activeChunkPositions = [];
