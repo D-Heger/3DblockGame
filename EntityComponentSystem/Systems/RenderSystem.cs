@@ -12,6 +12,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
         private Frustum _frustum;
         private int _width;
         private int _height;
+        private bool _wireframeMode = true;
 
         public RenderSystem(int width, int height)
         {
@@ -114,6 +115,19 @@ namespace VoxelGame.EntityComponentSystem.Systems
             GL.BindVertexArray(0);
             GL.BindTexture(TextureTarget.Texture2D, 0);
             ShaderProgram.Unbind();
+        }
+
+        public void ToggleWireframe()
+        {
+            _wireframeMode = !_wireframeMode;
+            if (_wireframeMode)
+            {
+                GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+            }
+            else
+            {
+                GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+            }
         }
 
         public void Dispose()
