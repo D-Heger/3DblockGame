@@ -1,4 +1,5 @@
 ﻿using OpenTK.Graphics.OpenGL4;
+using OpenTK.Mathematics;
 using static VoxelGame.Utils.FileUtils;
 
 namespace VoxelGame.GraphicsPipeline
@@ -46,7 +47,7 @@ namespace VoxelGame.GraphicsPipeline
 
     public void Dispose()
     {
-        GL.DeleteShader(ID);
+        GL.DeleteProgram(ID);
     }
 }
 
