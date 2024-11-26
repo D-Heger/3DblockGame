@@ -1,6 +1,6 @@
 namespace VoxelGame.World.Data
 {
-    public enum Faces
+    public enum Faces : byte
     {
         FRONT,
         BACK,
