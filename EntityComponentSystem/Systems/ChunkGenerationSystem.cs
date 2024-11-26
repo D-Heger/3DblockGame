@@ -10,24 +10,14 @@ using VoxelGame.World.Data;
 
 namespace VoxelGame.EntityComponentSystem.Systems
 {
-    public class ChunkGenerationSystem : System
+    public class ChunkGenerationSystem(EntityManager entityManager, WorldSystem worldSystem) : System
     {
-        private EntityManager _entityManager;
-        private WorldSystem _worldSystem;
-        private ConcurrentDictionary<Vector3, int> _chunkEntities;
-        private ConcurrentQueue<Vector3> _chunksToGenerate;
-        private HashSet<Vector3> _activeChunkPositions;
-        private Texture _sharedTexture;
-
-        public ChunkGenerationSystem(EntityManager entityManager, WorldSystem worldSystem)
-        {
-            _entityManager = entityManager;
-            _worldSystem = worldSystem;
-            _chunkEntities = new();
-            _chunksToGenerate = new();
-            _activeChunkPositions = [];
-            _sharedTexture = new Texture("atlas");
-        }
+        private EntityManager _entityManager = entityManager;
+        private WorldSystem _worldSystem = worldSystem;
+        private readonly ConcurrentDictionary<Vector3, int> _chunkEntities = new();
+        private readonly ConcurrentQueue<Vector3> _chunksToGenerate = new();
+        private readonly HashSet<Vector3> _activeChunkPositions = [];
+        private readonly Texture _sharedTexture = new("atlas");
 
         public void GenerateInitialChunks(Vector3 origin, int radius)
         {
