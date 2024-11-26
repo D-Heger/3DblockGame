@@ -24,6 +24,13 @@ namespace VoxelGame.World
             return chunkMeshData;
         }
 
+        public static ChunkData GenerateChunkData(Vector3 chunkPosition)
+        {
+            float[,] heightMap = GenerateHeightMap((int)chunkPosition.X, (int)chunkPosition.Z);
+            BlockType[,,] blocks = GenerateBlocks(heightMap);
+            return new ChunkData(blocks);
+        }
+
         private static float[,] GenerateHeightMap(int offsetX, int offsetZ)
         {
             int size = Chunk.SIZE;
