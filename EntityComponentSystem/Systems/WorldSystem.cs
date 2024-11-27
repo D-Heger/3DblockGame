@@ -6,35 +6,35 @@ namespace VoxelGame.EntityComponentSystem.Systems
 {
     public class WorldSystem : System
     {
-        private readonly ConcurrentDictionary<Vector3, ChunkData> _activeChunks;
+        private readonly ConcurrentDictionary<ChunkPosition, ChunkData> _activeChunks;
 
         public WorldSystem()
         {
-            _activeChunks = new ConcurrentDictionary<Vector3, ChunkData>();
+            _activeChunks = new ConcurrentDictionary<ChunkPosition, ChunkData>();
         }
 
-        public void AddChunk(Vector3 chunkPosition, ChunkData chunkData)
+        public void AddChunk(ChunkPosition chunkPosition, ChunkData chunkData)
         {
             _activeChunks[chunkPosition] = chunkData;
         }
 
-        public void RemoveChunk(Vector3 chunkPosition)
+        public void RemoveChunk(ChunkPosition chunkPosition)
         {
             _activeChunks.TryRemove(chunkPosition, out _);
         }
 
-        public bool ChunkExists(Vector3 chunkPosition)
+        public bool ChunkExists(ChunkPosition chunkPosition)
         {
             return _activeChunks.ContainsKey(chunkPosition);
         }
 
-        public ChunkData GetChunk(Vector3 chunkPosition)
+        public ChunkData GetChunk(ChunkPosition chunkPosition)
         {
             _activeChunks.TryGetValue(chunkPosition, out ChunkData chunkData);
             return chunkData;
         }
 
-        public IEnumerable<Vector3> GetAllChunkPositions()
+        public IEnumerable<ChunkPosition> GetAllChunkPositions()
         {
             return _activeChunks.Keys;
         }

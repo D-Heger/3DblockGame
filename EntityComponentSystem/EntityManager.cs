@@ -120,9 +120,31 @@ namespace VoxelGame.EntityComponentSystem
             }
         }
 
+        public void RemoveComponent<T>(int entityId)
+            where T : Component
+        {
+            Type type = typeof(T);
+            if (_componentsByType.ContainsKey(type))
+            {
+                _componentsByType[type].Remove(entityId);
+            }
+
+            if (_entityComponents.ContainsKey(entityId))
+            {
+                var componentList = _entityComponents[entityId];
+                componentList.RemoveAll(c => c is T);
+            }
+        }
+
         public bool EntityExists(int entityID)
         {
             return _entityComponents.ContainsKey(entityID);
+        }
+
+        public void Dispose()
+        {
+            _entityComponents.Clear();
+            _componentsByType.Clear();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace VoxelGame.World.Data
         STONE,
         SAND,
         WATER,
+        BEDROCK,
         
     }
 }

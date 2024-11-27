@@ -138,14 +138,11 @@ namespace VoxelGame.EntityComponentSystem.Systems
             if (_chunkEntities.ContainsKey(chunkPosition))
                 return;
 
-            // Convert chunk position to Vector3
-            Vector3 chunkPositionVector3 = new(chunkPosition.X, chunkPosition.Y, chunkPosition.Z);
-
             // Generate chunk mesh data and chunk data
             ChunkMeshData chunkMeshData = await Task.Run(
                 () =>
                     ChunkGenerator.GenerateChunkMesh(
-                        chunkPositionVector3,
+                        chunkPosition,
                         _worldSystem,
                         out ChunkData chunkData
                     )
@@ -156,7 +153,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 (
                     chunkPosition,
                     chunkMeshData,
-                    ChunkGenerator.GenerateChunkData(chunkPositionVector3)
+                    ChunkGenerator.GenerateChunkData(chunkPosition)
                 )
             );
         }
@@ -193,12 +190,12 @@ namespace VoxelGame.EntityComponentSystem.Systems
             int chunkEntity = _entityManager.CreateEntity();
 
             // Convert chunk position to Vector3
-            Vector3 chunkPositionVector3 = new(chunkPosition.X, chunkPosition.Y, chunkPosition.Z);
+            Vector3 chunkPositionVEC3 = new(chunkPosition.X, chunkPosition.Y, chunkPosition.Z);
 
             // Add components to the entity
             _entityManager.AddComponent(
                 chunkEntity,
-                new TransformComponent(chunkPositionVector3, Quaternion.Identity, Vector3.One)
+                new TransformComponent(chunkPositionVEC3, Quaternion.Identity, Vector3.One)
             );
             _entityManager.AddComponent(
                 chunkEntity,
@@ -210,7 +207,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
             _chunkEntities[chunkPosition] = chunkEntity;
 
             // Add the chunk to the world system
-            _worldSystem.AddChunk(chunkPositionVector3, chunkData);
+            _worldSystem.AddChunk(chunkPosition, chunkData);
         }
 
         /// <summary>
@@ -271,9 +268,12 @@ namespace VoxelGame.EntityComponentSystem.Systems
         {
             if (_chunkEntities.TryRemove(chunkPosition, out int chunkEntity))
             {
+                _entityManager.RemoveComponent<TransformComponent>(chunkEntity);
+                _entityManager.RemoveComponent<MeshComponent>(chunkEntity);
+                _entityManager.RemoveComponent<TextureComponent>(chunkEntity);
                 _entityManager.RemoveEntity(chunkEntity);
                 _worldSystem.RemoveChunk(
-                    new Vector3(chunkPosition.X, chunkPosition.Y, chunkPosition.Z)
+                    new ChunkPosition(chunkPosition.X, chunkPosition.Y, chunkPosition.Z)
                 );
             }
         }
