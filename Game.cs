@@ -1,96 +1,127 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL4;
+﻿using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
-using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using VoxelGame.EntityComponentSystem;
+using VoxelGame.EntityComponentSystem.Components;
+using VoxelGame.EntityComponentSystem.Systems;
+using VoxelGame.GraphicsPipeline;
+using VoxelGame.World;
+using VoxelGame.World.Data;
 
-public class Game : GameWindow
+namespace VoxelGame
 {
-    private ShaderProgram _program;
-    private Camera _camera;
-    private Chunk _chunk;
-
-    private int _width,
-        _height;
-
-    public Game(int width, int height)
-        : base(GameWindowSettings.Default, NativeWindowSettings.Default)
+    public class Game : GameWindow
     {
-        _width = width;
-        _height = height;
+        private EntityManager? _entityManager;
+        private RenderSystem? _renderSystem;
+        private InputSystem? _inputSystem;
 
-        CenterWindow(new Vector2i(width, height));
-    }
+        private int _width,
+            _height;
 
-    protected override void OnResize(ResizeEventArgs e)
-    {
-        base.OnResize(e);
-        GL.Viewport(0, 0, e.Width, e.Height);
-        _width = e.Width;
-        _height = e.Height;
-    }
+        public Game(int width, int height)
+            : base(GameWindowSettings.Default, NativeWindowSettings.Default)
+        {
+            _width = width;
+            _height = height;
 
-    protected override void OnLoad()
-    {
-        base.OnLoad();
+            CenterWindow(new Vector2i(width, height));
+        }
 
-        _program = new ShaderProgram("Default", "Default");
+        protected override void OnResize(ResizeEventArgs e)
+        {
+            base.OnResize(e);
+            GL.Viewport(0, 0, e.Width, e.Height);
+            _width = e.Width;
+            _height = e.Height;
+        }
 
-        GL.Enable(EnableCap.DepthTest);
-        GL.FrontFace(FrontFaceDirection.Cw);
-        GL.Enable(EnableCap.CullFace);
-        GL.CullFace(CullFaceMode.Back);
+        protected override void OnLoad()
+        {
+            base.OnLoad();
 
-        _camera = new Camera(_width, _height, new Vector3(8, 10, 8)); // Near the center of the first chunk
+            _entityManager = new EntityManager();
+            _renderSystem = new RenderSystem();
+            _inputSystem = new InputSystem();
 
-        CursorState = CursorState.Grabbed;
+            // Create camera entity
+            int cameraEntity = _entityManager.CreateEntity();
+            _entityManager.AddComponent(
+                cameraEntity,
+                new TransformComponent(new Vector3(8, 10, 8), Quaternion.Identity, Vector3.One)
+            );
+            _entityManager.AddComponent(cameraEntity, new CameraComponent());
 
-        _chunk = new Chunk(Vector3.Zero);
-    }
+            // Create chunk entity
+            int chunkEntity = _entityManager.CreateEntity();
+            _entityManager.AddComponent(
+                chunkEntity,
+                new TransformComponent(Vector3.Zero, Quaternion.Identity, Vector3.One)
+            );
 
-    protected override void OnUnload()
-    {
-        base.OnUnload();
-        _chunk.Dispose();
-    }
+            // Generate chunk mesh data
+            ChunkMeshData chunkMeshData = ChunkGenerator.GenerateChunkMesh(Vector3.Zero);
+            _entityManager.AddComponent(
+                chunkEntity,
+                new MeshComponent(chunkMeshData.Vertices, chunkMeshData.UVs, chunkMeshData.Indices)
+            );
 
-    protected override void OnRenderFrame(FrameEventArgs args)
-    {
-        GL.ClearColor(0.3f, 0.3f, 1f, 1f);
-        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            // Add texture component
+            Texture chunkTexture = new Texture("atlas");
+            _entityManager.AddComponent(chunkEntity, new TextureComponent(chunkTexture));
 
-        Matrix4 model = Matrix4.Identity;
-        Matrix4 view = _camera.GetViewMatrix();
-        Matrix4 projection = _camera.GetProjectionMatrix();
+            // Set cursor state
+            CursorState = CursorState.Grabbed;
+        }
 
-        int modelLocation = GL.GetUniformLocation(_program.ID, "model");
-        int viewLocation = GL.GetUniformLocation(_program.ID, "view");
-        int projectionLocation = GL.GetUniformLocation(_program.ID, "projection");
+        protected override void OnUnload()
+        {
+            base.OnUnload();
 
-        GL.UniformMatrix4(modelLocation, true, ref model);
-        GL.UniformMatrix4(viewLocation, true, ref view);
-        GL.UniformMatrix4(projectionLocation, true, ref projection);
-        //Console.WriteLine($"Model: {model}, View: {view}, Projection: {projection}");
+            // Dispose of mesh buffers
+            var meshEntities = _entityManager.GetEntitiesWithComponent<MeshComponent>();
+            foreach (var entity in meshEntities)
+            {
+                var meshComponent = _entityManager.GetComponent<MeshComponent>(entity);
+                meshComponent.Dispose();
+            }
 
-        _chunk.RenderChunk(_program);
+            // Dispose of textures
+            var textureEntities = _entityManager.GetEntitiesWithComponent<TextureComponent>();
+            foreach (var entity in textureEntities)
+            {
+                var textureComponent = _entityManager.GetComponent<TextureComponent>(entity);
+                textureComponent.Texture.Dispose();
+            }
 
-        Context.SwapBuffers();
-        base.OnRenderFrame(args);
-    }
+            // Dispose of shader programs
+            _renderSystem.Dispose();
+        }
 
-    protected override void OnUpdateFrame(FrameEventArgs args)
-    {
-        KeyboardState kInput = KeyboardState;
-        MouseState mInput = MouseState;
+        protected override void OnRenderFrame(FrameEventArgs args)
+        {
+            base.OnRenderFrame(args);
 
-        base.OnUpdateFrame(args);
-        _camera.Update(kInput, mInput, args);
+            GL.ClearColor(0.3f, 0.3f, 1f, 1f);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            // Render system
+            _renderSystem.Render(_entityManager);
+
+            Context.SwapBuffers();
+        }
+
+        protected override void OnUpdateFrame(FrameEventArgs args)
+        {
+            base.OnUpdateFrame(args);
+
+            KeyboardState kInput = KeyboardState;
+            MouseState mInput = MouseState;
+
+            //_camera.Update(kInput, mInput, args);
+            _inputSystem.Update(_entityManager, kInput, mInput, args);
+        }
     }
 }
