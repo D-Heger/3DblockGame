@@ -28,7 +28,7 @@ namespace VoxelGame.World.Data
                         { Faces.RIGHT, new Vector2(3f, 15f) },
                         { Faces.BACK, new Vector2(3f, 15f) },
                         { Faces.TOP, new Vector2(7f, 13f) },
-                        { Faces.BOTTOM, new Vector2(3f, 15f) },
+                        { Faces.BOTTOM, new Vector2(2f, 15f) },
                     }
                 },
                 {

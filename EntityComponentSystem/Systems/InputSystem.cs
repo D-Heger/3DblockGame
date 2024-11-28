@@ -65,6 +65,15 @@ namespace VoxelGame.EntityComponentSystem.Systems
                     moveDirection -= Vector3.UnitY;
                 }
 
+                if (kInput.IsKeyDown(Keys.LeftControl))
+                {
+                    cameraComponent.Speed = 32.0f;
+                }
+                else
+                {
+                    cameraComponent.Speed = 8.0f;
+                }
+
                 if (moveDirection.LengthSquared > 0)
                 {
                     moveDirection = Vector3.Normalize(moveDirection);

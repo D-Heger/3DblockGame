@@ -47,7 +47,7 @@ namespace VoxelGame.World
                         float noiseValue = SimplexNoise.Noise.CalcPixel2D(
                             x + offsetX,
                             z + offsetZ,
-                            0.01f
+                            0.1f
                         );
                         heightMap[x, z] = noiseValue;
                     }
@@ -57,11 +57,67 @@ namespace VoxelGame.World
             return heightMap;
         }
 
+        private static float[,] SmoothHeightMap(float[,] heightMap)
+        {
+            int size = heightMap.GetLength(0);
+            float[,] tempMap = new float[size, size];
+            float[,] smoothedHeightMap = new float[size, size];
+
+            // Horizontal blur pass
+            for (int x = 0; x < size; x++)
+            {
+                for (int z = 0; z < size; z++)
+                {
+                    float totalHeight = 0f;
+                    int count = 0;
+
+                    for (int dz = -1; dz <= 1; dz++)
+                    {
+                        int nz = z + dz;
+                        if (nz >= 0 && nz < size)
+                        {
+                            totalHeight += heightMap[x, nz];
+                            count++;
+                        }
+                    }
+
+                    tempMap[x, z] = totalHeight / count;
+                }
+            }
+
+            // Vertical blur pass
+            for (int x = 0; x < size; x++)
+            {
+                for (int z = 0; z < size; z++)
+                {
+                    float totalHeight = 0f;
+                    int count = 0;
+
+                    for (int dx = -1; dx <= 1; dx++)
+                    {
+                        int nx = x + dx;
+                        if (nx >= 0 && nx < size)
+                        {
+                            totalHeight += tempMap[nx, z];
+                            count++;
+                        }
+                    }
+
+                    smoothedHeightMap[x, z] = totalHeight / count;
+                }
+            }
+
+            return smoothedHeightMap;
+        }
+
         private static BlockType[,,] GenerateBlocks(float[,] heightMap)
         {
+            heightMap = SmoothHeightMap(heightMap);
+
             int size = Chunk.SIZE;
-            int heigh = Chunk.HEIGHT;
-            BlockType[,,] blocks = new BlockType[size, heigh, size];
+            int height = Chunk.HEIGHT;
+            int minHeight = 5;
+            BlockType[,,] blocks = new BlockType[size, height, size];
 
             Parallel.For(
                 0,
@@ -70,16 +126,24 @@ namespace VoxelGame.World
                 {
                     for (int z = 0; z < size; z++)
                     {
-                        int columnHeight = (int)(heightMap[x, z] / 16);
-                        for (int y = 0; y < heigh; y++)
+                        int columnHeight = minHeight + (int)(heightMap[x, z] / 32);
+                        for (int y = 0; y < height; y++)
                         {
-                            if (y <= columnHeight)
+                            if (y <= 0)
+                            {
+                                blocks[x, y, z] = BlockType.BEDROCK;
+                            }
+                            else if (y <= columnHeight)
                             {
                                 blocks[x, y, z] = BlockType.STONE;
                             }
                             else if (y == columnHeight + 1)
                             {
                                 blocks[x, y, z] = BlockType.SAND;
+                            }
+                            else if (y == columnHeight + 2)
+                            {
+                                blocks[x, y, z] = BlockType.DIRT;
                             }
                             else if (y == columnHeight + 3)
                             {
