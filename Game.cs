@@ -7,6 +7,7 @@ using VoxelGame.EntityComponentSystem;
 using VoxelGame.EntityComponentSystem.Components;
 using VoxelGame.EntityComponentSystem.Systems;
 using VoxelGame.GraphicsPipeline;
+using VoxelGame.Utils;
 using VoxelGame.World;
 using VoxelGame.World.Data;
 
@@ -123,9 +124,12 @@ namespace VoxelGame
             _time += args.Time;
             _frames++;
 
+            MemoryTracker.Update();
+            var (current, average, peak) = MemoryTracker.GetMemoryStats();
+
             if (_time >= 1.0)
             {
-                Title = $"{_title} | FPS: {_frames} | Entities: {_entityManager.EntityCount}";
+                Title = $"{_title} | FPS: {_frames} | Entities: {_entityManager.EntityCount} | Memory (MB) - Current: {current}, Avg: {average}, Peak: {peak}";
                 _frames = 0;
                 _time -= 1.0;
             }
