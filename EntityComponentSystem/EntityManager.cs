@@ -17,6 +17,8 @@ namespace VoxelGame.EntityComponentSystem
             return entityId;
         }
 
+        public int EntityCount => _entityComponents.Count;
+
         public void AddComponent<T>(int entityId, T component)
             where T : Component
         {
@@ -65,6 +67,20 @@ namespace VoxelGame.EntityComponentSystem
             }
         }
 
+        public int GetEntityWithComponent<T>()
+            where T : Component
+        {
+            Type type = typeof(T);
+            if (_componentsByType.ContainsKey(type))
+            {
+                return _componentsByType[type].Keys.First();
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         public IEnumerable<int> GetEntitiesWithComponents<T1, T2>()
             where T1 : Component
             where T2 : Component
@@ -72,6 +88,17 @@ namespace VoxelGame.EntityComponentSystem
             var entities1 = GetEntitiesWithComponent<T1>();
             var entities2 = GetEntitiesWithComponent<T2>();
             return entities1.Intersect(entities2);
+        }
+
+        public IEnumerable<int> GetEntitiesWithComponents<T1, T2, T3>()
+            where T1 : Component
+            where T2 : Component
+            where T3 : Component
+        {
+            var entities1 = GetEntitiesWithComponent<T1>();
+            var entities2 = GetEntitiesWithComponent<T2>();
+            var entities3 = GetEntitiesWithComponent<T3>();
+            return entities1.Intersect(entities2).Intersect(entities3);
         }
 
         public void SetEntityPosition(int entityID, Vector3 position)
@@ -91,6 +118,33 @@ namespace VoxelGame.EntityComponentSystem
             {
                 components.Remove(entityID);
             }
+        }
+
+        public void RemoveComponent<T>(int entityId)
+            where T : Component
+        {
+            Type type = typeof(T);
+            if (_componentsByType.ContainsKey(type))
+            {
+                _componentsByType[type].Remove(entityId);
+            }
+
+            if (_entityComponents.ContainsKey(entityId))
+            {
+                var componentList = _entityComponents[entityId];
+                componentList.RemoveAll(c => c is T);
+            }
+        }
+
+        public bool EntityExists(int entityID)
+        {
+            return _entityComponents.ContainsKey(entityID);
+        }
+
+        public void Dispose()
+        {
+            _entityComponents.Clear();
+            _componentsByType.Clear();
         }
     }
 }

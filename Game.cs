@@ -7,6 +7,7 @@ using VoxelGame.EntityComponentSystem;
 using VoxelGame.EntityComponentSystem.Components;
 using VoxelGame.EntityComponentSystem.Systems;
 using VoxelGame.GraphicsPipeline;
+using VoxelGame.Utils;
 using VoxelGame.World;
 using VoxelGame.World.Data;
 
@@ -14,12 +15,22 @@ namespace VoxelGame
 {
     public class Game : GameWindow
     {
-        private EntityManager? _entityManager;
-        private RenderSystem? _renderSystem;
-        private InputSystem? _inputSystem;
-
         private int _width,
             _height;
+
+        private double _time;
+        private int _frames;
+
+        private string _title = "3D Voxel Game";
+
+        private EntityManager _entityManager;
+        private RenderSystem _renderSystem;
+        private InputSystem _inputSystem;
+        private WorldSystem _worldSystem;
+        private ChunkGenerationSystem _chunkGenerationSystem;
+
+        private Vector3 _lastPlayerChunkPosition;
+        private int _viewDistance = 32;
 
         public Game(int width, int height)
             : base(GameWindowSettings.Default, NativeWindowSettings.Default)
@@ -28,6 +39,11 @@ namespace VoxelGame
             _height = height;
 
             CenterWindow(new Vector2i(width, height));
+
+            Title = _title;
+
+            _time = 0;
+            _frames = 0;
         }
 
         protected override void OnResize(ResizeEventArgs e)
@@ -42,9 +58,12 @@ namespace VoxelGame
         {
             base.OnLoad();
 
+            // Initialize systems
             _entityManager = new EntityManager();
-            _renderSystem = new RenderSystem();
+            _renderSystem = new RenderSystem(_width, _height);
             _inputSystem = new InputSystem();
+            _worldSystem = new WorldSystem();
+            _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager, _worldSystem);
 
             // Create camera entity
             int cameraEntity = _entityManager.CreateEntity();
@@ -53,27 +72,12 @@ namespace VoxelGame
                 new TransformComponent(new Vector3(8, 10, 8), Quaternion.Identity, Vector3.One)
             );
             _entityManager.AddComponent(cameraEntity, new CameraComponent());
-
-            // Create chunk entity
-            int chunkEntity = _entityManager.CreateEntity();
-            _entityManager.AddComponent(
-                chunkEntity,
-                new TransformComponent(Vector3.Zero, Quaternion.Identity, Vector3.One)
-            );
-
-            // Generate chunk mesh data
-            ChunkMeshData chunkMeshData = ChunkGenerator.GenerateChunkMesh(Vector3.Zero);
-            _entityManager.AddComponent(
-                chunkEntity,
-                new MeshComponent(chunkMeshData.Vertices, chunkMeshData.UVs, chunkMeshData.Indices)
-            );
-
-            // Add texture component
-            Texture chunkTexture = new Texture("atlas");
-            _entityManager.AddComponent(chunkEntity, new TextureComponent(chunkTexture));
-
-            // Set cursor state
             CursorState = CursorState.Grabbed;
+
+            // Generate initial chunks
+            _chunkGenerationSystem.GenerateInitialChunks(ChunkPosition.Zero(), _viewDistance);
+
+            _lastPlayerChunkPosition = Vector3.Zero;
         }
 
         protected override void OnUnload()
@@ -117,11 +121,40 @@ namespace VoxelGame
         {
             base.OnUpdateFrame(args);
 
+            _time += args.Time;
+            _frames++;
+
+            MemoryTracker.Update();
+            var (current, average, peak) = MemoryTracker.GetMemoryStats();
+
+            if (_time >= 1.0)
+            {
+                Title = $"{_title} | FPS: {_frames} | Entities: {_entityManager.EntityCount} | Memory (MB) - Current: {current}, Avg: {average}, Peak: {peak}";
+                _frames = 0;
+                _time -= 1.0;
+            }
+
             KeyboardState kInput = KeyboardState;
             MouseState mInput = MouseState;
 
-            //_camera.Update(kInput, mInput, args);
             _inputSystem.Update(_entityManager, kInput, mInput, args);
+
+            if (kInput.IsKeyPressed(Keys.F3))
+            {
+                _renderSystem.ToggleWireframe();
+            }
+
+            var cameraEntity = _entityManager.GetEntitiesWithComponent<CameraComponent>();
+            var cameraTransform = _entityManager.GetComponent<TransformComponent>(cameraEntity.First());
+
+            Vector3 playerChunkPosition = new(
+                (int)(cameraTransform.Position.X / Chunk.SIZE) * Chunk.SIZE,
+                0,
+                (int)(cameraTransform.Position.Z / Chunk.SIZE) * Chunk.SIZE
+            );
+
+            _chunkGenerationSystem.Update();
+            _chunkGenerationSystem.UpdateChunks(playerChunkPosition, _viewDistance);
         }
     }
 }
