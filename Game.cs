@@ -10,15 +10,20 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using VoxelGame.EntityComponentSystem;
+using VoxelGame.EntityComponentSystem.Components;
+using VoxelGame.EntityComponentSystem.Systems;
+using VoxelGame.GraphicsPipeline;
+using VoxelGame.Utils;
+using VoxelGame.World;
+using VoxelGame.World.Data;
 
-public class Game : GameWindow
+namespace VoxelGame
 {
-    private ShaderProgram _program;
-    private Camera _camera;
-    private Chunk _chunk;
-
-    private int _width,
-        _height;
+    public class Game : GameWindow
+    {
+        private int _width,
+            _height;
 
     public Game(int width, int height)
         : base(GameWindowSettings.Default, NativeWindowSettings.Default)
@@ -85,10 +90,25 @@ public class Game : GameWindow
         base.OnRenderFrame(args);
     }
 
-    protected override void OnUpdateFrame(FrameEventArgs args)
-    {
-        KeyboardState kInput = KeyboardState;
-        MouseState mInput = MouseState;
+        protected override void OnUpdateFrame(FrameEventArgs args)
+        {
+            base.OnUpdateFrame(args);
+
+            _time += args.Time;
+            _frames++;
+
+            MemoryTracker.Update();
+            var (current, average, peak) = MemoryTracker.GetMemoryStats();
+
+            if (_time >= 1.0)
+            {
+                Title = $"{_title} | FPS: {_frames} | Entities: {_entityManager.EntityCount} | Memory (MB) - Current: {current}, Avg: {average}, Peak: {peak}";
+                _frames = 0;
+                _time -= 1.0;
+            }
+
+            KeyboardState kInput = KeyboardState;
+            MouseState mInput = MouseState;
 
         base.OnUpdateFrame(args);
         _camera.Update(kInput, mInput, args);
