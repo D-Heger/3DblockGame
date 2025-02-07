@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK.Graphics.OpenGL4;
-using StbImageSharp;
-using static FileUtils;
+﻿using OpenTK.Graphics.OpenGL4;
+using static VoxelGame.Utils.FileUtils;
 
-public class Texture
+namespace VoxelGame.GraphicsPipeline
+{
+    public class Texture
 {
     public int ID;
 
@@ -40,7 +36,10 @@ public class Texture
         );
 
         var blockTexture = LoadTexture(filepath);
-        if (blockTexture == null) Console.WriteLine("Texture loading failed!");
+        if (blockTexture == null) {
+            Console.WriteLine("Texture loading failed!");
+            return;
+        }
 
         GL.TexImage2D(
             TextureTarget.Texture2D,
@@ -71,4 +70,6 @@ public class Texture
     {
         GL.DeleteTexture(ID);
     }
+}
+
 }

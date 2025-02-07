@@ -1,121 +1,136 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK.Mathematics;
+﻿using OpenTK.Mathematics;
+using VoxelGame.World.Data;
 
-public class Block
+namespace VoxelGame.World
 {
-    public Vector3 Position;
-    public BlockType Type;
-
-    public Dictionary<Faces, FaceData> Faces;
-
-    public Dictionary<Faces, List<Vector2>> textureCoordinateMapping = new()
+    public class Block
     {
-        { global::Faces.FRONT, new List<Vector2>() },
-        { global::Faces.BACK, new List<Vector2>() },
-        { global::Faces.LEFT, new List<Vector2>() },
-        { global::Faces.RIGHT, new List<Vector2>() },
-        { global::Faces.TOP, new List<Vector2>() },
-        { global::Faces.BOTTOM, new List<Vector2>() },
-    };
+        public Vector3 Position;
+        public BlockType Type;
 
-    public Dictionary<Faces, List<Vector2>> MapCoordinatesToUVs(Dictionary<Faces, Vector2> coords)
-    {
-        Dictionary<Faces, List<Vector2>> faceData = [];
+        public Dictionary<Faces, FaceData> Faces;
 
-        foreach (var faceCoord in coords)
+        public Dictionary<Faces, List<Vector2>> textureCoordinateMapping =
+            new()
+            {
+                { Data.Faces.FRONT, new List<Vector2>() },
+                { Data.Faces.BACK, new List<Vector2>() },
+                { Data.Faces.LEFT, new List<Vector2>() },
+                { Data.Faces.RIGHT, new List<Vector2>() },
+                { Data.Faces.TOP, new List<Vector2>() },
+                { Data.Faces.BOTTOM, new List<Vector2>() },
+            };
+
+        public Dictionary<Faces, List<Vector2>> MapCoordinatesToUVs(
+            Dictionary<Faces, Vector2> coords
+        )
         {
-            faceData[faceCoord.Key] =
-            [
-                new((faceCoord.Value.X + 1f) / 16f, (faceCoord.Value.Y + 1f) / 16f),
-                new(faceCoord.Value.X / 16f, (faceCoord.Value.Y + 1f) / 16f),
-                new(faceCoord.Value.X / 16f, faceCoord.Value.Y / 16f),
-                new((faceCoord.Value.X + 1f) / 16f, faceCoord.Value.Y / 16f),
-            ];
+            Dictionary<Faces, List<Vector2>> faceData = [];
+
+            foreach (var faceCoord in coords)
+            {
+                faceData[faceCoord.Key] =
+                [
+                    new((faceCoord.Value.X + 1f) / 16f, (faceCoord.Value.Y + 1f) / 16f),
+                    new(faceCoord.Value.X / 16f, (faceCoord.Value.Y + 1f) / 16f),
+                    new(faceCoord.Value.X / 16f, faceCoord.Value.Y / 16f),
+                    new((faceCoord.Value.X + 1f) / 16f, faceCoord.Value.Y / 16f),
+                ];
+            }
+
+            return faceData;
         }
 
-        return faceData;
-    }
-
-    public Block(Vector3 position, BlockType blockType = BlockType.AIR)
-    {
-        Type = blockType;
-        Position = position;
-
-        if (blockType != BlockType.AIR)
+        public Block(Vector3 position, BlockType blockType = BlockType.AIR)
         {
-            textureCoordinateMapping = MapCoordinatesToUVs(TextureData.blockTypeUVCoord[blockType]);
+            Type = blockType;
+            Position = position;
+
+            if (blockType != BlockType.AIR)
+            {
+                textureCoordinateMapping = MapCoordinatesToUVs(
+                    TextureData.blockTypeUVCoord[blockType]
+                );
+            }
+
+            Faces = new Dictionary<Faces, FaceData>
+            {
+                {
+                    Data.Faces.FRONT,
+                    new FaceData
+                    {
+                        Vertices = AddTransformedVertices(
+                            FaceDataRaw.rawVertexData[Data.Faces.FRONT]
+                        ),
+                        TextureCoordinates = textureCoordinateMapping[Data.Faces.FRONT],
+                    }
+                },
+                {
+                    Data.Faces.BACK,
+                    new FaceData
+                    {
+                        Vertices = AddTransformedVertices(
+                            FaceDataRaw.rawVertexData[Data.Faces.BACK]
+                        ),
+                        TextureCoordinates = textureCoordinateMapping[Data.Faces.BACK],
+                    }
+                },
+                {
+                    Data.Faces.LEFT,
+                    new FaceData
+                    {
+                        Vertices = AddTransformedVertices(
+                            FaceDataRaw.rawVertexData[Data.Faces.LEFT]
+                        ),
+                        TextureCoordinates = textureCoordinateMapping[Data.Faces.LEFT],
+                    }
+                },
+                {
+                    Data.Faces.RIGHT,
+                    new FaceData
+                    {
+                        Vertices = AddTransformedVertices(
+                            FaceDataRaw.rawVertexData[Data.Faces.RIGHT]
+                        ),
+                        TextureCoordinates = textureCoordinateMapping[Data.Faces.RIGHT],
+                    }
+                },
+                {
+                    Data.Faces.TOP,
+                    new FaceData
+                    {
+                        Vertices = AddTransformedVertices(
+                            FaceDataRaw.rawVertexData[Data.Faces.TOP]
+                        ),
+                        TextureCoordinates = textureCoordinateMapping[Data.Faces.TOP],
+                    }
+                },
+                {
+                    Data.Faces.BOTTOM,
+                    new FaceData
+                    {
+                        Vertices = AddTransformedVertices(
+                            FaceDataRaw.rawVertexData[Data.Faces.BOTTOM]
+                        ),
+                        TextureCoordinates = textureCoordinateMapping[Data.Faces.BOTTOM],
+                    }
+                },
+            };
         }
 
-        Faces = new Dictionary<Faces, FaceData>
+        public List<Vector3> AddTransformedVertices(List<Vector3> vertices)
         {
+            List<Vector3> transformedVertices = [];
+            foreach (var vert in vertices)
             {
-                global::Faces.FRONT,
-                new FaceData
-                {
-                    Vertices = AddTransformedVertices(FaceDataRaw.rawVertexData[global::Faces.FRONT]),
-                    TextureCoordinates = textureCoordinateMapping[global::Faces.FRONT],
-                }
-            },
-            {
-                global::Faces.BACK,
-                new FaceData
-                {
-                    Vertices = AddTransformedVertices(FaceDataRaw.rawVertexData[global::Faces.BACK]),
-                    TextureCoordinates = textureCoordinateMapping[global::Faces.BACK],
-                }
-            },
-            {
-                global::Faces.LEFT,
-                new FaceData
-                {
-                    Vertices = AddTransformedVertices(FaceDataRaw.rawVertexData[global::Faces.LEFT]),
-                    TextureCoordinates = textureCoordinateMapping[global::Faces.LEFT],
-                }
-            },
-            {
-                global::Faces.RIGHT,
-                new FaceData
-                {
-                    Vertices = AddTransformedVertices(FaceDataRaw.rawVertexData[global::Faces.RIGHT]),
-                    TextureCoordinates = textureCoordinateMapping[global::Faces.RIGHT],
-                }
-            },
-            {
-                global::Faces.TOP,
-                new FaceData
-                {
-                    Vertices = AddTransformedVertices(FaceDataRaw.rawVertexData[global::Faces.TOP]),
-                    TextureCoordinates = textureCoordinateMapping[global::Faces.TOP],
-                }
-            },
-            {
-                global::Faces.BOTTOM,
-                new FaceData
-                {
-                    Vertices = AddTransformedVertices(FaceDataRaw.rawVertexData[global::Faces.BOTTOM]),
-                    TextureCoordinates = textureCoordinateMapping[global::Faces.BOTTOM],
-                }
-            },
-        };
-    }
-
-    public List<Vector3> AddTransformedVertices(List<Vector3> vertices)
-    {
-        List<Vector3> transformedVertices = [];
-        foreach (var vert in vertices)
-        {
-            transformedVertices.Add(vert + Position);
+                transformedVertices.Add(vert + Position);
+            }
+            return transformedVertices;
         }
-        return transformedVertices;
-    }
 
-    public FaceData GetFace(Faces face)
-    {
-        return Faces[face];
+        public FaceData GetFace(Faces face)
+        {
+            return Faces[face];
+        }
     }
 }
