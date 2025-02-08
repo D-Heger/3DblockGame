@@ -20,7 +20,7 @@ namespace VoxelGame.Utils
 
             try
             {
-                using StreamReader reader = new($"./Shaders/{filePath}.{shaderType}");
+                using StreamReader reader = new($"./VoxelGame/Shaders/{filePath}.{shaderType}");
                 shaderSource = reader.ReadToEnd();
             }
             catch (Exception e)
@@ -35,7 +35,7 @@ namespace VoxelGame.Utils
         {
             StbImage.stbi_set_flip_vertically_on_load(1);
             ImageResult texture = ImageResult.FromStream(
-                File.OpenRead($"./Textures/{filePath}.png"),
+                File.OpenRead($"./VoxelGame/Textures/{filePath}.png"),
                 ColorComponents.RedGreenBlueAlpha
             );
 
