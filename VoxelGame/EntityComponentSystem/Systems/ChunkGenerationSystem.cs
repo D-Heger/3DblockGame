@@ -12,11 +12,31 @@ using VoxelGame.World.Data;
 
 namespace VoxelGame.EntityComponentSystem.Systems
 {
-    public class ChunkGenerationSystem(EntityManager entityManager, WorldSystem worldSystem)
-        : System
+    public interface ITextureProvider
     {
-        private readonly EntityManager _entityManager = entityManager;
-        private readonly WorldSystem _worldSystem = worldSystem;
+        Texture GetTexture(string name);
+    }
+
+    public class DefaultTextureProvider : ITextureProvider
+    {
+        public Texture GetTexture(string name) => new Texture(name);
+    }
+
+    public class ChunkGenerationSystem : System
+    {
+        private readonly EntityManager _entityManager;
+        private readonly WorldSystem _worldSystem;
+        private readonly ITextureProvider _textureProvider;
+
+        public ChunkGenerationSystem(
+            EntityManager entityManager, 
+            WorldSystem worldSystem,
+            ITextureProvider textureProvider = null)
+        {
+            _entityManager = entityManager;
+            _worldSystem = worldSystem;
+            _textureProvider = textureProvider ?? new DefaultTextureProvider();
+        }
 
         // Stores active chunk entities with their positions
         private readonly ConcurrentDictionary<ChunkPosition, int> _chunkEntities = new();
@@ -34,8 +54,24 @@ namespace VoxelGame.EntityComponentSystem.Systems
             ChunkData chunkData
         )> _chunksAwaitingMainThreadProcessing = new();
 
-        // Shared texture for all chunks
-        private readonly Texture _sharedTexture = new("atlas");
+        // Shared texture for all chunks - lazy initialized
+        private Texture _sharedTexture;
+        private readonly object _textureLock = new object();
+
+        private Texture GetSharedTexture()
+        {
+            if (_sharedTexture == null)
+            {
+                lock (_textureLock)
+                {
+                    if (_sharedTexture == null)
+                    {
+                        _sharedTexture = _textureProvider.GetTexture("atlas");
+                    }
+                }
+            }
+            return _sharedTexture;
+        }
 
         // Maximum number of chunks to process per frame
         private const int MaxChunksToProcessPerFrame = 5;
@@ -201,7 +237,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 chunkEntity,
                 new MeshComponent(chunkMeshData.Vertices, chunkMeshData.UVs, chunkMeshData.Indices)
             );
-            _entityManager.AddComponent(chunkEntity, new TextureComponent(_sharedTexture));
+            _entityManager.AddComponent(chunkEntity, new TextureComponent(GetSharedTexture()));
 
             // Store the chunk entity
             _chunkEntities[chunkPosition] = chunkEntity;
