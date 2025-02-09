@@ -144,6 +144,11 @@ namespace VoxelGame
                 _renderSystem.ToggleWireframe();
             }
 
+            if (kInput.IsKeyPressed(Keys.F4))
+            {
+                _renderSystem.ToggleLighting();
+            }
+
             var cameraEntity = _entityManager.GetEntitiesWithComponent<CameraComponent>();
             var cameraTransform = _entityManager.GetComponent<TransformComponent>(cameraEntity.First());
 

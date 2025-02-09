@@ -68,5 +68,15 @@ namespace VoxelGame.World.Data
                     }
                 },
             };
+
+        public static readonly Dictionary<Faces, Vector3> faceNormals = new()
+        {
+            { Faces.FRONT, new Vector3(0, 0, 1) },
+            { Faces.BACK, new Vector3(0, 0, -1) },
+            { Faces.LEFT, new Vector3(-1, 0, 0) },
+            { Faces.RIGHT, new Vector3(1, 0, 0) },
+            { Faces.TOP, new Vector3(0, 1, 0) },
+            { Faces.BOTTOM, new Vector3(0, -1, 0) }
+        };
     }
 }
