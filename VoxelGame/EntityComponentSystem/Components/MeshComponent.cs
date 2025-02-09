@@ -4,19 +4,28 @@ using VoxelGame.GraphicsPipeline;
 
 namespace VoxelGame.EntityComponentSystem.Components
 {
-    public class MeshComponent(List<Vector3> vertices, List<Vector2> uvs, List<uint> indices)
-        : Component
+    public class MeshComponent : Component
     {
-        public List<Vector3> Vertices = vertices;
-        public List<Vector2> UVs = uvs;
-        public List<uint> Indices = indices;
+        public List<Vector3> Vertices;
+        public List<Vector2> UVs;
+        public List<Vector3> Normals;
+        public List<uint> Indices;
 
         public VertexArrayObject? VAO;
         public VertexBufferObject? VBO;
         public VertexBufferObject? UVBO;
+        public VertexBufferObject? NormalBO;
         public IndexBufferObject? IBO;
 
         private bool buffersInitialized = false;
+
+        public MeshComponent(List<Vector3> vertices, List<Vector2> uvs, List<Vector3> normals, List<uint> indices)
+        {
+            Vertices = vertices;
+            UVs = uvs;
+            Normals = normals;
+            Indices = indices;
+        }
 
         public void SetupBuffers()
         {
@@ -36,6 +45,11 @@ namespace VoxelGame.EntityComponentSystem.Components
             GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 0, 0);
             GL.EnableVertexAttribArray(1);
 
+            NormalBO = new VertexBufferObject(Normals);
+            NormalBO.Bind();
+            GL.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, 0, 0);
+            GL.EnableVertexAttribArray(2);
+
             IBO = new IndexBufferObject(Indices);
             IBO.Bind();
 
@@ -48,10 +62,11 @@ namespace VoxelGame.EntityComponentSystem.Components
         {
             if (!buffersInitialized)
                 return;
-            VAO.Dispose();
-            VBO.Dispose();
-            UVBO.Dispose();
-            IBO.Dispose();
+            VAO?.Dispose();
+            VBO?.Dispose();
+            UVBO?.Dispose();
+            NormalBO?.Dispose();
+            IBO?.Dispose();
             buffersInitialized = false;
         }
     }
