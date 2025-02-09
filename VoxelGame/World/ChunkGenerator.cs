@@ -205,6 +205,7 @@ namespace VoxelGame.World
                         uint indexOffset = (uint)chunkMeshData.Vertices.Count;
                         chunkMeshData.Vertices.AddRange(localMeshData.Vertices);
                         chunkMeshData.UVs.AddRange(localMeshData.UVs);
+                        chunkMeshData.Normals.AddRange(localMeshData.Normals);  // Add normals to final mesh
 
                         // Adjust indices
                         foreach (var index in localMeshData.Indices)
@@ -362,10 +363,14 @@ namespace VoxelGame.World
             // Get the raw vertex data for the face
             List<Vector3> faceVertices = FaceDataRaw.rawVertexData[face];
 
+            // Get the normal for this face
+            Vector3 normal = FaceDataRaw.faceNormals[face];
+
             // Transform the vertices by adding the block position
             foreach (var vert in faceVertices)
             {
                 localMeshData.Vertices.Add(vert + new Vector3(x, y, z));
+                localMeshData.Normals.Add(normal);  // Add the same normal for each vertex
             }
 
             // Get the UV coordinates for the block type and face
@@ -390,6 +395,7 @@ namespace VoxelGame.World
     {
         public List<Vector3> Vertices = [];
         public List<Vector2> UVs = [];
+        public List<Vector3> Normals = []; // Add normals list
         public List<uint> Indices = [];
         public uint TotalIndexCount = 0;
     }

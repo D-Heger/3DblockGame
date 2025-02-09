@@ -235,7 +235,12 @@ namespace VoxelGame.EntityComponentSystem.Systems
             );
             _entityManager.AddComponent(
                 chunkEntity,
-                new MeshComponent(chunkMeshData.Vertices, chunkMeshData.UVs, chunkMeshData.Indices)
+                new MeshComponent(
+                    chunkMeshData.Vertices, 
+                    chunkMeshData.UVs, 
+                    chunkMeshData.Normals, // Add normals
+                    chunkMeshData.Indices
+                )
             );
             _entityManager.AddComponent(chunkEntity, new TextureComponent(GetSharedTexture()));
 

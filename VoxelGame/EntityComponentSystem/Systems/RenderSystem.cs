@@ -8,17 +8,24 @@ namespace VoxelGame.EntityComponentSystem.Systems
 {
     public class RenderSystem : System
     {
-        private ShaderProgram _shaderProgram;
+        private ShaderProgram _unlitShader;
+        private ShaderProgram _litShader;
+        private ShaderProgram _currentShader;
+        private bool _useLighting = false;
+        private Vector3 _lightPosition = new(1000f, 1000f, 1000f); // Sun-like distant light
+        private Vector3 _lightColor = new(1.0f, 1.0f, 0.9f); // Warm sunlight
         private Frustum _frustum;
         private int _width;
         private int _height;
-        private bool _wireframeMode = true;
+        private bool _wireframeMode = false;
 
         public RenderSystem(int width, int height)
         {
             _width = width;
             _height = height;
-            _shaderProgram = new ShaderProgram("Default", "Default");
+            _unlitShader = new ShaderProgram("Default", "Default");
+            _litShader = new ShaderProgram("Lit", "Lit");
+            _currentShader = _unlitShader;
             _frustum = new Frustum();
 
             GL.Enable(EnableCap.DepthTest);
@@ -30,10 +37,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
         public void Render(EntityManager entityManager)
         {
             // Get camera entity
-            var cameraEntities = entityManager.GetEntitiesWithComponents<
-                CameraComponent,
-                TransformComponent
-            >();
+            var cameraEntities = entityManager.GetEntitiesWithComponents<CameraComponent, TransformComponent>();
             if (!cameraEntities.Any())
             {
                 Console.WriteLine("No camera entity found.");
@@ -52,30 +56,28 @@ namespace VoxelGame.EntityComponentSystem.Systems
             _frustum.UpdateFrustum(viewProjection);
 
             // Bind shader program once
-            _shaderProgram.Bind();
+            _currentShader.Bind();
 
-            // Set common uniforms once
-            int viewLocation = GL.GetUniformLocation(_shaderProgram.ID, "view");
-            int projectionLocation = GL.GetUniformLocation(_shaderProgram.ID, "projection");
+            // Set common uniforms
+            _currentShader.SetMatrix4("view", view);
+            _currentShader.SetMatrix4("projection", projection);
 
-            GL.UniformMatrix4(viewLocation, true, ref view);
-            GL.UniformMatrix4(projectionLocation, true, ref projection);
+            if (_useLighting)
+            {
+                _currentShader.SetVector3("lightPos", _lightPosition);
+                _currentShader.SetVector3("lightColor", _lightColor);
+                _currentShader.SetVector3("viewPos", cameraTransform.Position);
+            }
 
             // Group entities by texture to minimize texture binds
-            var renderEntities = entityManager.GetEntitiesWithComponents<
-                MeshComponent,
-                TransformComponent,
-                TextureComponent
-            >();
-            var entitiesByTexture = renderEntities.GroupBy(e =>
-                entityManager.GetComponent<TextureComponent>(e).Texture.ID
-            );
+            var renderEntities = entityManager.GetEntitiesWithComponents<MeshComponent, TransformComponent, TextureComponent>();
+            var entitiesByTexture = renderEntities.GroupBy(e => entityManager.GetComponent<TextureComponent>(e).Texture.ID);
 
             foreach (var group in entitiesByTexture)
             {
                 // Bind texture once per group
-                int textureID = group.Key;
-                GL.BindTexture(TextureTarget.Texture2D, textureID);
+                GL.BindTexture(TextureTarget.Texture2D, group.Key);
+                _currentShader.SetInt("texture0", 0); // Set texture unit
 
                 foreach (var entity in group)
                 {
@@ -91,23 +93,20 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
                     if (!_frustum.IsBoxInsideFrustum(min, max))
                     {
-                        continue; // Skip rendering this chunk
+                        continue;
                     }
 
                     // Set model matrix uniform
                     Matrix4 model = Matrix4.CreateTranslation(transformComponent.Position);
-                    int modelLocation = GL.GetUniformLocation(_shaderProgram.ID, "model");
-                    GL.UniformMatrix4(modelLocation, true, ref model);
+                    _currentShader.SetMatrix4("model", model);
 
                     // Bind VAO and draw mesh
                     meshComponent.SetupBuffers();
-                    meshComponent.VAO.Bind();
-                    GL.DrawElements(
-                        PrimitiveType.Triangles,
-                        meshComponent.Indices.Count,
-                        DrawElementsType.UnsignedInt,
-                        0
-                    );
+                    if (meshComponent.VAO != null)
+                    {
+                        meshComponent.VAO.Bind();
+                        GL.DrawElements(PrimitiveType.Triangles, meshComponent.Indices.Count, DrawElementsType.UnsignedInt, 0);
+                    }
                 }
             }
 
@@ -115,6 +114,12 @@ namespace VoxelGame.EntityComponentSystem.Systems
             GL.BindVertexArray(0);
             GL.BindTexture(TextureTarget.Texture2D, 0);
             ShaderProgram.Unbind();
+        }
+
+        public void ToggleLighting()
+        {
+            _useLighting = !_useLighting;
+            _currentShader = _useLighting ? _litShader : _unlitShader;
         }
 
         public void ToggleWireframe()
@@ -132,7 +137,8 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
         public void Dispose()
         {
-            _shaderProgram.Dispose();
+            _unlitShader.Dispose();
+            _litShader.Dispose();
         }
     }
 }
