@@ -412,4 +412,5 @@ FodyWeavers.xsd
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/csharp,visualstudiocode
+# Ensure the output directory `Docs` is not ignored
+!Docs/
