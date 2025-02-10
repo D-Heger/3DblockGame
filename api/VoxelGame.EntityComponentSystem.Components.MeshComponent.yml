@@ -1,0 +1,911 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  commentId: T:VoxelGame.EntityComponentSystem.Components.MeshComponent
+  id: MeshComponent
+  parent: VoxelGame.EntityComponentSystem.Components
+  children:
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.#ctor(System.Collections.Generic.List{OpenTK.Mathematics.Vector3},System.Collections.Generic.List{OpenTK.Mathematics.Vector2},System.Collections.Generic.List{OpenTK.Mathematics.Vector3},System.Collections.Generic.List{System.UInt32})
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.Dispose
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.IBO
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.Indices
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.NormalBO
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.Normals
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.SetupBuffers
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.UVBO
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.UVs
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.VAO
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.VBO
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent.Vertices
+  langs:
+  - csharp
+  - vb
+  name: MeshComponent
+  nameWithType: MeshComponent
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  type: Class
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: MeshComponent
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 6
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: 'public class MeshComponent : Component'
+    content.vb: Public Class MeshComponent Inherits Component
+  inheritance:
+  - System.Object
+  - VoxelGame.EntityComponentSystem.Component
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.Vertices
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.Vertices
+  id: Vertices
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: Vertices
+  nameWithType: MeshComponent.Vertices
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.Vertices
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Vertices
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 8
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public List<Vector3> Vertices
+    return:
+      type: System.Collections.Generic.List{OpenTK.Mathematics.Vector3}
+    content.vb: Public Vertices As List(Of Vector3)
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.UVs
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.UVs
+  id: UVs
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: UVs
+  nameWithType: MeshComponent.UVs
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.UVs
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: UVs
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 9
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public List<Vector2> UVs
+    return:
+      type: System.Collections.Generic.List{OpenTK.Mathematics.Vector2}
+    content.vb: Public UVs As List(Of Vector2)
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.Normals
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.Normals
+  id: Normals
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: Normals
+  nameWithType: MeshComponent.Normals
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.Normals
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Normals
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 10
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public List<Vector3> Normals
+    return:
+      type: System.Collections.Generic.List{OpenTK.Mathematics.Vector3}
+    content.vb: Public Normals As List(Of Vector3)
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.Indices
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.Indices
+  id: Indices
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: Indices
+  nameWithType: MeshComponent.Indices
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.Indices
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Indices
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 11
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public List<uint> Indices
+    return:
+      type: System.Collections.Generic.List{System.UInt32}
+    content.vb: Public Indices As List(Of UInteger)
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.VAO
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.VAO
+  id: VAO
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: VAO
+  nameWithType: MeshComponent.VAO
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.VAO
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: VAO
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 13
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public VertexArrayObject? VAO
+    return:
+      type: VoxelGame.GraphicsPipeline.VertexArrayObject
+    content.vb: Public VAO As VertexArrayObject
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.VBO
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.VBO
+  id: VBO
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: VBO
+  nameWithType: MeshComponent.VBO
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.VBO
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: VBO
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 14
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public VertexBufferObject? VBO
+    return:
+      type: VoxelGame.GraphicsPipeline.VertexBufferObject
+    content.vb: Public VBO As VertexBufferObject
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.UVBO
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.UVBO
+  id: UVBO
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: UVBO
+  nameWithType: MeshComponent.UVBO
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.UVBO
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: UVBO
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 15
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public VertexBufferObject? UVBO
+    return:
+      type: VoxelGame.GraphicsPipeline.VertexBufferObject
+    content.vb: Public UVBO As VertexBufferObject
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.NormalBO
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.NormalBO
+  id: NormalBO
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: NormalBO
+  nameWithType: MeshComponent.NormalBO
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.NormalBO
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: NormalBO
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 16
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public VertexBufferObject? NormalBO
+    return:
+      type: VoxelGame.GraphicsPipeline.VertexBufferObject
+    content.vb: Public NormalBO As VertexBufferObject
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.IBO
+  commentId: F:VoxelGame.EntityComponentSystem.Components.MeshComponent.IBO
+  id: IBO
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: IBO
+  nameWithType: MeshComponent.IBO
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.IBO
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: IBO
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 17
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public IndexBufferObject? IBO
+    return:
+      type: VoxelGame.GraphicsPipeline.IndexBufferObject
+    content.vb: Public IBO As IndexBufferObject
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.#ctor(System.Collections.Generic.List{OpenTK.Mathematics.Vector3},System.Collections.Generic.List{OpenTK.Mathematics.Vector2},System.Collections.Generic.List{OpenTK.Mathematics.Vector3},System.Collections.Generic.List{System.UInt32})
+  commentId: M:VoxelGame.EntityComponentSystem.Components.MeshComponent.#ctor(System.Collections.Generic.List{OpenTK.Mathematics.Vector3},System.Collections.Generic.List{OpenTK.Mathematics.Vector2},System.Collections.Generic.List{OpenTK.Mathematics.Vector3},System.Collections.Generic.List{System.UInt32})
+  id: '#ctor(System.Collections.Generic.List{OpenTK.Mathematics.Vector3},System.Collections.Generic.List{OpenTK.Mathematics.Vector2},System.Collections.Generic.List{OpenTK.Mathematics.Vector3},System.Collections.Generic.List{System.UInt32})'
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: MeshComponent(List<Vector3>, List<Vector2>, List<Vector3>, List<uint>)
+  nameWithType: MeshComponent.MeshComponent(List<Vector3>, List<Vector2>, List<Vector3>, List<uint>)
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.MeshComponent(System.Collections.Generic.List<OpenTK.Mathematics.Vector3>, System.Collections.Generic.List<OpenTK.Mathematics.Vector2>, System.Collections.Generic.List<OpenTK.Mathematics.Vector3>, System.Collections.Generic.List<uint>)
+  type: Constructor
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: .ctor
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 21
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public MeshComponent(List<Vector3> vertices, List<Vector2> uvs, List<Vector3> normals, List<uint> indices)
+    parameters:
+    - id: vertices
+      type: System.Collections.Generic.List{OpenTK.Mathematics.Vector3}
+    - id: uvs
+      type: System.Collections.Generic.List{OpenTK.Mathematics.Vector2}
+    - id: normals
+      type: System.Collections.Generic.List{OpenTK.Mathematics.Vector3}
+    - id: indices
+      type: System.Collections.Generic.List{System.UInt32}
+    content.vb: Public Sub New(vertices As List(Of Vector3), uvs As List(Of Vector2), normals As List(Of Vector3), indices As List(Of UInteger))
+  overload: VoxelGame.EntityComponentSystem.Components.MeshComponent.#ctor*
+  nameWithType.vb: MeshComponent.New(List(Of Vector3), List(Of Vector2), List(Of Vector3), List(Of UInteger))
+  fullName.vb: VoxelGame.EntityComponentSystem.Components.MeshComponent.New(System.Collections.Generic.List(Of OpenTK.Mathematics.Vector3), System.Collections.Generic.List(Of OpenTK.Mathematics.Vector2), System.Collections.Generic.List(Of OpenTK.Mathematics.Vector3), System.Collections.Generic.List(Of UInteger))
+  name.vb: New(List(Of Vector3), List(Of Vector2), List(Of Vector3), List(Of UInteger))
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.SetupBuffers
+  commentId: M:VoxelGame.EntityComponentSystem.Components.MeshComponent.SetupBuffers
+  id: SetupBuffers
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: SetupBuffers()
+  nameWithType: MeshComponent.SetupBuffers()
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.SetupBuffers()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: SetupBuffers
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 29
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public void SetupBuffers()
+    content.vb: Public Sub SetupBuffers()
+  overload: VoxelGame.EntityComponentSystem.Components.MeshComponent.SetupBuffers*
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.Dispose
+  commentId: M:VoxelGame.EntityComponentSystem.Components.MeshComponent.Dispose
+  id: Dispose
+  parent: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MeshComponent.Dispose()
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Dispose
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    startLine: 60
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: VoxelGame.EntityComponentSystem.Components.MeshComponent.Dispose*
+references:
+- uid: VoxelGame.EntityComponentSystem.Components
+  commentId: N:VoxelGame.EntityComponentSystem.Components
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem.Components
+  nameWithType: VoxelGame.EntityComponentSystem.Components
+  fullName: VoxelGame.EntityComponentSystem.Components
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Components
+    name: Components
+    href: VoxelGame.EntityComponentSystem.Components.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Components
+    name: Components
+    href: VoxelGame.EntityComponentSystem.Components.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: VoxelGame.EntityComponentSystem.Component
+  commentId: T:VoxelGame.EntityComponentSystem.Component
+  parent: VoxelGame.EntityComponentSystem
+  href: VoxelGame.EntityComponentSystem.Component.html
+  name: Component
+  nameWithType: Component
+  fullName: VoxelGame.EntityComponentSystem.Component
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: VoxelGame.EntityComponentSystem
+  commentId: N:VoxelGame.EntityComponentSystem
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem
+  nameWithType: VoxelGame.EntityComponentSystem
+  fullName: VoxelGame.EntityComponentSystem
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+- uid: System.Collections.Generic.List{OpenTK.Mathematics.Vector3}
+  commentId: T:System.Collections.Generic.List{OpenTK.Mathematics.Vector3}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Vector3>
+  nameWithType: List<Vector3>
+  fullName: System.Collections.Generic.List<OpenTK.Mathematics.Vector3>
+  nameWithType.vb: List(Of Vector3)
+  fullName.vb: System.Collections.Generic.List(Of OpenTK.Mathematics.Vector3)
+  name.vb: List(Of Vector3)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: OpenTK.Mathematics.Vector3
+    name: Vector3
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: OpenTK.Mathematics.Vector3
+    name: Vector3
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.List{OpenTK.Mathematics.Vector2}
+  commentId: T:System.Collections.Generic.List{OpenTK.Mathematics.Vector2}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Vector2>
+  nameWithType: List<Vector2>
+  fullName: System.Collections.Generic.List<OpenTK.Mathematics.Vector2>
+  nameWithType.vb: List(Of Vector2)
+  fullName.vb: System.Collections.Generic.List(Of OpenTK.Mathematics.Vector2)
+  name.vb: List(Of Vector2)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: OpenTK.Mathematics.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: OpenTK.Mathematics.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List{System.UInt32}
+  commentId: T:System.Collections.Generic.List{System.UInt32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<uint>
+  nameWithType: List<uint>
+  fullName: System.Collections.Generic.List<uint>
+  nameWithType.vb: List(Of UInteger)
+  fullName.vb: System.Collections.Generic.List(Of UInteger)
+  name.vb: List(Of UInteger)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: VoxelGame.GraphicsPipeline.VertexArrayObject
+  commentId: T:VoxelGame.GraphicsPipeline.VertexArrayObject
+  parent: VoxelGame.GraphicsPipeline
+  href: VoxelGame.GraphicsPipeline.VertexArrayObject.html
+  name: VertexArrayObject
+  nameWithType: VertexArrayObject
+  fullName: VoxelGame.GraphicsPipeline.VertexArrayObject
+- uid: VoxelGame.GraphicsPipeline
+  commentId: N:VoxelGame.GraphicsPipeline
+  href: VoxelGame.html
+  name: VoxelGame.GraphicsPipeline
+  nameWithType: VoxelGame.GraphicsPipeline
+  fullName: VoxelGame.GraphicsPipeline
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.GraphicsPipeline
+    name: GraphicsPipeline
+    href: VoxelGame.GraphicsPipeline.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.GraphicsPipeline
+    name: GraphicsPipeline
+    href: VoxelGame.GraphicsPipeline.html
+- uid: VoxelGame.GraphicsPipeline.VertexBufferObject
+  commentId: T:VoxelGame.GraphicsPipeline.VertexBufferObject
+  parent: VoxelGame.GraphicsPipeline
+  href: VoxelGame.GraphicsPipeline.VertexBufferObject.html
+  name: VertexBufferObject
+  nameWithType: VertexBufferObject
+  fullName: VoxelGame.GraphicsPipeline.VertexBufferObject
+- uid: VoxelGame.GraphicsPipeline.IndexBufferObject
+  commentId: T:VoxelGame.GraphicsPipeline.IndexBufferObject
+  parent: VoxelGame.GraphicsPipeline
+  href: VoxelGame.GraphicsPipeline.IndexBufferObject.html
+  name: IndexBufferObject
+  nameWithType: IndexBufferObject
+  fullName: VoxelGame.GraphicsPipeline.IndexBufferObject
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.#ctor*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Components.MeshComponent.#ctor
+  href: VoxelGame.EntityComponentSystem.Components.MeshComponent.html#VoxelGame_EntityComponentSystem_Components_MeshComponent__ctor_System_Collections_Generic_List_OpenTK_Mathematics_Vector3__System_Collections_Generic_List_OpenTK_Mathematics_Vector2__System_Collections_Generic_List_OpenTK_Mathematics_Vector3__System_Collections_Generic_List_System_UInt32__
+  name: MeshComponent
+  nameWithType: MeshComponent.MeshComponent
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.MeshComponent
+  nameWithType.vb: MeshComponent.New
+  fullName.vb: VoxelGame.EntityComponentSystem.Components.MeshComponent.New
+  name.vb: New
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.SetupBuffers*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Components.MeshComponent.SetupBuffers
+  href: VoxelGame.EntityComponentSystem.Components.MeshComponent.html#VoxelGame_EntityComponentSystem_Components_MeshComponent_SetupBuffers
+  name: SetupBuffers
+  nameWithType: MeshComponent.SetupBuffers
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.SetupBuffers
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent.Dispose*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Components.MeshComponent.Dispose
+  href: VoxelGame.EntityComponentSystem.Components.MeshComponent.html#VoxelGame_EntityComponentSystem_Components_MeshComponent_Dispose
+  name: Dispose
+  nameWithType: MeshComponent.Dispose
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent.Dispose

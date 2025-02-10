@@ -1,0 +1,92 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.World.Data
+  commentId: N:VoxelGame.World.Data
+  id: VoxelGame.World.Data
+  children:
+  - VoxelGame.World.Data.BlockType
+  - VoxelGame.World.Data.ChunkMeshData
+  - VoxelGame.World.Data.FaceData
+  - VoxelGame.World.Data.FaceDataRaw
+  - VoxelGame.World.Data.Faces
+  - VoxelGame.World.Data.TextureData
+  langs:
+  - csharp
+  - vb
+  name: VoxelGame.World.Data
+  nameWithType: VoxelGame.World.Data
+  fullName: VoxelGame.World.Data
+  type: Namespace
+  assemblies:
+  - VoxelGame
+references:
+- uid: VoxelGame.World.Data.BlockType
+  commentId: T:VoxelGame.World.Data.BlockType
+  parent: VoxelGame.World.Data
+  href: VoxelGame.World.Data.BlockType.html
+  name: BlockType
+  nameWithType: BlockType
+  fullName: VoxelGame.World.Data.BlockType
+- uid: VoxelGame.World.Data.ChunkMeshData
+  commentId: T:VoxelGame.World.Data.ChunkMeshData
+  parent: VoxelGame.World.Data
+  href: VoxelGame.World.Data.ChunkMeshData.html
+  name: ChunkMeshData
+  nameWithType: ChunkMeshData
+  fullName: VoxelGame.World.Data.ChunkMeshData
+- uid: VoxelGame.World.Data.FaceData
+  commentId: T:VoxelGame.World.Data.FaceData
+  parent: VoxelGame.World.Data
+  href: VoxelGame.World.Data.FaceData.html
+  name: FaceData
+  nameWithType: FaceData
+  fullName: VoxelGame.World.Data.FaceData
+- uid: VoxelGame.World.Data.FaceDataRaw
+  commentId: T:VoxelGame.World.Data.FaceDataRaw
+  href: VoxelGame.World.Data.FaceDataRaw.html
+  name: FaceDataRaw
+  nameWithType: FaceDataRaw
+  fullName: VoxelGame.World.Data.FaceDataRaw
+- uid: VoxelGame.World.Data.Faces
+  commentId: T:VoxelGame.World.Data.Faces
+  parent: VoxelGame.World.Data
+  href: VoxelGame.World.Data.Faces.html
+  name: Faces
+  nameWithType: Faces
+  fullName: VoxelGame.World.Data.Faces
+- uid: VoxelGame.World.Data.TextureData
+  commentId: T:VoxelGame.World.Data.TextureData
+  href: VoxelGame.World.Data.TextureData.html
+  name: TextureData
+  nameWithType: TextureData
+  fullName: VoxelGame.World.Data.TextureData
+- uid: VoxelGame.World.Data
+  commentId: N:VoxelGame.World.Data
+  href: VoxelGame.html
+  name: VoxelGame.World.Data
+  nameWithType: VoxelGame.World.Data
+  fullName: VoxelGame.World.Data
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.World
+    name: World
+    href: VoxelGame.World.html
+  - name: .
+  - uid: VoxelGame.World.Data
+    name: Data
+    href: VoxelGame.World.Data.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.World
+    name: World
+    href: VoxelGame.World.html
+  - name: .
+  - uid: VoxelGame.World.Data
+    name: Data
+    href: VoxelGame.World.Data.html

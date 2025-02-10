@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.Utils
+  commentId: N:VoxelGame.Utils
+  id: VoxelGame.Utils
+  children:
+  - VoxelGame.Utils.FileUtils
+  - VoxelGame.Utils.MemoryTracker
+  langs:
+  - csharp
+  - vb
+  name: VoxelGame.Utils
+  nameWithType: VoxelGame.Utils
+  fullName: VoxelGame.Utils
+  type: Namespace
+  assemblies:
+  - VoxelGame
+references:
+- uid: VoxelGame.Utils.FileUtils
+  commentId: T:VoxelGame.Utils.FileUtils
+  href: VoxelGame.Utils.FileUtils.html
+  name: FileUtils
+  nameWithType: FileUtils
+  fullName: VoxelGame.Utils.FileUtils
+- uid: VoxelGame.Utils.MemoryTracker
+  commentId: T:VoxelGame.Utils.MemoryTracker
+  href: VoxelGame.Utils.MemoryTracker.html
+  name: MemoryTracker
+  nameWithType: MemoryTracker
+  fullName: VoxelGame.Utils.MemoryTracker

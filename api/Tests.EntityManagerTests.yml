@@ -1,0 +1,605 @@
+### YamlMime:ManagedReference
+items:
+- uid: Tests.EntityManagerTests
+  commentId: T:Tests.EntityManagerTests
+  id: EntityManagerTests
+  parent: Tests
+  children:
+  - Tests.EntityManagerTests.#ctor
+  - Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+  - Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
+  - Tests.EntityManagerTests.Dispose
+  - Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+  - Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  - Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+  langs:
+  - csharp
+  - vb
+  name: EntityManagerTests
+  nameWithType: EntityManagerTests
+  fullName: Tests.EntityManagerTests
+  type: Class
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: EntityManagerTests
+    path: ../VoxelGame/Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 5
+  assemblies:
+  - Tests
+  namespace: Tests
+  syntax:
+    content: 'public class EntityManagerTests : IDisposable'
+    content.vb: Public Class EntityManagerTests Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Tests.EntityManagerTests.#ctor
+  commentId: M:Tests.EntityManagerTests.#ctor
+  id: '#ctor'
+  parent: Tests.EntityManagerTests
+  langs:
+  - csharp
+  - vb
+  name: EntityManagerTests()
+  nameWithType: EntityManagerTests.EntityManagerTests()
+  fullName: Tests.EntityManagerTests.EntityManagerTests()
+  type: Constructor
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: .ctor
+    path: ../VoxelGame/Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 19
+  assemblies:
+  - Tests
+  namespace: Tests
+  syntax:
+    content: public EntityManagerTests()
+    content.vb: Public Sub New()
+  overload: Tests.EntityManagerTests.#ctor*
+  nameWithType.vb: EntityManagerTests.New()
+  fullName.vb: Tests.EntityManagerTests.New()
+  name.vb: New()
+- uid: Tests.EntityManagerTests.Dispose
+  commentId: M:Tests.EntityManagerTests.Dispose
+  id: Dispose
+  parent: Tests.EntityManagerTests
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: EntityManagerTests.Dispose()
+  fullName: Tests.EntityManagerTests.Dispose()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Dispose
+    path: ../VoxelGame/Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 24
+  assemblies:
+  - Tests
+  namespace: Tests
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Tests.EntityManagerTests.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
+  commentId: M:Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
+  id: CreateEntity_AssignsUniqueIds
+  parent: Tests.EntityManagerTests
+  langs:
+  - csharp
+  - vb
+  name: CreateEntity_AssignsUniqueIds()
+  nameWithType: EntityManagerTests.CreateEntity_AssignsUniqueIds()
+  fullName: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: CreateEntity_AssignsUniqueIds
+    path: ../VoxelGame/Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 29
+  assemblies:
+  - Tests
+  namespace: Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void CreateEntity_AssignsUniqueIds()
+    content.vb: >-
+      <Fact>
+
+      Public Sub CreateEntity_AssignsUniqueIds()
+  overload: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+  commentId: M:Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+  id: AddAndGetComponent_WorksCorrectly
+  parent: Tests.EntityManagerTests
+  langs:
+  - csharp
+  - vb
+  name: AddAndGetComponent_WorksCorrectly()
+  nameWithType: EntityManagerTests.AddAndGetComponent_WorksCorrectly()
+  fullName: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: AddAndGetComponent_WorksCorrectly
+    path: ../VoxelGame/Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 38
+  assemblies:
+  - Tests
+  namespace: Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void AddAndGetComponent_WorksCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub AddAndGetComponent_WorksCorrectly()
+  overload: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+  commentId: M:Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+  id: GetEntitiesWithComponent_ReturnsCorrectEntities
+  parent: Tests.EntityManagerTests
+  langs:
+  - csharp
+  - vb
+  name: GetEntitiesWithComponent_ReturnsCorrectEntities()
+  nameWithType: EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities()
+  fullName: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: GetEntitiesWithComponent_ReturnsCorrectEntities
+    path: ../VoxelGame/Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 51
+  assemblies:
+  - Tests
+  namespace: Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void GetEntitiesWithComponent_ReturnsCorrectEntities()
+    content.vb: >-
+      <Fact>
+
+      Public Sub GetEntitiesWithComponent_ReturnsCorrectEntities()
+  overload: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+  commentId: M:Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+  id: RemoveEntity_RemovesEntityAndComponents
+  parent: Tests.EntityManagerTests
+  langs:
+  - csharp
+  - vb
+  name: RemoveEntity_RemovesEntityAndComponents()
+  nameWithType: EntityManagerTests.RemoveEntity_RemovesEntityAndComponents()
+  fullName: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: RemoveEntity_RemovesEntityAndComponents
+    path: ../VoxelGame/Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 71
+  assemblies:
+  - Tests
+  namespace: Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RemoveEntity_RemovesEntityAndComponents()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RemoveEntity_RemovesEntityAndComponents()
+  overload: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  commentId: M:Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  id: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  parent: Tests.EntityManagerTests
+  langs:
+  - csharp
+  - vb
+  name: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
+  nameWithType: EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
+  fullName: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+    path: ../VoxelGame/Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 83
+  assemblies:
+  - Tests
+  namespace: Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
+    content.vb: >-
+      <Fact>
+
+      Public Sub GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
+  overload: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+references:
+- uid: Tests
+  commentId: N:Tests
+  href: Tests.html
+  name: Tests
+  nameWithType: Tests
+  fullName: Tests
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Tests.EntityManagerTests.#ctor*
+  commentId: Overload:Tests.EntityManagerTests.#ctor
+  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests__ctor
+  name: EntityManagerTests
+  nameWithType: EntityManagerTests.EntityManagerTests
+  fullName: Tests.EntityManagerTests.EntityManagerTests
+  nameWithType.vb: EntityManagerTests.New
+  fullName.vb: Tests.EntityManagerTests.New
+  name.vb: New
+- uid: Tests.EntityManagerTests.Dispose*
+  commentId: Overload:Tests.EntityManagerTests.Dispose
+  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_Dispose
+  name: Dispose
+  nameWithType: EntityManagerTests.Dispose
+  fullName: Tests.EntityManagerTests.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds*
+  commentId: Overload:Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
+  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_CreateEntity_AssignsUniqueIds
+  name: CreateEntity_AssignsUniqueIds
+  nameWithType: EntityManagerTests.CreateEntity_AssignsUniqueIds
+  fullName: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
+- uid: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly*
+  commentId: Overload:Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_AddAndGetComponent_WorksCorrectly
+  name: AddAndGetComponent_WorksCorrectly
+  nameWithType: EntityManagerTests.AddAndGetComponent_WorksCorrectly
+  fullName: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+- uid: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities*
+  commentId: Overload:Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_GetEntitiesWithComponent_ReturnsCorrectEntities
+  name: GetEntitiesWithComponent_ReturnsCorrectEntities
+  nameWithType: EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+  fullName: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+- uid: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents*
+  commentId: Overload:Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_RemoveEntity_RemovesEntityAndComponents
+  name: RemoveEntity_RemovesEntityAndComponents
+  nameWithType: EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+  fullName: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+- uid: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities*
+  commentId: Overload:Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  name: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  nameWithType: EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  fullName: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities

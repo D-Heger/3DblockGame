@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame
+  commentId: N:VoxelGame
+  id: VoxelGame
+  children:
+  - VoxelGame.Game
+  - VoxelGame.Program
+  langs:
+  - csharp
+  - vb
+  name: VoxelGame
+  nameWithType: VoxelGame
+  fullName: VoxelGame
+  type: Namespace
+  assemblies:
+  - VoxelGame
+references:
+- uid: VoxelGame.Game
+  commentId: T:VoxelGame.Game
+  href: VoxelGame.Game.html
+  name: Game
+  nameWithType: Game
+  fullName: VoxelGame.Game
+- uid: VoxelGame.Program
+  commentId: T:VoxelGame.Program
+  href: VoxelGame.Program.html
+  name: Program
+  nameWithType: Program
+  fullName: VoxelGame.Program

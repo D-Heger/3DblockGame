@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem.Components
+  commentId: N:VoxelGame.EntityComponentSystem.Components
+  id: VoxelGame.EntityComponentSystem.Components
+  children:
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent
+  - VoxelGame.EntityComponentSystem.Components.MeshComponent
+  - VoxelGame.EntityComponentSystem.Components.TextureComponent
+  - VoxelGame.EntityComponentSystem.Components.TransformComponent
+  langs:
+  - csharp
+  - vb
+  name: VoxelGame.EntityComponentSystem.Components
+  nameWithType: VoxelGame.EntityComponentSystem.Components
+  fullName: VoxelGame.EntityComponentSystem.Components
+  type: Namespace
+  assemblies:
+  - VoxelGame
+references:
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  commentId: T:VoxelGame.EntityComponentSystem.Components.CameraComponent
+  href: VoxelGame.EntityComponentSystem.Components.CameraComponent.html
+  name: CameraComponent
+  nameWithType: CameraComponent
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent
+- uid: VoxelGame.EntityComponentSystem.Components.MeshComponent
+  commentId: T:VoxelGame.EntityComponentSystem.Components.MeshComponent
+  href: VoxelGame.EntityComponentSystem.Components.MeshComponent.html
+  name: MeshComponent
+  nameWithType: MeshComponent
+  fullName: VoxelGame.EntityComponentSystem.Components.MeshComponent
+- uid: VoxelGame.EntityComponentSystem.Components.TextureComponent
+  commentId: T:VoxelGame.EntityComponentSystem.Components.TextureComponent
+  href: VoxelGame.EntityComponentSystem.Components.TextureComponent.html
+  name: TextureComponent
+  nameWithType: TextureComponent
+  fullName: VoxelGame.EntityComponentSystem.Components.TextureComponent
+- uid: VoxelGame.EntityComponentSystem.Components.TransformComponent
+  commentId: T:VoxelGame.EntityComponentSystem.Components.TransformComponent
+  href: VoxelGame.EntityComponentSystem.Components.TransformComponent.html
+  name: TransformComponent
+  nameWithType: TransformComponent
+  fullName: VoxelGame.EntityComponentSystem.Components.TransformComponent

@@ -1,0 +1,466 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem.Systems.InputSystem
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.InputSystem
+  id: InputSystem
+  parent: VoxelGame.EntityComponentSystem.Systems
+  children:
+  - VoxelGame.EntityComponentSystem.Systems.InputSystem.Update(VoxelGame.EntityComponentSystem.EntityManager,OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState,OpenTK.Windowing.GraphicsLibraryFramework.MouseState,OpenTK.Windowing.Common.FrameEventArgs)
+  langs:
+  - csharp
+  - vb
+  name: InputSystem
+  nameWithType: InputSystem
+  fullName: VoxelGame.EntityComponentSystem.Systems.InputSystem
+  type: Class
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: InputSystem
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
+    startLine: 7
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: 'public class InputSystem : System'
+    content.vb: Public Class InputSystem Inherits System
+  inheritance:
+  - System.Object
+  - VoxelGame.EntityComponentSystem.System
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: VoxelGame.EntityComponentSystem.Systems.InputSystem.Update(VoxelGame.EntityComponentSystem.EntityManager,OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState,OpenTK.Windowing.GraphicsLibraryFramework.MouseState,OpenTK.Windowing.Common.FrameEventArgs)
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.InputSystem.Update(VoxelGame.EntityComponentSystem.EntityManager,OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState,OpenTK.Windowing.GraphicsLibraryFramework.MouseState,OpenTK.Windowing.Common.FrameEventArgs)
+  id: Update(VoxelGame.EntityComponentSystem.EntityManager,OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState,OpenTK.Windowing.GraphicsLibraryFramework.MouseState,OpenTK.Windowing.Common.FrameEventArgs)
+  parent: VoxelGame.EntityComponentSystem.Systems.InputSystem
+  langs:
+  - csharp
+  - vb
+  name: Update(EntityManager, KeyboardState, MouseState, FrameEventArgs)
+  nameWithType: InputSystem.Update(EntityManager, KeyboardState, MouseState, FrameEventArgs)
+  fullName: VoxelGame.EntityComponentSystem.Systems.InputSystem.Update(VoxelGame.EntityComponentSystem.EntityManager, OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState, OpenTK.Windowing.GraphicsLibraryFramework.MouseState, OpenTK.Windowing.Common.FrameEventArgs)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Update
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
+    startLine: 9
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: public void Update(EntityManager entityManager, KeyboardState kInput, MouseState mInput, FrameEventArgs args)
+    parameters:
+    - id: entityManager
+      type: VoxelGame.EntityComponentSystem.EntityManager
+    - id: kInput
+      type: OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState
+    - id: mInput
+      type: OpenTK.Windowing.GraphicsLibraryFramework.MouseState
+    - id: args
+      type: OpenTK.Windowing.Common.FrameEventArgs
+    content.vb: Public Sub Update(entityManager As EntityManager, kInput As KeyboardState, mInput As MouseState, args As FrameEventArgs)
+  overload: VoxelGame.EntityComponentSystem.Systems.InputSystem.Update*
+references:
+- uid: VoxelGame.EntityComponentSystem.Systems
+  commentId: N:VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem.Systems
+  nameWithType: VoxelGame.EntityComponentSystem.Systems
+  fullName: VoxelGame.EntityComponentSystem.Systems
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Systems
+    name: Systems
+    href: VoxelGame.EntityComponentSystem.Systems.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Systems
+    name: Systems
+    href: VoxelGame.EntityComponentSystem.Systems.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: VoxelGame.EntityComponentSystem.System
+  commentId: T:VoxelGame.EntityComponentSystem.System
+  parent: VoxelGame.EntityComponentSystem
+  href: VoxelGame.EntityComponentSystem.System.html
+  name: System
+  nameWithType: System
+  fullName: VoxelGame.EntityComponentSystem.System
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: VoxelGame.EntityComponentSystem
+  commentId: N:VoxelGame.EntityComponentSystem
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem
+  nameWithType: VoxelGame.EntityComponentSystem
+  fullName: VoxelGame.EntityComponentSystem
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+- uid: VoxelGame.EntityComponentSystem.Systems.InputSystem.Update*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Systems.InputSystem.Update
+  href: VoxelGame.EntityComponentSystem.Systems.InputSystem.html#VoxelGame_EntityComponentSystem_Systems_InputSystem_Update_VoxelGame_EntityComponentSystem_EntityManager_OpenTK_Windowing_GraphicsLibraryFramework_KeyboardState_OpenTK_Windowing_GraphicsLibraryFramework_MouseState_OpenTK_Windowing_Common_FrameEventArgs_
+  name: Update
+  nameWithType: InputSystem.Update
+  fullName: VoxelGame.EntityComponentSystem.Systems.InputSystem.Update
+- uid: VoxelGame.EntityComponentSystem.EntityManager
+  commentId: T:VoxelGame.EntityComponentSystem.EntityManager
+  parent: VoxelGame.EntityComponentSystem
+  href: VoxelGame.EntityComponentSystem.EntityManager.html
+  name: EntityManager
+  nameWithType: EntityManager
+  fullName: VoxelGame.EntityComponentSystem.EntityManager
+- uid: OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState
+  commentId: T:OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState
+  parent: OpenTK.Windowing.GraphicsLibraryFramework
+  isExternal: true
+  name: KeyboardState
+  nameWithType: KeyboardState
+  fullName: OpenTK.Windowing.GraphicsLibraryFramework.KeyboardState
+- uid: OpenTK.Windowing.GraphicsLibraryFramework.MouseState
+  commentId: T:OpenTK.Windowing.GraphicsLibraryFramework.MouseState
+  parent: OpenTK.Windowing.GraphicsLibraryFramework
+  isExternal: true
+  name: MouseState
+  nameWithType: MouseState
+  fullName: OpenTK.Windowing.GraphicsLibraryFramework.MouseState
+- uid: OpenTK.Windowing.Common.FrameEventArgs
+  commentId: T:OpenTK.Windowing.Common.FrameEventArgs
+  parent: OpenTK.Windowing.Common
+  isExternal: true
+  name: FrameEventArgs
+  nameWithType: FrameEventArgs
+  fullName: OpenTK.Windowing.Common.FrameEventArgs
+- uid: OpenTK.Windowing.GraphicsLibraryFramework
+  commentId: N:OpenTK.Windowing.GraphicsLibraryFramework
+  isExternal: true
+  name: OpenTK.Windowing.GraphicsLibraryFramework
+  nameWithType: OpenTK.Windowing.GraphicsLibraryFramework
+  fullName: OpenTK.Windowing.GraphicsLibraryFramework
+  spec.csharp:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Windowing
+    name: Windowing
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Windowing.GraphicsLibraryFramework
+    name: GraphicsLibraryFramework
+    isExternal: true
+  spec.vb:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Windowing
+    name: Windowing
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Windowing.GraphicsLibraryFramework
+    name: GraphicsLibraryFramework
+    isExternal: true
+- uid: OpenTK.Windowing.Common
+  commentId: N:OpenTK.Windowing.Common
+  isExternal: true
+  name: OpenTK.Windowing.Common
+  nameWithType: OpenTK.Windowing.Common
+  fullName: OpenTK.Windowing.Common
+  spec.csharp:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Windowing
+    name: Windowing
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Windowing.Common
+    name: Common
+    isExternal: true
+  spec.vb:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Windowing
+    name: Windowing
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Windowing.Common
+    name: Common
+    isExternal: true

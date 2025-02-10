@@ -1,0 +1,824 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  id: ChunkPosition
+  parent: VoxelGame.EntityComponentSystem.Systems
+  children:
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.#ctor(System.Int32,System.Int32,System.Int32)
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(System.Object)
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.GetHashCode
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.X
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Y
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Z
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Zero
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Equality(VoxelGame.EntityComponentSystem.Systems.ChunkPosition,VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Inequality(VoxelGame.EntityComponentSystem.Systems.ChunkPosition,VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  langs:
+  - csharp
+  - vb
+  name: ChunkPosition
+  nameWithType: ChunkPosition
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  type: Struct
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: ChunkPosition
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 325
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  summary: Represents the integer coordinates of a chunk.
+  example: []
+  syntax:
+    content: 'public readonly struct ChunkPosition : IEquatable<ChunkPosition>'
+    content.vb: Public Structure ChunkPosition Implements IEquatable(Of ChunkPosition)
+  implements:
+  - System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}
+  inheritedMembers:
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.#ctor(System.Int32,System.Int32,System.Int32)
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.#ctor(System.Int32,System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32,System.Int32)'
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: ChunkPosition(int, int, int)
+  nameWithType: ChunkPosition.ChunkPosition(int, int, int)
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.ChunkPosition(int, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: .ctor
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 325
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  summary: Represents the integer coordinates of a chunk.
+  example: []
+  syntax:
+    content: public ChunkPosition(int x, int y, int z)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    - id: z
+      type: System.Int32
+    content.vb: Public Sub New(x As Integer, y As Integer, z As Integer)
+  overload: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.#ctor*
+  nameWithType.vb: ChunkPosition.New(Integer, Integer, Integer)
+  fullName.vb: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.New(Integer, Integer, Integer)
+  name.vb: New(Integer, Integer, Integer)
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.X
+  commentId: F:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.X
+  id: X
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: ChunkPosition.X
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.X
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: X
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 327
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: public readonly int X
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly X As Integer
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Y
+  commentId: F:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Y
+  id: Y
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: ChunkPosition.Y
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Y
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Y
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 328
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: public readonly int Y
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Y As Integer
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Z
+  commentId: F:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Z
+  id: Z
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: Z
+  nameWithType: ChunkPosition.Z
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Z
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Z
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 329
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: public readonly int Z
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Z As Integer
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Zero
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Zero
+  id: Zero
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: Zero()
+  nameWithType: ChunkPosition.Zero()
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Zero()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Zero
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 331
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: public static ChunkPosition Zero()
+    return:
+      type: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    content.vb: Public Shared Function Zero() As ChunkPosition
+  overload: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Zero*
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  id: Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: Equals(ChunkPosition)
+  nameWithType: ChunkPosition.Equals(ChunkPosition)
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Equals
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 333
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  summary: Indicates whether the current object is equal to another object of the same type.
+  example: []
+  syntax:
+    content: public bool Equals(ChunkPosition other)
+    parameters:
+    - id: other
+      type: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+      description: An object to compare with this object.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function Equals(other As ChunkPosition) As Boolean
+  overload: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals*
+  implements:
+  - System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(System.Object)
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: ChunkPosition.Equals(object)
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(object)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Equals
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 336
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  summary: Indicates whether this instance and a specified object are equal.
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current instance.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals*
+  nameWithType.vb: ChunkPosition.Equals(Object)
+  fullName.vb: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(Object)
+  name.vb: Equals(Object)
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.GetHashCode
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.GetHashCode
+  id: GetHashCode
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: ChunkPosition.GetHashCode()
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: GetHashCode
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 338
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  summary: Returns the hash code for this instance.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A 32-bit signed integer that is the hash code for this instance.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.GetHashCode*
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Equality(VoxelGame.EntityComponentSystem.Systems.ChunkPosition,VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Equality(VoxelGame.EntityComponentSystem.Systems.ChunkPosition,VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  id: op_Equality(VoxelGame.EntityComponentSystem.Systems.ChunkPosition,VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: operator ==(ChunkPosition, ChunkPosition)
+  nameWithType: ChunkPosition.operator ==(ChunkPosition, ChunkPosition)
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.operator ==(VoxelGame.EntityComponentSystem.Systems.ChunkPosition, VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  type: Operator
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: op_Equality
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 340
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: public static bool operator ==(ChunkPosition left, ChunkPosition right)
+    parameters:
+    - id: left
+      type: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    - id: right
+      type: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(left As ChunkPosition, right As ChunkPosition) As Boolean
+  overload: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Equality*
+  nameWithType.vb: ChunkPosition.=(ChunkPosition, ChunkPosition)
+  fullName.vb: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.=(VoxelGame.EntityComponentSystem.Systems.ChunkPosition, VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  name.vb: =(ChunkPosition, ChunkPosition)
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Inequality(VoxelGame.EntityComponentSystem.Systems.ChunkPosition,VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Inequality(VoxelGame.EntityComponentSystem.Systems.ChunkPosition,VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  id: op_Inequality(VoxelGame.EntityComponentSystem.Systems.ChunkPosition,VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  parent: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  langs:
+  - csharp
+  - vb
+  name: operator !=(ChunkPosition, ChunkPosition)
+  nameWithType: ChunkPosition.operator !=(ChunkPosition, ChunkPosition)
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.operator !=(VoxelGame.EntityComponentSystem.Systems.ChunkPosition, VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  type: Operator
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: op_Inequality
+    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 343
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: public static bool operator !=(ChunkPosition left, ChunkPosition right)
+    parameters:
+    - id: left
+      type: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    - id: right
+      type: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(left As ChunkPosition, right As ChunkPosition) As Boolean
+  overload: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Inequality*
+  nameWithType.vb: ChunkPosition.<>(ChunkPosition, ChunkPosition)
+  fullName.vb: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.<>(VoxelGame.EntityComponentSystem.Systems.ChunkPosition, VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  name.vb: <>(ChunkPosition, ChunkPosition)
+references:
+- uid: VoxelGame.EntityComponentSystem.Systems
+  commentId: N:VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem.Systems
+  nameWithType: VoxelGame.EntityComponentSystem.Systems
+  fullName: VoxelGame.EntityComponentSystem.Systems
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Systems
+    name: Systems
+    href: VoxelGame.EntityComponentSystem.Systems.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Systems
+    name: Systems
+    href: VoxelGame.EntityComponentSystem.Systems.html
+- uid: System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}
+  commentId: T:System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ChunkPosition>
+  nameWithType: IEquatable<ChunkPosition>
+  fullName: System.IEquatable<VoxelGame.EntityComponentSystem.Systems.ChunkPosition>
+  nameWithType.vb: IEquatable(Of ChunkPosition)
+  fullName.vb: System.IEquatable(Of VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  name.vb: IEquatable(Of ChunkPosition)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    name: ChunkPosition
+    href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    name: ChunkPosition
+    href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.#ctor*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.#ctor
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html#VoxelGame_EntityComponentSystem_Systems_ChunkPosition__ctor_System_Int32_System_Int32_System_Int32_
+  name: ChunkPosition
+  nameWithType: ChunkPosition.ChunkPosition
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.ChunkPosition
+  nameWithType.vb: ChunkPosition.New
+  fullName.vb: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Zero*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Zero
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html#VoxelGame_EntityComponentSystem_Systems_ChunkPosition_Zero
+  name: Zero
+  nameWithType: ChunkPosition.Zero
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Zero
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  parent: VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html
+  name: ChunkPosition
+  nameWithType: ChunkPosition
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html#VoxelGame_EntityComponentSystem_Systems_ChunkPosition_Equals_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_
+  name: Equals
+  nameWithType: ChunkPosition.Equals
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals
+- uid: System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  commentId: M:System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  parent: System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(ChunkPosition)
+  nameWithType: IEquatable<ChunkPosition>.Equals(ChunkPosition)
+  fullName: System.IEquatable<VoxelGame.EntityComponentSystem.Systems.ChunkPosition>.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  nameWithType.vb: IEquatable(Of ChunkPosition).Equals(ChunkPosition)
+  fullName.vb: System.IEquatable(Of VoxelGame.EntityComponentSystem.Systems.ChunkPosition).Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+  spec.csharp:
+  - uid: System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    name: ChunkPosition
+    href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{VoxelGame.EntityComponentSystem.Systems.ChunkPosition}.Equals(VoxelGame.EntityComponentSystem.Systems.ChunkPosition)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+    name: ChunkPosition
+    href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.GetHashCode*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.GetHashCode
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html#VoxelGame_EntityComponentSystem_Systems_ChunkPosition_GetHashCode
+  name: GetHashCode
+  nameWithType: ChunkPosition.GetHashCode
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.GetHashCode
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Equality*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Equality
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html#VoxelGame_EntityComponentSystem_Systems_ChunkPosition_op_Equality_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_
+  name: operator ==
+  nameWithType: ChunkPosition.operator ==
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.operator ==
+  nameWithType.vb: ChunkPosition.=
+  fullName.vb: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Equality*
+    name: ==
+    href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html#VoxelGame_EntityComponentSystem_Systems_ChunkPosition_op_Equality_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Inequality*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Inequality
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html#VoxelGame_EntityComponentSystem_Systems_ChunkPosition_op_Inequality_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_
+  name: operator !=
+  nameWithType: ChunkPosition.operator !=
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.operator !=
+  nameWithType.vb: ChunkPosition.<>
+  fullName.vb: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.op_Inequality*
+    name: '!='
+    href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html#VoxelGame_EntityComponentSystem_Systems_ChunkPosition_op_Inequality_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_VoxelGame_EntityComponentSystem_Systems_ChunkPosition_

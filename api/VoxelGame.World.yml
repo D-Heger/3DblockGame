@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.World
+  commentId: N:VoxelGame.World
+  id: VoxelGame.World
+  children:
+  - VoxelGame.World.Block
+  - VoxelGame.World.Chunk
+  - VoxelGame.World.ChunkGenerator
+  langs:
+  - csharp
+  - vb
+  name: VoxelGame.World
+  nameWithType: VoxelGame.World
+  fullName: VoxelGame.World
+  type: Namespace
+  assemblies:
+  - VoxelGame
+references:
+- uid: VoxelGame.World.Block
+  commentId: T:VoxelGame.World.Block
+  href: VoxelGame.World.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: VoxelGame.World.Block
+- uid: VoxelGame.World.Chunk
+  commentId: T:VoxelGame.World.Chunk
+  href: VoxelGame.World.Chunk.html
+  name: Chunk
+  nameWithType: Chunk
+  fullName: VoxelGame.World.Chunk
+- uid: VoxelGame.World.ChunkGenerator
+  commentId: T:VoxelGame.World.ChunkGenerator
+  href: VoxelGame.World.ChunkGenerator.html
+  name: ChunkGenerator
+  nameWithType: ChunkGenerator
+  fullName: VoxelGame.World.ChunkGenerator

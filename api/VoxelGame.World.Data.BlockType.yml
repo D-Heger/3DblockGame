@@ -1,0 +1,255 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.World.Data.BlockType
+  commentId: T:VoxelGame.World.Data.BlockType
+  id: BlockType
+  parent: VoxelGame.World.Data
+  children:
+  - VoxelGame.World.Data.BlockType.AIR
+  - VoxelGame.World.Data.BlockType.BEDROCK
+  - VoxelGame.World.Data.BlockType.DIRT
+  - VoxelGame.World.Data.BlockType.GRASS
+  - VoxelGame.World.Data.BlockType.SAND
+  - VoxelGame.World.Data.BlockType.STONE
+  - VoxelGame.World.Data.BlockType.WATER
+  langs:
+  - csharp
+  - vb
+  name: BlockType
+  nameWithType: BlockType
+  fullName: VoxelGame.World.Data.BlockType
+  type: Enum
+  source:
+    remote:
+      path: VoxelGame/World/Data/BlockType.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: BlockType
+    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    startLine: 2
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: 'public enum BlockType : byte'
+    content.vb: Public Enum BlockType As Byte
+- uid: VoxelGame.World.Data.BlockType.DIRT
+  commentId: F:VoxelGame.World.Data.BlockType.DIRT
+  id: DIRT
+  parent: VoxelGame.World.Data.BlockType
+  langs:
+  - csharp
+  - vb
+  name: DIRT
+  nameWithType: BlockType.DIRT
+  fullName: VoxelGame.World.Data.BlockType.DIRT
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/BlockType.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: DIRT
+    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    startLine: 4
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: DIRT = 0
+    return:
+      type: VoxelGame.World.Data.BlockType
+- uid: VoxelGame.World.Data.BlockType.GRASS
+  commentId: F:VoxelGame.World.Data.BlockType.GRASS
+  id: GRASS
+  parent: VoxelGame.World.Data.BlockType
+  langs:
+  - csharp
+  - vb
+  name: GRASS
+  nameWithType: BlockType.GRASS
+  fullName: VoxelGame.World.Data.BlockType.GRASS
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/BlockType.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: GRASS
+    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    startLine: 5
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: GRASS = 1
+    return:
+      type: VoxelGame.World.Data.BlockType
+- uid: VoxelGame.World.Data.BlockType.AIR
+  commentId: F:VoxelGame.World.Data.BlockType.AIR
+  id: AIR
+  parent: VoxelGame.World.Data.BlockType
+  langs:
+  - csharp
+  - vb
+  name: AIR
+  nameWithType: BlockType.AIR
+  fullName: VoxelGame.World.Data.BlockType.AIR
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/BlockType.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: AIR
+    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    startLine: 6
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: AIR = 2
+    return:
+      type: VoxelGame.World.Data.BlockType
+- uid: VoxelGame.World.Data.BlockType.STONE
+  commentId: F:VoxelGame.World.Data.BlockType.STONE
+  id: STONE
+  parent: VoxelGame.World.Data.BlockType
+  langs:
+  - csharp
+  - vb
+  name: STONE
+  nameWithType: BlockType.STONE
+  fullName: VoxelGame.World.Data.BlockType.STONE
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/BlockType.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: STONE
+    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    startLine: 7
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: STONE = 3
+    return:
+      type: VoxelGame.World.Data.BlockType
+- uid: VoxelGame.World.Data.BlockType.SAND
+  commentId: F:VoxelGame.World.Data.BlockType.SAND
+  id: SAND
+  parent: VoxelGame.World.Data.BlockType
+  langs:
+  - csharp
+  - vb
+  name: SAND
+  nameWithType: BlockType.SAND
+  fullName: VoxelGame.World.Data.BlockType.SAND
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/BlockType.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: SAND
+    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    startLine: 8
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: SAND = 4
+    return:
+      type: VoxelGame.World.Data.BlockType
+- uid: VoxelGame.World.Data.BlockType.WATER
+  commentId: F:VoxelGame.World.Data.BlockType.WATER
+  id: WATER
+  parent: VoxelGame.World.Data.BlockType
+  langs:
+  - csharp
+  - vb
+  name: WATER
+  nameWithType: BlockType.WATER
+  fullName: VoxelGame.World.Data.BlockType.WATER
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/BlockType.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: WATER
+    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    startLine: 9
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: WATER = 5
+    return:
+      type: VoxelGame.World.Data.BlockType
+- uid: VoxelGame.World.Data.BlockType.BEDROCK
+  commentId: F:VoxelGame.World.Data.BlockType.BEDROCK
+  id: BEDROCK
+  parent: VoxelGame.World.Data.BlockType
+  langs:
+  - csharp
+  - vb
+  name: BEDROCK
+  nameWithType: BlockType.BEDROCK
+  fullName: VoxelGame.World.Data.BlockType.BEDROCK
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/BlockType.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: BEDROCK
+    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    startLine: 10
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: BEDROCK = 6
+    return:
+      type: VoxelGame.World.Data.BlockType
+references:
+- uid: VoxelGame.World.Data
+  commentId: N:VoxelGame.World.Data
+  href: VoxelGame.html
+  name: VoxelGame.World.Data
+  nameWithType: VoxelGame.World.Data
+  fullName: VoxelGame.World.Data
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.World
+    name: World
+    href: VoxelGame.World.html
+  - name: .
+  - uid: VoxelGame.World.Data
+    name: Data
+    href: VoxelGame.World.Data.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.World
+    name: World
+    href: VoxelGame.World.html
+  - name: .
+  - uid: VoxelGame.World.Data
+    name: Data
+    href: VoxelGame.World.Data.html
+- uid: VoxelGame.World.Data.BlockType
+  commentId: T:VoxelGame.World.Data.BlockType
+  parent: VoxelGame.World.Data
+  href: VoxelGame.World.Data.BlockType.html
+  name: BlockType
+  nameWithType: BlockType
+  fullName: VoxelGame.World.Data.BlockType

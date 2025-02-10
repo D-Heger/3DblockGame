@@ -1,0 +1,650 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram
+  commentId: T:VoxelGame.GraphicsPipeline.ShaderProgram
+  id: ShaderProgram
+  parent: VoxelGame.GraphicsPipeline
+  children:
+  - VoxelGame.GraphicsPipeline.ShaderProgram.#ctor(System.String,System.String)
+  - VoxelGame.GraphicsPipeline.ShaderProgram.Bind
+  - VoxelGame.GraphicsPipeline.ShaderProgram.Dispose
+  - VoxelGame.GraphicsPipeline.ShaderProgram.ID
+  - VoxelGame.GraphicsPipeline.ShaderProgram.SetInt(System.String,System.Int32)
+  - VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4(System.String,OpenTK.Mathematics.Matrix4)
+  - VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3(System.String,OpenTK.Mathematics.Vector3)
+  - VoxelGame.GraphicsPipeline.ShaderProgram.Unbind
+  langs:
+  - csharp
+  - vb
+  name: ShaderProgram
+  nameWithType: ShaderProgram
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram
+  type: Class
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: ShaderProgram
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 6
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public class ShaderProgram
+    content.vb: Public Class ShaderProgram
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.ID
+  commentId: F:VoxelGame.GraphicsPipeline.ShaderProgram.ID
+  id: ID
+  parent: VoxelGame.GraphicsPipeline.ShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ID
+  nameWithType: ShaderProgram.ID
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.ID
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: ID
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 8
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public int ID
+    return:
+      type: System.Int32
+    content.vb: Public ID As Integer
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.#ctor(System.String,System.String)
+  commentId: M:VoxelGame.GraphicsPipeline.ShaderProgram.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: VoxelGame.GraphicsPipeline.ShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ShaderProgram(string, string)
+  nameWithType: ShaderProgram.ShaderProgram(string, string)
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.ShaderProgram(string, string)
+  type: Constructor
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: .ctor
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 11
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public ShaderProgram(string vertexFilePath, string fragmentFilePath)
+    parameters:
+    - id: vertexFilePath
+      type: System.String
+    - id: fragmentFilePath
+      type: System.String
+    content.vb: Public Sub New(vertexFilePath As String, fragmentFilePath As String)
+  overload: VoxelGame.GraphicsPipeline.ShaderProgram.#ctor*
+  nameWithType.vb: ShaderProgram.New(String, String)
+  fullName.vb: VoxelGame.GraphicsPipeline.ShaderProgram.New(String, String)
+  name.vb: New(String, String)
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3(System.String,OpenTK.Mathematics.Vector3)
+  commentId: M:VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3(System.String,OpenTK.Mathematics.Vector3)
+  id: SetVector3(System.String,OpenTK.Mathematics.Vector3)
+  parent: VoxelGame.GraphicsPipeline.ShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: SetVector3(string, Vector3)
+  nameWithType: ShaderProgram.SetVector3(string, Vector3)
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3(string, OpenTK.Mathematics.Vector3)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: SetVector3
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 38
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public void SetVector3(string name, Vector3 value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: OpenTK.Mathematics.Vector3
+    content.vb: Public Sub SetVector3(name As String, value As Vector3)
+  overload: VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3*
+  nameWithType.vb: ShaderProgram.SetVector3(String, Vector3)
+  fullName.vb: VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3(String, OpenTK.Mathematics.Vector3)
+  name.vb: SetVector3(String, Vector3)
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4(System.String,OpenTK.Mathematics.Matrix4)
+  commentId: M:VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4(System.String,OpenTK.Mathematics.Matrix4)
+  id: SetMatrix4(System.String,OpenTK.Mathematics.Matrix4)
+  parent: VoxelGame.GraphicsPipeline.ShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: SetMatrix4(string, Matrix4)
+  nameWithType: ShaderProgram.SetMatrix4(string, Matrix4)
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4(string, OpenTK.Mathematics.Matrix4)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: SetMatrix4
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 48
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public void SetMatrix4(string name, Matrix4 value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: OpenTK.Mathematics.Matrix4
+    content.vb: Public Sub SetMatrix4(name As String, value As Matrix4)
+  overload: VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4*
+  nameWithType.vb: ShaderProgram.SetMatrix4(String, Matrix4)
+  fullName.vb: VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4(String, OpenTK.Mathematics.Matrix4)
+  name.vb: SetMatrix4(String, Matrix4)
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.SetInt(System.String,System.Int32)
+  commentId: M:VoxelGame.GraphicsPipeline.ShaderProgram.SetInt(System.String,System.Int32)
+  id: SetInt(System.String,System.Int32)
+  parent: VoxelGame.GraphicsPipeline.ShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: SetInt(string, int)
+  nameWithType: ShaderProgram.SetInt(string, int)
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.SetInt(string, int)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: SetInt
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 58
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public void SetInt(string name, int value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Int32
+    content.vb: Public Sub SetInt(name As String, value As Integer)
+  overload: VoxelGame.GraphicsPipeline.ShaderProgram.SetInt*
+  nameWithType.vb: ShaderProgram.SetInt(String, Integer)
+  fullName.vb: VoxelGame.GraphicsPipeline.ShaderProgram.SetInt(String, Integer)
+  name.vb: SetInt(String, Integer)
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.Bind
+  commentId: M:VoxelGame.GraphicsPipeline.ShaderProgram.Bind
+  id: Bind
+  parent: VoxelGame.GraphicsPipeline.ShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Bind()
+  nameWithType: ShaderProgram.Bind()
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.Bind()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Bind
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 68
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public void Bind()
+    content.vb: Public Sub Bind()
+  overload: VoxelGame.GraphicsPipeline.ShaderProgram.Bind*
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.Unbind
+  commentId: M:VoxelGame.GraphicsPipeline.ShaderProgram.Unbind
+  id: Unbind
+  parent: VoxelGame.GraphicsPipeline.ShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Unbind()
+  nameWithType: ShaderProgram.Unbind()
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.Unbind()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Unbind
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 73
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public static void Unbind()
+    content.vb: Public Shared Sub Unbind()
+  overload: VoxelGame.GraphicsPipeline.ShaderProgram.Unbind*
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.Dispose
+  commentId: M:VoxelGame.GraphicsPipeline.ShaderProgram.Dispose
+  id: Dispose
+  parent: VoxelGame.GraphicsPipeline.ShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ShaderProgram.Dispose()
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
+      branch: main
+      repo: https://github.com/D-Heger/3DblockGame.git
+    id: Dispose
+    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    startLine: 78
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.GraphicsPipeline
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: VoxelGame.GraphicsPipeline.ShaderProgram.Dispose*
+references:
+- uid: VoxelGame.GraphicsPipeline
+  commentId: N:VoxelGame.GraphicsPipeline
+  href: VoxelGame.html
+  name: VoxelGame.GraphicsPipeline
+  nameWithType: VoxelGame.GraphicsPipeline
+  fullName: VoxelGame.GraphicsPipeline
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.GraphicsPipeline
+    name: GraphicsPipeline
+    href: VoxelGame.GraphicsPipeline.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.GraphicsPipeline
+    name: GraphicsPipeline
+    href: VoxelGame.GraphicsPipeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.#ctor*
+  commentId: Overload:VoxelGame.GraphicsPipeline.ShaderProgram.#ctor
+  href: VoxelGame.GraphicsPipeline.ShaderProgram.html#VoxelGame_GraphicsPipeline_ShaderProgram__ctor_System_String_System_String_
+  name: ShaderProgram
+  nameWithType: ShaderProgram.ShaderProgram
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.ShaderProgram
+  nameWithType.vb: ShaderProgram.New
+  fullName.vb: VoxelGame.GraphicsPipeline.ShaderProgram.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3*
+  commentId: Overload:VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3
+  href: VoxelGame.GraphicsPipeline.ShaderProgram.html#VoxelGame_GraphicsPipeline_ShaderProgram_SetVector3_System_String_OpenTK_Mathematics_Vector3_
+  name: SetVector3
+  nameWithType: ShaderProgram.SetVector3
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.SetVector3
+- uid: OpenTK.Mathematics.Vector3
+  commentId: T:OpenTK.Mathematics.Vector3
+  parent: OpenTK.Mathematics
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: OpenTK.Mathematics.Vector3
+- uid: OpenTK.Mathematics
+  commentId: N:OpenTK.Mathematics
+  isExternal: true
+  name: OpenTK.Mathematics
+  nameWithType: OpenTK.Mathematics
+  fullName: OpenTK.Mathematics
+  spec.csharp:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Mathematics
+    name: Mathematics
+    isExternal: true
+  spec.vb:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Mathematics
+    name: Mathematics
+    isExternal: true
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4*
+  commentId: Overload:VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4
+  href: VoxelGame.GraphicsPipeline.ShaderProgram.html#VoxelGame_GraphicsPipeline_ShaderProgram_SetMatrix4_System_String_OpenTK_Mathematics_Matrix4_
+  name: SetMatrix4
+  nameWithType: ShaderProgram.SetMatrix4
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.SetMatrix4
+- uid: OpenTK.Mathematics.Matrix4
+  commentId: T:OpenTK.Mathematics.Matrix4
+  parent: OpenTK.Mathematics
+  isExternal: true
+  name: Matrix4
+  nameWithType: Matrix4
+  fullName: OpenTK.Mathematics.Matrix4
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.SetInt*
+  commentId: Overload:VoxelGame.GraphicsPipeline.ShaderProgram.SetInt
+  href: VoxelGame.GraphicsPipeline.ShaderProgram.html#VoxelGame_GraphicsPipeline_ShaderProgram_SetInt_System_String_System_Int32_
+  name: SetInt
+  nameWithType: ShaderProgram.SetInt
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.SetInt
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.Bind*
+  commentId: Overload:VoxelGame.GraphicsPipeline.ShaderProgram.Bind
+  href: VoxelGame.GraphicsPipeline.ShaderProgram.html#VoxelGame_GraphicsPipeline_ShaderProgram_Bind
+  name: Bind
+  nameWithType: ShaderProgram.Bind
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.Bind
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.Unbind*
+  commentId: Overload:VoxelGame.GraphicsPipeline.ShaderProgram.Unbind
+  href: VoxelGame.GraphicsPipeline.ShaderProgram.html#VoxelGame_GraphicsPipeline_ShaderProgram_Unbind
+  name: Unbind
+  nameWithType: ShaderProgram.Unbind
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.Unbind
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram.Dispose*
+  commentId: Overload:VoxelGame.GraphicsPipeline.ShaderProgram.Dispose
+  href: VoxelGame.GraphicsPipeline.ShaderProgram.html#VoxelGame_GraphicsPipeline_ShaderProgram_Dispose
+  name: Dispose
+  nameWithType: ShaderProgram.Dispose
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram.Dispose

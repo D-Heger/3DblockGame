@@ -1,0 +1,91 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.GraphicsPipeline
+  commentId: N:VoxelGame.GraphicsPipeline
+  id: VoxelGame.GraphicsPipeline
+  children:
+  - VoxelGame.GraphicsPipeline.Frustum
+  - VoxelGame.GraphicsPipeline.IndexBufferObject
+  - VoxelGame.GraphicsPipeline.Plane
+  - VoxelGame.GraphicsPipeline.ShaderProgram
+  - VoxelGame.GraphicsPipeline.Texture
+  - VoxelGame.GraphicsPipeline.VertexArrayObject
+  - VoxelGame.GraphicsPipeline.VertexBufferObject
+  langs:
+  - csharp
+  - vb
+  name: VoxelGame.GraphicsPipeline
+  nameWithType: VoxelGame.GraphicsPipeline
+  fullName: VoxelGame.GraphicsPipeline
+  type: Namespace
+  assemblies:
+  - VoxelGame
+references:
+- uid: VoxelGame.GraphicsPipeline.Frustum
+  commentId: T:VoxelGame.GraphicsPipeline.Frustum
+  href: VoxelGame.GraphicsPipeline.Frustum.html
+  name: Frustum
+  nameWithType: Frustum
+  fullName: VoxelGame.GraphicsPipeline.Frustum
+- uid: VoxelGame.GraphicsPipeline.Plane
+  commentId: T:VoxelGame.GraphicsPipeline.Plane
+  href: VoxelGame.GraphicsPipeline.Plane.html
+  name: Plane
+  nameWithType: Plane
+  fullName: VoxelGame.GraphicsPipeline.Plane
+- uid: VoxelGame.GraphicsPipeline.IndexBufferObject
+  commentId: T:VoxelGame.GraphicsPipeline.IndexBufferObject
+  parent: VoxelGame.GraphicsPipeline
+  href: VoxelGame.GraphicsPipeline.IndexBufferObject.html
+  name: IndexBufferObject
+  nameWithType: IndexBufferObject
+  fullName: VoxelGame.GraphicsPipeline.IndexBufferObject
+- uid: VoxelGame.GraphicsPipeline.ShaderProgram
+  commentId: T:VoxelGame.GraphicsPipeline.ShaderProgram
+  href: VoxelGame.GraphicsPipeline.ShaderProgram.html
+  name: ShaderProgram
+  nameWithType: ShaderProgram
+  fullName: VoxelGame.GraphicsPipeline.ShaderProgram
+- uid: VoxelGame.GraphicsPipeline.Texture
+  commentId: T:VoxelGame.GraphicsPipeline.Texture
+  parent: VoxelGame.GraphicsPipeline
+  href: VoxelGame.GraphicsPipeline.Texture.html
+  name: Texture
+  nameWithType: Texture
+  fullName: VoxelGame.GraphicsPipeline.Texture
+- uid: VoxelGame.GraphicsPipeline.VertexArrayObject
+  commentId: T:VoxelGame.GraphicsPipeline.VertexArrayObject
+  parent: VoxelGame.GraphicsPipeline
+  href: VoxelGame.GraphicsPipeline.VertexArrayObject.html
+  name: VertexArrayObject
+  nameWithType: VertexArrayObject
+  fullName: VoxelGame.GraphicsPipeline.VertexArrayObject
+- uid: VoxelGame.GraphicsPipeline.VertexBufferObject
+  commentId: T:VoxelGame.GraphicsPipeline.VertexBufferObject
+  parent: VoxelGame.GraphicsPipeline
+  href: VoxelGame.GraphicsPipeline.VertexBufferObject.html
+  name: VertexBufferObject
+  nameWithType: VertexBufferObject
+  fullName: VoxelGame.GraphicsPipeline.VertexBufferObject
+- uid: VoxelGame.GraphicsPipeline
+  commentId: N:VoxelGame.GraphicsPipeline
+  href: VoxelGame.html
+  name: VoxelGame.GraphicsPipeline
+  nameWithType: VoxelGame.GraphicsPipeline
+  fullName: VoxelGame.GraphicsPipeline
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.GraphicsPipeline
+    name: GraphicsPipeline
+    href: VoxelGame.GraphicsPipeline.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.GraphicsPipeline
+    name: GraphicsPipeline
+    href: VoxelGame.GraphicsPipeline.html

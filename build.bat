@@ -6,6 +6,7 @@ IF "%1"=="build" GOTO build
 IF "%1"=="run" GOTO run
 IF "%1"=="test" GOTO test
 IF "%1"=="clean" GOTO clean
+IF "%1"=="docs" GOTO docs
 
 :help
 echo Available commands:
@@ -14,6 +15,7 @@ echo build.bat build  - Build the solution
 echo build.bat run    - Run the game
 echo build.bat test   - Run the tests
 echo build.bat clean  - Clean build outputs
+echo build.bat docs   - Generate documentation
 GOTO :eof
 
 :restore
@@ -40,4 +42,8 @@ IF EXIST VoxelGame\bin rmdir /s /q VoxelGame\bin
 IF EXIST VoxelGame\obj rmdir /s /q VoxelGame\obj
 IF EXIST Tests\bin rmdir /s /q Tests\bin
 IF EXIST Tests\obj rmdir /s /q Tests\obj
+GOTO :eof
+
+:docs
+docfx docfx.json --serve
 GOTO :eof
