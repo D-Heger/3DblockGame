@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/FaceData.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: FaceData
-    path: ../VoxelGame/VoxelGame/World/Data/FaceData.cs
+    path: VoxelGame/World/Data/FaceData.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -49,10 +49,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/FaceData.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Vertices
-    path: ../VoxelGame/VoxelGame/World/Data/FaceData.cs
+    path: VoxelGame/World/Data/FaceData.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -76,10 +76,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/FaceData.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: TextureCoordinates
-    path: ../VoxelGame/VoxelGame/World/Data/FaceData.cs
+    path: VoxelGame/World/Data/FaceData.cs
     startLine: 7
   assemblies:
   - VoxelGame

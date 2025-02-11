@@ -15,10 +15,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Component.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Component
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Component.cs
+    path: VoxelGame/EntityComponentSystem/Component.cs
     startLine: 2
   assemblies:
   - VoxelGame
@@ -29,8 +29,8 @@ items:
   inheritance:
   - System.Object
   derivedClasses:
-  - Tests.EntityManagerTests.SecondTestComponent
-  - Tests.EntityManagerTests.TestComponent
+  - Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+  - Tests.EntityComponentSystem.EntityManagerTests.TestComponent
   - VoxelGame.EntityComponentSystem.Components.CameraComponent
   - VoxelGame.EntityComponentSystem.Components.MeshComponent
   - VoxelGame.EntityComponentSystem.Components.TextureComponent

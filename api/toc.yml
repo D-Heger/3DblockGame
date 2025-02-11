@@ -1,22 +1,22 @@
 ### YamlMime:TableOfContent
 items:
-- uid: Tests
-  name: Tests
+- uid: Tests.EntityComponentSystem
+  name: Tests.EntityComponentSystem
   type: Namespace
   items:
-  - uid: Tests.ChunkGenerationSystemTests
+  - uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests
     name: ChunkGenerationSystemTests
     type: Class
-  - uid: Tests.EntityManagerTests
+  - uid: Tests.EntityComponentSystem.EntityManagerTests
     name: EntityManagerTests
     type: Class
-  - uid: Tests.EntityManagerTests.SecondTestComponent
+  - uid: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
     name: EntityManagerTests.SecondTestComponent
     type: Class
-  - uid: Tests.EntityManagerTests.TestComponent
+  - uid: Tests.EntityComponentSystem.EntityManagerTests.TestComponent
     name: EntityManagerTests.TestComponent
     type: Class
-  - uid: Tests.WorldSystemTests
+  - uid: Tests.EntityComponentSystem.WorldSystemTests
     name: WorldSystemTests
     type: Class
 - uid: VoxelGame

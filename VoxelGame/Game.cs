@@ -13,14 +13,23 @@ using VoxelGame.World.Data;
 
 namespace VoxelGame
 {
+    /// <summary>
+    /// The main game class that manages the game window, systems, and game loop.
+    /// Inherits from OpenTK's GameWindow to handle window management and rendering.
+    /// </summary>
+    /// <remarks>
+    /// This class is responsible for:
+    /// - Initializing and managing core game systems (rendering, input, world, chunk generation)
+    /// - Managing the game window and OpenGL context
+    /// - Handling window events (resize, load, unload)
+    /// - Managing the game loop (update and render frames)
+    /// - Performance monitoring and memory tracking
+    /// </remarks>
     public class Game : GameWindow
     {
-        private int _width,
-            _height;
-
+        private int _width, _height;
         private double _time;
         private int _frames;
-
         private string _title = "3D Voxel Game";
 
         private EntityManager _entityManager;
@@ -32,6 +41,11 @@ namespace VoxelGame
         private Vector3 _lastPlayerChunkPosition;
         private int _viewDistance = 32;
 
+        /// <summary>
+        /// Initializes a new instance of the Game class with specified window dimensions.
+        /// </summary>
+        /// <param name="width">The width of the game window in pixels</param>
+        /// <param name="height">The height of the game window in pixels</param>
         public Game(int width, int height)
             : base(GameWindowSettings.Default, NativeWindowSettings.Default)
         {
@@ -39,13 +53,15 @@ namespace VoxelGame
             _height = height;
 
             CenterWindow(new Vector2i(width, height));
-
             Title = _title;
-
             _time = 0;
             _frames = 0;
         }
 
+        /// <summary>
+        /// Handles window resize events by updating the viewport and internal dimensions.
+        /// </summary>
+        /// <param name="e">Contains information about the new window size</param>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
@@ -54,6 +70,12 @@ namespace VoxelGame
             _height = e.Height;
         }
 
+        /// <summary>
+        /// Initializes game systems and creates the initial game state when the window loads.
+        /// Sets up the entity-component system, rendering system, input handling, world system,
+        /// and chunk generation system. Also creates the initial camera entity and generates
+        /// the starting chunks.
+        /// </summary>
         protected override void OnLoad()
         {
             base.OnLoad();
@@ -80,6 +102,10 @@ namespace VoxelGame
             _lastPlayerChunkPosition = Vector3.Zero;
         }
 
+        /// <summary>
+        /// Cleans up resources when the window is closing.
+        /// Disposes of mesh buffers, textures, and shader programs to prevent memory leaks.
+        /// </summary>
         protected override void OnUnload()
         {
             base.OnUnload();
@@ -104,6 +130,11 @@ namespace VoxelGame
             _renderSystem.Dispose();
         }
 
+        /// <summary>
+        /// Handles the rendering of each frame.
+        /// Clears the screen, updates the render system, and swaps the display buffers.
+        /// </summary>
+        /// <param name="args">Contains timing information for the frame</param>
         protected override void OnRenderFrame(FrameEventArgs args)
         {
             base.OnRenderFrame(args);
@@ -117,6 +148,17 @@ namespace VoxelGame
             Context.SwapBuffers();
         }
 
+        /// <summary>
+        /// Updates the game state each frame.
+        /// Handles:
+        /// - Performance monitoring and FPS counting
+        /// - Memory tracking and statistics
+        /// - Input processing
+        /// - Debug controls (F3 for wireframe, F4 for lighting)
+        /// - Camera position tracking
+        /// - Chunk generation and updates based on player position
+        /// </summary>
+        /// <param name="args">Contains timing information for the frame</param>
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
             base.OnUpdateFrame(args);

@@ -20,10 +20,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: IndexBufferObject
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/IndexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -55,10 +55,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ID
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/IndexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -82,10 +82,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/IndexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -114,10 +114,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Bind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/IndexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
     startLine: 20
   assemblies:
   - VoxelGame
@@ -140,10 +140,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Unbind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/IndexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
     startLine: 25
   assemblies:
   - VoxelGame
@@ -166,10 +166,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/IndexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
     startLine: 30
   assemblies:
   - VoxelGame

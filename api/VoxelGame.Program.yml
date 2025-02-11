@@ -15,14 +15,19 @@ items:
   source:
     remote:
       path: VoxelGame/Program.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Program
-    path: ../VoxelGame/VoxelGame/Program.cs
-    startLine: 2
+    path: VoxelGame/Program.cs
+    startLine: 6
   assemblies:
   - VoxelGame
   namespace: VoxelGame
+  summary: >-
+    The main entry point class for the Voxel Game application.
+
+    This class initializes and launches the game window.
+  example: []
   syntax:
     content: public class Program
     content.vb: Public Class Program

@@ -19,10 +19,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: TransformComponent
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -55,10 +55,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -91,10 +91,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Position
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
     startLine: 7
   assemblies:
   - VoxelGame
@@ -118,10 +118,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Rotation
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -145,10 +145,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Scale
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/TransformComponent.cs
     startLine: 9
   assemblies:
   - VoxelGame

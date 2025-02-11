@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/MemoryTracker.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: MemoryTracker
-    path: ../VoxelGame/VoxelGame/Utils/MemoryTracker.cs
+    path: VoxelGame/Utils/MemoryTracker.cs
     startLine: 5
   assemblies:
   - VoxelGame
@@ -52,10 +52,10 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/MemoryTracker.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Update
-    path: ../VoxelGame/VoxelGame/Utils/MemoryTracker.cs
+    path: VoxelGame/Utils/MemoryTracker.cs
     startLine: 11
   assemblies:
   - VoxelGame
@@ -78,10 +78,10 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/MemoryTracker.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetMemoryStats
-    path: ../VoxelGame/VoxelGame/Utils/MemoryTracker.cs
+    path: VoxelGame/Utils/MemoryTracker.cs
     startLine: 30
   assemblies:
   - VoxelGame

@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Chunk.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Chunk
-    path: ../VoxelGame/VoxelGame/World/Chunk.cs
+    path: VoxelGame/World/Chunk.cs
     startLine: 2
   assemblies:
   - VoxelGame
@@ -52,10 +52,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Chunk.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: SIZE
-    path: ../VoxelGame/VoxelGame/World/Chunk.cs
+    path: VoxelGame/World/Chunk.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -79,10 +79,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Chunk.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: HEIGHT
-    path: ../VoxelGame/VoxelGame/World/Chunk.cs
+    path: VoxelGame/World/Chunk.cs
     startLine: 5
   assemblies:
   - VoxelGame

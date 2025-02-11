@@ -1,99 +1,134 @@
 using VoxelGame.EntityComponentSystem;
 using OpenTK.Mathematics;
 
-namespace Tests;
-
-public class EntityManagerTests : IDisposable
+namespace Tests.EntityComponentSystem
 {
-    private readonly EntityManager _entityManager;
-
-    public class TestComponent : Component
+    /// <summary>
+    /// Test suite for the EntityManager class. Verifies entity creation, component management,
+    /// and entity lifecycle functionality in the entity component system.
+    /// </summary>
+    public class EntityManagerTests : IDisposable
     {
-        public int Value { get; set; }
-    }
+        private readonly EntityManager _entityManager;
 
-    public class SecondTestComponent : Component
-    {
-        public string Text { get; set; }
-    }
+        /// <summary>
+        /// Test component class used for verifying component management functionality.
+        /// Contains a simple integer value for testing purposes.
+        /// </summary>
+        public class TestComponent : Component
+        {
+            public int Value { get; set; }
+        }
 
-    public EntityManagerTests()
-    {
-        _entityManager = new EntityManager();
-    }
+        /// <summary>
+        /// Secondary test component class used for testing multiple component interactions.
+        /// Contains a simple string property for testing purposes.
+        /// </summary>
+        public class SecondTestComponent : Component
+        {
+            public string? Text { get; set; }
+        }
 
-    public void Dispose()
-    {
-        _entityManager.Dispose();
-    }
+        /// <summary>
+        /// Initializes a new instance of the EntityManagerTests class.
+        /// Sets up a fresh EntityManager for each test.
+        /// </summary>
+        public EntityManagerTests()
+        {
+            _entityManager = new EntityManager();
+        }
 
-    [Fact]
-    public void CreateEntity_AssignsUniqueIds()
-    {
-        int entity1 = _entityManager.CreateEntity();
-        int entity2 = _entityManager.CreateEntity();
+        /// <summary>
+        /// Cleans up resources used by the test class.
+        /// </summary>
+        public void Dispose()
+        {
+            _entityManager.Dispose();
+        }
 
-        Assert.NotEqual(entity1, entity2);
-    }
+        /// <summary>
+        /// Tests that CreateEntity assigns unique IDs to each entity.
+        /// </summary>
+        [Fact]
+        public void CreateEntity_AssignsUniqueIds()
+        {
+            int entity1 = _entityManager.CreateEntity();
+            int entity2 = _entityManager.CreateEntity();
 
-    [Fact]
-    public void AddAndGetComponent_WorksCorrectly()
-    {
-        int entity = _entityManager.CreateEntity();
-        var component = new TestComponent { Value = 42 };
+            Assert.NotEqual(entity1, entity2);
+        }
+
+        /// <summary>
+        /// Tests that adding and retrieving a component works correctly.
+        /// </summary>
+        [Fact]
+        public void AddAndGetComponent_WorksCorrectly()
+        {
+            int entity = _entityManager.CreateEntity();
+            var component = new TestComponent { Value = 42 };
         
-        _entityManager.AddComponent(entity, component);
-        var retrievedComponent = _entityManager.GetComponent<TestComponent>(entity);
+            _entityManager.AddComponent(entity, component);
+            var retrievedComponent = _entityManager.GetComponent<TestComponent>(entity);
         
-        Assert.NotNull(retrievedComponent);
-        Assert.Equal(42, retrievedComponent.Value);
-    }
+            Assert.NotNull(retrievedComponent);
+            Assert.Equal(42, retrievedComponent.Value);
+        }
 
-    [Fact]
-    public void GetEntitiesWithComponent_ReturnsCorrectEntities()
-    {
-        int entity1 = _entityManager.CreateEntity();
-        int entity2 = _entityManager.CreateEntity();
+        /// <summary>
+        /// Tests that GetEntitiesWithComponent returns the correct entities.
+        /// </summary>
+        [Fact]
+        public void GetEntitiesWithComponent_ReturnsCorrectEntities()
+        {
+            int entity1 = _entityManager.CreateEntity();
+            int entity2 = _entityManager.CreateEntity();
         
-        _entityManager.AddComponent(entity1, new TestComponent());
-        _entityManager.AddComponent(entity2, new TestComponent());
-        _entityManager.AddComponent(entity2, new SecondTestComponent());
+            _entityManager.AddComponent(entity1, new TestComponent());
+            _entityManager.AddComponent(entity2, new TestComponent());
+            _entityManager.AddComponent(entity2, new SecondTestComponent());
 
-        var entitiesWithTest = _entityManager.GetEntitiesWithComponent<TestComponent>().ToList();
-        var entitiesWithSecond = _entityManager.GetEntitiesWithComponent<SecondTestComponent>().ToList();
+            var entitiesWithTest = _entityManager.GetEntitiesWithComponent<TestComponent>().ToList();
+            var entitiesWithSecond = _entityManager.GetEntitiesWithComponent<SecondTestComponent>().ToList();
 
-        Assert.Equal(2, entitiesWithTest.Count);
-        Assert.Contains(entity1, entitiesWithTest);
-        Assert.Contains(entity2, entitiesWithTest);
-        Assert.Single(entitiesWithSecond);
-        Assert.Contains(entity2, entitiesWithSecond);
-    }
+            Assert.Equal(2, entitiesWithTest.Count);
+            Assert.Contains(entity1, entitiesWithTest);
+            Assert.Contains(entity2, entitiesWithTest);
+            Assert.Single(entitiesWithSecond);
+            Assert.Contains(entity2, entitiesWithSecond);
+        }
 
-    [Fact]
-    public void RemoveEntity_RemovesEntityAndComponents()
-    {
-        int entity = _entityManager.CreateEntity();
-        _entityManager.AddComponent(entity, new TestComponent());
+        /// <summary>
+        /// Tests that removing an entity also removes its components.
+        /// </summary>
+        [Fact]
+        public void RemoveEntity_RemovesEntityAndComponents()
+        {
+            int entity = _entityManager.CreateEntity();
+            _entityManager.AddComponent(entity, new TestComponent());
         
-        _entityManager.RemoveEntity(entity);
+            _entityManager.RemoveEntity(entity);
         
-        Assert.False(_entityManager.EntityExists(entity));
-        Assert.Null(_entityManager.GetComponent<TestComponent>(entity));
-    }
+            Assert.False(_entityManager.EntityExists(entity));
+            Assert.Null(_entityManager.GetComponent<TestComponent>(entity));
+        }
 
-    [Fact]
-    public void GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
-    {
-        int entity1 = _entityManager.CreateEntity();
-        int entity2 = _entityManager.CreateEntity();
+        /// <summary>
+        /// Tests that GetEntitiesWithMultipleComponents returns the correct entities.
+        /// </summary>
+        [Fact]
+        public void GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
+        {
+            int entity1 = _entityManager.CreateEntity();
+            int entity2 = _entityManager.CreateEntity();
         
-        _entityManager.AddComponent(entity1, new TestComponent());
-        _entityManager.AddComponent(entity1, new SecondTestComponent());
-        _entityManager.AddComponent(entity2, new TestComponent());
+            _entityManager.AddComponent(entity1, new TestComponent());
+            _entityManager.AddComponent(entity1, new SecondTestComponent());
+            _entityManager.AddComponent(entity2, new TestComponent());
 
-        var entitiesWithBoth = _entityManager.GetEntitiesWithComponents<TestComponent, SecondTestComponent>().ToList();
+            var entitiesWithBoth = _entityManager.GetEntitiesWithComponents<TestComponent, SecondTestComponent>().ToList();
 
-        Assert.Single(entitiesWithBoth);
-        Assert.Contains(entity1, entitiesWithBoth);
+            Assert.Single(entitiesWithBoth);
+            Assert.Contains(entity1, entitiesWithBoth);
+        }
     }
 }

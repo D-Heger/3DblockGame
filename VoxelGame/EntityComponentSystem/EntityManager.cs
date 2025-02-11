@@ -1,4 +1,5 @@
 using OpenTK.Mathematics;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace VoxelGame.EntityComponentSystem
@@ -90,7 +91,7 @@ namespace VoxelGame.EntityComponentSystem
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public T GetComponent<T>(int entityId) where T : Component
+        public T? GetComponent<T>(int entityId) where T : Component
         {
             Type type = typeof(T);
             if (_componentsByType.TryGetValue(type, out var components) && 
@@ -98,6 +99,7 @@ namespace VoxelGame.EntityComponentSystem
             {
                 return (T)component;
             }
+            Debug.WriteLine($"Component {type.Name} not found on entity {entityId}");
             return null;
         }
 

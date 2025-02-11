@@ -20,10 +20,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: RenderSystem
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -56,10 +56,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
     startLine: 21
   assemblies:
   - VoxelGame
@@ -90,10 +90,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Render
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
     startLine: 36
   assemblies:
   - VoxelGame
@@ -119,10 +119,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ToggleLighting
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
     startLine: 118
   assemblies:
   - VoxelGame
@@ -145,10 +145,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ToggleWireframe
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
     startLine: 124
   assemblies:
   - VoxelGame
@@ -171,10 +171,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
     startLine: 137
   assemblies:
   - VoxelGame

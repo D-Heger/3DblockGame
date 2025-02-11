@@ -22,7 +22,7 @@
     "content": [
       {
         "files": ["**/*.{md,yml}"],
-        "exclude": ["./Docs/**"]
+        "exclude": ["_site/**"]
       }
     ],
     "resource": [
@@ -30,15 +30,13 @@
         "files": []
       }
     ],
-    "output": "Docs",
-    "template": ["default"],
+    "output": "_site",
+    "template": ["default", "modern"],
     "globalMetadata": {
       "_appName": "3D Voxel Game",
       "_appTitle": "3D Voxel Game",
       "_enableSearch": true,
-      "pdf": false
-    },
-    "additionalMetadata": {
+      "pdf": false,
       "author": "David Heger",
       "version": "0.1.0",
       "description": "This is a project for a 3D voxel-based game."

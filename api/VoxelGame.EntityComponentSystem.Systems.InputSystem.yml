@@ -16,10 +16,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: InputSystem
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
     startLine: 7
   assemblies:
   - VoxelGame
@@ -52,10 +52,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Update
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
     startLine: 9
   assemblies:
   - VoxelGame

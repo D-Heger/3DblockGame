@@ -19,10 +19,10 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: FileUtils
-    path: ../VoxelGame/VoxelGame/Utils/FileUtils.cs
+    path: VoxelGame/Utils/FileUtils.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -54,10 +54,10 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: LoadVertexShader
-    path: ../VoxelGame/VoxelGame/Utils/FileUtils.cs
+    path: VoxelGame/Utils/FileUtils.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -88,10 +88,10 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: LoadFragmentShader
-    path: ../VoxelGame/VoxelGame/Utils/FileUtils.cs
+    path: VoxelGame/Utils/FileUtils.cs
     startLine: 11
   assemblies:
   - VoxelGame
@@ -122,10 +122,10 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: LoadShaderSource
-    path: ../VoxelGame/VoxelGame/Utils/FileUtils.cs
+    path: VoxelGame/Utils/FileUtils.cs
     startLine: 16
   assemblies:
   - VoxelGame
@@ -158,10 +158,10 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: LoadTexture
-    path: ../VoxelGame/VoxelGame/Utils/FileUtils.cs
+    path: VoxelGame/Utils/FileUtils.cs
     startLine: 33
   assemblies:
   - VoxelGame

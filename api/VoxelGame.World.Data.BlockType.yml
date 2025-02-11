@@ -22,10 +22,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: BlockType
-    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    path: VoxelGame/World/Data/BlockType.cs
     startLine: 2
   assemblies:
   - VoxelGame
@@ -47,10 +47,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: DIRT
-    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    path: VoxelGame/World/Data/BlockType.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -73,10 +73,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GRASS
-    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    path: VoxelGame/World/Data/BlockType.cs
     startLine: 5
   assemblies:
   - VoxelGame
@@ -99,10 +99,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: AIR
-    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    path: VoxelGame/World/Data/BlockType.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -125,10 +125,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: STONE
-    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    path: VoxelGame/World/Data/BlockType.cs
     startLine: 7
   assemblies:
   - VoxelGame
@@ -151,10 +151,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: SAND
-    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    path: VoxelGame/World/Data/BlockType.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -177,10 +177,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: WATER
-    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    path: VoxelGame/World/Data/BlockType.cs
     startLine: 9
   assemblies:
   - VoxelGame
@@ -203,10 +203,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: BEDROCK
-    path: ../VoxelGame/VoxelGame/World/Data/BlockType.cs
+    path: VoxelGame/World/Data/BlockType.cs
     startLine: 10
   assemblies:
   - VoxelGame

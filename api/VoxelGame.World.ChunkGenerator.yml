@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/ChunkGenerator.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ChunkGenerator
-    path: ../VoxelGame/VoxelGame/World/ChunkGenerator.cs
+    path: VoxelGame/World/ChunkGenerator.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -52,10 +52,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/ChunkGenerator.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GenerateChunkMesh
-    path: ../VoxelGame/VoxelGame/World/ChunkGenerator.cs
+    path: VoxelGame/World/ChunkGenerator.cs
     startLine: 10
   assemblies:
   - VoxelGame
@@ -90,10 +90,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/ChunkGenerator.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GenerateChunkData
-    path: ../VoxelGame/VoxelGame/World/ChunkGenerator.cs
+    path: VoxelGame/World/ChunkGenerator.cs
     startLine: 26
   assemblies:
   - VoxelGame

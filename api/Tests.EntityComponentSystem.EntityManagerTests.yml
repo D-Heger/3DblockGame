@@ -1,23 +1,23 @@
 ### YamlMime:ManagedReference
 items:
-- uid: Tests.EntityManagerTests
-  commentId: T:Tests.EntityManagerTests
+- uid: Tests.EntityComponentSystem.EntityManagerTests
+  commentId: T:Tests.EntityComponentSystem.EntityManagerTests
   id: EntityManagerTests
-  parent: Tests
+  parent: Tests.EntityComponentSystem
   children:
-  - Tests.EntityManagerTests.#ctor
-  - Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
-  - Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
-  - Tests.EntityManagerTests.Dispose
-  - Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
-  - Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
-  - Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+  - Tests.EntityComponentSystem.EntityManagerTests.#ctor
+  - Tests.EntityComponentSystem.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+  - Tests.EntityComponentSystem.EntityManagerTests.CreateEntity_AssignsUniqueIds
+  - Tests.EntityComponentSystem.EntityManagerTests.Dispose
+  - Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+  - Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  - Tests.EntityComponentSystem.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
   langs:
   - csharp
   - vb
   name: EntityManagerTests
   nameWithType: EntityManagerTests
-  fullName: Tests.EntityManagerTests
+  fullName: Tests.EntityComponentSystem.EntityManagerTests
   type: Class
   source:
     remote:
@@ -26,10 +26,15 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: EntityManagerTests
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
-    startLine: 5
+    startLine: 9
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Test suite for the EntityManager class. Verifies entity creation, component management,
+
+    and entity lifecycle functionality in the entity component system.
+  example: []
   syntax:
     content: 'public class EntityManagerTests : IDisposable'
     content.vb: Public Class EntityManagerTests Implements IDisposable
@@ -45,16 +50,16 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Tests.EntityManagerTests.#ctor
-  commentId: M:Tests.EntityManagerTests.#ctor
+- uid: Tests.EntityComponentSystem.EntityManagerTests.#ctor
+  commentId: M:Tests.EntityComponentSystem.EntityManagerTests.#ctor
   id: '#ctor'
-  parent: Tests.EntityManagerTests
+  parent: Tests.EntityComponentSystem.EntityManagerTests
   langs:
   - csharp
   - vb
   name: EntityManagerTests()
   nameWithType: EntityManagerTests.EntityManagerTests()
-  fullName: Tests.EntityManagerTests.EntityManagerTests()
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.EntityManagerTests()
   type: Constructor
   source:
     remote:
@@ -63,27 +68,32 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
-    startLine: 19
+    startLine: 35
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Initializes a new instance of the EntityManagerTests class.
+
+    Sets up a fresh EntityManager for each test.
+  example: []
   syntax:
     content: public EntityManagerTests()
     content.vb: Public Sub New()
-  overload: Tests.EntityManagerTests.#ctor*
+  overload: Tests.EntityComponentSystem.EntityManagerTests.#ctor*
   nameWithType.vb: EntityManagerTests.New()
-  fullName.vb: Tests.EntityManagerTests.New()
+  fullName.vb: Tests.EntityComponentSystem.EntityManagerTests.New()
   name.vb: New()
-- uid: Tests.EntityManagerTests.Dispose
-  commentId: M:Tests.EntityManagerTests.Dispose
+- uid: Tests.EntityComponentSystem.EntityManagerTests.Dispose
+  commentId: M:Tests.EntityComponentSystem.EntityManagerTests.Dispose
   id: Dispose
-  parent: Tests.EntityManagerTests
+  parent: Tests.EntityComponentSystem.EntityManagerTests
   langs:
   - csharp
   - vb
   name: Dispose()
   nameWithType: EntityManagerTests.Dispose()
-  fullName: Tests.EntityManagerTests.Dispose()
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.Dispose()
   type: Method
   source:
     remote:
@@ -92,28 +102,28 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
-    startLine: 24
+    startLine: 43
   assemblies:
   - Tests
-  namespace: Tests
-  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  namespace: Tests.EntityComponentSystem
+  summary: Cleans up resources used by the test class.
   example: []
   syntax:
     content: public void Dispose()
     content.vb: Public Sub Dispose()
-  overload: Tests.EntityManagerTests.Dispose*
+  overload: Tests.EntityComponentSystem.EntityManagerTests.Dispose*
   implements:
   - System.IDisposable.Dispose
-- uid: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
-  commentId: M:Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
+- uid: Tests.EntityComponentSystem.EntityManagerTests.CreateEntity_AssignsUniqueIds
+  commentId: M:Tests.EntityComponentSystem.EntityManagerTests.CreateEntity_AssignsUniqueIds
   id: CreateEntity_AssignsUniqueIds
-  parent: Tests.EntityManagerTests
+  parent: Tests.EntityComponentSystem.EntityManagerTests
   langs:
   - csharp
   - vb
   name: CreateEntity_AssignsUniqueIds()
   nameWithType: EntityManagerTests.CreateEntity_AssignsUniqueIds()
-  fullName: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds()
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.CreateEntity_AssignsUniqueIds()
   type: Method
   source:
     remote:
@@ -122,10 +132,12 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: CreateEntity_AssignsUniqueIds
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
-    startLine: 29
+    startLine: 51
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Tests that CreateEntity assigns unique IDs to each entity.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -135,21 +147,21 @@ items:
       <Fact>
 
       Public Sub CreateEntity_AssignsUniqueIds()
-  overload: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds*
+  overload: Tests.EntityComponentSystem.EntityManagerTests.CreateEntity_AssignsUniqueIds*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
-- uid: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
-  commentId: M:Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+- uid: Tests.EntityComponentSystem.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+  commentId: M:Tests.EntityComponentSystem.EntityManagerTests.AddAndGetComponent_WorksCorrectly
   id: AddAndGetComponent_WorksCorrectly
-  parent: Tests.EntityManagerTests
+  parent: Tests.EntityComponentSystem.EntityManagerTests
   langs:
   - csharp
   - vb
   name: AddAndGetComponent_WorksCorrectly()
   nameWithType: EntityManagerTests.AddAndGetComponent_WorksCorrectly()
-  fullName: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly()
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.AddAndGetComponent_WorksCorrectly()
   type: Method
   source:
     remote:
@@ -158,10 +170,12 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: AddAndGetComponent_WorksCorrectly
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
-    startLine: 38
+    startLine: 63
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Tests that adding and retrieving a component works correctly.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -171,21 +185,21 @@ items:
       <Fact>
 
       Public Sub AddAndGetComponent_WorksCorrectly()
-  overload: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly*
+  overload: Tests.EntityComponentSystem.EntityManagerTests.AddAndGetComponent_WorksCorrectly*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
-- uid: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
-  commentId: M:Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+- uid: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+  commentId: M:Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
   id: GetEntitiesWithComponent_ReturnsCorrectEntities
-  parent: Tests.EntityManagerTests
+  parent: Tests.EntityComponentSystem.EntityManagerTests
   langs:
   - csharp
   - vb
   name: GetEntitiesWithComponent_ReturnsCorrectEntities()
   nameWithType: EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities()
-  fullName: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities()
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities()
   type: Method
   source:
     remote:
@@ -194,10 +208,12 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithComponent_ReturnsCorrectEntities
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
-    startLine: 51
+    startLine: 79
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Tests that GetEntitiesWithComponent returns the correct entities.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -207,21 +223,21 @@ items:
       <Fact>
 
       Public Sub GetEntitiesWithComponent_ReturnsCorrectEntities()
-  overload: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities*
+  overload: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
-- uid: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
-  commentId: M:Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+- uid: Tests.EntityComponentSystem.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+  commentId: M:Tests.EntityComponentSystem.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
   id: RemoveEntity_RemovesEntityAndComponents
-  parent: Tests.EntityManagerTests
+  parent: Tests.EntityComponentSystem.EntityManagerTests
   langs:
   - csharp
   - vb
   name: RemoveEntity_RemovesEntityAndComponents()
   nameWithType: EntityManagerTests.RemoveEntity_RemovesEntityAndComponents()
-  fullName: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents()
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents()
   type: Method
   source:
     remote:
@@ -230,10 +246,12 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: RemoveEntity_RemovesEntityAndComponents
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
-    startLine: 71
+    startLine: 102
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Tests that removing an entity also removes its components.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -243,21 +261,21 @@ items:
       <Fact>
 
       Public Sub RemoveEntity_RemovesEntityAndComponents()
-  overload: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents*
+  overload: Tests.EntityComponentSystem.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
-- uid: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
-  commentId: M:Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+- uid: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  commentId: M:Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
   id: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
-  parent: Tests.EntityManagerTests
+  parent: Tests.EntityComponentSystem.EntityManagerTests
   langs:
   - csharp
   - vb
   name: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
   nameWithType: EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
-  fullName: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
   type: Method
   source:
     remote:
@@ -266,10 +284,12 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
-    startLine: 83
+    startLine: 117
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Tests that GetEntitiesWithMultipleComponents returns the correct entities.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -279,18 +299,34 @@ items:
       <Fact>
 
       Public Sub GetEntitiesWithMultipleComponents_ReturnsCorrectEntities()
-  overload: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities*
+  overload: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
 references:
-- uid: Tests
-  commentId: N:Tests
+- uid: Tests.EntityComponentSystem
+  commentId: N:Tests.EntityComponentSystem
   href: Tests.html
-  name: Tests
-  nameWithType: Tests
-  fullName: Tests
+  name: Tests.EntityComponentSystem
+  nameWithType: Tests.EntityComponentSystem
+  fullName: Tests.EntityComponentSystem
+  spec.csharp:
+  - uid: Tests
+    name: Tests
+    href: Tests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
+  spec.vb:
+  - uid: Tests
+    name: Tests
+    href: Tests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -536,21 +572,21 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Tests.EntityManagerTests.#ctor*
-  commentId: Overload:Tests.EntityManagerTests.#ctor
-  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests__ctor
+- uid: Tests.EntityComponentSystem.EntityManagerTests.#ctor*
+  commentId: Overload:Tests.EntityComponentSystem.EntityManagerTests.#ctor
+  href: Tests.EntityComponentSystem.EntityManagerTests.html#Tests_EntityComponentSystem_EntityManagerTests__ctor
   name: EntityManagerTests
   nameWithType: EntityManagerTests.EntityManagerTests
-  fullName: Tests.EntityManagerTests.EntityManagerTests
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.EntityManagerTests
   nameWithType.vb: EntityManagerTests.New
-  fullName.vb: Tests.EntityManagerTests.New
+  fullName.vb: Tests.EntityComponentSystem.EntityManagerTests.New
   name.vb: New
-- uid: Tests.EntityManagerTests.Dispose*
-  commentId: Overload:Tests.EntityManagerTests.Dispose
-  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_Dispose
+- uid: Tests.EntityComponentSystem.EntityManagerTests.Dispose*
+  commentId: Overload:Tests.EntityComponentSystem.EntityManagerTests.Dispose
+  href: Tests.EntityComponentSystem.EntityManagerTests.html#Tests_EntityComponentSystem_EntityManagerTests_Dispose
   name: Dispose
   nameWithType: EntityManagerTests.Dispose
-  fullName: Tests.EntityManagerTests.Dispose
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.Dispose
 - uid: System.IDisposable.Dispose
   commentId: M:System.IDisposable.Dispose
   parent: System.IDisposable
@@ -573,33 +609,33 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
   - name: (
   - name: )
-- uid: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds*
-  commentId: Overload:Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
-  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_CreateEntity_AssignsUniqueIds
+- uid: Tests.EntityComponentSystem.EntityManagerTests.CreateEntity_AssignsUniqueIds*
+  commentId: Overload:Tests.EntityComponentSystem.EntityManagerTests.CreateEntity_AssignsUniqueIds
+  href: Tests.EntityComponentSystem.EntityManagerTests.html#Tests_EntityComponentSystem_EntityManagerTests_CreateEntity_AssignsUniqueIds
   name: CreateEntity_AssignsUniqueIds
   nameWithType: EntityManagerTests.CreateEntity_AssignsUniqueIds
-  fullName: Tests.EntityManagerTests.CreateEntity_AssignsUniqueIds
-- uid: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly*
-  commentId: Overload:Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
-  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_AddAndGetComponent_WorksCorrectly
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.CreateEntity_AssignsUniqueIds
+- uid: Tests.EntityComponentSystem.EntityManagerTests.AddAndGetComponent_WorksCorrectly*
+  commentId: Overload:Tests.EntityComponentSystem.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+  href: Tests.EntityComponentSystem.EntityManagerTests.html#Tests_EntityComponentSystem_EntityManagerTests_AddAndGetComponent_WorksCorrectly
   name: AddAndGetComponent_WorksCorrectly
   nameWithType: EntityManagerTests.AddAndGetComponent_WorksCorrectly
-  fullName: Tests.EntityManagerTests.AddAndGetComponent_WorksCorrectly
-- uid: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities*
-  commentId: Overload:Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
-  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_GetEntitiesWithComponent_ReturnsCorrectEntities
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.AddAndGetComponent_WorksCorrectly
+- uid: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities*
+  commentId: Overload:Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+  href: Tests.EntityComponentSystem.EntityManagerTests.html#Tests_EntityComponentSystem_EntityManagerTests_GetEntitiesWithComponent_ReturnsCorrectEntities
   name: GetEntitiesWithComponent_ReturnsCorrectEntities
   nameWithType: EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
-  fullName: Tests.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
-- uid: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents*
-  commentId: Overload:Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
-  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_RemoveEntity_RemovesEntityAndComponents
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithComponent_ReturnsCorrectEntities
+- uid: Tests.EntityComponentSystem.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents*
+  commentId: Overload:Tests.EntityComponentSystem.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+  href: Tests.EntityComponentSystem.EntityManagerTests.html#Tests_EntityComponentSystem_EntityManagerTests_RemoveEntity_RemovesEntityAndComponents
   name: RemoveEntity_RemovesEntityAndComponents
   nameWithType: EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
-  fullName: Tests.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
-- uid: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities*
-  commentId: Overload:Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
-  href: Tests.EntityManagerTests.html#Tests_EntityManagerTests_GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.RemoveEntity_RemovesEntityAndComponents
+- uid: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities*
+  commentId: Overload:Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  href: Tests.EntityComponentSystem.EntityManagerTests.html#Tests_EntityComponentSystem_EntityManagerTests_GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
   name: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
   nameWithType: EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
-  fullName: Tests.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.GetEntitiesWithMultipleComponents_ReturnsCorrectEntities

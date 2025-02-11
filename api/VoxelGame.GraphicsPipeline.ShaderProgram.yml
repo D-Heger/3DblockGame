@@ -23,10 +23,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ShaderProgram
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -58,10 +58,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ID
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -85,10 +85,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 11
   assemblies:
   - VoxelGame
@@ -119,10 +119,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: SetVector3
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 38
   assemblies:
   - VoxelGame
@@ -153,10 +153,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: SetMatrix4
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 48
   assemblies:
   - VoxelGame
@@ -187,10 +187,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: SetInt
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 58
   assemblies:
   - VoxelGame
@@ -221,10 +221,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Bind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 68
   assemblies:
   - VoxelGame
@@ -247,10 +247,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Unbind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 73
   assemblies:
   - VoxelGame
@@ -273,10 +273,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/ShaderProgram.cs
+    path: VoxelGame/GraphicsPipeline/ShaderProgram.cs
     startLine: 78
   assemblies:
   - VoxelGame

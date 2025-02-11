@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/TextureData.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: TextureData
-    path: ../VoxelGame/VoxelGame/World/Data/TextureData.cs
+    path: VoxelGame/World/Data/TextureData.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -52,10 +52,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/TextureData.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: blockTypeUVCoord
-    path: ../VoxelGame/VoxelGame/World/Data/TextureData.cs
+    path: VoxelGame/World/Data/TextureData.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -79,10 +79,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/TextureData.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetUVs
-    path: ../VoxelGame/VoxelGame/World/Data/TextureData.cs
+    path: VoxelGame/World/Data/TextureData.cs
     startLine: 83
   assemblies:
   - VoxelGame

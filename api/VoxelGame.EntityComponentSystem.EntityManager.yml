@@ -30,11 +30,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: EntityManager
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 5
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 6
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -65,11 +65,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: CreateEntity
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 29
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 30
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -93,11 +93,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: EntityCount
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 38
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 39
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -122,11 +122,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: AddComponent
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 40
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 41
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -158,16 +158,16 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetComponent
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 91
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 92
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
   syntax:
-    content: 'public T GetComponent<T>(int entityId) where T : Component'
+    content: 'public T? GetComponent<T>(int entityId) where T : Component'
     parameters:
     - id: entityId
       type: System.Int32
@@ -194,11 +194,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithComponent
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 103
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 105
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -227,11 +227,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetEntityWithComponent
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 124
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 126
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -260,11 +260,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithComponents
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 131
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 133
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -294,11 +294,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithComponents
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 158
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 160
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -329,11 +329,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: SetEntityPosition
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 186
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 188
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -363,11 +363,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetEntityPosition
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 192
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 194
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -397,11 +397,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: RemoveEntity
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 198
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 200
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -429,11 +429,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: RemoveComponent
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 235
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 237
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -463,11 +463,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: EntityExists
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 264
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 266
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -497,11 +497,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: CreateComponent
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 270
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 272
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem
@@ -530,11 +530,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/EntityManager.cs
-    startLine: 280
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 282
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem

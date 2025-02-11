@@ -414,7 +414,7 @@ FodyWeavers.xsd
 
 ### DocFx ###
 # DocFx output directory
-#_site/
+_site/
 
 # DocFx metadata directory
 obj/

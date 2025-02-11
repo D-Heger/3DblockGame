@@ -21,10 +21,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: VertexArrayObject
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexArrayObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -56,10 +56,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ID
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexArrayObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -83,10 +83,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexArrayObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -112,10 +112,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: LinkToVAO
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexArrayObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
     startLine: 14
   assemblies:
   - VoxelGame
@@ -148,10 +148,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Bind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexArrayObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
     startLine: 23
   assemblies:
   - VoxelGame
@@ -174,10 +174,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Unbind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexArrayObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
     startLine: 28
   assemblies:
   - VoxelGame
@@ -200,10 +200,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexArrayObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexArrayObject.cs
     startLine: 33
   assemblies:
   - VoxelGame

@@ -22,21 +22,14 @@ namespace VoxelGame.EntityComponentSystem.Systems
         public Texture GetTexture(string name) => new Texture(name);
     }
 
-    public class ChunkGenerationSystem : System
+    public class ChunkGenerationSystem(
+        EntityManager entityManager,
+        WorldSystem worldSystem,
+        ITextureProvider? textureProvider = null) : System
     {
-        private readonly EntityManager _entityManager;
-        private readonly WorldSystem _worldSystem;
-        private readonly ITextureProvider _textureProvider;
-
-        public ChunkGenerationSystem(
-            EntityManager entityManager, 
-            WorldSystem worldSystem,
-            ITextureProvider textureProvider = null)
-        {
-            _entityManager = entityManager;
-            _worldSystem = worldSystem;
-            _textureProvider = textureProvider ?? new DefaultTextureProvider();
-        }
+        private readonly EntityManager _entityManager = entityManager;
+        private readonly WorldSystem _worldSystem = worldSystem;
+        private readonly ITextureProvider _textureProvider = textureProvider ?? new DefaultTextureProvider();
 
         // Stores active chunk entities with their positions
         private readonly ConcurrentDictionary<ChunkPosition, int> _chunkEntities = new();
@@ -55,7 +48,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
         )> _chunksAwaitingMainThreadProcessing = new();
 
         // Shared texture for all chunks - lazy initialized
-        private Texture _sharedTexture;
+        private Texture? _sharedTexture;
         private readonly object _textureLock = new object();
 
         private Texture GetSharedTexture()
@@ -334,7 +327,10 @@ namespace VoxelGame.EntityComponentSystem.Systems
         public readonly bool Equals(ChunkPosition other) =>
             X == other.X && Y == other.Y && Z == other.Z;
 
-        public override bool Equals(object obj) => obj is ChunkPosition other && Equals(other);
+        public override bool Equals(object? obj)
+        {
+            return obj is ChunkPosition other && Equals(other);
+        }
 
         public override readonly int GetHashCode() => HashCode.Combine(X, Y, Z);
 

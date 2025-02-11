@@ -23,10 +23,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Block
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 5
   assemblies:
   - VoxelGame
@@ -58,10 +58,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Position
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 7
   assemblies:
   - VoxelGame
@@ -85,10 +85,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Type
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -112,10 +112,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Faces
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 10
   assemblies:
   - VoxelGame
@@ -139,10 +139,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: textureCoordinateMapping
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 12
   assemblies:
   - VoxelGame
@@ -166,10 +166,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: MapCoordinatesToUVs
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 23
   assemblies:
   - VoxelGame
@@ -200,10 +200,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 43
   assemblies:
   - VoxelGame
@@ -234,10 +234,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: AddTransformedVertices
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 120
   assemblies:
   - VoxelGame
@@ -268,10 +268,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetFace
-    path: ../VoxelGame/VoxelGame/World/Block.cs
+    path: VoxelGame/World/Block.cs
     startLine: 130
   assemblies:
   - VoxelGame

@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: Tests.EntityComponentSystem
+  commentId: N:Tests.EntityComponentSystem
+  id: Tests.EntityComponentSystem
+  children:
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  - Tests.EntityComponentSystem.EntityManagerTests
+  - Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+  - Tests.EntityComponentSystem.EntityManagerTests.TestComponent
+  - Tests.EntityComponentSystem.WorldSystemTests
+  langs:
+  - csharp
+  - vb
+  name: Tests.EntityComponentSystem
+  nameWithType: Tests.EntityComponentSystem
+  fullName: Tests.EntityComponentSystem
+  type: Namespace
+  assemblies:
+  - Tests
+references:
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  commentId: T:Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html
+  name: ChunkGenerationSystemTests
+  nameWithType: ChunkGenerationSystemTests
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+- uid: Tests.EntityComponentSystem.EntityManagerTests
+  commentId: T:Tests.EntityComponentSystem.EntityManagerTests
+  href: Tests.EntityComponentSystem.EntityManagerTests.html
+  name: EntityManagerTests
+  nameWithType: EntityManagerTests
+  fullName: Tests.EntityComponentSystem.EntityManagerTests
+- uid: Tests.EntityComponentSystem.EntityManagerTests.TestComponent
+  commentId: T:Tests.EntityComponentSystem.EntityManagerTests.TestComponent
+  href: Tests.EntityComponentSystem.EntityManagerTests.html
+  name: EntityManagerTests.TestComponent
+  nameWithType: EntityManagerTests.TestComponent
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.TestComponent
+  spec.csharp:
+  - uid: Tests.EntityComponentSystem.EntityManagerTests
+    name: EntityManagerTests
+    href: Tests.EntityComponentSystem.EntityManagerTests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem.EntityManagerTests.TestComponent
+    name: TestComponent
+    href: Tests.EntityComponentSystem.EntityManagerTests.TestComponent.html
+  spec.vb:
+  - uid: Tests.EntityComponentSystem.EntityManagerTests
+    name: EntityManagerTests
+    href: Tests.EntityComponentSystem.EntityManagerTests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem.EntityManagerTests.TestComponent
+    name: TestComponent
+    href: Tests.EntityComponentSystem.EntityManagerTests.TestComponent.html
+- uid: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+  commentId: T:Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+  href: Tests.EntityComponentSystem.EntityManagerTests.html
+  name: EntityManagerTests.SecondTestComponent
+  nameWithType: EntityManagerTests.SecondTestComponent
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+  spec.csharp:
+  - uid: Tests.EntityComponentSystem.EntityManagerTests
+    name: EntityManagerTests
+    href: Tests.EntityComponentSystem.EntityManagerTests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+    name: SecondTestComponent
+    href: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.html
+  spec.vb:
+  - uid: Tests.EntityComponentSystem.EntityManagerTests
+    name: EntityManagerTests
+    href: Tests.EntityComponentSystem.EntityManagerTests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+    name: SecondTestComponent
+    href: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.html
+- uid: Tests.EntityComponentSystem.WorldSystemTests
+  commentId: T:Tests.EntityComponentSystem.WorldSystemTests
+  href: Tests.EntityComponentSystem.WorldSystemTests.html
+  name: WorldSystemTests
+  nameWithType: WorldSystemTests
+  fullName: Tests.EntityComponentSystem.WorldSystemTests

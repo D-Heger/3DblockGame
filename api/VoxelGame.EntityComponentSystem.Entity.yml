@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Entity.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Entity
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Entity.cs
+    path: VoxelGame/EntityComponentSystem/Entity.cs
     startLine: 2
   assemblies:
   - VoxelGame
@@ -52,10 +52,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Entity.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Entity.cs
+    path: VoxelGame/EntityComponentSystem/Entity.cs
     startLine: 2
   assemblies:
   - VoxelGame
@@ -84,10 +84,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Entity.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ID
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Entity.cs
+    path: VoxelGame/EntityComponentSystem/Entity.cs
     startLine: 4
   assemblies:
   - VoxelGame

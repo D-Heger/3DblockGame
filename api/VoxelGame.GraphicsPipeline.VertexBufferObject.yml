@@ -21,10 +21,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: VertexBufferObject
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
     startLine: 5
   assemblies:
   - VoxelGame
@@ -56,10 +56,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ID
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
     startLine: 7
   assemblies:
   - VoxelGame
@@ -83,10 +83,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
     startLine: 9
   assemblies:
   - VoxelGame
@@ -115,10 +115,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
     startLine: 21
   assemblies:
   - VoxelGame
@@ -147,10 +147,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Bind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
     startLine: 33
   assemblies:
   - VoxelGame
@@ -173,10 +173,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Unbind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
     startLine: 38
   assemblies:
   - VoxelGame
@@ -199,10 +199,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/VertexBufferObject.cs
+    path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
     startLine: 43
   assemblies:
   - VoxelGame

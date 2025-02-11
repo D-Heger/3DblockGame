@@ -19,10 +19,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ChunkGenerationSystem
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
     startLine: 24
   assemblies:
   - VoxelGame
@@ -48,23 +48,23 @@ items:
   langs:
   - csharp
   - vb
-  name: ChunkGenerationSystem(EntityManager, WorldSystem, ITextureProvider)
-  nameWithType: ChunkGenerationSystem.ChunkGenerationSystem(EntityManager, WorldSystem, ITextureProvider)
-  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkGenerationSystem.ChunkGenerationSystem(VoxelGame.EntityComponentSystem.EntityManager, VoxelGame.EntityComponentSystem.Systems.WorldSystem, VoxelGame.EntityComponentSystem.Systems.ITextureProvider)
+  name: ChunkGenerationSystem(EntityManager, WorldSystem, ITextureProvider?)
+  nameWithType: ChunkGenerationSystem.ChunkGenerationSystem(EntityManager, WorldSystem, ITextureProvider?)
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkGenerationSystem.ChunkGenerationSystem(VoxelGame.EntityComponentSystem.EntityManager, VoxelGame.EntityComponentSystem.Systems.WorldSystem, VoxelGame.EntityComponentSystem.Systems.ITextureProvider?)
   type: Constructor
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 30
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 24
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
   syntax:
-    content: public ChunkGenerationSystem(EntityManager entityManager, WorldSystem worldSystem, ITextureProvider textureProvider = null)
+    content: public ChunkGenerationSystem(EntityManager entityManager, WorldSystem worldSystem, ITextureProvider? textureProvider = null)
     parameters:
     - id: entityManager
       type: VoxelGame.EntityComponentSystem.EntityManager
@@ -91,11 +91,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GenerateInitialChunks
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 92
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 85
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -127,11 +127,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Update
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 199
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 192
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -155,11 +155,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: UpdateChunks
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 256
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 249
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems

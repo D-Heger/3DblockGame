@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ChunkData
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
     startLine: 42
   assemblies:
   - VoxelGame
@@ -52,10 +52,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
     startLine: 42
   assemblies:
   - VoxelGame
@@ -84,10 +84,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Blocks
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
     startLine: 44
   assemblies:
   - VoxelGame

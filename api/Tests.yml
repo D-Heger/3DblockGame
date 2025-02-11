@@ -5,10 +5,6 @@ items:
   id: Tests
   children:
   - Tests.ChunkGenerationSystemTests
-  - Tests.EntityManagerTests
-  - Tests.EntityManagerTests.SecondTestComponent
-  - Tests.EntityManagerTests.TestComponent
-  - Tests.WorldSystemTests
   langs:
   - csharp
   - vb
@@ -25,59 +21,3 @@ references:
   name: ChunkGenerationSystemTests
   nameWithType: ChunkGenerationSystemTests
   fullName: Tests.ChunkGenerationSystemTests
-- uid: Tests.EntityManagerTests
-  commentId: T:Tests.EntityManagerTests
-  href: Tests.EntityManagerTests.html
-  name: EntityManagerTests
-  nameWithType: EntityManagerTests
-  fullName: Tests.EntityManagerTests
-- uid: Tests.EntityManagerTests.TestComponent
-  commentId: T:Tests.EntityManagerTests.TestComponent
-  href: Tests.EntityManagerTests.html
-  name: EntityManagerTests.TestComponent
-  nameWithType: EntityManagerTests.TestComponent
-  fullName: Tests.EntityManagerTests.TestComponent
-  spec.csharp:
-  - uid: Tests.EntityManagerTests
-    name: EntityManagerTests
-    href: Tests.EntityManagerTests.html
-  - name: .
-  - uid: Tests.EntityManagerTests.TestComponent
-    name: TestComponent
-    href: Tests.EntityManagerTests.TestComponent.html
-  spec.vb:
-  - uid: Tests.EntityManagerTests
-    name: EntityManagerTests
-    href: Tests.EntityManagerTests.html
-  - name: .
-  - uid: Tests.EntityManagerTests.TestComponent
-    name: TestComponent
-    href: Tests.EntityManagerTests.TestComponent.html
-- uid: Tests.EntityManagerTests.SecondTestComponent
-  commentId: T:Tests.EntityManagerTests.SecondTestComponent
-  href: Tests.EntityManagerTests.html
-  name: EntityManagerTests.SecondTestComponent
-  nameWithType: EntityManagerTests.SecondTestComponent
-  fullName: Tests.EntityManagerTests.SecondTestComponent
-  spec.csharp:
-  - uid: Tests.EntityManagerTests
-    name: EntityManagerTests
-    href: Tests.EntityManagerTests.html
-  - name: .
-  - uid: Tests.EntityManagerTests.SecondTestComponent
-    name: SecondTestComponent
-    href: Tests.EntityManagerTests.SecondTestComponent.html
-  spec.vb:
-  - uid: Tests.EntityManagerTests
-    name: EntityManagerTests
-    href: Tests.EntityManagerTests.html
-  - name: .
-  - uid: Tests.EntityManagerTests.SecondTestComponent
-    name: SecondTestComponent
-    href: Tests.EntityManagerTests.SecondTestComponent.html
-- uid: Tests.WorldSystemTests
-  commentId: T:Tests.WorldSystemTests
-  href: Tests.WorldSystemTests.html
-  name: WorldSystemTests
-  nameWithType: WorldSystemTests
-  fullName: Tests.WorldSystemTests

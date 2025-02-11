@@ -27,10 +27,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: MeshComponent
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -63,10 +63,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Vertices
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -90,10 +90,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: UVs
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 9
   assemblies:
   - VoxelGame
@@ -117,10 +117,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Normals
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 10
   assemblies:
   - VoxelGame
@@ -144,10 +144,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Indices
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 11
   assemblies:
   - VoxelGame
@@ -171,10 +171,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: VAO
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 13
   assemblies:
   - VoxelGame
@@ -198,10 +198,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: VBO
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 14
   assemblies:
   - VoxelGame
@@ -225,10 +225,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: UVBO
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 15
   assemblies:
   - VoxelGame
@@ -252,10 +252,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: NormalBO
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 16
   assemblies:
   - VoxelGame
@@ -279,10 +279,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: IBO
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 17
   assemblies:
   - VoxelGame
@@ -306,10 +306,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 21
   assemblies:
   - VoxelGame
@@ -344,10 +344,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: SetupBuffers
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 29
   assemblies:
   - VoxelGame
@@ -370,10 +370,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
+    path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
     startLine: 60
   assemblies:
   - VoxelGame

@@ -6,15 +6,27 @@ using VoxelGame.World.Data;
 using VoxelGame.GraphicsPipeline;
 using OpenTK.Mathematics;
 
-namespace Tests;
+namespace Tests.EntityComponentSystem;
 
+/// <summary>
+/// Test suite for the ChunkGenerationSystem class. Verifies chunk generation, management,
+/// and cleanup functionality in the voxel world.
+/// </summary>
 public class ChunkGenerationSystemTests : IDisposable
 {
+    /// <summary>
+    /// Mock implementation of ITextureProvider for testing purposes.
+    /// Provides dummy textures without actual file loading.
+    /// </summary>
     private class MockTextureProvider : ITextureProvider
     {
         public Texture GetTexture(string name) => new MockTexture();
     }
 
+    /// <summary>
+    /// Mock implementation of Texture for testing purposes.
+    /// Provides no-op implementations of required methods.
+    /// </summary>
     private class MockTexture : Texture
     {
         public MockTexture() : base("") { }  // Pass empty string to base to prevent file loading
@@ -26,6 +38,10 @@ public class ChunkGenerationSystemTests : IDisposable
     private readonly WorldSystem _worldSystem;
     private readonly ChunkGenerationSystem _chunkGenerationSystem;
 
+    /// <summary>
+    /// Initializes a new instance of the ChunkGenerationSystemTests class.
+    /// Sets up the required systems for testing chunk generation.
+    /// </summary>
     public ChunkGenerationSystemTests()
     {
         _entityManager = new EntityManager();
@@ -33,11 +49,18 @@ public class ChunkGenerationSystemTests : IDisposable
         _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager, _worldSystem, new MockTextureProvider());
     }
 
+    /// <summary>
+    /// Cleans up resources used by the test class.
+    /// </summary>
     public void Dispose()
     {
         _entityManager.Dispose();
     }
 
+    /// <summary>
+    /// Verifies that initial chunk generation correctly enqueues the expected number
+    /// of chunks in a square grid around the origin position.
+    /// </summary>
     [Fact]
     public void GenerateInitialChunks_EnqueuesCorrectChunks()
     {
@@ -48,7 +71,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act
         _chunkGenerationSystem.GenerateInitialChunks(origin, radius);
-        
+    
         // Process a few frames to allow chunk generation
         for (int i = 0; i < 10; i++)
         {
@@ -62,6 +85,10 @@ public class ChunkGenerationSystemTests : IDisposable
         Assert.Equal(expectedChunkCount, existingChunks.Count);
     }
 
+    /// <summary>
+    /// Tests that chunks are properly added and removed as the player moves through
+    /// the world, maintaining the correct render distance around the player.
+    /// </summary>
     [Fact]
     public void UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition()
     {
@@ -71,7 +98,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act - Initial generation
         _chunkGenerationSystem.UpdateChunks(playerInitialPosition, renderDistance);
-        
+    
         // Process initial chunks
         for (int i = 0; i < 10; i++)
         {
@@ -96,21 +123,25 @@ public class ChunkGenerationSystemTests : IDisposable
         var newChunks = _worldSystem.GetAllChunkPositions().ToList();
         Assert.NotEmpty(newChunks); // Verify we have chunks
         Assert.DoesNotContain(new ChunkPosition(0, 0, 0), newChunks); // Old chunk should be removed
-        
+    
         // Verify new chunks are around the new player position
         var expectedChunk = new ChunkPosition(Chunk.SIZE * 4, 0, Chunk.SIZE * 4);
         Assert.Contains(expectedChunk, newChunks);
     }
 
+    /// <summary>
+    /// Verifies that generated chunks have all required components (Mesh, Transform, Texture)
+    /// and that the components contain correct initial values.
+    /// </summary>
     [Fact]
     public void ChunkGeneration_CreatesCorrectEntityComponents()
     {
         // Arrange
         var chunkPosition = new ChunkPosition(0, 0, 0);
-        
+    
         // Act
         _chunkGenerationSystem.GenerateInitialChunks(chunkPosition, 0); // Only generate one chunk
-        
+    
         // Process generation
         for (int i = 0; i < 5; i++)
         {
@@ -126,14 +157,19 @@ public class ChunkGenerationSystemTests : IDisposable
         Assert.Single(entitiesWithMesh);
         Assert.Single(entitiesWithTransform);
         Assert.Single(entitiesWithTexture);
-        
+    
         // Verify the transform position matches the chunk position
         var transform = _entityManager.GetComponent<TransformComponent>(entitiesWithTransform[0]);
+        Assert.NotNull(transform);
         Assert.Equal(chunkPosition.X, transform.Position.X);
         Assert.Equal(chunkPosition.Y, transform.Position.Y);
         Assert.Equal(chunkPosition.Z, transform.Position.Z);
     }
 
+    /// <summary>
+    /// Ensures that updating chunks with the same player position does not trigger
+    /// unnecessary chunk regeneration, optimizing performance.
+    /// </summary>
     [Fact]
     public void UpdateChunks_WithSamePosition_DoesNotRegenerateChunks()
     {
@@ -143,7 +179,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act - Initial generation
         _chunkGenerationSystem.UpdateChunks(playerPosition, renderDistance);
-        
+    
         // Process initial chunks
         for (int i = 0; i < 5; i++)
         {
@@ -155,7 +191,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Update with same position
         _chunkGenerationSystem.UpdateChunks(playerPosition, renderDistance);
-        
+    
         // Process any potential updates
         for (int i = 0; i < 5; i++)
         {
@@ -169,6 +205,10 @@ public class ChunkGenerationSystemTests : IDisposable
         Assert.All(initialChunks, chunk => Assert.Contains(chunk, finalChunks));
     }
 
+    /// <summary>
+    /// Verifies that changing the render distance properly updates the number of
+    /// visible chunks around the player.
+    /// </summary>
     [Fact]
     public void UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount()
     {
@@ -178,7 +218,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act - Initial generation
         _chunkGenerationSystem.UpdateChunks(playerPosition, initialRenderDistance);
-        
+    
         // Process initial chunks
         for (int i = 0; i < 5; i++)
         {
@@ -191,7 +231,7 @@ public class ChunkGenerationSystemTests : IDisposable
         // Update with larger render distance
         int newRenderDistance = 2;
         _chunkGenerationSystem.UpdateChunks(playerPosition, newRenderDistance);
-        
+    
         // Process updates
         for (int i = 0; i < 10; i++)
         {
@@ -204,13 +244,17 @@ public class ChunkGenerationSystemTests : IDisposable
         Assert.True(finalChunkCount > initialChunkCount);
     }
 
+    /// <summary>
+    /// Tests that chunk removal properly disposes of all associated components
+    /// and removes entities from the entity manager.
+    /// </summary>
     [Fact]
     public void RemoveChunk_DisposesComponentsCorrectly()
     {
         // Arrange
         var chunkPosition = new ChunkPosition(0, 0, 0);
         _chunkGenerationSystem.GenerateInitialChunks(chunkPosition, 0);
-        
+    
         // Process generation
         for (int i = 0; i < 5; i++)
         {
@@ -224,7 +268,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act - Move player far away to trigger chunk removal
         _chunkGenerationSystem.UpdateChunks(new Vector3(Chunk.SIZE * 10, 0, Chunk.SIZE * 10), 1);
-        
+    
         // Process updates
         for (int i = 0; i < 5; i++)
         {
@@ -242,6 +286,10 @@ public class ChunkGenerationSystemTests : IDisposable
         }
     }
 
+    /// <summary>
+    /// Verifies that the system can handle generating a larger number of chunks
+    /// concurrently without errors or memory issues.
+    /// </summary>
     [Fact]
     public void GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly()
     {
@@ -252,7 +300,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act
         _chunkGenerationSystem.GenerateInitialChunks(origin, radius);
-        
+    
         // Process generation with longer timeout due to larger area
         for (int i = 0; i < 20; i++)
         {

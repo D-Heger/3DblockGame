@@ -20,10 +20,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Frustum.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Plane
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Frustum.cs
+    path: VoxelGame/GraphicsPipeline/Frustum.cs
     startLine: 84
   assemblies:
   - VoxelGame
@@ -52,10 +52,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Frustum.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Normal
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Frustum.cs
+    path: VoxelGame/GraphicsPipeline/Frustum.cs
     startLine: 86
   assemblies:
   - VoxelGame
@@ -79,10 +79,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Frustum.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: D
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Frustum.cs
+    path: VoxelGame/GraphicsPipeline/Frustum.cs
     startLine: 87
   assemblies:
   - VoxelGame
@@ -106,10 +106,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Frustum.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Frustum.cs
+    path: VoxelGame/GraphicsPipeline/Frustum.cs
     startLine: 89
   assemblies:
   - VoxelGame
@@ -144,10 +144,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Frustum.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Normalize
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Frustum.cs
+    path: VoxelGame/GraphicsPipeline/Frustum.cs
     startLine: 95
   assemblies:
   - VoxelGame
@@ -170,10 +170,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Frustum.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetDistanceToPoint
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Frustum.cs
+    path: VoxelGame/GraphicsPipeline/Frustum.cs
     startLine: 102
   assemblies:
   - VoxelGame

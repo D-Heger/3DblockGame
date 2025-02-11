@@ -21,14 +21,31 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Game
-    path: ../VoxelGame/VoxelGame/Game.cs
-    startLine: 15
+    path: VoxelGame/Game.cs
+    startLine: 27
   assemblies:
   - VoxelGame
   namespace: VoxelGame
+  summary: >-
+    The main game class that manages the game window, systems, and game loop.
+
+    Inherits from OpenTK's GameWindow to handle window management and rendering.
+  remarks: >-
+    This class is responsible for:
+
+    - Initializing and managing core game systems (rendering, input, world, chunk generation)
+
+    - Managing the game window and OpenGL context
+
+    - Handling window events (resize, load, unload)
+
+    - Managing the game loop (update and render frames)
+
+    - Performance monitoring and memory tracking
+  example: []
   syntax:
     content: 'public class Game : GameWindow, IDisposable'
     content.vb: Public Class Game Inherits GameWindow Implements IDisposable
@@ -176,21 +193,25 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/Game.cs
-    startLine: 34
+    path: VoxelGame/Game.cs
+    startLine: 48
   assemblies:
   - VoxelGame
   namespace: VoxelGame
+  summary: Initializes a new instance of the Game class with specified window dimensions.
+  example: []
   syntax:
     content: public Game(int width, int height)
     parameters:
     - id: width
       type: System.Int32
+      description: The width of the game window in pixels
     - id: height
       type: System.Int32
+      description: The height of the game window in pixels
     content.vb: Public Sub New(width As Integer, height As Integer)
   overload: VoxelGame.Game.#ctor*
   nameWithType.vb: Game.New(Integer, Integer)
@@ -210,22 +231,22 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: OnResize
-    path: ../VoxelGame/VoxelGame/Game.cs
-    startLine: 48
+    path: VoxelGame/Game.cs
+    startLine: 64
   assemblies:
   - VoxelGame
   namespace: VoxelGame
-  summary: Raises the <xref href="OpenTK.Windowing.Desktop.NativeWindow.Resize" data-throw-if-not-resolved="false"></xref> event.
+  summary: Handles window resize events by updating the viewport and internal dimensions.
   example: []
   syntax:
     content: protected override void OnResize(ResizeEventArgs e)
     parameters:
     - id: e
       type: OpenTK.Windowing.Common.ResizeEventArgs
-      description: A <xref href="OpenTK.Windowing.Common.ResizeEventArgs" data-throw-if-not-resolved="false"></xref> that contains the event data.
+      description: Contains information about the new window size
     content.vb: Protected Overrides Sub OnResize(e As ResizeEventArgs)
   overridden: OpenTK.Windowing.Desktop.NativeWindow.OnResize(OpenTK.Windowing.Common.ResizeEventArgs)
   overload: VoxelGame.Game.OnResize*
@@ -243,15 +264,22 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: OnLoad
-    path: ../VoxelGame/VoxelGame/Game.cs
-    startLine: 56
+    path: VoxelGame/Game.cs
+    startLine: 78
   assemblies:
   - VoxelGame
   namespace: VoxelGame
-  summary: Run immediately after Run() is called.
+  summary: >-
+    Initializes game systems and creates the initial game state when the window loads.
+
+    Sets up the entity-component system, rendering system, input handling, world system,
+
+    and chunk generation system. Also creates the initial camera entity and generates
+
+    the starting chunks.
   example: []
   syntax:
     content: protected override void OnLoad()
@@ -272,15 +300,18 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: OnUnload
-    path: ../VoxelGame/VoxelGame/Game.cs
-    startLine: 82
+    path: VoxelGame/Game.cs
+    startLine: 108
   assemblies:
   - VoxelGame
   namespace: VoxelGame
-  summary: Run when the window is about to close.
+  summary: >-
+    Cleans up resources when the window is closing.
+
+    Disposes of mesh buffers, textures, and shader programs to prevent memory leaks.
   example: []
   syntax:
     content: protected override void OnUnload()
@@ -301,22 +332,25 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: OnRenderFrame
-    path: ../VoxelGame/VoxelGame/Game.cs
-    startLine: 106
+    path: VoxelGame/Game.cs
+    startLine: 137
   assemblies:
   - VoxelGame
   namespace: VoxelGame
-  summary: Run when the window is ready to render. This is called after <xref href="OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)" data-throw-if-not-resolved="false"></xref>.
+  summary: >-
+    Handles the rendering of each frame.
+
+    Clears the screen, updates the render system, and swaps the display buffers.
   example: []
   syntax:
     content: protected override void OnRenderFrame(FrameEventArgs args)
     parameters:
     - id: args
       type: OpenTK.Windowing.Common.FrameEventArgs
-      description: The event arguments for this frame.
+      description: Contains timing information for the frame
     content.vb: Protected Overrides Sub OnRenderFrame(args As FrameEventArgs)
   overridden: OpenTK.Windowing.Desktop.GameWindow.OnRenderFrame(OpenTK.Windowing.Common.FrameEventArgs)
   overload: VoxelGame.Game.OnRenderFrame*
@@ -334,22 +368,37 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: OnUpdateFrame
-    path: ../VoxelGame/VoxelGame/Game.cs
-    startLine: 119
+    path: VoxelGame/Game.cs
+    startLine: 161
   assemblies:
   - VoxelGame
   namespace: VoxelGame
-  summary: Run when the window is ready to update. This is called before <xref href="OpenTK.Windowing.Desktop.GameWindow.OnRenderFrame(OpenTK.Windowing.Common.FrameEventArgs)" data-throw-if-not-resolved="false"></xref>.
+  summary: >-
+    Updates the game state each frame.
+
+    Handles:
+
+    - Performance monitoring and FPS counting
+
+    - Memory tracking and statistics
+
+    - Input processing
+
+    - Debug controls (F3 for wireframe, F4 for lighting)
+
+    - Camera position tracking
+
+    - Chunk generation and updates based on player position
   example: []
   syntax:
     content: protected override void OnUpdateFrame(FrameEventArgs args)
     parameters:
     - id: args
       type: OpenTK.Windowing.Common.FrameEventArgs
-      description: The event arguments for this frame.
+      description: Contains timing information for the frame
     content.vb: Protected Overrides Sub OnUpdateFrame(args As FrameEventArgs)
   overridden: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
   overload: VoxelGame.Game.OnUpdateFrame*
@@ -2276,13 +2325,6 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
-- uid: OpenTK.Windowing.Common.ResizeEventArgs
-  commentId: T:OpenTK.Windowing.Common.ResizeEventArgs
-  parent: OpenTK.Windowing.Common
-  isExternal: true
-  name: ResizeEventArgs
-  nameWithType: ResizeEventArgs
-  fullName: OpenTK.Windowing.Common.ResizeEventArgs
 - uid: OpenTK.Windowing.Desktop.NativeWindow.OnResize(OpenTK.Windowing.Common.ResizeEventArgs)
   commentId: M:OpenTK.Windowing.Desktop.NativeWindow.OnResize(OpenTK.Windowing.Common.ResizeEventArgs)
   parent: OpenTK.Windowing.Desktop.NativeWindow
@@ -2314,6 +2356,13 @@ references:
   name: OnResize
   nameWithType: Game.OnResize
   fullName: VoxelGame.Game.OnResize
+- uid: OpenTK.Windowing.Common.ResizeEventArgs
+  commentId: T:OpenTK.Windowing.Common.ResizeEventArgs
+  parent: OpenTK.Windowing.Common
+  isExternal: true
+  name: ResizeEventArgs
+  nameWithType: ResizeEventArgs
+  fullName: OpenTK.Windowing.Common.ResizeEventArgs
 - uid: OpenTK.Windowing.Common
   commentId: N:OpenTK.Windowing.Common
   isExternal: true
@@ -2394,31 +2443,6 @@ references:
   name: OnUnload
   nameWithType: Game.OnUnload
   fullName: VoxelGame.Game.OnUnload
-- uid: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
-  commentId: M:OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
-  parent: OpenTK.Windowing.Desktop.GameWindow
-  isExternal: true
-  name: OnUpdateFrame(FrameEventArgs)
-  nameWithType: GameWindow.OnUpdateFrame(FrameEventArgs)
-  fullName: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
-  spec.csharp:
-  - uid: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
-    name: OnUpdateFrame
-    isExternal: true
-  - name: (
-  - uid: OpenTK.Windowing.Common.FrameEventArgs
-    name: FrameEventArgs
-    isExternal: true
-  - name: )
-  spec.vb:
-  - uid: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
-    name: OnUpdateFrame
-    isExternal: true
-  - name: (
-  - uid: OpenTK.Windowing.Common.FrameEventArgs
-    name: FrameEventArgs
-    isExternal: true
-  - name: )
 - uid: OpenTK.Windowing.Desktop.GameWindow.OnRenderFrame(OpenTK.Windowing.Common.FrameEventArgs)
   commentId: M:OpenTK.Windowing.Desktop.GameWindow.OnRenderFrame(OpenTK.Windowing.Common.FrameEventArgs)
   parent: OpenTK.Windowing.Desktop.GameWindow
@@ -2457,6 +2481,31 @@ references:
   name: FrameEventArgs
   nameWithType: FrameEventArgs
   fullName: OpenTK.Windowing.Common.FrameEventArgs
+- uid: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
+  commentId: M:OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
+  parent: OpenTK.Windowing.Desktop.GameWindow
+  isExternal: true
+  name: OnUpdateFrame(FrameEventArgs)
+  nameWithType: GameWindow.OnUpdateFrame(FrameEventArgs)
+  fullName: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
+  spec.csharp:
+  - uid: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
+    name: OnUpdateFrame
+    isExternal: true
+  - name: (
+  - uid: OpenTK.Windowing.Common.FrameEventArgs
+    name: FrameEventArgs
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: OpenTK.Windowing.Desktop.GameWindow.OnUpdateFrame(OpenTK.Windowing.Common.FrameEventArgs)
+    name: OnUpdateFrame
+    isExternal: true
+  - name: (
+  - uid: OpenTK.Windowing.Common.FrameEventArgs
+    name: FrameEventArgs
+    isExternal: true
+  - name: )
 - uid: VoxelGame.Game.OnUpdateFrame*
   commentId: Overload:VoxelGame.Game.OnUpdateFrame
   href: VoxelGame.Game.html#VoxelGame_Game_OnUpdateFrame_OpenTK_Windowing_Common_FrameEventArgs_

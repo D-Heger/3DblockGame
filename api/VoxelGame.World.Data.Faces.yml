@@ -21,10 +21,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/Faces.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Faces
-    path: ../VoxelGame/VoxelGame/World/Data/Faces.cs
+    path: VoxelGame/World/Data/Faces.cs
     startLine: 2
   assemblies:
   - VoxelGame
@@ -46,10 +46,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/Faces.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: FRONT
-    path: ../VoxelGame/VoxelGame/World/Data/Faces.cs
+    path: VoxelGame/World/Data/Faces.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -72,10 +72,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/Faces.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: BACK
-    path: ../VoxelGame/VoxelGame/World/Data/Faces.cs
+    path: VoxelGame/World/Data/Faces.cs
     startLine: 5
   assemblies:
   - VoxelGame
@@ -98,10 +98,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/Faces.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: LEFT
-    path: ../VoxelGame/VoxelGame/World/Data/Faces.cs
+    path: VoxelGame/World/Data/Faces.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -124,10 +124,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/Faces.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: RIGHT
-    path: ../VoxelGame/VoxelGame/World/Data/Faces.cs
+    path: VoxelGame/World/Data/Faces.cs
     startLine: 7
   assemblies:
   - VoxelGame
@@ -150,10 +150,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/Faces.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: TOP
-    path: ../VoxelGame/VoxelGame/World/Data/Faces.cs
+    path: VoxelGame/World/Data/Faces.cs
     startLine: 8
   assemblies:
   - VoxelGame
@@ -176,10 +176,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/Faces.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: BOTTOM
-    path: ../VoxelGame/VoxelGame/World/Data/Faces.cs
+    path: VoxelGame/World/Data/Faces.cs
     startLine: 9
   assemblies:
   - VoxelGame

@@ -20,10 +20,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Texture.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Texture
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Texture.cs
+    path: VoxelGame/GraphicsPipeline/Texture.cs
     startLine: 5
   assemblies:
   - VoxelGame
@@ -55,10 +55,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Texture.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ID
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Texture.cs
+    path: VoxelGame/GraphicsPipeline/Texture.cs
     startLine: 7
   assemblies:
   - VoxelGame
@@ -82,10 +82,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Texture.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Texture.cs
+    path: VoxelGame/GraphicsPipeline/Texture.cs
     startLine: 9
   assemblies:
   - VoxelGame
@@ -114,10 +114,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Texture.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Bind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Texture.cs
+    path: VoxelGame/GraphicsPipeline/Texture.cs
     startLine: 60
   assemblies:
   - VoxelGame
@@ -140,10 +140,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Texture.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Unbind
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Texture.cs
+    path: VoxelGame/GraphicsPipeline/Texture.cs
     startLine: 65
   assemblies:
   - VoxelGame
@@ -166,10 +166,10 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/Texture.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
-    path: ../VoxelGame/VoxelGame/GraphicsPipeline/Texture.cs
+    path: VoxelGame/GraphicsPipeline/Texture.cs
     startLine: 70
   assemblies:
   - VoxelGame

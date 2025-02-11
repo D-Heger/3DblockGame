@@ -1,35 +1,40 @@
 ### YamlMime:ManagedReference
 items:
-- uid: VoxelGame.GraphicsPipeline.Frustum
-  commentId: T:VoxelGame.GraphicsPipeline.Frustum
-  id: Frustum
-  parent: VoxelGame.GraphicsPipeline
+- uid: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+  commentId: T:Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
+  id: EntityManagerTests.SecondTestComponent
+  parent: Tests.EntityComponentSystem
   children:
-  - VoxelGame.GraphicsPipeline.Frustum.IsBoxInsideFrustum(OpenTK.Mathematics.Vector3,OpenTK.Mathematics.Vector3)
-  - VoxelGame.GraphicsPipeline.Frustum.UpdateFrustum(OpenTK.Mathematics.Matrix4)
+  - Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.Text
   langs:
   - csharp
   - vb
-  name: Frustum
-  nameWithType: Frustum
-  fullName: VoxelGame.GraphicsPipeline.Frustum
+  name: EntityManagerTests.SecondTestComponent
+  nameWithType: EntityManagerTests.SecondTestComponent
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
   type: Class
   source:
     remote:
-      path: VoxelGame/GraphicsPipeline/Frustum.cs
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
       branch: feature/add-documentation-system
       repo: https://github.com/D-Heger/3DblockGame
-    id: Frustum
-    path: VoxelGame/GraphicsPipeline/Frustum.cs
-    startLine: 4
+    id: SecondTestComponent
+    path: Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 26
   assemblies:
-  - VoxelGame
-  namespace: VoxelGame.GraphicsPipeline
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Secondary test component class used for testing multiple component interactions.
+
+    Contains a simple string property for testing purposes.
+  example: []
   syntax:
-    content: public class Frustum
-    content.vb: Public Class Frustum
+    content: 'public class EntityManagerTests.SecondTestComponent : Component'
+    content.vb: Public Class EntityManagerTests.SecondTestComponent Inherits Component
   inheritance:
   - System.Object
+  - VoxelGame.EntityComponentSystem.Component
   inheritedMembers:
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
@@ -38,91 +43,58 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: VoxelGame.GraphicsPipeline.Frustum.UpdateFrustum(OpenTK.Mathematics.Matrix4)
-  commentId: M:VoxelGame.GraphicsPipeline.Frustum.UpdateFrustum(OpenTK.Mathematics.Matrix4)
-  id: UpdateFrustum(OpenTK.Mathematics.Matrix4)
-  parent: VoxelGame.GraphicsPipeline.Frustum
+- uid: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.Text
+  commentId: P:Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.Text
+  id: Text
+  parent: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent
   langs:
   - csharp
   - vb
-  name: UpdateFrustum(Matrix4)
-  nameWithType: Frustum.UpdateFrustum(Matrix4)
-  fullName: VoxelGame.GraphicsPipeline.Frustum.UpdateFrustum(OpenTK.Mathematics.Matrix4)
-  type: Method
+  name: Text
+  nameWithType: EntityManagerTests.SecondTestComponent.Text
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.Text
+  type: Property
   source:
     remote:
-      path: VoxelGame/GraphicsPipeline/Frustum.cs
+      path: Tests/EntityComponentSystem/EntityManagerTests.cs
       branch: feature/add-documentation-system
       repo: https://github.com/D-Heger/3DblockGame
-    id: UpdateFrustum
-    path: VoxelGame/GraphicsPipeline/Frustum.cs
-    startLine: 8
+    id: Text
+    path: Tests/EntityComponentSystem/EntityManagerTests.cs
+    startLine: 28
   assemblies:
-  - VoxelGame
-  namespace: VoxelGame.GraphicsPipeline
+  - Tests
+  namespace: Tests.EntityComponentSystem
   syntax:
-    content: public void UpdateFrustum(Matrix4 viewProjection)
-    parameters:
-    - id: viewProjection
-      type: OpenTK.Mathematics.Matrix4
-    content.vb: Public Sub UpdateFrustum(viewProjection As Matrix4)
-  overload: VoxelGame.GraphicsPipeline.Frustum.UpdateFrustum*
-- uid: VoxelGame.GraphicsPipeline.Frustum.IsBoxInsideFrustum(OpenTK.Mathematics.Vector3,OpenTK.Mathematics.Vector3)
-  commentId: M:VoxelGame.GraphicsPipeline.Frustum.IsBoxInsideFrustum(OpenTK.Mathematics.Vector3,OpenTK.Mathematics.Vector3)
-  id: IsBoxInsideFrustum(OpenTK.Mathematics.Vector3,OpenTK.Mathematics.Vector3)
-  parent: VoxelGame.GraphicsPipeline.Frustum
-  langs:
-  - csharp
-  - vb
-  name: IsBoxInsideFrustum(Vector3, Vector3)
-  nameWithType: Frustum.IsBoxInsideFrustum(Vector3, Vector3)
-  fullName: VoxelGame.GraphicsPipeline.Frustum.IsBoxInsideFrustum(OpenTK.Mathematics.Vector3, OpenTK.Mathematics.Vector3)
-  type: Method
-  source:
-    remote:
-      path: VoxelGame/GraphicsPipeline/Frustum.cs
-      branch: feature/add-documentation-system
-      repo: https://github.com/D-Heger/3DblockGame
-    id: IsBoxInsideFrustum
-    path: VoxelGame/GraphicsPipeline/Frustum.cs
-    startLine: 65
-  assemblies:
-  - VoxelGame
-  namespace: VoxelGame.GraphicsPipeline
-  syntax:
-    content: public bool IsBoxInsideFrustum(Vector3 min, Vector3 max)
-    parameters:
-    - id: min
-      type: OpenTK.Mathematics.Vector3
-    - id: max
-      type: OpenTK.Mathematics.Vector3
+    content: public string? Text { get; set; }
+    parameters: []
     return:
-      type: System.Boolean
-    content.vb: Public Function IsBoxInsideFrustum(min As Vector3, max As Vector3) As Boolean
-  overload: VoxelGame.GraphicsPipeline.Frustum.IsBoxInsideFrustum*
+      type: System.String
+    content.vb: Public Property Text As String
+  overload: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.Text*
 references:
-- uid: VoxelGame.GraphicsPipeline
-  commentId: N:VoxelGame.GraphicsPipeline
-  href: VoxelGame.html
-  name: VoxelGame.GraphicsPipeline
-  nameWithType: VoxelGame.GraphicsPipeline
-  fullName: VoxelGame.GraphicsPipeline
+- uid: Tests.EntityComponentSystem
+  commentId: N:Tests.EntityComponentSystem
+  href: Tests.html
+  name: Tests.EntityComponentSystem
+  nameWithType: Tests.EntityComponentSystem
+  fullName: Tests.EntityComponentSystem
   spec.csharp:
-  - uid: VoxelGame
-    name: VoxelGame
-    href: VoxelGame.html
+  - uid: Tests
+    name: Tests
+    href: Tests.html
   - name: .
-  - uid: VoxelGame.GraphicsPipeline
-    name: GraphicsPipeline
-    href: VoxelGame.GraphicsPipeline.html
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
   spec.vb:
-  - uid: VoxelGame
-    name: VoxelGame
-    href: VoxelGame.html
+  - uid: Tests
+    name: Tests
+    href: Tests.html
   - name: .
-  - uid: VoxelGame.GraphicsPipeline
-    name: GraphicsPipeline
-    href: VoxelGame.GraphicsPipeline.html
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -134,6 +106,13 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
+- uid: VoxelGame.EntityComponentSystem.Component
+  commentId: T:VoxelGame.EntityComponentSystem.Component
+  parent: VoxelGame.EntityComponentSystem
+  href: VoxelGame.EntityComponentSystem.Component.html
+  name: Component
+  nameWithType: Component
+  fullName: VoxelGame.EntityComponentSystem.Component
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -360,62 +339,42 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: VoxelGame.GraphicsPipeline.Frustum.UpdateFrustum*
-  commentId: Overload:VoxelGame.GraphicsPipeline.Frustum.UpdateFrustum
-  href: VoxelGame.GraphicsPipeline.Frustum.html#VoxelGame_GraphicsPipeline_Frustum_UpdateFrustum_OpenTK_Mathematics_Matrix4_
-  name: UpdateFrustum
-  nameWithType: Frustum.UpdateFrustum
-  fullName: VoxelGame.GraphicsPipeline.Frustum.UpdateFrustum
-- uid: OpenTK.Mathematics.Matrix4
-  commentId: T:OpenTK.Mathematics.Matrix4
-  parent: OpenTK.Mathematics
-  isExternal: true
-  name: Matrix4
-  nameWithType: Matrix4
-  fullName: OpenTK.Mathematics.Matrix4
-- uid: OpenTK.Mathematics
-  commentId: N:OpenTK.Mathematics
-  isExternal: true
-  name: OpenTK.Mathematics
-  nameWithType: OpenTK.Mathematics
-  fullName: OpenTK.Mathematics
+- uid: VoxelGame.EntityComponentSystem
+  commentId: N:VoxelGame.EntityComponentSystem
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem
+  nameWithType: VoxelGame.EntityComponentSystem
+  fullName: VoxelGame.EntityComponentSystem
   spec.csharp:
-  - uid: OpenTK
-    name: OpenTK
-    isExternal: true
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
   - name: .
-  - uid: OpenTK.Mathematics
-    name: Mathematics
-    isExternal: true
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
   spec.vb:
-  - uid: OpenTK
-    name: OpenTK
-    isExternal: true
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
   - name: .
-  - uid: OpenTK.Mathematics
-    name: Mathematics
-    isExternal: true
-- uid: VoxelGame.GraphicsPipeline.Frustum.IsBoxInsideFrustum*
-  commentId: Overload:VoxelGame.GraphicsPipeline.Frustum.IsBoxInsideFrustum
-  href: VoxelGame.GraphicsPipeline.Frustum.html#VoxelGame_GraphicsPipeline_Frustum_IsBoxInsideFrustum_OpenTK_Mathematics_Vector3_OpenTK_Mathematics_Vector3_
-  name: IsBoxInsideFrustum
-  nameWithType: Frustum.IsBoxInsideFrustum
-  fullName: VoxelGame.GraphicsPipeline.Frustum.IsBoxInsideFrustum
-- uid: OpenTK.Mathematics.Vector3
-  commentId: T:OpenTK.Mathematics.Vector3
-  parent: OpenTK.Mathematics
-  isExternal: true
-  name: Vector3
-  nameWithType: Vector3
-  fullName: OpenTK.Mathematics.Vector3
-- uid: System.Boolean
-  commentId: T:System.Boolean
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+- uid: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.Text*
+  commentId: Overload:Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.Text
+  href: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.html#Tests_EntityComponentSystem_EntityManagerTests_SecondTestComponent_Text
+  name: Text
+  nameWithType: EntityManagerTests.SecondTestComponent.Text
+  fullName: Tests.EntityComponentSystem.EntityManagerTests.SecondTestComponent.Text
+- uid: System.String
+  commentId: T:System.String
   parent: System
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

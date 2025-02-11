@@ -25,11 +25,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: ChunkPosition
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 325
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 318
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -59,11 +59,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 325
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 318
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -97,11 +97,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: X
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 327
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 320
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -124,11 +124,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Y
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 328
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 321
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -151,11 +151,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Z
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 329
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 322
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -178,11 +178,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Zero
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 331
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 324
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -206,11 +206,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Equals
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 333
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 326
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -236,25 +236,25 @@ items:
   langs:
   - csharp
   - vb
-  name: Equals(object)
-  nameWithType: ChunkPosition.Equals(object)
-  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(object)
+  name: Equals(object?)
+  nameWithType: ChunkPosition.Equals(object?)
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.Equals(object?)
   type: Method
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: Equals
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 336
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 329
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
   summary: Indicates whether this instance and a specified object are equal.
   example: []
   syntax:
-    content: public override bool Equals(object obj)
+    content: public override bool Equals(object? obj)
     parameters:
     - id: obj
       type: System.Object
@@ -282,11 +282,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetHashCode
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 338
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 334
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -314,11 +314,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: op_Equality
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 340
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 336
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems
@@ -350,11 +350,11 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: op_Inequality
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-    startLine: 343
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 339
   assemblies:
   - VoxelGame
   namespace: VoxelGame.EntityComponentSystem.Systems

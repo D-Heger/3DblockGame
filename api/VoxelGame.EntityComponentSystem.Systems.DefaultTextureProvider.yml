@@ -16,10 +16,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: DefaultTextureProvider
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
     startLine: 19
   assemblies:
   - VoxelGame
@@ -53,10 +53,10 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: GetTexture
-    path: ../VoxelGame/VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
     startLine: 21
   assemblies:
   - VoxelGame

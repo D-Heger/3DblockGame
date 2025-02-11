@@ -17,10 +17,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/FaceDataRaw.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: FaceDataRaw
-    path: ../VoxelGame/VoxelGame/World/Data/FaceDataRaw.cs
+    path: VoxelGame/World/Data/FaceDataRaw.cs
     startLine: 4
   assemblies:
   - VoxelGame
@@ -49,10 +49,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/FaceDataRaw.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: rawVertexData
-    path: ../VoxelGame/VoxelGame/World/Data/FaceDataRaw.cs
+    path: VoxelGame/World/Data/FaceDataRaw.cs
     startLine: 6
   assemblies:
   - VoxelGame
@@ -76,10 +76,10 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/FaceDataRaw.cs
-      branch: main
-      repo: https://github.com/D-Heger/3DblockGame.git
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
     id: faceNormals
-    path: ../VoxelGame/VoxelGame/World/Data/FaceDataRaw.cs
+    path: VoxelGame/World/Data/FaceDataRaw.cs
     startLine: 71
   assemblies:
   - VoxelGame

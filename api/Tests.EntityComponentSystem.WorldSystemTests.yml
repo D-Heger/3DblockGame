@@ -1,23 +1,23 @@
 ### YamlMime:ManagedReference
 items:
-- uid: Tests.WorldSystemTests
-  commentId: T:Tests.WorldSystemTests
+- uid: Tests.EntityComponentSystem.WorldSystemTests
+  commentId: T:Tests.EntityComponentSystem.WorldSystemTests
   id: WorldSystemTests
-  parent: Tests
+  parent: Tests.EntityComponentSystem
   children:
-  - Tests.WorldSystemTests.#ctor
-  - Tests.WorldSystemTests.AddChunk_StoresChunkData
-  - Tests.WorldSystemTests.AddChunk_UpdatesExistingChunk
-  - Tests.WorldSystemTests.Dispose
-  - Tests.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
-  - Tests.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
-  - Tests.WorldSystemTests.RemoveChunk_RemovesChunkData
+  - Tests.EntityComponentSystem.WorldSystemTests.#ctor
+  - Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+  - Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
+  - Tests.EntityComponentSystem.WorldSystemTests.Dispose
+  - Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+  - Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+  - Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
   langs:
   - csharp
   - vb
   name: WorldSystemTests
   nameWithType: WorldSystemTests
-  fullName: Tests.WorldSystemTests
+  fullName: Tests.EntityComponentSystem.WorldSystemTests
   type: Class
   source:
     remote:
@@ -26,10 +26,15 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: WorldSystemTests
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
-    startLine: 6
+    startLine: 10
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Test suite for the WorldSystem class. Verifies chunk storage, retrieval,
+
+    and management functionality in the voxel world.
+  example: []
   syntax:
     content: 'public class WorldSystemTests : IDisposable'
     content.vb: Public Class WorldSystemTests Implements IDisposable
@@ -45,16 +50,16 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Tests.WorldSystemTests.#ctor
-  commentId: M:Tests.WorldSystemTests.#ctor
+- uid: Tests.EntityComponentSystem.WorldSystemTests.#ctor
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.#ctor
   id: '#ctor'
-  parent: Tests.WorldSystemTests
+  parent: Tests.EntityComponentSystem.WorldSystemTests
   langs:
   - csharp
   - vb
   name: WorldSystemTests()
   nameWithType: WorldSystemTests.WorldSystemTests()
-  fullName: Tests.WorldSystemTests.WorldSystemTests()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.WorldSystemTests()
   type: Constructor
   source:
     remote:
@@ -63,27 +68,32 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
-    startLine: 10
+    startLine: 18
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Initializes a new instance of the WorldSystemTests class.
+
+    Sets up a fresh WorldSystem for each test.
+  example: []
   syntax:
     content: public WorldSystemTests()
     content.vb: Public Sub New()
-  overload: Tests.WorldSystemTests.#ctor*
+  overload: Tests.EntityComponentSystem.WorldSystemTests.#ctor*
   nameWithType.vb: WorldSystemTests.New()
-  fullName.vb: Tests.WorldSystemTests.New()
+  fullName.vb: Tests.EntityComponentSystem.WorldSystemTests.New()
   name.vb: New()
-- uid: Tests.WorldSystemTests.Dispose
-  commentId: M:Tests.WorldSystemTests.Dispose
+- uid: Tests.EntityComponentSystem.WorldSystemTests.Dispose
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.Dispose
   id: Dispose
-  parent: Tests.WorldSystemTests
+  parent: Tests.EntityComponentSystem.WorldSystemTests
   langs:
   - csharp
   - vb
   name: Dispose()
   nameWithType: WorldSystemTests.Dispose()
-  fullName: Tests.WorldSystemTests.Dispose()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.Dispose()
   type: Method
   source:
     remote:
@@ -92,28 +102,28 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
-    startLine: 15
+    startLine: 26
   assemblies:
   - Tests
-  namespace: Tests
-  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  namespace: Tests.EntityComponentSystem
+  summary: Cleans up resources used by the test class.
   example: []
   syntax:
     content: public void Dispose()
     content.vb: Public Sub Dispose()
-  overload: Tests.WorldSystemTests.Dispose*
+  overload: Tests.EntityComponentSystem.WorldSystemTests.Dispose*
   implements:
   - System.IDisposable.Dispose
-- uid: Tests.WorldSystemTests.AddChunk_StoresChunkData
-  commentId: M:Tests.WorldSystemTests.AddChunk_StoresChunkData
+- uid: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
   id: AddChunk_StoresChunkData
-  parent: Tests.WorldSystemTests
+  parent: Tests.EntityComponentSystem.WorldSystemTests
   langs:
   - csharp
   - vb
   name: AddChunk_StoresChunkData()
   nameWithType: WorldSystemTests.AddChunk_StoresChunkData()
-  fullName: Tests.WorldSystemTests.AddChunk_StoresChunkData()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData()
   type: Method
   source:
     remote:
@@ -122,10 +132,12 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: AddChunk_StoresChunkData
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
-    startLine: 20
+    startLine: 34
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Verifies that adding a chunk correctly stores its data and can be retrieved.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -135,21 +147,21 @@ items:
       <Fact>
 
       Public Sub AddChunk_StoresChunkData()
-  overload: Tests.WorldSystemTests.AddChunk_StoresChunkData*
+  overload: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
-- uid: Tests.WorldSystemTests.RemoveChunk_RemovesChunkData
-  commentId: M:Tests.WorldSystemTests.RemoveChunk_RemovesChunkData
+- uid: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
   id: RemoveChunk_RemovesChunkData
-  parent: Tests.WorldSystemTests
+  parent: Tests.EntityComponentSystem.WorldSystemTests
   langs:
   - csharp
   - vb
   name: RemoveChunk_RemovesChunkData()
   nameWithType: WorldSystemTests.RemoveChunk_RemovesChunkData()
-  fullName: Tests.WorldSystemTests.RemoveChunk_RemovesChunkData()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData()
   type: Method
   source:
     remote:
@@ -158,10 +170,12 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: RemoveChunk_RemovesChunkData
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
-    startLine: 33
+    startLine: 50
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Verifies that removing a chunk properly eliminates it from the world system.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -171,21 +185,21 @@ items:
       <Fact>
 
       Public Sub RemoveChunk_RemovesChunkData()
-  overload: Tests.WorldSystemTests.RemoveChunk_RemovesChunkData*
+  overload: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
-- uid: Tests.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
-  commentId: M:Tests.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+- uid: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
   id: GetAllChunkPositions_ReturnsCorrectPositions
-  parent: Tests.WorldSystemTests
+  parent: Tests.EntityComponentSystem.WorldSystemTests
   langs:
   - csharp
   - vb
   name: GetAllChunkPositions_ReturnsCorrectPositions()
   nameWithType: WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions()
-  fullName: Tests.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions()
   type: Method
   source:
     remote:
@@ -194,10 +208,15 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: GetAllChunkPositions_ReturnsCorrectPositions
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
-    startLine: 46
+    startLine: 67
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Tests that getting all chunk positions returns the correct set of positions
+
+    for all chunks in the world.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -207,21 +226,21 @@ items:
       <Fact>
 
       Public Sub GetAllChunkPositions_ReturnsCorrectPositions()
-  overload: Tests.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions*
+  overload: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
-- uid: Tests.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
-  commentId: M:Tests.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+- uid: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
   id: GetChunk_NonExistentPosition_ReturnsNull
-  parent: Tests.WorldSystemTests
+  parent: Tests.EntityComponentSystem.WorldSystemTests
   langs:
   - csharp
   - vb
   name: GetChunk_NonExistentPosition_ReturnsNull()
   nameWithType: WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull()
-  fullName: Tests.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull()
   type: Method
   source:
     remote:
@@ -230,10 +249,12 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: GetChunk_NonExistentPosition_ReturnsNull
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
-    startLine: 63
+    startLine: 87
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Verifies that attempting to get a non-existent chunk returns null.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -243,21 +264,21 @@ items:
       <Fact>
 
       Public Sub GetChunk_NonExistentPosition_ReturnsNull()
-  overload: Tests.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull*
+  overload: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
-- uid: Tests.WorldSystemTests.AddChunk_UpdatesExistingChunk
-  commentId: M:Tests.WorldSystemTests.AddChunk_UpdatesExistingChunk
+- uid: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
   id: AddChunk_UpdatesExistingChunk
-  parent: Tests.WorldSystemTests
+  parent: Tests.EntityComponentSystem.WorldSystemTests
   langs:
   - csharp
   - vb
   name: AddChunk_UpdatesExistingChunk()
   nameWithType: WorldSystemTests.AddChunk_UpdatesExistingChunk()
-  fullName: Tests.WorldSystemTests.AddChunk_UpdatesExistingChunk()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk()
   type: Method
   source:
     remote:
@@ -266,10 +287,15 @@ items:
       repo: https://github.com/D-Heger/3DblockGame
     id: AddChunk_UpdatesExistingChunk
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
-    startLine: 73
+    startLine: 101
   assemblies:
   - Tests
-  namespace: Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Tests that adding a chunk to an existing position correctly updates
+
+    the stored chunk data.
+  example: []
   syntax:
     content: >-
       [Fact]
@@ -279,18 +305,34 @@ items:
       <Fact>
 
       Public Sub AddChunk_UpdatesExistingChunk()
-  overload: Tests.WorldSystemTests.AddChunk_UpdatesExistingChunk*
+  overload: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk*
   attributes:
   - type: Xunit.FactAttribute
     ctor: Xunit.FactAttribute.#ctor
     arguments: []
 references:
-- uid: Tests
-  commentId: N:Tests
+- uid: Tests.EntityComponentSystem
+  commentId: N:Tests.EntityComponentSystem
   href: Tests.html
-  name: Tests
-  nameWithType: Tests
-  fullName: Tests
+  name: Tests.EntityComponentSystem
+  nameWithType: Tests.EntityComponentSystem
+  fullName: Tests.EntityComponentSystem
+  spec.csharp:
+  - uid: Tests
+    name: Tests
+    href: Tests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
+  spec.vb:
+  - uid: Tests
+    name: Tests
+    href: Tests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -536,21 +578,21 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Tests.WorldSystemTests.#ctor*
-  commentId: Overload:Tests.WorldSystemTests.#ctor
-  href: Tests.WorldSystemTests.html#Tests_WorldSystemTests__ctor
+- uid: Tests.EntityComponentSystem.WorldSystemTests.#ctor*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.#ctor
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests__ctor
   name: WorldSystemTests
   nameWithType: WorldSystemTests.WorldSystemTests
-  fullName: Tests.WorldSystemTests.WorldSystemTests
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.WorldSystemTests
   nameWithType.vb: WorldSystemTests.New
-  fullName.vb: Tests.WorldSystemTests.New
+  fullName.vb: Tests.EntityComponentSystem.WorldSystemTests.New
   name.vb: New
-- uid: Tests.WorldSystemTests.Dispose*
-  commentId: Overload:Tests.WorldSystemTests.Dispose
-  href: Tests.WorldSystemTests.html#Tests_WorldSystemTests_Dispose
+- uid: Tests.EntityComponentSystem.WorldSystemTests.Dispose*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.Dispose
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_Dispose
   name: Dispose
   nameWithType: WorldSystemTests.Dispose
-  fullName: Tests.WorldSystemTests.Dispose
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.Dispose
 - uid: System.IDisposable.Dispose
   commentId: M:System.IDisposable.Dispose
   parent: System.IDisposable
@@ -573,33 +615,33 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
   - name: (
   - name: )
-- uid: Tests.WorldSystemTests.AddChunk_StoresChunkData*
-  commentId: Overload:Tests.WorldSystemTests.AddChunk_StoresChunkData
-  href: Tests.WorldSystemTests.html#Tests_WorldSystemTests_AddChunk_StoresChunkData
+- uid: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_AddChunk_StoresChunkData
   name: AddChunk_StoresChunkData
   nameWithType: WorldSystemTests.AddChunk_StoresChunkData
-  fullName: Tests.WorldSystemTests.AddChunk_StoresChunkData
-- uid: Tests.WorldSystemTests.RemoveChunk_RemovesChunkData*
-  commentId: Overload:Tests.WorldSystemTests.RemoveChunk_RemovesChunkData
-  href: Tests.WorldSystemTests.html#Tests_WorldSystemTests_RemoveChunk_RemovesChunkData
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+- uid: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_RemoveChunk_RemovesChunkData
   name: RemoveChunk_RemovesChunkData
   nameWithType: WorldSystemTests.RemoveChunk_RemovesChunkData
-  fullName: Tests.WorldSystemTests.RemoveChunk_RemovesChunkData
-- uid: Tests.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions*
-  commentId: Overload:Tests.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
-  href: Tests.WorldSystemTests.html#Tests_WorldSystemTests_GetAllChunkPositions_ReturnsCorrectPositions
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
+- uid: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_GetAllChunkPositions_ReturnsCorrectPositions
   name: GetAllChunkPositions_ReturnsCorrectPositions
   nameWithType: WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
-  fullName: Tests.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
-- uid: Tests.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull*
-  commentId: Overload:Tests.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
-  href: Tests.WorldSystemTests.html#Tests_WorldSystemTests_GetChunk_NonExistentPosition_ReturnsNull
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+- uid: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_GetChunk_NonExistentPosition_ReturnsNull
   name: GetChunk_NonExistentPosition_ReturnsNull
   nameWithType: WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
-  fullName: Tests.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
-- uid: Tests.WorldSystemTests.AddChunk_UpdatesExistingChunk*
-  commentId: Overload:Tests.WorldSystemTests.AddChunk_UpdatesExistingChunk
-  href: Tests.WorldSystemTests.html#Tests_WorldSystemTests_AddChunk_UpdatesExistingChunk
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+- uid: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_AddChunk_UpdatesExistingChunk
   name: AddChunk_UpdatesExistingChunk
   nameWithType: WorldSystemTests.AddChunk_UpdatesExistingChunk
-  fullName: Tests.WorldSystemTests.AddChunk_UpdatesExistingChunk
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
