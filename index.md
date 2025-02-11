@@ -2,22 +2,15 @@
 _layout: landing
 ---
 
-# 3D Block Game Engine
+# 3D Block Game Documentation
 
-A high-performance voxel game engine built with C# and OpenTK.
+Welcome to the documentation for the 3D Block Game project.
 
-## Key Features
+## Contents
 
-- Entity Component System Architecture
-- Procedural World Generation
-- Modern OpenGL Graphics Pipeline
-- Efficient Memory Management
-
-## Quick Links
-
-- [Get Started](Docs/getting-started.md)
-- [Technical Overview](Docs/introduction.md)
-- [API Reference](api/VoxelGame.html)
+- [Introduction](./Docs/introduction.md)
+- [Getting Started](./Docs/getting-started.md)
+- [API Documentation](./api/index.md)
 
 ## Source Code
 

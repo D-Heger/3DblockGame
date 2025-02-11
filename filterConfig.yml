@@ -1,0 +1,12 @@
+### YamlMime:ManagedReference
+apiRules:
+- include:
+    # Include everything by default
+    uidRegex: ^.*$
+    type: Namespace
+- include:
+    uidRegex: ^.*$
+    type: Type
+- include:
+    uidRegex: ^.*$
+    type: Member

@@ -4,43 +4,44 @@
     {
       "src": [
         {
-          "src": "../VoxelGame",
-          "files": [
-            "**/*.csproj"
-          ]
+          "src": "./VoxelGame",
+          "files": "**/*.csproj"
+        },
+        {
+          "src": "./Tests",
+          "files": "**/*.csproj"
         }
       ],
-      "dest": "api"
+      "dest": "api",
+      "properties": {
+        "Configuration": "Release"
+      }
     }
   ],
   "build": {
     "content": [
       {
-        "files": [
-          "**/*.{md,yml}"
-        ],
-        "exclude": [
-          "_site/**"
-        ]
+        "files": ["**/*.{md,yml}"],
+        "exclude": ["./Docs/**"]
       }
     ],
     "resource": [
       {
-        "files": [
-          "images/**"
-        ]
+        "files": []
       }
     ],
-    "output": "_site",
-    "template": [
-      "default",
-      "modern"
-    ],
+    "output": "Docs",
+    "template": ["default"],
     "globalMetadata": {
-      "_appName": "3D Block Game",
-      "_appTitle": "3D Block Game",
+      "_appName": "3D Voxel Game",
+      "_appTitle": "3D Voxel Game",
       "_enableSearch": true,
       "pdf": false
+    },
+    "additionalMetadata": {
+      "author": "David Heger",
+      "version": "0.1.0",
+      "description": "This is a project for a 3D voxel-based game."
     }
   }
 }
