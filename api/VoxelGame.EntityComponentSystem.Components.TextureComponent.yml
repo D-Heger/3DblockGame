@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/TextureComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: TextureComponent
     path: VoxelGame/EntityComponentSystem/Components/TextureComponent.cs
@@ -53,7 +53,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/TextureComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/EntityComponentSystem/Components/TextureComponent.cs
@@ -85,7 +85,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/TextureComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Texture
     path: VoxelGame/EntityComponentSystem/Components/TextureComponent.cs

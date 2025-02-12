@@ -17,24 +17,25 @@ See [Documentation](index.md) for more information.
 
 - .NET Core SDK
 - OpenGL-compatible graphics card
-- Visual Studio 2019 or later (recommended)
+- For Windows: Visual Studio 2019 or later (recommended for beginners)
+- For Linux: mesa-utils package (for OpenGL verification)
 
 ## Getting Started
 
+### Windows
 1. Clone the repository
-2. Open `VoxelGame.sln` in Visual Studio
-3. Build the solution using `build.bat build`
-4. Run the game using `build.bat run`
+2. Open `VoxelGame.sln` in Visual Studio 
+   (or open the folder in Visual Studio Code with C# extension if you're comfortable with that)
+3. Run `build.bat check` to verify your environment
+4. Run `build.bat build` to build and `build.bat run` to start the game
 
-## Build Commands
+### Linux
+1. Clone the repository
+2. Run `chmod +x build.sh` to make the build script executable
+3. Run `./build.sh check` to verify your environment
+4. Run `./build.sh build` to build and `./build.sh run` to start the game
 
-The project includes a build script with the following commands:
-
-- `build.bat restore` - Restore NuGet packages
-- `build.bat build` - Build the solution
-- `build.bat run` - Run the game
-- `build.bat test` - Run the tests
-- `build.bat clean` - Clean build outputs
+For detailed information about build commands, options, and troubleshooting, see [Build Script Documentation](Docs/build-script.md).
 
 ## Project Structure
 

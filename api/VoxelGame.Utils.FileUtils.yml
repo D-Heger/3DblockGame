@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: FileUtils
     path: VoxelGame/Utils/FileUtils.cs
@@ -54,7 +54,7 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: LoadVertexShader
     path: VoxelGame/Utils/FileUtils.cs
@@ -88,7 +88,7 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: LoadFragmentShader
     path: VoxelGame/Utils/FileUtils.cs
@@ -122,7 +122,7 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: LoadShaderSource
     path: VoxelGame/Utils/FileUtils.cs
@@ -158,7 +158,7 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/FileUtils.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: LoadTexture
     path: VoxelGame/Utils/FileUtils.cs

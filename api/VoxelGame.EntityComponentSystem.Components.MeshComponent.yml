@@ -27,7 +27,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: MeshComponent
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -63,7 +63,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Vertices
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -90,7 +90,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: UVs
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -117,7 +117,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Normals
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -144,7 +144,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Indices
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -171,7 +171,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: VAO
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -198,7 +198,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: VBO
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -225,7 +225,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: UVBO
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -252,7 +252,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: NormalBO
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -279,7 +279,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: IBO
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -306,7 +306,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -344,7 +344,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: SetupBuffers
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
@@ -370,7 +370,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: VoxelGame/EntityComponentSystem/Components/MeshComponent.cs

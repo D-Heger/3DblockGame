@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: WorldSystem
     path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
@@ -57,7 +57,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
@@ -86,7 +86,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: AddChunk
     path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
@@ -117,7 +117,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: RemoveChunk
     path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
@@ -146,7 +146,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ChunkExists
     path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
@@ -177,7 +177,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetChunk
     path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
@@ -208,7 +208,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetAllChunkPositions
     path: VoxelGame/EntityComponentSystem/Systems/WorldSystem.cs
