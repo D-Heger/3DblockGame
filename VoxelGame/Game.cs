@@ -39,7 +39,7 @@ namespace VoxelGame
         private ChunkGenerationSystem _chunkGenerationSystem;
 
         private Vector3 _lastPlayerChunkPosition;
-        private int _viewDistance = 32;
+        private int _viewDistance = 8;
 
         /// <summary>
         /// Initializes a new instance of the Game class with specified window dimensions.
