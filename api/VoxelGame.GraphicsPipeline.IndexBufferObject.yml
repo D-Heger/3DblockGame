@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: IndexBufferObject
     path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
@@ -55,7 +55,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ID
     path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
@@ -82,7 +82,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
@@ -114,7 +114,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Bind
     path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
@@ -140,7 +140,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Unbind
     path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: VoxelGame/GraphicsPipeline/IndexBufferObject.cs

@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: TestComponent
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
@@ -57,7 +57,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Value
     path: Tests/EntityComponentSystem/EntityManagerTests.cs

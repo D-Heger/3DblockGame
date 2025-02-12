@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Game
     path: VoxelGame/Game.cs
@@ -193,7 +193,7 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/Game.cs
@@ -231,7 +231,7 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: OnResize
     path: VoxelGame/Game.cs
@@ -264,7 +264,7 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: OnLoad
     path: VoxelGame/Game.cs
@@ -300,7 +300,7 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: OnUnload
     path: VoxelGame/Game.cs
@@ -332,7 +332,7 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: OnRenderFrame
     path: VoxelGame/Game.cs
@@ -368,7 +368,7 @@ items:
   source:
     remote:
       path: VoxelGame/Game.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: OnUpdateFrame
     path: VoxelGame/Game.cs

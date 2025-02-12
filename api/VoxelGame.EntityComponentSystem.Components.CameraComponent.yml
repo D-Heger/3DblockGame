@@ -27,7 +27,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: CameraComponent
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -63,7 +63,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Speed
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -90,7 +90,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Sensitivity
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -117,7 +117,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Front
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -144,7 +144,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Up
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -171,7 +171,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Right
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -198,7 +198,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Pitch
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -225,7 +225,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Yaw
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -252,7 +252,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: FirstMove
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -279,7 +279,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: LastMousePosition
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -306,7 +306,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -335,7 +335,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetViewMatrix
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
@@ -366,7 +366,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetProjectionMatrix
     path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs

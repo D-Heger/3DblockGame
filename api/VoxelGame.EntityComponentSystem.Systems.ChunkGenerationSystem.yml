@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ChunkGenerationSystem
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -55,7 +55,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -91,7 +91,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GenerateInitialChunks
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -127,7 +127,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Update
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -155,7 +155,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: UpdateChunks
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs

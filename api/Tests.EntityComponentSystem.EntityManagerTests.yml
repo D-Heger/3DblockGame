@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: EntityManagerTests
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
@@ -64,7 +64,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
@@ -98,7 +98,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
@@ -128,7 +128,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: CreateEntity_AssignsUniqueIds
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: AddAndGetComponent_WorksCorrectly
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
@@ -204,7 +204,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithComponent_ReturnsCorrectEntities
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
@@ -242,7 +242,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: RemoveEntity_RemovesEntityAndComponents
     path: Tests/EntityComponentSystem/EntityManagerTests.cs
@@ -280,7 +280,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/EntityManagerTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithMultipleComponents_ReturnsCorrectEntities
     path: Tests/EntityComponentSystem/EntityManagerTests.cs

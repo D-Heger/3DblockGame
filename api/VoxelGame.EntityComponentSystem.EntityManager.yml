@@ -30,7 +30,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: EntityManager
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -65,7 +65,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: CreateEntity
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -93,7 +93,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: EntityCount
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -122,7 +122,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: AddComponent
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -158,7 +158,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetComponent
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -194,7 +194,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithComponent
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -227,7 +227,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntityWithComponent
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -260,7 +260,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithComponents
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -294,7 +294,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntitiesWithComponents
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -329,7 +329,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: SetEntityPosition
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -363,7 +363,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetEntityPosition
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -397,7 +397,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: RemoveEntity
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -429,7 +429,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: RemoveComponent
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -463,7 +463,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: EntityExists
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -497,7 +497,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: CreateComponent
     path: VoxelGame/EntityComponentSystem/EntityManager.cs
@@ -530,7 +530,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/EntityManager.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: VoxelGame/EntityComponentSystem/EntityManager.cs

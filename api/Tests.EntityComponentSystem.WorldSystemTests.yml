@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/WorldSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: WorldSystemTests
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
@@ -64,7 +64,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/WorldSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
@@ -98,7 +98,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/WorldSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
@@ -128,7 +128,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/WorldSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: AddChunk_StoresChunkData
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/WorldSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: RemoveChunk_RemovesChunkData
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
@@ -204,7 +204,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/WorldSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetAllChunkPositions_ReturnsCorrectPositions
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
@@ -245,7 +245,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/WorldSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetChunk_NonExistentPosition_ReturnsNull
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
@@ -283,7 +283,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/WorldSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: AddChunk_UpdatesExistingChunk
     path: Tests/EntityComponentSystem/WorldSystemTests.cs
