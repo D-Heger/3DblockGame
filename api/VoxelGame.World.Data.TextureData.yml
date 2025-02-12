@@ -1,0 +1,587 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.World.Data.TextureData
+  commentId: T:VoxelGame.World.Data.TextureData
+  id: TextureData
+  parent: VoxelGame.World.Data
+  children:
+  - VoxelGame.World.Data.TextureData.GetUVs(VoxelGame.World.Data.BlockType,VoxelGame.World.Data.Faces)
+  - VoxelGame.World.Data.TextureData.blockTypeUVCoord
+  langs:
+  - csharp
+  - vb
+  name: TextureData
+  nameWithType: TextureData
+  fullName: VoxelGame.World.Data.TextureData
+  type: Class
+  source:
+    remote:
+      path: VoxelGame/World/Data/TextureData.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: TextureData
+    path: VoxelGame/World/Data/TextureData.cs
+    startLine: 4
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: public static class TextureData
+    content.vb: Public Module TextureData
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: VoxelGame.World.Data.TextureData.blockTypeUVCoord
+  commentId: F:VoxelGame.World.Data.TextureData.blockTypeUVCoord
+  id: blockTypeUVCoord
+  parent: VoxelGame.World.Data.TextureData
+  langs:
+  - csharp
+  - vb
+  name: blockTypeUVCoord
+  nameWithType: TextureData.blockTypeUVCoord
+  fullName: VoxelGame.World.Data.TextureData.blockTypeUVCoord
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/TextureData.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: blockTypeUVCoord
+    path: VoxelGame/World/Data/TextureData.cs
+    startLine: 6
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: public static readonly Dictionary<BlockType, Dictionary<Faces, Vector2>> blockTypeUVCoord
+    return:
+      type: System.Collections.Generic.Dictionary{VoxelGame.World.Data.BlockType,System.Collections.Generic.Dictionary{VoxelGame.World.Data.Faces,OpenTK.Mathematics.Vector2}}
+    content.vb: Public Shared ReadOnly blockTypeUVCoord As Dictionary(Of BlockType, Dictionary(Of Faces, Vector2))
+- uid: VoxelGame.World.Data.TextureData.GetUVs(VoxelGame.World.Data.BlockType,VoxelGame.World.Data.Faces)
+  commentId: M:VoxelGame.World.Data.TextureData.GetUVs(VoxelGame.World.Data.BlockType,VoxelGame.World.Data.Faces)
+  id: GetUVs(VoxelGame.World.Data.BlockType,VoxelGame.World.Data.Faces)
+  parent: VoxelGame.World.Data.TextureData
+  langs:
+  - csharp
+  - vb
+  name: GetUVs(BlockType, Faces)
+  nameWithType: TextureData.GetUVs(BlockType, Faces)
+  fullName: VoxelGame.World.Data.TextureData.GetUVs(VoxelGame.World.Data.BlockType, VoxelGame.World.Data.Faces)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/World/Data/TextureData.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetUVs
+    path: VoxelGame/World/Data/TextureData.cs
+    startLine: 83
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: public static List<Vector2> GetUVs(BlockType blockType, Faces face)
+    parameters:
+    - id: blockType
+      type: VoxelGame.World.Data.BlockType
+    - id: face
+      type: VoxelGame.World.Data.Faces
+    return:
+      type: System.Collections.Generic.List{OpenTK.Mathematics.Vector2}
+    content.vb: Public Shared Function GetUVs(blockType As BlockType, face As Faces) As List(Of Vector2)
+  overload: VoxelGame.World.Data.TextureData.GetUVs*
+references:
+- uid: VoxelGame.World.Data
+  commentId: N:VoxelGame.World.Data
+  href: VoxelGame.html
+  name: VoxelGame.World.Data
+  nameWithType: VoxelGame.World.Data
+  fullName: VoxelGame.World.Data
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.World
+    name: World
+    href: VoxelGame.World.html
+  - name: .
+  - uid: VoxelGame.World.Data
+    name: Data
+    href: VoxelGame.World.Data.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.World
+    name: World
+    href: VoxelGame.World.html
+  - name: .
+  - uid: VoxelGame.World.Data
+    name: Data
+    href: VoxelGame.World.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.Dictionary{VoxelGame.World.Data.BlockType,System.Collections.Generic.Dictionary{VoxelGame.World.Data.Faces,OpenTK.Mathematics.Vector2}}
+  commentId: T:System.Collections.Generic.Dictionary{VoxelGame.World.Data.BlockType,System.Collections.Generic.Dictionary{VoxelGame.World.Data.Faces,OpenTK.Mathematics.Vector2}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<BlockType, Dictionary<Faces, Vector2>>
+  nameWithType: Dictionary<BlockType, Dictionary<Faces, Vector2>>
+  fullName: System.Collections.Generic.Dictionary<VoxelGame.World.Data.BlockType, System.Collections.Generic.Dictionary<VoxelGame.World.Data.Faces, OpenTK.Mathematics.Vector2>>
+  nameWithType.vb: Dictionary(Of BlockType, Dictionary(Of Faces, Vector2))
+  fullName.vb: System.Collections.Generic.Dictionary(Of VoxelGame.World.Data.BlockType, System.Collections.Generic.Dictionary(Of VoxelGame.World.Data.Faces, OpenTK.Mathematics.Vector2))
+  name.vb: Dictionary(Of BlockType, Dictionary(Of Faces, Vector2))
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: VoxelGame.World.Data.BlockType
+    name: BlockType
+    href: VoxelGame.World.Data.BlockType.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: VoxelGame.World.Data.Faces
+    name: Faces
+    href: VoxelGame.World.Data.Faces.html
+  - name: ','
+  - name: " "
+  - uid: OpenTK.Mathematics.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: VoxelGame.World.Data.BlockType
+    name: BlockType
+    href: VoxelGame.World.Data.BlockType.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: VoxelGame.World.Data.Faces
+    name: Faces
+    href: VoxelGame.World.Data.Faces.html
+  - name: ','
+  - name: " "
+  - uid: OpenTK.Mathematics.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: VoxelGame.World.Data.TextureData.GetUVs*
+  commentId: Overload:VoxelGame.World.Data.TextureData.GetUVs
+  href: VoxelGame.World.Data.TextureData.html#VoxelGame_World_Data_TextureData_GetUVs_VoxelGame_World_Data_BlockType_VoxelGame_World_Data_Faces_
+  name: GetUVs
+  nameWithType: TextureData.GetUVs
+  fullName: VoxelGame.World.Data.TextureData.GetUVs
+- uid: VoxelGame.World.Data.BlockType
+  commentId: T:VoxelGame.World.Data.BlockType
+  parent: VoxelGame.World.Data
+  href: VoxelGame.World.Data.BlockType.html
+  name: BlockType
+  nameWithType: BlockType
+  fullName: VoxelGame.World.Data.BlockType
+- uid: VoxelGame.World.Data.Faces
+  commentId: T:VoxelGame.World.Data.Faces
+  parent: VoxelGame.World.Data
+  href: VoxelGame.World.Data.Faces.html
+  name: Faces
+  nameWithType: Faces
+  fullName: VoxelGame.World.Data.Faces
+- uid: System.Collections.Generic.List{OpenTK.Mathematics.Vector2}
+  commentId: T:System.Collections.Generic.List{OpenTK.Mathematics.Vector2}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Vector2>
+  nameWithType: List<Vector2>
+  fullName: System.Collections.Generic.List<OpenTK.Mathematics.Vector2>
+  nameWithType.vb: List(Of Vector2)
+  fullName.vb: System.Collections.Generic.List(Of OpenTK.Mathematics.Vector2)
+  name.vb: List(Of Vector2)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: OpenTK.Mathematics.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: OpenTK.Mathematics.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

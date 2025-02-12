@@ -1,0 +1,228 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.World.Data.Faces
+  commentId: T:VoxelGame.World.Data.Faces
+  id: Faces
+  parent: VoxelGame.World.Data
+  children:
+  - VoxelGame.World.Data.Faces.BACK
+  - VoxelGame.World.Data.Faces.BOTTOM
+  - VoxelGame.World.Data.Faces.FRONT
+  - VoxelGame.World.Data.Faces.LEFT
+  - VoxelGame.World.Data.Faces.RIGHT
+  - VoxelGame.World.Data.Faces.TOP
+  langs:
+  - csharp
+  - vb
+  name: Faces
+  nameWithType: Faces
+  fullName: VoxelGame.World.Data.Faces
+  type: Enum
+  source:
+    remote:
+      path: VoxelGame/World/Data/Faces.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Faces
+    path: VoxelGame/World/Data/Faces.cs
+    startLine: 2
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: 'public enum Faces : byte'
+    content.vb: Public Enum Faces As Byte
+- uid: VoxelGame.World.Data.Faces.FRONT
+  commentId: F:VoxelGame.World.Data.Faces.FRONT
+  id: FRONT
+  parent: VoxelGame.World.Data.Faces
+  langs:
+  - csharp
+  - vb
+  name: FRONT
+  nameWithType: Faces.FRONT
+  fullName: VoxelGame.World.Data.Faces.FRONT
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/Faces.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: FRONT
+    path: VoxelGame/World/Data/Faces.cs
+    startLine: 4
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: FRONT = 0
+    return:
+      type: VoxelGame.World.Data.Faces
+- uid: VoxelGame.World.Data.Faces.BACK
+  commentId: F:VoxelGame.World.Data.Faces.BACK
+  id: BACK
+  parent: VoxelGame.World.Data.Faces
+  langs:
+  - csharp
+  - vb
+  name: BACK
+  nameWithType: Faces.BACK
+  fullName: VoxelGame.World.Data.Faces.BACK
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/Faces.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: BACK
+    path: VoxelGame/World/Data/Faces.cs
+    startLine: 5
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: BACK = 1
+    return:
+      type: VoxelGame.World.Data.Faces
+- uid: VoxelGame.World.Data.Faces.LEFT
+  commentId: F:VoxelGame.World.Data.Faces.LEFT
+  id: LEFT
+  parent: VoxelGame.World.Data.Faces
+  langs:
+  - csharp
+  - vb
+  name: LEFT
+  nameWithType: Faces.LEFT
+  fullName: VoxelGame.World.Data.Faces.LEFT
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/Faces.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: LEFT
+    path: VoxelGame/World/Data/Faces.cs
+    startLine: 6
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: LEFT = 2
+    return:
+      type: VoxelGame.World.Data.Faces
+- uid: VoxelGame.World.Data.Faces.RIGHT
+  commentId: F:VoxelGame.World.Data.Faces.RIGHT
+  id: RIGHT
+  parent: VoxelGame.World.Data.Faces
+  langs:
+  - csharp
+  - vb
+  name: RIGHT
+  nameWithType: Faces.RIGHT
+  fullName: VoxelGame.World.Data.Faces.RIGHT
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/Faces.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: RIGHT
+    path: VoxelGame/World/Data/Faces.cs
+    startLine: 7
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: RIGHT = 3
+    return:
+      type: VoxelGame.World.Data.Faces
+- uid: VoxelGame.World.Data.Faces.TOP
+  commentId: F:VoxelGame.World.Data.Faces.TOP
+  id: TOP
+  parent: VoxelGame.World.Data.Faces
+  langs:
+  - csharp
+  - vb
+  name: TOP
+  nameWithType: Faces.TOP
+  fullName: VoxelGame.World.Data.Faces.TOP
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/Faces.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: TOP
+    path: VoxelGame/World/Data/Faces.cs
+    startLine: 8
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: TOP = 4
+    return:
+      type: VoxelGame.World.Data.Faces
+- uid: VoxelGame.World.Data.Faces.BOTTOM
+  commentId: F:VoxelGame.World.Data.Faces.BOTTOM
+  id: BOTTOM
+  parent: VoxelGame.World.Data.Faces
+  langs:
+  - csharp
+  - vb
+  name: BOTTOM
+  nameWithType: Faces.BOTTOM
+  fullName: VoxelGame.World.Data.Faces.BOTTOM
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/World/Data/Faces.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: BOTTOM
+    path: VoxelGame/World/Data/Faces.cs
+    startLine: 9
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.World.Data
+  syntax:
+    content: BOTTOM = 5
+    return:
+      type: VoxelGame.World.Data.Faces
+references:
+- uid: VoxelGame.World.Data
+  commentId: N:VoxelGame.World.Data
+  href: VoxelGame.html
+  name: VoxelGame.World.Data
+  nameWithType: VoxelGame.World.Data
+  fullName: VoxelGame.World.Data
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.World
+    name: World
+    href: VoxelGame.World.html
+  - name: .
+  - uid: VoxelGame.World.Data
+    name: Data
+    href: VoxelGame.World.Data.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.World
+    name: World
+    href: VoxelGame.World.html
+  - name: .
+  - uid: VoxelGame.World.Data
+    name: Data
+    href: VoxelGame.World.Data.html
+- uid: VoxelGame.World.Data.Faces
+  commentId: T:VoxelGame.World.Data.Faces
+  parent: VoxelGame.World.Data
+  href: VoxelGame.World.Data.Faces.html
+  name: Faces
+  nameWithType: Faces
+  fullName: VoxelGame.World.Data.Faces

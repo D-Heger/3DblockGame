@@ -1,0 +1,106 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem.Systems
+  commentId: N:VoxelGame.EntityComponentSystem.Systems
+  id: VoxelGame.EntityComponentSystem.Systems
+  children:
+  - VoxelGame.EntityComponentSystem.Systems.ChunkData
+  - VoxelGame.EntityComponentSystem.Systems.ChunkGenerationSystem
+  - VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  - VoxelGame.EntityComponentSystem.Systems.DefaultTextureProvider
+  - VoxelGame.EntityComponentSystem.Systems.ITextureProvider
+  - VoxelGame.EntityComponentSystem.Systems.InputSystem
+  - VoxelGame.EntityComponentSystem.Systems.RenderSystem
+  - VoxelGame.EntityComponentSystem.Systems.WorldSystem
+  langs:
+  - csharp
+  - vb
+  name: VoxelGame.EntityComponentSystem.Systems
+  nameWithType: VoxelGame.EntityComponentSystem.Systems
+  fullName: VoxelGame.EntityComponentSystem.Systems
+  type: Namespace
+  assemblies:
+  - VoxelGame
+references:
+- uid: VoxelGame.EntityComponentSystem.Systems.ITextureProvider
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.ITextureProvider
+  parent: VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.EntityComponentSystem.Systems.ITextureProvider.html
+  name: ITextureProvider
+  nameWithType: ITextureProvider
+  fullName: VoxelGame.EntityComponentSystem.Systems.ITextureProvider
+- uid: VoxelGame.EntityComponentSystem.Systems.DefaultTextureProvider
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.DefaultTextureProvider
+  href: VoxelGame.EntityComponentSystem.Systems.DefaultTextureProvider.html
+  name: DefaultTextureProvider
+  nameWithType: DefaultTextureProvider
+  fullName: VoxelGame.EntityComponentSystem.Systems.DefaultTextureProvider
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkGenerationSystem
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.ChunkGenerationSystem
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkGenerationSystem.html
+  name: ChunkGenerationSystem
+  nameWithType: ChunkGenerationSystem
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkGenerationSystem
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+  parent: VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkPosition.html
+  name: ChunkPosition
+  nameWithType: ChunkPosition
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkPosition
+- uid: VoxelGame.EntityComponentSystem.Systems.InputSystem
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.InputSystem
+  href: VoxelGame.EntityComponentSystem.Systems.InputSystem.html
+  name: InputSystem
+  nameWithType: InputSystem
+  fullName: VoxelGame.EntityComponentSystem.Systems.InputSystem
+- uid: VoxelGame.EntityComponentSystem.Systems.RenderSystem
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.RenderSystem
+  href: VoxelGame.EntityComponentSystem.Systems.RenderSystem.html
+  name: RenderSystem
+  nameWithType: RenderSystem
+  fullName: VoxelGame.EntityComponentSystem.Systems.RenderSystem
+- uid: VoxelGame.EntityComponentSystem.Systems.WorldSystem
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.WorldSystem
+  parent: VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.EntityComponentSystem.Systems.WorldSystem.html
+  name: WorldSystem
+  nameWithType: WorldSystem
+  fullName: VoxelGame.EntityComponentSystem.Systems.WorldSystem
+- uid: VoxelGame.EntityComponentSystem.Systems.ChunkData
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.ChunkData
+  parent: VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.EntityComponentSystem.Systems.ChunkData.html
+  name: ChunkData
+  nameWithType: ChunkData
+  fullName: VoxelGame.EntityComponentSystem.Systems.ChunkData
+- uid: VoxelGame.EntityComponentSystem.Systems
+  commentId: N:VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem.Systems
+  nameWithType: VoxelGame.EntityComponentSystem.Systems
+  fullName: VoxelGame.EntityComponentSystem.Systems
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Systems
+    name: Systems
+    href: VoxelGame.EntityComponentSystem.Systems.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Systems
+    name: Systems
+    href: VoxelGame.EntityComponentSystem.Systems.html

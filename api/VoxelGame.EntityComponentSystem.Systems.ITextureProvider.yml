@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem.Systems.ITextureProvider
+  commentId: T:VoxelGame.EntityComponentSystem.Systems.ITextureProvider
+  id: ITextureProvider
+  parent: VoxelGame.EntityComponentSystem.Systems
+  children:
+  - VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture(System.String)
+  langs:
+  - csharp
+  - vb
+  name: ITextureProvider
+  nameWithType: ITextureProvider
+  fullName: VoxelGame.EntityComponentSystem.Systems.ITextureProvider
+  type: Interface
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: ITextureProvider
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 14
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: public interface ITextureProvider
+    content.vb: Public Interface ITextureProvider
+- uid: VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture(System.String)
+  commentId: M:VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture(System.String)
+  id: GetTexture(System.String)
+  parent: VoxelGame.EntityComponentSystem.Systems.ITextureProvider
+  langs:
+  - csharp
+  - vb
+  name: GetTexture(string)
+  nameWithType: ITextureProvider.GetTexture(string)
+  fullName: VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture(string)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetTexture
+    path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
+    startLine: 16
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Systems
+  syntax:
+    content: Texture GetTexture(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: VoxelGame.GraphicsPipeline.Texture
+    content.vb: Function GetTexture(name As String) As Texture
+  overload: VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture*
+  nameWithType.vb: ITextureProvider.GetTexture(String)
+  fullName.vb: VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture(String)
+  name.vb: GetTexture(String)
+references:
+- uid: VoxelGame.EntityComponentSystem.Systems
+  commentId: N:VoxelGame.EntityComponentSystem.Systems
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem.Systems
+  nameWithType: VoxelGame.EntityComponentSystem.Systems
+  fullName: VoxelGame.EntityComponentSystem.Systems
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Systems
+    name: Systems
+    href: VoxelGame.EntityComponentSystem.Systems.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Systems
+    name: Systems
+    href: VoxelGame.EntityComponentSystem.Systems.html
+- uid: VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture
+  href: VoxelGame.EntityComponentSystem.Systems.ITextureProvider.html#VoxelGame_EntityComponentSystem_Systems_ITextureProvider_GetTexture_System_String_
+  name: GetTexture
+  nameWithType: ITextureProvider.GetTexture
+  fullName: VoxelGame.EntityComponentSystem.Systems.ITextureProvider.GetTexture
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: VoxelGame.GraphicsPipeline.Texture
+  commentId: T:VoxelGame.GraphicsPipeline.Texture
+  parent: VoxelGame.GraphicsPipeline
+  href: VoxelGame.GraphicsPipeline.Texture.html
+  name: Texture
+  nameWithType: Texture
+  fullName: VoxelGame.GraphicsPipeline.Texture
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: VoxelGame.GraphicsPipeline
+  commentId: N:VoxelGame.GraphicsPipeline
+  href: VoxelGame.html
+  name: VoxelGame.GraphicsPipeline
+  nameWithType: VoxelGame.GraphicsPipeline
+  fullName: VoxelGame.GraphicsPipeline
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.GraphicsPipeline
+    name: GraphicsPipeline
+    href: VoxelGame.GraphicsPipeline.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.GraphicsPipeline
+    name: GraphicsPipeline
+    href: VoxelGame.GraphicsPipeline.html

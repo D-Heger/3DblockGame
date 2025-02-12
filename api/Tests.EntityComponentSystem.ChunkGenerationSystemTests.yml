@@ -1,0 +1,752 @@
+### YamlMime:ManagedReference
+items:
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  commentId: T:Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  id: ChunkGenerationSystemTests
+  parent: Tests.EntityComponentSystem
+  children:
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.#ctor
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.Dispose
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+  - Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+  langs:
+  - csharp
+  - vb
+  name: ChunkGenerationSystemTests
+  nameWithType: ChunkGenerationSystemTests
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  type: Class
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: ChunkGenerationSystemTests
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 14
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Test suite for the ChunkGenerationSystem class. Verifies chunk generation, management,
+
+    and cleanup functionality in the voxel world.
+  example: []
+  syntax:
+    content: 'public class ChunkGenerationSystemTests : IDisposable'
+    content.vb: Public Class ChunkGenerationSystemTests Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.#ctor
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.#ctor
+  id: '#ctor'
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: ChunkGenerationSystemTests()
+  nameWithType: ChunkGenerationSystemTests.ChunkGenerationSystemTests()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGenerationSystemTests()
+  type: Constructor
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: .ctor
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 44
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Initializes a new instance of the ChunkGenerationSystemTests class.
+
+    Sets up the required systems for testing chunk generation.
+  example: []
+  syntax:
+    content: public ChunkGenerationSystemTests()
+    content.vb: Public Sub New()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.#ctor*
+  nameWithType.vb: ChunkGenerationSystemTests.New()
+  fullName.vb: Tests.EntityComponentSystem.ChunkGenerationSystemTests.New()
+  name.vb: New()
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.Dispose
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.Dispose
+  id: Dispose
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ChunkGenerationSystemTests.Dispose()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.Dispose()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Dispose
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 54
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Cleans up resources used by the test class.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks
+  id: GenerateInitialChunks_EnqueuesCorrectChunks
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: GenerateInitialChunks_EnqueuesCorrectChunks()
+  nameWithType: ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GenerateInitialChunks_EnqueuesCorrectChunks
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 63
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Verifies that initial chunk generation correctly enqueues the expected number
+
+    of chunks in a square grid around the origin position.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void GenerateInitialChunks_EnqueuesCorrectChunks()
+    content.vb: >-
+      <Fact>
+
+      Public Sub GenerateInitialChunks_EnqueuesCorrectChunks()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+  id: UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition()
+  nameWithType: ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 91
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Tests that chunks are properly added and removed as the player moves through
+
+    the world, maintaining the correct render distance around the player.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition()
+    content.vb: >-
+      <Fact>
+
+      Public Sub UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents
+  id: ChunkGeneration_CreatesCorrectEntityComponents
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: ChunkGeneration_CreatesCorrectEntityComponents()
+  nameWithType: ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: ChunkGeneration_CreatesCorrectEntityComponents
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 135
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Verifies that generated chunks have all required components (Mesh, Transform, Texture)
+
+    and that the components contain correct initial values.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void ChunkGeneration_CreatesCorrectEntityComponents()
+    content.vb: >-
+      <Fact>
+
+      Public Sub ChunkGeneration_CreatesCorrectEntityComponents()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+  id: UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: UpdateChunks_WithSamePosition_DoesNotRegenerateChunks()
+  nameWithType: ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 172
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Ensures that updating chunks with the same player position does not trigger
+
+    unnecessary chunk regeneration, optimizing performance.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void UpdateChunks_WithSamePosition_DoesNotRegenerateChunks()
+    content.vb: >-
+      <Fact>
+
+      Public Sub UpdateChunks_WithSamePosition_DoesNotRegenerateChunks()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+  id: UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount()
+  nameWithType: ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 211
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Verifies that changing the render distance properly updates the number of
+
+    visible chunks around the player.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount()
+    content.vb: >-
+      <Fact>
+
+      Public Sub UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly
+  id: RemoveChunk_DisposesComponentsCorrectly
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: RemoveChunk_DisposesComponentsCorrectly()
+  nameWithType: ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: RemoveChunk_DisposesComponentsCorrectly
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 250
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Tests that chunk removal properly disposes of all associated components
+
+    and removes entities from the entity manager.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RemoveChunk_DisposesComponentsCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RemoveChunk_DisposesComponentsCorrectly()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+  commentId: M:Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+  id: GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+  parent: Tests.EntityComponentSystem.ChunkGenerationSystemTests
+  langs:
+  - csharp
+  - vb
+  name: GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly()
+  nameWithType: ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly()
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+    path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
+    startLine: 292
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Verifies that the system can handle generating a larger number of chunks
+
+    concurrently without errors or memory issues.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly()
+  overload: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+references:
+- uid: Tests.EntityComponentSystem
+  commentId: N:Tests.EntityComponentSystem
+  href: Tests.html
+  name: Tests.EntityComponentSystem
+  nameWithType: Tests.EntityComponentSystem
+  fullName: Tests.EntityComponentSystem
+  spec.csharp:
+  - uid: Tests
+    name: Tests
+    href: Tests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
+  spec.vb:
+  - uid: Tests
+    name: Tests
+    href: Tests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.#ctor*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.#ctor
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests__ctor
+  name: ChunkGenerationSystemTests
+  nameWithType: ChunkGenerationSystemTests.ChunkGenerationSystemTests
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGenerationSystemTests
+  nameWithType.vb: ChunkGenerationSystemTests.New
+  fullName.vb: Tests.EntityComponentSystem.ChunkGenerationSystemTests.New
+  name.vb: New
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.Dispose*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.Dispose
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests_Dispose
+  name: Dispose
+  nameWithType: ChunkGenerationSystemTests.Dispose
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests_GenerateInitialChunks_EnqueuesCorrectChunks
+  name: GenerateInitialChunks_EnqueuesCorrectChunks
+  nameWithType: ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_EnqueuesCorrectChunks
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests_UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+  name: UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+  nameWithType: ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests_ChunkGeneration_CreatesCorrectEntityComponents
+  name: ChunkGeneration_CreatesCorrectEntityComponents
+  nameWithType: ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.ChunkGeneration_CreatesCorrectEntityComponents
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests_UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+  name: UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+  nameWithType: ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests_UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+  name: UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+  nameWithType: ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests_RemoveChunk_DisposesComponentsCorrectly
+  name: RemoveChunk_DisposesComponentsCorrectly
+  nameWithType: ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.RemoveChunk_DisposesComponentsCorrectly
+- uid: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly*
+  commentId: Overload:Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+  href: Tests.EntityComponentSystem.ChunkGenerationSystemTests.html#Tests_EntityComponentSystem_ChunkGenerationSystemTests_GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+  name: GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+  nameWithType: ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
+  fullName: Tests.EntityComponentSystem.ChunkGenerationSystemTests.GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly

@@ -412,4 +412,18 @@ FodyWeavers.xsd
 .history
 .ionide
 
+### DocFx ###
+# DocFx output directory
+_site/
+
+# DocFx metadata directory
+obj/
+_api/
+
+# DocFx temporary files
+.manifest
+*.cache
+log.txt
+xrefmap.yml
+
 # End of https://www.toptal.com/developers/gitignore/api/csharp,visualstudiocode

@@ -1,0 +1,69 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem
+  commentId: N:VoxelGame.EntityComponentSystem
+  id: VoxelGame.EntityComponentSystem
+  children:
+  - VoxelGame.EntityComponentSystem.Component
+  - VoxelGame.EntityComponentSystem.Entity
+  - VoxelGame.EntityComponentSystem.EntityManager
+  - VoxelGame.EntityComponentSystem.System
+  langs:
+  - csharp
+  - vb
+  name: VoxelGame.EntityComponentSystem
+  nameWithType: VoxelGame.EntityComponentSystem
+  fullName: VoxelGame.EntityComponentSystem
+  type: Namespace
+  assemblies:
+  - VoxelGame
+references:
+- uid: VoxelGame.EntityComponentSystem.Component
+  commentId: T:VoxelGame.EntityComponentSystem.Component
+  parent: VoxelGame.EntityComponentSystem
+  href: VoxelGame.EntityComponentSystem.Component.html
+  name: Component
+  nameWithType: Component
+  fullName: VoxelGame.EntityComponentSystem.Component
+- uid: VoxelGame.EntityComponentSystem.Entity
+  commentId: T:VoxelGame.EntityComponentSystem.Entity
+  href: VoxelGame.EntityComponentSystem.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: VoxelGame.EntityComponentSystem.Entity
+- uid: VoxelGame.EntityComponentSystem.EntityManager
+  commentId: T:VoxelGame.EntityComponentSystem.EntityManager
+  parent: VoxelGame.EntityComponentSystem
+  href: VoxelGame.EntityComponentSystem.EntityManager.html
+  name: EntityManager
+  nameWithType: EntityManager
+  fullName: VoxelGame.EntityComponentSystem.EntityManager
+- uid: VoxelGame.EntityComponentSystem.System
+  commentId: T:VoxelGame.EntityComponentSystem.System
+  parent: VoxelGame.EntityComponentSystem
+  href: VoxelGame.EntityComponentSystem.System.html
+  name: System
+  nameWithType: System
+  fullName: VoxelGame.EntityComponentSystem.System
+- uid: VoxelGame.EntityComponentSystem
+  commentId: N:VoxelGame.EntityComponentSystem
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem
+  nameWithType: VoxelGame.EntityComponentSystem
+  fullName: VoxelGame.EntityComponentSystem
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html

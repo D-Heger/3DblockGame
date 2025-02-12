@@ -1,0 +1,771 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  commentId: T:VoxelGame.EntityComponentSystem.Components.CameraComponent
+  id: CameraComponent
+  parent: VoxelGame.EntityComponentSystem.Components
+  children:
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.#ctor
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.FirstMove
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.Front
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix(System.Single)
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.GetViewMatrix(OpenTK.Mathematics.Vector3)
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.LastMousePosition
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.Pitch
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.Right
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.Sensitivity
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.Speed
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.Up
+  - VoxelGame.EntityComponentSystem.Components.CameraComponent.Yaw
+  langs:
+  - csharp
+  - vb
+  name: CameraComponent
+  nameWithType: CameraComponent
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  type: Class
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: CameraComponent
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 4
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: 'public class CameraComponent : Component'
+    content.vb: Public Class CameraComponent Inherits Component
+  inheritance:
+  - System.Object
+  - VoxelGame.EntityComponentSystem.Component
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.Speed
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.Speed
+  id: Speed
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: Speed
+  nameWithType: CameraComponent.Speed
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.Speed
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Speed
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 6
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public float Speed
+    return:
+      type: System.Single
+    content.vb: Public Speed As Single
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.Sensitivity
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.Sensitivity
+  id: Sensitivity
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: Sensitivity
+  nameWithType: CameraComponent.Sensitivity
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.Sensitivity
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Sensitivity
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 7
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public float Sensitivity
+    return:
+      type: System.Single
+    content.vb: Public Sensitivity As Single
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.Front
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.Front
+  id: Front
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: Front
+  nameWithType: CameraComponent.Front
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.Front
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Front
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 8
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public Vector3 Front
+    return:
+      type: OpenTK.Mathematics.Vector3
+    content.vb: Public Front As Vector3
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.Up
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.Up
+  id: Up
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: Up
+  nameWithType: CameraComponent.Up
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.Up
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Up
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 9
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public Vector3 Up
+    return:
+      type: OpenTK.Mathematics.Vector3
+    content.vb: Public Up As Vector3
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.Right
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.Right
+  id: Right
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: Right
+  nameWithType: CameraComponent.Right
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.Right
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Right
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 10
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public Vector3 Right
+    return:
+      type: OpenTK.Mathematics.Vector3
+    content.vb: Public Right As Vector3
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.Pitch
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.Pitch
+  id: Pitch
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: Pitch
+  nameWithType: CameraComponent.Pitch
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.Pitch
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Pitch
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 12
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public float Pitch
+    return:
+      type: System.Single
+    content.vb: Public Pitch As Single
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.Yaw
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.Yaw
+  id: Yaw
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: Yaw
+  nameWithType: CameraComponent.Yaw
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.Yaw
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Yaw
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 13
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public float Yaw
+    return:
+      type: System.Single
+    content.vb: Public Yaw As Single
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.FirstMove
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.FirstMove
+  id: FirstMove
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: FirstMove
+  nameWithType: CameraComponent.FirstMove
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.FirstMove
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: FirstMove
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 15
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public bool FirstMove
+    return:
+      type: System.Boolean
+    content.vb: Public FirstMove As Boolean
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.LastMousePosition
+  commentId: F:VoxelGame.EntityComponentSystem.Components.CameraComponent.LastMousePosition
+  id: LastMousePosition
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: LastMousePosition
+  nameWithType: CameraComponent.LastMousePosition
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.LastMousePosition
+  type: Field
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: LastMousePosition
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 16
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public Vector2 LastMousePosition
+    return:
+      type: OpenTK.Mathematics.Vector2
+    content.vb: Public LastMousePosition As Vector2
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.#ctor
+  commentId: M:VoxelGame.EntityComponentSystem.Components.CameraComponent.#ctor
+  id: '#ctor'
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: CameraComponent()
+  nameWithType: CameraComponent.CameraComponent()
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.CameraComponent()
+  type: Constructor
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: .ctor
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 18
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public CameraComponent()
+    content.vb: Public Sub New()
+  overload: VoxelGame.EntityComponentSystem.Components.CameraComponent.#ctor*
+  nameWithType.vb: CameraComponent.New()
+  fullName.vb: VoxelGame.EntityComponentSystem.Components.CameraComponent.New()
+  name.vb: New()
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetViewMatrix(OpenTK.Mathematics.Vector3)
+  commentId: M:VoxelGame.EntityComponentSystem.Components.CameraComponent.GetViewMatrix(OpenTK.Mathematics.Vector3)
+  id: GetViewMatrix(OpenTK.Mathematics.Vector3)
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: GetViewMatrix(Vector3)
+  nameWithType: CameraComponent.GetViewMatrix(Vector3)
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetViewMatrix(OpenTK.Mathematics.Vector3)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetViewMatrix
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 20
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public Matrix4 GetViewMatrix(Vector3 position)
+    parameters:
+    - id: position
+      type: OpenTK.Mathematics.Vector3
+    return:
+      type: OpenTK.Mathematics.Matrix4
+    content.vb: Public Function GetViewMatrix(position As Vector3) As Matrix4
+  overload: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetViewMatrix*
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix(System.Single)
+  commentId: M:VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix(System.Single)
+  id: GetProjectionMatrix(System.Single)
+  parent: VoxelGame.EntityComponentSystem.Components.CameraComponent
+  langs:
+  - csharp
+  - vb
+  name: GetProjectionMatrix(float)
+  nameWithType: CameraComponent.GetProjectionMatrix(float)
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix(float)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetProjectionMatrix
+    path: VoxelGame/EntityComponentSystem/Components/CameraComponent.cs
+    startLine: 25
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem.Components
+  syntax:
+    content: public Matrix4 GetProjectionMatrix(float aspectRatio)
+    parameters:
+    - id: aspectRatio
+      type: System.Single
+    return:
+      type: OpenTK.Mathematics.Matrix4
+    content.vb: Public Function GetProjectionMatrix(aspectRatio As Single) As Matrix4
+  overload: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix*
+  nameWithType.vb: CameraComponent.GetProjectionMatrix(Single)
+  fullName.vb: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix(Single)
+  name.vb: GetProjectionMatrix(Single)
+references:
+- uid: VoxelGame.EntityComponentSystem.Components
+  commentId: N:VoxelGame.EntityComponentSystem.Components
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem.Components
+  nameWithType: VoxelGame.EntityComponentSystem.Components
+  fullName: VoxelGame.EntityComponentSystem.Components
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Components
+    name: Components
+    href: VoxelGame.EntityComponentSystem.Components.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem.Components
+    name: Components
+    href: VoxelGame.EntityComponentSystem.Components.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: VoxelGame.EntityComponentSystem.Component
+  commentId: T:VoxelGame.EntityComponentSystem.Component
+  parent: VoxelGame.EntityComponentSystem
+  href: VoxelGame.EntityComponentSystem.Component.html
+  name: Component
+  nameWithType: Component
+  fullName: VoxelGame.EntityComponentSystem.Component
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: VoxelGame.EntityComponentSystem
+  commentId: N:VoxelGame.EntityComponentSystem
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem
+  nameWithType: VoxelGame.EntityComponentSystem
+  fullName: VoxelGame.EntityComponentSystem
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: OpenTK.Mathematics.Vector3
+  commentId: T:OpenTK.Mathematics.Vector3
+  parent: OpenTK.Mathematics
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: OpenTK.Mathematics.Vector3
+- uid: OpenTK.Mathematics
+  commentId: N:OpenTK.Mathematics
+  isExternal: true
+  name: OpenTK.Mathematics
+  nameWithType: OpenTK.Mathematics
+  fullName: OpenTK.Mathematics
+  spec.csharp:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Mathematics
+    name: Mathematics
+    isExternal: true
+  spec.vb:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Mathematics
+    name: Mathematics
+    isExternal: true
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: OpenTK.Mathematics.Vector2
+  commentId: T:OpenTK.Mathematics.Vector2
+  parent: OpenTK.Mathematics
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: OpenTK.Mathematics.Vector2
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.#ctor*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Components.CameraComponent.#ctor
+  href: VoxelGame.EntityComponentSystem.Components.CameraComponent.html#VoxelGame_EntityComponentSystem_Components_CameraComponent__ctor
+  name: CameraComponent
+  nameWithType: CameraComponent.CameraComponent
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.CameraComponent
+  nameWithType.vb: CameraComponent.New
+  fullName.vb: VoxelGame.EntityComponentSystem.Components.CameraComponent.New
+  name.vb: New
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetViewMatrix*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Components.CameraComponent.GetViewMatrix
+  href: VoxelGame.EntityComponentSystem.Components.CameraComponent.html#VoxelGame_EntityComponentSystem_Components_CameraComponent_GetViewMatrix_OpenTK_Mathematics_Vector3_
+  name: GetViewMatrix
+  nameWithType: CameraComponent.GetViewMatrix
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetViewMatrix
+- uid: OpenTK.Mathematics.Matrix4
+  commentId: T:OpenTK.Mathematics.Matrix4
+  parent: OpenTK.Mathematics
+  isExternal: true
+  name: Matrix4
+  nameWithType: Matrix4
+  fullName: OpenTK.Mathematics.Matrix4
+- uid: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix*
+  commentId: Overload:VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix
+  href: VoxelGame.EntityComponentSystem.Components.CameraComponent.html#VoxelGame_EntityComponentSystem_Components_CameraComponent_GetProjectionMatrix_System_Single_
+  name: GetProjectionMatrix
+  nameWithType: CameraComponent.GetProjectionMatrix
+  fullName: VoxelGame.EntityComponentSystem.Components.CameraComponent.GetProjectionMatrix

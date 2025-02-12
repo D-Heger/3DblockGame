@@ -1,0 +1,647 @@
+### YamlMime:ManagedReference
+items:
+- uid: Tests.EntityComponentSystem.WorldSystemTests
+  commentId: T:Tests.EntityComponentSystem.WorldSystemTests
+  id: WorldSystemTests
+  parent: Tests.EntityComponentSystem
+  children:
+  - Tests.EntityComponentSystem.WorldSystemTests.#ctor
+  - Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+  - Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
+  - Tests.EntityComponentSystem.WorldSystemTests.Dispose
+  - Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+  - Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+  - Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
+  langs:
+  - csharp
+  - vb
+  name: WorldSystemTests
+  nameWithType: WorldSystemTests
+  fullName: Tests.EntityComponentSystem.WorldSystemTests
+  type: Class
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/WorldSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: WorldSystemTests
+    path: Tests/EntityComponentSystem/WorldSystemTests.cs
+    startLine: 10
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Test suite for the WorldSystem class. Verifies chunk storage, retrieval,
+
+    and management functionality in the voxel world.
+  example: []
+  syntax:
+    content: 'public class WorldSystemTests : IDisposable'
+    content.vb: Public Class WorldSystemTests Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Tests.EntityComponentSystem.WorldSystemTests.#ctor
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.#ctor
+  id: '#ctor'
+  parent: Tests.EntityComponentSystem.WorldSystemTests
+  langs:
+  - csharp
+  - vb
+  name: WorldSystemTests()
+  nameWithType: WorldSystemTests.WorldSystemTests()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.WorldSystemTests()
+  type: Constructor
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/WorldSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: .ctor
+    path: Tests/EntityComponentSystem/WorldSystemTests.cs
+    startLine: 18
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Initializes a new instance of the WorldSystemTests class.
+
+    Sets up a fresh WorldSystem for each test.
+  example: []
+  syntax:
+    content: public WorldSystemTests()
+    content.vb: Public Sub New()
+  overload: Tests.EntityComponentSystem.WorldSystemTests.#ctor*
+  nameWithType.vb: WorldSystemTests.New()
+  fullName.vb: Tests.EntityComponentSystem.WorldSystemTests.New()
+  name.vb: New()
+- uid: Tests.EntityComponentSystem.WorldSystemTests.Dispose
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.Dispose
+  id: Dispose
+  parent: Tests.EntityComponentSystem.WorldSystemTests
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: WorldSystemTests.Dispose()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.Dispose()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/WorldSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Dispose
+    path: Tests/EntityComponentSystem/WorldSystemTests.cs
+    startLine: 26
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Cleans up resources used by the test class.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Tests.EntityComponentSystem.WorldSystemTests.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+  id: AddChunk_StoresChunkData
+  parent: Tests.EntityComponentSystem.WorldSystemTests
+  langs:
+  - csharp
+  - vb
+  name: AddChunk_StoresChunkData()
+  nameWithType: WorldSystemTests.AddChunk_StoresChunkData()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/WorldSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: AddChunk_StoresChunkData
+    path: Tests/EntityComponentSystem/WorldSystemTests.cs
+    startLine: 34
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Verifies that adding a chunk correctly stores its data and can be retrieved.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void AddChunk_StoresChunkData()
+    content.vb: >-
+      <Fact>
+
+      Public Sub AddChunk_StoresChunkData()
+  overload: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
+  id: RemoveChunk_RemovesChunkData
+  parent: Tests.EntityComponentSystem.WorldSystemTests
+  langs:
+  - csharp
+  - vb
+  name: RemoveChunk_RemovesChunkData()
+  nameWithType: WorldSystemTests.RemoveChunk_RemovesChunkData()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/WorldSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: RemoveChunk_RemovesChunkData
+    path: Tests/EntityComponentSystem/WorldSystemTests.cs
+    startLine: 50
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Verifies that removing a chunk properly eliminates it from the world system.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RemoveChunk_RemovesChunkData()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RemoveChunk_RemovesChunkData()
+  overload: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+  id: GetAllChunkPositions_ReturnsCorrectPositions
+  parent: Tests.EntityComponentSystem.WorldSystemTests
+  langs:
+  - csharp
+  - vb
+  name: GetAllChunkPositions_ReturnsCorrectPositions()
+  nameWithType: WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/WorldSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetAllChunkPositions_ReturnsCorrectPositions
+    path: Tests/EntityComponentSystem/WorldSystemTests.cs
+    startLine: 67
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Tests that getting all chunk positions returns the correct set of positions
+
+    for all chunks in the world.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void GetAllChunkPositions_ReturnsCorrectPositions()
+    content.vb: >-
+      <Fact>
+
+      Public Sub GetAllChunkPositions_ReturnsCorrectPositions()
+  overload: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+  id: GetChunk_NonExistentPosition_ReturnsNull
+  parent: Tests.EntityComponentSystem.WorldSystemTests
+  langs:
+  - csharp
+  - vb
+  name: GetChunk_NonExistentPosition_ReturnsNull()
+  nameWithType: WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/WorldSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetChunk_NonExistentPosition_ReturnsNull
+    path: Tests/EntityComponentSystem/WorldSystemTests.cs
+    startLine: 87
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: Verifies that attempting to get a non-existent chunk returns null.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void GetChunk_NonExistentPosition_ReturnsNull()
+    content.vb: >-
+      <Fact>
+
+      Public Sub GetChunk_NonExistentPosition_ReturnsNull()
+  overload: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
+  commentId: M:Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
+  id: AddChunk_UpdatesExistingChunk
+  parent: Tests.EntityComponentSystem.WorldSystemTests
+  langs:
+  - csharp
+  - vb
+  name: AddChunk_UpdatesExistingChunk()
+  nameWithType: WorldSystemTests.AddChunk_UpdatesExistingChunk()
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk()
+  type: Method
+  source:
+    remote:
+      path: Tests/EntityComponentSystem/WorldSystemTests.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: AddChunk_UpdatesExistingChunk
+    path: Tests/EntityComponentSystem/WorldSystemTests.cs
+    startLine: 101
+  assemblies:
+  - Tests
+  namespace: Tests.EntityComponentSystem
+  summary: >-
+    Tests that adding a chunk to an existing position correctly updates
+
+    the stored chunk data.
+  example: []
+  syntax:
+    content: >-
+      [Fact]
+
+      public void AddChunk_UpdatesExistingChunk()
+    content.vb: >-
+      <Fact>
+
+      Public Sub AddChunk_UpdatesExistingChunk()
+  overload: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+references:
+- uid: Tests.EntityComponentSystem
+  commentId: N:Tests.EntityComponentSystem
+  href: Tests.html
+  name: Tests.EntityComponentSystem
+  nameWithType: Tests.EntityComponentSystem
+  fullName: Tests.EntityComponentSystem
+  spec.csharp:
+  - uid: Tests
+    name: Tests
+    href: Tests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
+  spec.vb:
+  - uid: Tests
+    name: Tests
+    href: Tests.html
+  - name: .
+  - uid: Tests.EntityComponentSystem
+    name: EntityComponentSystem
+    href: Tests.EntityComponentSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Tests.EntityComponentSystem.WorldSystemTests.#ctor*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.#ctor
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests__ctor
+  name: WorldSystemTests
+  nameWithType: WorldSystemTests.WorldSystemTests
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.WorldSystemTests
+  nameWithType.vb: WorldSystemTests.New
+  fullName.vb: Tests.EntityComponentSystem.WorldSystemTests.New
+  name.vb: New
+- uid: Tests.EntityComponentSystem.WorldSystemTests.Dispose*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.Dispose
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_Dispose
+  name: Dispose
+  nameWithType: WorldSystemTests.Dispose
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_AddChunk_StoresChunkData
+  name: AddChunk_StoresChunkData
+  nameWithType: WorldSystemTests.AddChunk_StoresChunkData
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_StoresChunkData
+- uid: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_RemoveChunk_RemovesChunkData
+  name: RemoveChunk_RemovesChunkData
+  nameWithType: WorldSystemTests.RemoveChunk_RemovesChunkData
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.RemoveChunk_RemovesChunkData
+- uid: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_GetAllChunkPositions_ReturnsCorrectPositions
+  name: GetAllChunkPositions_ReturnsCorrectPositions
+  nameWithType: WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.GetAllChunkPositions_ReturnsCorrectPositions
+- uid: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_GetChunk_NonExistentPosition_ReturnsNull
+  name: GetChunk_NonExistentPosition_ReturnsNull
+  nameWithType: WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.GetChunk_NonExistentPosition_ReturnsNull
+- uid: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk*
+  commentId: Overload:Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk
+  href: Tests.EntityComponentSystem.WorldSystemTests.html#Tests_EntityComponentSystem_WorldSystemTests_AddChunk_UpdatesExistingChunk
+  name: AddChunk_UpdatesExistingChunk
+  nameWithType: WorldSystemTests.AddChunk_UpdatesExistingChunk
+  fullName: Tests.EntityComponentSystem.WorldSystemTests.AddChunk_UpdatesExistingChunk

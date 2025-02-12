@@ -1,0 +1,1049 @@
+### YamlMime:ManagedReference
+items:
+- uid: VoxelGame.EntityComponentSystem.EntityManager
+  commentId: T:VoxelGame.EntityComponentSystem.EntityManager
+  id: EntityManager
+  parent: VoxelGame.EntityComponentSystem
+  children:
+  - VoxelGame.EntityComponentSystem.EntityManager.AddComponent``1(System.Int32,``0)
+  - VoxelGame.EntityComponentSystem.EntityManager.CreateComponent``1
+  - VoxelGame.EntityComponentSystem.EntityManager.CreateEntity
+  - VoxelGame.EntityComponentSystem.EntityManager.Dispose
+  - VoxelGame.EntityComponentSystem.EntityManager.EntityCount
+  - VoxelGame.EntityComponentSystem.EntityManager.EntityExists(System.Int32)
+  - VoxelGame.EntityComponentSystem.EntityManager.GetComponent``1(System.Int32)
+  - VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent``1
+  - VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents``2
+  - VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents``3
+  - VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition(System.Int32)
+  - VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent``1
+  - VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent``1(System.Int32)
+  - VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity(System.Int32)
+  - VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition(System.Int32,OpenTK.Mathematics.Vector3)
+  langs:
+  - csharp
+  - vb
+  name: EntityManager
+  nameWithType: EntityManager
+  fullName: VoxelGame.EntityComponentSystem.EntityManager
+  type: Class
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: EntityManager
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 6
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: public class EntityManager
+    content.vb: Public Class EntityManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: VoxelGame.EntityComponentSystem.EntityManager.CreateEntity
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.CreateEntity
+  id: CreateEntity
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: CreateEntity()
+  nameWithType: EntityManager.CreateEntity()
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.CreateEntity()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: CreateEntity
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 30
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: public int CreateEntity()
+    return:
+      type: System.Int32
+    content.vb: Public Function CreateEntity() As Integer
+  overload: VoxelGame.EntityComponentSystem.EntityManager.CreateEntity*
+- uid: VoxelGame.EntityComponentSystem.EntityManager.EntityCount
+  commentId: P:VoxelGame.EntityComponentSystem.EntityManager.EntityCount
+  id: EntityCount
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: EntityCount
+  nameWithType: EntityManager.EntityCount
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.EntityCount
+  type: Property
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: EntityCount
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 39
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: public int EntityCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property EntityCount As Integer
+  overload: VoxelGame.EntityComponentSystem.EntityManager.EntityCount*
+- uid: VoxelGame.EntityComponentSystem.EntityManager.AddComponent``1(System.Int32,``0)
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.AddComponent``1(System.Int32,``0)
+  id: AddComponent``1(System.Int32,``0)
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: AddComponent<T>(int, T)
+  nameWithType: EntityManager.AddComponent<T>(int, T)
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.AddComponent<T>(int, T)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: AddComponent
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 41
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: 'public void AddComponent<T>(int entityId, T component) where T : Component'
+    parameters:
+    - id: entityId
+      type: System.Int32
+    - id: component
+      type: '{T}'
+    typeParameters:
+    - id: T
+    content.vb: Public Sub AddComponent(Of T As Component)(entityId As Integer, component As T)
+  overload: VoxelGame.EntityComponentSystem.EntityManager.AddComponent*
+  nameWithType.vb: EntityManager.AddComponent(Of T)(Integer, T)
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.AddComponent(Of T)(Integer, T)
+  name.vb: AddComponent(Of T)(Integer, T)
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetComponent``1(System.Int32)
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.GetComponent``1(System.Int32)
+  id: GetComponent``1(System.Int32)
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: GetComponent<T>(int)
+  nameWithType: EntityManager.GetComponent<T>(int)
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetComponent<T>(int)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetComponent
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 92
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: 'public T? GetComponent<T>(int entityId) where T : Component'
+    parameters:
+    - id: entityId
+      type: System.Int32
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetComponent(Of T As Component)(entityId As Integer) As T
+  overload: VoxelGame.EntityComponentSystem.EntityManager.GetComponent*
+  nameWithType.vb: EntityManager.GetComponent(Of T)(Integer)
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.GetComponent(Of T)(Integer)
+  name.vb: GetComponent(Of T)(Integer)
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent``1
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent``1
+  id: GetEntitiesWithComponent``1
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: GetEntitiesWithComponent<T>()
+  nameWithType: EntityManager.GetEntitiesWithComponent<T>()
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent<T>()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetEntitiesWithComponent
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 105
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: 'public IEnumerable<int> GetEntitiesWithComponent<T>() where T : Component'
+    typeParameters:
+    - id: T
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Int32}
+    content.vb: Public Function GetEntitiesWithComponent(Of T As Component)() As IEnumerable(Of Integer)
+  overload: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent*
+  nameWithType.vb: EntityManager.GetEntitiesWithComponent(Of T)()
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent(Of T)()
+  name.vb: GetEntitiesWithComponent(Of T)()
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent``1
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent``1
+  id: GetEntityWithComponent``1
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: GetEntityWithComponent<T>()
+  nameWithType: EntityManager.GetEntityWithComponent<T>()
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent<T>()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetEntityWithComponent
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 126
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: 'public int GetEntityWithComponent<T>() where T : Component'
+    typeParameters:
+    - id: T
+    return:
+      type: System.Int32
+    content.vb: Public Function GetEntityWithComponent(Of T As Component)() As Integer
+  overload: VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent*
+  nameWithType.vb: EntityManager.GetEntityWithComponent(Of T)()
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent(Of T)()
+  name.vb: GetEntityWithComponent(Of T)()
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents``2
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents``2
+  id: GetEntitiesWithComponents``2
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: GetEntitiesWithComponents<T1, T2>()
+  nameWithType: EntityManager.GetEntitiesWithComponents<T1, T2>()
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents<T1, T2>()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetEntitiesWithComponents
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 133
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: 'public IEnumerable<int> GetEntitiesWithComponents<T1, T2>() where T1 : Component where T2 : Component'
+    typeParameters:
+    - id: T1
+    - id: T2
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Int32}
+    content.vb: Public Function GetEntitiesWithComponents(Of T1 As Component, T2 As Component)() As IEnumerable(Of Integer)
+  overload: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents*
+  nameWithType.vb: EntityManager.GetEntitiesWithComponents(Of T1, T2)()
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents(Of T1, T2)()
+  name.vb: GetEntitiesWithComponents(Of T1, T2)()
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents``3
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents``3
+  id: GetEntitiesWithComponents``3
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: GetEntitiesWithComponents<T1, T2, T3>()
+  nameWithType: EntityManager.GetEntitiesWithComponents<T1, T2, T3>()
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents<T1, T2, T3>()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetEntitiesWithComponents
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 160
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: 'public IEnumerable<int> GetEntitiesWithComponents<T1, T2, T3>() where T1 : Component where T2 : Component where T3 : Component'
+    typeParameters:
+    - id: T1
+    - id: T2
+    - id: T3
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Int32}
+    content.vb: Public Function GetEntitiesWithComponents(Of T1 As Component, T2 As Component, T3 As Component)() As IEnumerable(Of Integer)
+  overload: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents*
+  nameWithType.vb: EntityManager.GetEntitiesWithComponents(Of T1, T2, T3)()
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents(Of T1, T2, T3)()
+  name.vb: GetEntitiesWithComponents(Of T1, T2, T3)()
+- uid: VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition(System.Int32,OpenTK.Mathematics.Vector3)
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition(System.Int32,OpenTK.Mathematics.Vector3)
+  id: SetEntityPosition(System.Int32,OpenTK.Mathematics.Vector3)
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: SetEntityPosition(int, Vector3)
+  nameWithType: EntityManager.SetEntityPosition(int, Vector3)
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition(int, OpenTK.Mathematics.Vector3)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: SetEntityPosition
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 188
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: public void SetEntityPosition(int entityId, Vector3 position)
+    parameters:
+    - id: entityId
+      type: System.Int32
+    - id: position
+      type: OpenTK.Mathematics.Vector3
+    content.vb: Public Sub SetEntityPosition(entityId As Integer, position As Vector3)
+  overload: VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition*
+  nameWithType.vb: EntityManager.SetEntityPosition(Integer, Vector3)
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition(Integer, OpenTK.Mathematics.Vector3)
+  name.vb: SetEntityPosition(Integer, Vector3)
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition(System.Int32)
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition(System.Int32)
+  id: GetEntityPosition(System.Int32)
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: GetEntityPosition(int)
+  nameWithType: EntityManager.GetEntityPosition(int)
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition(int)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: GetEntityPosition
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 194
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: public Vector3 GetEntityPosition(int entityId)
+    parameters:
+    - id: entityId
+      type: System.Int32
+    return:
+      type: OpenTK.Mathematics.Vector3
+    content.vb: Public Function GetEntityPosition(entityId As Integer) As Vector3
+  overload: VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition*
+  nameWithType.vb: EntityManager.GetEntityPosition(Integer)
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition(Integer)
+  name.vb: GetEntityPosition(Integer)
+- uid: VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity(System.Int32)
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity(System.Int32)
+  id: RemoveEntity(System.Int32)
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: RemoveEntity(int)
+  nameWithType: EntityManager.RemoveEntity(int)
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity(int)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: RemoveEntity
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 200
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: public void RemoveEntity(int entityId)
+    parameters:
+    - id: entityId
+      type: System.Int32
+    content.vb: Public Sub RemoveEntity(entityId As Integer)
+  overload: VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity*
+  nameWithType.vb: EntityManager.RemoveEntity(Integer)
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity(Integer)
+  name.vb: RemoveEntity(Integer)
+- uid: VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent``1(System.Int32)
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent``1(System.Int32)
+  id: RemoveComponent``1(System.Int32)
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: RemoveComponent<T>(int)
+  nameWithType: EntityManager.RemoveComponent<T>(int)
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent<T>(int)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: RemoveComponent
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 237
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: 'public void RemoveComponent<T>(int entityId) where T : Component'
+    parameters:
+    - id: entityId
+      type: System.Int32
+    typeParameters:
+    - id: T
+    content.vb: Public Sub RemoveComponent(Of T As Component)(entityId As Integer)
+  overload: VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent*
+  nameWithType.vb: EntityManager.RemoveComponent(Of T)(Integer)
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent(Of T)(Integer)
+  name.vb: RemoveComponent(Of T)(Integer)
+- uid: VoxelGame.EntityComponentSystem.EntityManager.EntityExists(System.Int32)
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.EntityExists(System.Int32)
+  id: EntityExists(System.Int32)
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: EntityExists(int)
+  nameWithType: EntityManager.EntityExists(int)
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.EntityExists(int)
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: EntityExists
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 266
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: public bool EntityExists(int entityId)
+    parameters:
+    - id: entityId
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function EntityExists(entityId As Integer) As Boolean
+  overload: VoxelGame.EntityComponentSystem.EntityManager.EntityExists*
+  nameWithType.vb: EntityManager.EntityExists(Integer)
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.EntityExists(Integer)
+  name.vb: EntityExists(Integer)
+- uid: VoxelGame.EntityComponentSystem.EntityManager.CreateComponent``1
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.CreateComponent``1
+  id: CreateComponent``1
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: CreateComponent<T>()
+  nameWithType: EntityManager.CreateComponent<T>()
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.CreateComponent<T>()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: CreateComponent
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 272
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: 'public T CreateComponent<T>() where T : Component, new()'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function CreateComponent(Of T As {Component, New})() As T
+  overload: VoxelGame.EntityComponentSystem.EntityManager.CreateComponent*
+  nameWithType.vb: EntityManager.CreateComponent(Of T)()
+  fullName.vb: VoxelGame.EntityComponentSystem.EntityManager.CreateComponent(Of T)()
+  name.vb: CreateComponent(Of T)()
+- uid: VoxelGame.EntityComponentSystem.EntityManager.Dispose
+  commentId: M:VoxelGame.EntityComponentSystem.EntityManager.Dispose
+  id: Dispose
+  parent: VoxelGame.EntityComponentSystem.EntityManager
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: EntityManager.Dispose()
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VoxelGame/EntityComponentSystem/EntityManager.cs
+      branch: feature/add-documentation-system
+      repo: https://github.com/D-Heger/3DblockGame
+    id: Dispose
+    path: VoxelGame/EntityComponentSystem/EntityManager.cs
+    startLine: 282
+  assemblies:
+  - VoxelGame
+  namespace: VoxelGame.EntityComponentSystem
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: VoxelGame.EntityComponentSystem.EntityManager.Dispose*
+references:
+- uid: VoxelGame.EntityComponentSystem
+  commentId: N:VoxelGame.EntityComponentSystem
+  href: VoxelGame.html
+  name: VoxelGame.EntityComponentSystem
+  nameWithType: VoxelGame.EntityComponentSystem
+  fullName: VoxelGame.EntityComponentSystem
+  spec.csharp:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+  spec.vb:
+  - uid: VoxelGame
+    name: VoxelGame
+    href: VoxelGame.html
+  - name: .
+  - uid: VoxelGame.EntityComponentSystem
+    name: EntityComponentSystem
+    href: VoxelGame.EntityComponentSystem.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: VoxelGame.EntityComponentSystem.EntityManager.CreateEntity*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.CreateEntity
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_CreateEntity
+  name: CreateEntity
+  nameWithType: EntityManager.CreateEntity
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.CreateEntity
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: VoxelGame.EntityComponentSystem.EntityManager.EntityCount*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.EntityCount
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_EntityCount
+  name: EntityCount
+  nameWithType: EntityManager.EntityCount
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.EntityCount
+- uid: VoxelGame.EntityComponentSystem.EntityManager.AddComponent*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.AddComponent
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_AddComponent__1_System_Int32___0_
+  name: AddComponent
+  nameWithType: EntityManager.AddComponent
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.AddComponent
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetComponent*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.GetComponent
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_GetComponent__1_System_Int32_
+  name: GetComponent
+  nameWithType: EntityManager.GetComponent
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetComponent
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_GetEntitiesWithComponent__1
+  name: GetEntitiesWithComponent
+  nameWithType: EntityManager.GetEntitiesWithComponent
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponent
+- uid: System.Collections.Generic.IEnumerable{System.Int32}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<int>
+  nameWithType: IEnumerable<int>
+  fullName: System.Collections.Generic.IEnumerable<int>
+  nameWithType.vb: IEnumerable(Of Integer)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Integer)
+  name.vb: IEnumerable(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_GetEntityWithComponent__1
+  name: GetEntityWithComponent
+  nameWithType: EntityManager.GetEntityWithComponent
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntityWithComponent
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_GetEntitiesWithComponents__2
+  name: GetEntitiesWithComponents
+  nameWithType: EntityManager.GetEntitiesWithComponents
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntitiesWithComponents
+- uid: VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_SetEntityPosition_System_Int32_OpenTK_Mathematics_Vector3_
+  name: SetEntityPosition
+  nameWithType: EntityManager.SetEntityPosition
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.SetEntityPosition
+- uid: OpenTK.Mathematics.Vector3
+  commentId: T:OpenTK.Mathematics.Vector3
+  parent: OpenTK.Mathematics
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: OpenTK.Mathematics.Vector3
+- uid: OpenTK.Mathematics
+  commentId: N:OpenTK.Mathematics
+  isExternal: true
+  name: OpenTK.Mathematics
+  nameWithType: OpenTK.Mathematics
+  fullName: OpenTK.Mathematics
+  spec.csharp:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Mathematics
+    name: Mathematics
+    isExternal: true
+  spec.vb:
+  - uid: OpenTK
+    name: OpenTK
+    isExternal: true
+  - name: .
+  - uid: OpenTK.Mathematics
+    name: Mathematics
+    isExternal: true
+- uid: VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_GetEntityPosition_System_Int32_
+  name: GetEntityPosition
+  nameWithType: EntityManager.GetEntityPosition
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.GetEntityPosition
+- uid: VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_RemoveEntity_System_Int32_
+  name: RemoveEntity
+  nameWithType: EntityManager.RemoveEntity
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.RemoveEntity
+- uid: VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_RemoveComponent__1_System_Int32_
+  name: RemoveComponent
+  nameWithType: EntityManager.RemoveComponent
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.RemoveComponent
+- uid: VoxelGame.EntityComponentSystem.EntityManager.EntityExists*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.EntityExists
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_EntityExists_System_Int32_
+  name: EntityExists
+  nameWithType: EntityManager.EntityExists
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.EntityExists
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: VoxelGame.EntityComponentSystem.EntityManager.CreateComponent*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.CreateComponent
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_CreateComponent__1
+  name: CreateComponent
+  nameWithType: EntityManager.CreateComponent
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.CreateComponent
+- uid: VoxelGame.EntityComponentSystem.EntityManager.Dispose*
+  commentId: Overload:VoxelGame.EntityComponentSystem.EntityManager.Dispose
+  href: VoxelGame.EntityComponentSystem.EntityManager.html#VoxelGame_EntityComponentSystem_EntityManager_Dispose
+  name: Dispose
+  nameWithType: EntityManager.Dispose
+  fullName: VoxelGame.EntityComponentSystem.EntityManager.Dispose
