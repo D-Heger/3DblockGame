@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: BlockType
     path: VoxelGame/World/Data/BlockType.cs
@@ -47,7 +47,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: DIRT
     path: VoxelGame/World/Data/BlockType.cs
@@ -73,7 +73,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GRASS
     path: VoxelGame/World/Data/BlockType.cs
@@ -99,7 +99,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: AIR
     path: VoxelGame/World/Data/BlockType.cs
@@ -125,7 +125,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: STONE
     path: VoxelGame/World/Data/BlockType.cs
@@ -151,7 +151,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: SAND
     path: VoxelGame/World/Data/BlockType.cs
@@ -177,7 +177,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: WATER
     path: VoxelGame/World/Data/BlockType.cs
@@ -203,7 +203,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Data/BlockType.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: BEDROCK
     path: VoxelGame/World/Data/BlockType.cs

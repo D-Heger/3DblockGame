@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ChunkPosition
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -97,7 +97,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: X
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -124,7 +124,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Y
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -151,7 +151,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Z
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -178,7 +178,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Zero
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -206,7 +206,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Equals
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -243,7 +243,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Equals
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -282,7 +282,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetHashCode
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -314,7 +314,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: op_Equality
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
@@ -350,7 +350,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: op_Inequality
     path: VoxelGame/EntityComponentSystem/Systems/ChunkGenerationSystem.cs

@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Block
     path: VoxelGame/World/Block.cs
@@ -58,7 +58,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Position
     path: VoxelGame/World/Block.cs
@@ -85,7 +85,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Type
     path: VoxelGame/World/Block.cs
@@ -112,7 +112,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Faces
     path: VoxelGame/World/Block.cs
@@ -139,7 +139,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: textureCoordinateMapping
     path: VoxelGame/World/Block.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: MapCoordinatesToUVs
     path: VoxelGame/World/Block.cs
@@ -200,7 +200,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/World/Block.cs
@@ -234,7 +234,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: AddTransformedVertices
     path: VoxelGame/World/Block.cs
@@ -268,7 +268,7 @@ items:
   source:
     remote:
       path: VoxelGame/World/Block.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetFace
     path: VoxelGame/World/Block.cs

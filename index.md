@@ -11,6 +11,7 @@ Welcome to the documentation for the 3D Block Game project.
 - [Introduction](./Docs/introduction.md)
 - [Getting Started](./Docs/getting-started.md)
 - [API Documentation](./api/index.md)
+- [Build Script Documentation](./Docs/build-script.md)
 
 ## Source Code
 

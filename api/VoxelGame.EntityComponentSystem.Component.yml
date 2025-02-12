@@ -15,7 +15,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Component.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Component
     path: VoxelGame/EntityComponentSystem/Component.cs

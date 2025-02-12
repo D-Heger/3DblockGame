@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ChunkGenerationSystemTests
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -66,7 +66,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -100,7 +100,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -130,7 +130,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GenerateInitialChunks_EnqueuesCorrectChunks
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -171,7 +171,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -212,7 +212,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ChunkGeneration_CreatesCorrectEntityComponents
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -253,7 +253,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: UpdateChunks_WithSamePosition_DoesNotRegenerateChunks
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -294,7 +294,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -335,7 +335,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: RemoveChunk_DisposesComponentsCorrectly
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
@@ -376,7 +376,7 @@ items:
   source:
     remote:
       path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly
     path: Tests/EntityComponentSystem/ChunkGenerationSystemTests.cs

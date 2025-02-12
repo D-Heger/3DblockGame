@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: VertexBufferObject
     path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ID
     path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
@@ -83,7 +83,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
@@ -115,7 +115,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
@@ -147,7 +147,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Bind
     path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
@@ -173,7 +173,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Unbind
     path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
@@ -199,7 +199,7 @@ items:
   source:
     remote:
       path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: VoxelGame/GraphicsPipeline/VertexBufferObject.cs

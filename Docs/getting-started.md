@@ -1,22 +1,15 @@
 # Getting Started
 
-## Setting Up the Development Environment
+## Prerequisites
 
-1. **Prerequisites**
-   - Install .NET Core SDK
-   - Make sure you have an OpenGL-compatible graphics card
-   - Install Visual Studio 2019 or later (recommended)
+1. **System Requirements**
+   - .NET Core SDK
+   - OpenGL-compatible graphics card
+   - For Windows: Visual Studio 2019 or later (recommended for beginners)
+   - For Linux: mesa-utils package
 
-2. **Building the Project**
-   ```batch
-   build.bat restore  # Restore NuGet packages
-   build.bat build   # Build the solution
-   ```
-
-3. **Running the Game**
-   ```batch 
-   build.bat run
-   ```
+2. **Building and Running**
+   See the [Build Script Documentation](build-script.md) for detailed instructions on building and running the game.
 
 ## Project Organization
 
@@ -39,19 +32,24 @@ Default game settings can be modified through:
 - Chunk size and render distance in WorldSystem
 - Block types and textures in the TextureData class
 
-## Development Workflow
+## Development Guidelines
 
-1. **Making Changes**
-   - Make code changes in Visual Studio
-   - Build using `build.bat build`
-   - Run tests with `build.bat test`
+### Code Style
+- Follow C# coding conventions
+- Maintain consistent naming patterns with existing code
+- Document public APIs using XML comments
 
-2. **Debugging**
-   - Use Visual Studio's debugger
-   - Check debug output for OpenGL errors
-   - Monitor memory usage with MemoryTracker
+### Testing
+- Add unit tests for new features
+- Tests should be focused and descriptive
+- Use meaningful test names that describe the scenario
 
-3. **Contributing**
-   - Follow C# coding conventions
-   - Add unit tests for new features
-   - Update documentation as needed
+### Documentation
+- Update API documentation for new public members
+- Keep README.md up to date with major changes
+- Document any non-obvious implementation details
+
+### Performance Considerations
+- Use the MemoryTracker for memory profiling
+- Check OpenGL debug output for rendering issues
+- Consider chunk loading/unloading impact

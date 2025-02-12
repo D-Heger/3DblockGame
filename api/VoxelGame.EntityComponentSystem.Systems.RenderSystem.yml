@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: RenderSystem
     path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: .ctor
     path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
@@ -90,7 +90,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Render
     path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
@@ -119,7 +119,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ToggleLighting
     path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
@@ -145,7 +145,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: ToggleWireframe
     path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
@@ -171,7 +171,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Dispose
     path: VoxelGame/EntityComponentSystem/Systems/RenderSystem.cs

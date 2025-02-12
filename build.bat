@@ -33,13 +33,13 @@ echo =========================================================
 echo 3D Block Game Build Script
 echo =========================================================
 echo Available commands:
-echo build.bat restore - Restore NuGet packages
-echo build.bat build  - Build the solution
-echo build.bat run    - Run the game
-echo build.bat test   - Run the tests
-echo build.bat clean  - Clean build outputs
-echo build.bat docs   - Generate documentation
-echo build.bat check  - Check system requirements
+echo build.bat restore  - Restore NuGet packages
+echo build.bat build    - Build the solution
+echo build.bat run      - Run the game
+echo build.bat test     - Run the tests
+echo build.bat clean    - Clean build outputs
+echo build.bat docs     - Generate documentation
+echo build.bat check    - Check system requirements
 echo =========================================================
 GOTO end
 
@@ -56,9 +56,22 @@ REM Check for .NET SDK
 dotnet --version > nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
     echo Error: .NET SDK is not installed or not in PATH
-    echo Please install .NET SDK from https://dotnet.microsoft.com/download
-    SET EXIT_CODE=1
-    exit /b 1
+    echo Would you like to download and install .NET SDK? [Y/N]
+    SET /P INSTALL_DOTNET=
+    IF /I "!INSTALL_DOTNET!"=="Y" (
+        echo Downloading .NET SDK installer...
+        powershell -Command "& { Invoke-WebRequest -Uri 'https://download.visualstudio.microsoft.com/download/pr/bd44cdb8-dcac-4f1f-8246-1ee392c68dac/ba818a6e513c305d4438c7da45c2b085/dotnet-sdk-8.0.406-win-x64.exe' -OutFile '%TEMP%\dotnet-sdk-installer.exe' }"
+        echo Installing .NET SDK...
+        start /wait %TEMP%\dotnet-sdk-installer.exe /quiet
+        del %TEMP%\dotnet-sdk-installer.exe
+        echo Please restart this script after installation completes.
+        SET EXIT_CODE=1
+        exit /b 1
+    ) ELSE (
+        echo Please install .NET SDK manually from https://dotnet.microsoft.com/download
+        SET EXIT_CODE=1
+        exit /b 1
+    )
 )
 
 REM Check .NET SDK version
@@ -91,12 +104,37 @@ echo --------------------------------------------
 REM Check if docfx is installed (for documentation)
 where docfx > nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
-    echo Warning: DocFX is not installed. Documentation generation will not be available.
-    echo Install DocFX using: dotnet tool install -g docfx
+    echo Warning: DocFX is not installed.
+    echo Would you like to install DocFX? [Y/N]
+    SET /P INSTALL_DOCFX=
+    IF /I "!INSTALL_DOCFX!"=="Y" (
+        echo Installing DocFX...
+        dotnet tool install -g docfx
+        echo DocFX installation complete.
+    ) ELSE (
+        echo You can install DocFX later using: dotnet tool install -g docfx
+    )
 ) ELSE (
-    echo DocFX is installed. Documentation generation will be available.
+    echo DocFX is installed.
 )
 echo --------------------------------------------
+
+REM Check for Visual Studio Code (recommended alternative to VS)
+where code > nul 2>&1
+IF %ERRORLEVEL% NEQ 0 (
+    echo Would you like to install Visual Studio Code? [Y/N]
+    SET /P INSTALL_VSCODE=
+    IF /I "!INSTALL_VSCODE!"=="Y" (
+        echo Downloading Visual Studio Code installer...
+        powershell -Command "& { Invoke-WebRequest -Uri 'https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user' -OutFile '%TEMP%\vscode-installer.exe' }"
+        echo Installing Visual Studio Code...
+        start /wait %TEMP%\vscode-installer.exe /SILENT /NORESTART
+        del %TEMP%\vscode-installer.exe
+        echo Please restart this script after installation completes.
+    ) ELSE (
+        echo You can download VS Code later from https://code.visualstudio.com/
+    )
+)
 
 exit /b 0
 

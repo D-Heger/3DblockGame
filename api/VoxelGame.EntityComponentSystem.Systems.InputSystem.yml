@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: InputSystem
     path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Update
     path: VoxelGame/EntityComponentSystem/Systems/InputSystem.cs

@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/MemoryTracker.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: MemoryTracker
     path: VoxelGame/Utils/MemoryTracker.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/MemoryTracker.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: Update
     path: VoxelGame/Utils/MemoryTracker.cs
@@ -78,7 +78,7 @@ items:
   source:
     remote:
       path: VoxelGame/Utils/MemoryTracker.cs
-      branch: feature/add-documentation-system
+      branch: 18-add-linux-build-file-to-check-requirements-and-handle-edge-cases
       repo: https://github.com/D-Heger/3DblockGame
     id: GetMemoryStats
     path: VoxelGame/Utils/MemoryTracker.cs
