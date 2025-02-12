@@ -1,11 +1,25 @@
 @echo off
 SETLOCAL EnableDelayedExpansion
 
+REM =========================================================
+REM 3D Block Game Build Script
+REM =========================================================
+REM This script manages the build process for the 3D Block Game
+REM project. It handles package restoration, building, testing,
+REM and documentation generation.
+REM
+REM Exit Codes:
+REM   0 - Success
+REM   1 - Missing requirements or tool failure
+REM   >1 - Command-specific error
+REM =========================================================
+
 REM Store the script's exit code
 SET EXIT_CODE=0
 
 IF "%1"=="" GOTO help
 
+REM Command routing
 IF "%1"=="restore" GOTO restore
 IF "%1"=="build" GOTO build
 IF "%1"=="run" GOTO run
@@ -15,6 +29,9 @@ IF "%1"=="docs" GOTO docs
 IF "%1"=="check" GOTO check
 
 :help
+echo =========================================================
+echo 3D Block Game Build Script
+echo =========================================================
 echo Available commands:
 echo build.bat restore - Restore NuGet packages
 echo build.bat build  - Build the solution
@@ -23,6 +40,7 @@ echo build.bat test   - Run the tests
 echo build.bat clean  - Clean build outputs
 echo build.bat docs   - Generate documentation
 echo build.bat check  - Check system requirements
+echo =========================================================
 GOTO end
 
 :check
@@ -83,6 +101,7 @@ echo --------------------------------------------
 exit /b 0
 
 :restore
+REM Ensure all requirements are met before proceeding
 CALL :check_requirements
 IF !EXIT_CODE! NEQ 0 GOTO end
 echo Restoring NuGet packages...
@@ -91,6 +110,7 @@ IF !ERRORLEVEL! NEQ 0 SET EXIT_CODE=!ERRORLEVEL!
 GOTO end
 
 :build
+REM Build depends on successful package restoration
 CALL :restore
 IF !EXIT_CODE! NEQ 0 GOTO end
 echo Building solution...
@@ -99,6 +119,7 @@ IF !ERRORLEVEL! NEQ 0 SET EXIT_CODE=!ERRORLEVEL!
 GOTO end
 
 :run
+REM Run depends on successful build
 CALL :build
 IF !EXIT_CODE! NEQ 0 GOTO end
 echo Running the game...
@@ -107,6 +128,7 @@ IF !ERRORLEVEL! NEQ 0 SET EXIT_CODE=!ERRORLEVEL!
 GOTO end
 
 :test
+REM Tests require build requirements but don't need a full build
 CALL :check_requirements
 IF !EXIT_CODE! NEQ 0 GOTO end
 echo Running tests...
@@ -117,6 +139,7 @@ GOTO end
 :clean
 echo Cleaning solution...
 dotnet clean VoxelGame.sln
+REM Clean additional directories that might not be caught by dotnet clean
 IF EXIST VoxelGame\bin rmdir /s /q VoxelGame\bin
 IF EXIST VoxelGame\obj rmdir /s /q VoxelGame\obj
 IF EXIST Tests\bin rmdir /s /q Tests\bin
@@ -125,6 +148,7 @@ IF !ERRORLEVEL! NEQ 0 SET EXIT_CODE=!ERRORLEVEL!
 GOTO end
 
 :docs
+REM Documentation generation requires DocFX
 CALL :check_requirements
 IF !EXIT_CODE! NEQ 0 GOTO end
 where docfx > nul 2>&1
