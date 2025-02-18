@@ -168,21 +168,25 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 return;
 
             // Generate chunk mesh data and chunk data
-            ChunkMeshData chunkMeshData = await Task.Run(
+            var (meshData, generatedChunkData) = await Task.Run(
                 () =>
-                    ChunkGenerator.GenerateChunkMesh(
+                {
+                    ChunkData outChunkData;
+                    var mesh = ChunkGenerator.GenerateChunkMesh(
                         chunkPosition,
                         _worldSystem,
-                        out ChunkData chunkData
-                    )
+                        out outChunkData
+                    );
+                    return (mesh, outChunkData);
+                }
             );
 
             // Enqueue the chunk for main thread processing
             _chunksAwaitingMainThreadProcessing.Enqueue(
                 (
                     chunkPosition,
-                    chunkMeshData,
-                    ChunkGenerator.GenerateChunkData(chunkPosition)
+                    meshData,
+                    generatedChunkData
                 )
             );
         }
