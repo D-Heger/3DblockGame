@@ -19,17 +19,19 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
     public class DefaultTextureProvider : ITextureProvider
     {
-        public Texture GetTexture(string name) => new Texture(name);
+        public Texture GetTexture(string name) => new(name);
     }
 
     public class ChunkGenerationSystem(
         EntityManager entityManager,
         WorldSystem worldSystem,
-        ITextureProvider? textureProvider = null) : System
+        ITextureProvider? textureProvider = null
+    ) : System
     {
         private readonly EntityManager _entityManager = entityManager;
         private readonly WorldSystem _worldSystem = worldSystem;
-        private readonly ITextureProvider _textureProvider = textureProvider ?? new DefaultTextureProvider();
+        private readonly ITextureProvider _textureProvider =
+            textureProvider ?? new DefaultTextureProvider();
 
         // Stores active chunk entities with their positions
         private readonly ConcurrentDictionary<ChunkPosition, int> _chunkEntities = new();
@@ -49,7 +51,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
         // Shared texture for all chunks - lazy initialized
         private Texture? _sharedTexture;
-        private readonly object _textureLock = new object();
+        private readonly object _textureLock = new();
 
         private Texture GetSharedTexture()
         {
@@ -76,9 +78,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
         private readonly object _generationLock = new();
 
         // Semaphore to limit the number of concurrent chunk generation tasks
-        private readonly SemaphoreSlim _chunkGenerationSemaphore = new SemaphoreSlim(
-            Environment.ProcessorCount
-        );
+        private readonly SemaphoreSlim _chunkGenerationSemaphore = new(Environment.ProcessorCount);
 
         /// <summary>
         /// Generates initial chunks around a specified origin within a given radius.
@@ -168,22 +168,19 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 return;
 
             // Generate chunk mesh data and chunk data
-            ChunkMeshData chunkMeshData = await Task.Run(
-                () =>
-                    ChunkGenerator.GenerateChunkMesh(
-                        chunkPosition,
-                        _worldSystem,
-                        out ChunkData chunkData
-                    )
-            );
+            var (meshData, generatedChunkData) = await Task.Run(() =>
+            {
+                var mesh = ChunkGenerator.GenerateChunkMesh(
+                    chunkPosition,
+                    _worldSystem,
+                    out ChunkData outChunkData
+                );
+                return (mesh, outChunkData);
+            });
 
             // Enqueue the chunk for main thread processing
             _chunksAwaitingMainThreadProcessing.Enqueue(
-                (
-                    chunkPosition,
-                    chunkMeshData,
-                    ChunkGenerator.GenerateChunkData(chunkPosition)
-                )
+                (chunkPosition, meshData, generatedChunkData)
             );
         }
 
@@ -229,8 +226,8 @@ namespace VoxelGame.EntityComponentSystem.Systems
             _entityManager.AddComponent(
                 chunkEntity,
                 new MeshComponent(
-                    chunkMeshData.Vertices, 
-                    chunkMeshData.UVs, 
+                    chunkMeshData.Vertices,
+                    chunkMeshData.UVs,
                     chunkMeshData.Normals, // Add normals
                     chunkMeshData.Indices
                 )
@@ -268,7 +265,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
                     newActiveChunks.TryAdd(chunkPosition, true);
 
                     // Enqueue chunks that are not already active
-                    if (!_activeChunkPositions.ContainsKey(chunkPosition))  
+                    if (!_activeChunkPositions.ContainsKey(chunkPosition))
                     {
                         _chunksToGenerate.Enqueue(chunkPosition);
                         _activeChunkPositions.TryAdd(chunkPosition, true);

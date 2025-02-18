@@ -8,6 +8,25 @@ namespace VoxelGame.World
 {
     public static class ChunkGenerator
     {
+        private static readonly object _noiseSeedLock = new object();
+        private static int? _noiseSeed = null;
+        private static readonly object _neighborChunkLock = new object();
+
+        private static void EnsureNoiseSeedInitialized()
+        {
+            if (_noiseSeed == null)
+            {
+                lock (_noiseSeedLock)
+                {
+                    if (_noiseSeed == null)
+                    {
+                        _noiseSeed = new Random().Next();
+                        SimplexNoise.Noise.Seed = _noiseSeed.Value;
+                    }
+                }
+            }
+        }
+
         public static ChunkMeshData GenerateChunkMesh(
             ChunkPosition chunkPosition,
             WorldSystem worldSystem,
@@ -35,7 +54,9 @@ namespace VoxelGame.World
         {
             int size = Chunk.SIZE;
             float[,] heightMap = new float[size, size];
-            SimplexNoise.Noise.Seed = new Random().Next();
+
+            // Ensure noise seed is initialized
+            EnsureNoiseSeedInitialized();
 
             Parallel.For(
                 0,
@@ -205,7 +226,7 @@ namespace VoxelGame.World
                         uint indexOffset = (uint)chunkMeshData.Vertices.Count;
                         chunkMeshData.Vertices.AddRange(localMeshData.Vertices);
                         chunkMeshData.UVs.AddRange(localMeshData.UVs);
-                        chunkMeshData.Normals.AddRange(localMeshData.Normals);  // Add normals to final mesh
+                        chunkMeshData.Normals.AddRange(localMeshData.Normals);
 
                         // Adjust indices
                         foreach (var index in localMeshData.Indices)
@@ -281,30 +302,30 @@ namespace VoxelGame.World
             else
             {
                 // Determine the neighboring chunk's position
-                ChunkPosition neighbourChunkPosition = chunkPosition;
+                ChunkPosition neighborChunkPosition = chunkPosition;
 
-                int neighbourX = x;
-                int neighbourY = y;
-                int neighbourZ = z;
+                int neighborX = x;
+                int neighborY = y;
+                int neighborZ = z;
 
                 // Adjust the neighboring chunk position and local coordinates
                 if (x < 0)
                 {
-                    neighbourChunkPosition = new ChunkPosition(
-                        neighbourChunkPosition.X - size,
-                        neighbourChunkPosition.Y,
-                        neighbourChunkPosition.Z
+                    neighborChunkPosition = new ChunkPosition(
+                        neighborChunkPosition.X - size,
+                        neighborChunkPosition.Y,
+                        neighborChunkPosition.Z
                     );
-                    neighbourX = x + size; // Wrap to the other side of the neighboring chunk
+                    neighborX = x + size; // Wrap to the other side of the neighboring chunk
                 }
                 else if (x >= size)
                 {
-                    neighbourChunkPosition = new ChunkPosition(
-                        neighbourChunkPosition.X + size,
-                        neighbourChunkPosition.Y,
-                        neighbourChunkPosition.Z
+                    neighborChunkPosition = new ChunkPosition(
+                        neighborChunkPosition.X + size,
+                        neighborChunkPosition.Y,
+                        neighborChunkPosition.Z
                     );
-                    neighbourX = x - size; // Wrap to the other side of the neighboring chunk
+                    neighborX = x - size; // Wrap to the other side of the neighboring chunk
                 }
 
                 if (y < 0 || y >= height)
@@ -316,38 +337,40 @@ namespace VoxelGame.World
 
                 if (z < 0)
                 {
-                    neighbourChunkPosition = new ChunkPosition(
-                        neighbourChunkPosition.X,
-                        neighbourChunkPosition.Y,
-                        neighbourChunkPosition.Z - size
+                    neighborChunkPosition = new ChunkPosition(
+                        neighborChunkPosition.X,
+                        neighborChunkPosition.Y,
+                        neighborChunkPosition.Z - size
                     );
-                    neighbourZ = z + size; // Wrap to the other side of the neighboring chunk
+                    neighborZ = z + size; // Wrap to the other side of the neighboring chunk
                 }
                 else if (z >= size)
                 {
-                    neighbourChunkPosition = new ChunkPosition(
-                        neighbourChunkPosition.X,
-                        neighbourChunkPosition.Y,
-                        neighbourChunkPosition.Z + size
+                    neighborChunkPosition = new ChunkPosition(
+                        neighborChunkPosition.X,
+                        neighborChunkPosition.Y,
+                        neighborChunkPosition.Z + size
                     );
-                    neighbourZ = z - size; // Wrap to the other side of the neighboring chunk
+                    neighborZ = z - size; // Wrap to the other side of the neighboring chunk
                 }
 
-                // Check if the neighboring chunk exists in the world
-                if (worldSystem.ChunkExists(neighbourChunkPosition))
+                // Use a lock when checking and accessing neighboring chunks
+                lock (_neighborChunkLock)
                 {
-                    // Get the neighboring chunk's data
-                    ChunkData neighbourChunk = worldSystem.GetChunk(neighbourChunkPosition);
+                    // Check if the neighboring chunk exists in the world
+                    if (worldSystem.ChunkExists(neighborChunkPosition))
+                    {
+                        // Get the neighboring chunk's data
+                        ChunkData neighborChunk = worldSystem.GetChunk(neighborChunkPosition);
 
-                    // Check if the corresponding block in the neighboring chunk is air
-                    return neighbourChunk.Blocks[neighbourX, neighbourY, neighbourZ]
-                        == BlockType.AIR;
+                        // Check if the corresponding block in the neighboring chunk is air
+                        return neighborChunk.Blocks[neighborX, neighborY, neighborZ]
+                            == BlockType.AIR;
+                    }
                 }
-                else
-                {
-                    // If the neighboring chunk does not exist, assume the face is visible
-                    return true;
-                }
+
+                // If the neighboring chunk does not exist, assume the face is visible
+                return true;
             }
         }
 
@@ -370,7 +393,7 @@ namespace VoxelGame.World
             foreach (var vert in faceVertices)
             {
                 localMeshData.Vertices.Add(vert + new Vector3(x, y, z));
-                localMeshData.Normals.Add(normal);  // Add the same normal for each vertex
+                localMeshData.Normals.Add(normal); // Add the same normal for each vertex
             }
 
             // Get the UV coordinates for the block type and face
