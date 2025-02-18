@@ -19,7 +19,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
     public class DefaultTextureProvider : ITextureProvider
     {
-        public Texture GetTexture(string name) => new Texture(name);
+        public Texture GetTexture(string name) => new(name);
     }
 
     public class ChunkGenerationSystem(
@@ -51,7 +51,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
         // Shared texture for all chunks - lazy initialized
         private Texture? _sharedTexture;
-        private readonly object _textureLock = new object();
+        private readonly object _textureLock = new();
 
         private Texture GetSharedTexture()
         {
@@ -78,9 +78,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
         private readonly object _generationLock = new();
 
         // Semaphore to limit the number of concurrent chunk generation tasks
-        private readonly SemaphoreSlim _chunkGenerationSemaphore = new SemaphoreSlim(
-            Environment.ProcessorCount
-        );
+        private readonly SemaphoreSlim _chunkGenerationSemaphore = new(Environment.ProcessorCount);
 
         /// <summary>
         /// Generates initial chunks around a specified origin within a given radius.
@@ -172,11 +170,10 @@ namespace VoxelGame.EntityComponentSystem.Systems
             // Generate chunk mesh data and chunk data
             var (meshData, generatedChunkData) = await Task.Run(() =>
             {
-                ChunkData outChunkData;
                 var mesh = ChunkGenerator.GenerateChunkMesh(
                     chunkPosition,
                     _worldSystem,
-                    out outChunkData
+                    out ChunkData outChunkData
                 );
                 return (mesh, outChunkData);
             });
