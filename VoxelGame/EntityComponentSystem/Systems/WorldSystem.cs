@@ -28,9 +28,9 @@ namespace VoxelGame.EntityComponentSystem.Systems
             return _activeChunks.ContainsKey(chunkPosition);
         }
 
-        public ChunkData GetChunk(ChunkPosition chunkPosition)
+        public ChunkData? GetChunk(ChunkPosition chunkPosition)
         {
-            _activeChunks.TryGetValue(chunkPosition, out ChunkData chunkData);
+            _activeChunks.TryGetValue(chunkPosition, out ChunkData? chunkData);
             return chunkData;
         }
 

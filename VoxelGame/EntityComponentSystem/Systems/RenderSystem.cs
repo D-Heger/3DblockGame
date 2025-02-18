@@ -36,17 +36,23 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
         public void Render(EntityManager entityManager)
         {
-            // Get camera entity
-            var cameraEntities = entityManager.GetEntitiesWithComponents<CameraComponent, TransformComponent>();
+            var cameraEntities = entityManager.GetEntitiesWithComponents<
+                CameraComponent,
+                TransformComponent
+            >();
             if (!cameraEntities.Any())
             {
-                Console.WriteLine("No camera entity found.");
-                return;
+                return; // No camera to render from
             }
 
             int cameraEntity = cameraEntities.First();
             var cameraTransform = entityManager.GetComponent<TransformComponent>(cameraEntity);
             var cameraComponent = entityManager.GetComponent<CameraComponent>(cameraEntity);
+
+            if (cameraTransform == null || cameraComponent == null)
+            {
+                return; // Required components are missing
+            }
 
             Matrix4 view = cameraComponent.GetViewMatrix(cameraTransform.Position);
             Matrix4 projection = cameraComponent.GetProjectionMatrix((float)_width / _height);
@@ -56,6 +62,10 @@ namespace VoxelGame.EntityComponentSystem.Systems
             _frustum.UpdateFrustum(viewProjection);
 
             // Bind shader program once
+            if (_currentShader == null)
+            {
+                return; // Shader not initialized
+            }
             _currentShader.Bind();
 
             // Set common uniforms
@@ -70,8 +80,19 @@ namespace VoxelGame.EntityComponentSystem.Systems
             }
 
             // Group entities by texture to minimize texture binds
-            var renderEntities = entityManager.GetEntitiesWithComponents<MeshComponent, TransformComponent, TextureComponent>();
-            var entitiesByTexture = renderEntities.GroupBy(e => entityManager.GetComponent<TextureComponent>(e).Texture.ID);
+            var renderEntities = entityManager.GetEntitiesWithComponents<
+                MeshComponent,
+                TransformComponent,
+                TextureComponent
+            >();
+            var entitiesByTexture = renderEntities
+                .Select(e => new
+                {
+                    Entity = e,
+                    TextureComponent = entityManager.GetComponent<TextureComponent>(e),
+                })
+                .Where(x => x.TextureComponent?.Texture != null)
+                .GroupBy(x => x.TextureComponent!.Texture.ID);
 
             foreach (var group in entitiesByTexture)
             {
@@ -79,10 +100,19 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 GL.BindTexture(TextureTarget.Texture2D, group.Key);
                 _currentShader.SetInt("texture0", 0); // Set texture unit
 
-                foreach (var entity in group)
+                foreach (var entityInfo in group)
                 {
-                    var meshComponent = entityManager.GetComponent<MeshComponent>(entity);
-                    var transformComponent = entityManager.GetComponent<TransformComponent>(entity);
+                    var meshComponent = entityManager.GetComponent<MeshComponent>(
+                        entityInfo.Entity
+                    );
+                    var transformComponent = entityManager.GetComponent<TransformComponent>(
+                        entityInfo.Entity
+                    );
+
+                    if (meshComponent == null || transformComponent == null)
+                    {
+                        continue; // Skip if required components are missing
+                    }
 
                     // Frustum culling
                     Vector3 chunkPosition = transformComponent.Position;
@@ -105,7 +135,12 @@ namespace VoxelGame.EntityComponentSystem.Systems
                     if (meshComponent.VAO != null)
                     {
                         meshComponent.VAO.Bind();
-                        GL.DrawElements(PrimitiveType.Triangles, meshComponent.Indices.Count, DrawElementsType.UnsignedInt, 0);
+                        GL.DrawElements(
+                            PrimitiveType.Triangles,
+                            meshComponent.Indices.Count,
+                            DrawElementsType.UnsignedInt,
+                            0
+                        );
                     }
                 }
             }

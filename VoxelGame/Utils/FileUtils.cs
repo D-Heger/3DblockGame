@@ -23,9 +23,10 @@ namespace VoxelGame.Utils
                 using StreamReader reader = new($"./VoxelGame/Shaders/{filePath}.{shaderType}");
                 shaderSource = reader.ReadToEnd();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                //Console.WriteLine("Failed to load shader source file: " + e.Message);
+                // Silently fail and return empty shader source
+                // This is intentional as shader loading errors are handled elsewhere
             }
 
             return shaderSource;

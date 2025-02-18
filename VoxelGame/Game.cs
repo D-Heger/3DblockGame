@@ -27,7 +27,8 @@ namespace VoxelGame
     /// </remarks>
     public class Game : GameWindow
     {
-        private int _width, _height;
+        private int _width,
+            _height;
         private double _time;
         private int _frames;
         private string _title = "3D Voxel Game";
@@ -56,6 +57,13 @@ namespace VoxelGame
             Title = _title;
             _time = 0;
             _frames = 0;
+
+            // Initialize core systems
+            _entityManager = new EntityManager();
+            _renderSystem = new RenderSystem(_width, _height);
+            _inputSystem = new InputSystem();
+            _worldSystem = new WorldSystem();
+            _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager, _worldSystem);
         }
 
         /// <summary>
@@ -79,13 +87,6 @@ namespace VoxelGame
         protected override void OnLoad()
         {
             base.OnLoad();
-
-            // Initialize systems
-            _entityManager = new EntityManager();
-            _renderSystem = new RenderSystem(_width, _height);
-            _inputSystem = new InputSystem();
-            _worldSystem = new WorldSystem();
-            _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager, _worldSystem);
 
             // Create camera entity
             int cameraEntity = _entityManager.CreateEntity();
@@ -115,7 +116,10 @@ namespace VoxelGame
             foreach (var entity in meshEntities)
             {
                 var meshComponent = _entityManager.GetComponent<MeshComponent>(entity);
-                meshComponent.Dispose();
+                if (meshComponent != null)
+                {
+                    meshComponent.Dispose();
+                }
             }
 
             // Dispose of textures
@@ -123,11 +127,17 @@ namespace VoxelGame
             foreach (var entity in textureEntities)
             {
                 var textureComponent = _entityManager.GetComponent<TextureComponent>(entity);
-                textureComponent.Texture.Dispose();
+                if (textureComponent?.Texture != null)
+                {
+                    textureComponent.Texture.Dispose();
+                }
             }
 
             // Dispose of shader programs
-            _renderSystem.Dispose();
+            if (_renderSystem != null)
+            {
+                _renderSystem.Dispose();
+            }
         }
 
         /// <summary>
@@ -171,7 +181,8 @@ namespace VoxelGame
 
             if (_time >= 1.0)
             {
-                Title = $"{_title} | FPS: {_frames} | Entities: {_entityManager.EntityCount} | Memory (MB) - Current: {current}, Avg: {average}, Peak: {peak}";
+                Title =
+                    $"{_title} | FPS: {_frames} | Entities: {_entityManager.EntityCount} | Memory (MB) - Current: {current}, Avg: {average}, Peak: {peak}";
                 _frames = 0;
                 _time -= 1.0;
             }
@@ -191,17 +202,29 @@ namespace VoxelGame
                 _renderSystem.ToggleLighting();
             }
 
-            var cameraEntity = _entityManager.GetEntitiesWithComponent<CameraComponent>();
-            var cameraTransform = _entityManager.GetComponent<TransformComponent>(cameraEntity.First());
+            var cameraEntities = _entityManager.GetEntitiesWithComponent<CameraComponent>();
+            if (!cameraEntities.Any())
+            {
+                return; // No camera to update from
+            }
 
-            Vector3 playerChunkPosition = new(
-                (int)(cameraTransform.Position.X / Chunk.SIZE) * Chunk.SIZE,
-                0,
-                (int)(cameraTransform.Position.Z / Chunk.SIZE) * Chunk.SIZE
+            var cameraTransform = _entityManager.GetComponent<TransformComponent>(
+                cameraEntities.First()
             );
+            if (cameraTransform == null)
+            {
+                return; // No transform component found
+            }
 
-            _chunkGenerationSystem.Update();
-            _chunkGenerationSystem.UpdateChunks(playerChunkPosition, _viewDistance);
+            Vector3 playerChunkPosition =
+                new(
+                    (int)(cameraTransform.Position.X / Chunk.SIZE) * Chunk.SIZE,
+                    0,
+                    (int)(cameraTransform.Position.Z / Chunk.SIZE) * Chunk.SIZE
+                );
+
+            _chunkGenerationSystem?.Update();
+            _chunkGenerationSystem?.UpdateChunks(playerChunkPosition, _viewDistance);
         }
     }
 }
