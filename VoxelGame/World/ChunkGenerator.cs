@@ -361,15 +361,11 @@ namespace VoxelGame.World
                     if (worldSystem.ChunkExists(neighborChunkPosition))
                     {
                         // Get the neighboring chunk's data
-                        ChunkData? neighborChunk = worldSystem.GetChunk(neighborChunkPosition);
+                        ChunkData neighborChunk = worldSystem.GetChunk(neighborChunkPosition);
 
-                        // Check if the chunk and its blocks are valid
-                        if (neighborChunk?.Blocks != null)
-                        {
-                            // Check if the corresponding block in the neighboring chunk is air
-                            return neighborChunk.Blocks[neighborX, neighborY, neighborZ]
-                                == BlockType.AIR;
-                        }
+                        // Check if the corresponding block in the neighboring chunk is air
+                        return neighborChunk.Blocks[neighborX, neighborY, neighborZ]
+                            == BlockType.AIR;
                     }
                 }
 
