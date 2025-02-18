@@ -25,11 +25,13 @@ namespace VoxelGame.EntityComponentSystem.Systems
     public class ChunkGenerationSystem(
         EntityManager entityManager,
         WorldSystem worldSystem,
-        ITextureProvider? textureProvider = null) : System
+        ITextureProvider? textureProvider = null
+    ) : System
     {
         private readonly EntityManager _entityManager = entityManager;
         private readonly WorldSystem _worldSystem = worldSystem;
-        private readonly ITextureProvider _textureProvider = textureProvider ?? new DefaultTextureProvider();
+        private readonly ITextureProvider _textureProvider =
+            textureProvider ?? new DefaultTextureProvider();
 
         // Stores active chunk entities with their positions
         private readonly ConcurrentDictionary<ChunkPosition, int> _chunkEntities = new();
@@ -168,26 +170,20 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 return;
 
             // Generate chunk mesh data and chunk data
-            var (meshData, generatedChunkData) = await Task.Run(
-                () =>
-                {
-                    ChunkData outChunkData;
-                    var mesh = ChunkGenerator.GenerateChunkMesh(
-                        chunkPosition,
-                        _worldSystem,
-                        out outChunkData
-                    );
-                    return (mesh, outChunkData);
-                }
-            );
+            var (meshData, generatedChunkData) = await Task.Run(() =>
+            {
+                ChunkData outChunkData;
+                var mesh = ChunkGenerator.GenerateChunkMesh(
+                    chunkPosition,
+                    _worldSystem,
+                    out outChunkData
+                );
+                return (mesh, outChunkData);
+            });
 
             // Enqueue the chunk for main thread processing
             _chunksAwaitingMainThreadProcessing.Enqueue(
-                (
-                    chunkPosition,
-                    meshData,
-                    generatedChunkData
-                )
+                (chunkPosition, meshData, generatedChunkData)
             );
         }
 
@@ -233,8 +229,8 @@ namespace VoxelGame.EntityComponentSystem.Systems
             _entityManager.AddComponent(
                 chunkEntity,
                 new MeshComponent(
-                    chunkMeshData.Vertices, 
-                    chunkMeshData.UVs, 
+                    chunkMeshData.Vertices,
+                    chunkMeshData.UVs,
                     chunkMeshData.Normals, // Add normals
                     chunkMeshData.Indices
                 )
@@ -272,7 +268,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
                     newActiveChunks.TryAdd(chunkPosition, true);
 
                     // Enqueue chunks that are not already active
-                    if (!_activeChunkPositions.ContainsKey(chunkPosition))  
+                    if (!_activeChunkPositions.ContainsKey(chunkPosition))
                     {
                         _chunksToGenerate.Enqueue(chunkPosition);
                         _activeChunkPositions.TryAdd(chunkPosition, true);

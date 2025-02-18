@@ -54,7 +54,7 @@ namespace VoxelGame.World
         {
             int size = Chunk.SIZE;
             float[,] heightMap = new float[size, size];
-            
+
             // Ensure noise seed is initialized
             EnsureNoiseSeedInitialized();
 
@@ -393,7 +393,7 @@ namespace VoxelGame.World
             foreach (var vert in faceVertices)
             {
                 localMeshData.Vertices.Add(vert + new Vector3(x, y, z));
-                localMeshData.Normals.Add(normal);  // Add the same normal for each vertex
+                localMeshData.Normals.Add(normal); // Add the same normal for each vertex
             }
 
             // Get the UV coordinates for the block type and face
