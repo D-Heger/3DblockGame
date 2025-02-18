@@ -361,7 +361,11 @@ namespace VoxelGame.World
                     if (worldSystem.ChunkExists(neighborChunkPosition))
                     {
                         // Get the neighboring chunk's data
-                        ChunkData neighborChunk = worldSystem.GetChunk(neighborChunkPosition);
+                        ChunkData? neighborChunk = worldSystem.GetChunk(neighborChunkPosition);
+
+                        // If the chunk is null or the block is air, the face is visible
+                        if (neighborChunk == null)
+                            return true;
 
                         // Check if the corresponding block in the neighboring chunk is air
                         return neighborChunk.Blocks[neighborX, neighborY, neighborZ]
