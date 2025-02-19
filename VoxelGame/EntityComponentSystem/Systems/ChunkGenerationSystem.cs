@@ -228,7 +228,7 @@ namespace VoxelGame.EntityComponentSystem.Systems
                 new MeshComponent(
                     chunkMeshData.Vertices,
                     chunkMeshData.UVs,
-                    chunkMeshData.Normals, // Add normals
+                    chunkMeshData.Normals,
                     chunkMeshData.Indices
                 )
             );
@@ -239,6 +239,217 @@ namespace VoxelGame.EntityComponentSystem.Systems
 
             // Add the chunk to the world system
             _worldSystem.AddChunk(chunkPosition, chunkData);
+
+            // After the chunk is fully generated, update neighboring chunks
+            UpdateNeighboringChunks(chunkPosition);
+        }
+
+        /// <summary>
+        /// Updates the meshes of neighboring chunks when a new chunk is generated
+        /// </summary>
+        private void UpdateNeighboringChunks(ChunkPosition chunkPosition)
+        {
+            try
+            {
+                int size = Chunk.SIZE;
+                // Define the relative positions of neighboring chunks
+                var neighborOffsets = new[]
+                {
+                    new ChunkPosition(size, 0, 0), // Right
+                    new ChunkPosition(-size, 0, 0), // Left
+                    new ChunkPosition(0, 0, size), // Front
+                    new ChunkPosition(0, 0, -size), // Back
+                };
+
+                // Create a list to track chunks that need updates
+                var chunksToUpdate = new List<(ChunkPosition, int)>();
+
+                // First, identify all chunks that need updates
+                foreach (var offset in neighborOffsets)
+                {
+                    ChunkPosition neighborPos =
+                        new(
+                            chunkPosition.X + offset.X,
+                            chunkPosition.Y,
+                            chunkPosition.Z + offset.Z
+                        );
+
+                    // Check if the neighbor exists and get its entity ID atomically
+                    if (_chunkEntities.TryGetValue(neighborPos, out int neighborEntity))
+                    {
+                        // Verify the chunk still exists in the world system
+                        if (_worldSystem.ChunkExists(neighborPos))
+                        {
+                            chunksToUpdate.Add((neighborPos, neighborEntity));
+                        }
+                    }
+                }
+
+                // Then update all chunks that were valid
+                foreach (var (neighborPos, neighborEntity) in chunksToUpdate)
+                {
+                    try
+                    {
+                        RegenerateChunkMesh(neighborPos, neighborEntity);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(
+                            $"Failed to regenerate mesh for chunk at {neighborPos}: {e.Message}"
+                        );
+                        // Continue with other chunks even if one fails
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error during neighbor chunk updates: {e.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Regenerates the mesh for an existing chunk
+        /// </summary>
+        private void RegenerateChunkMesh(ChunkPosition chunkPosition, int chunkEntity)
+        {
+            if (!_entityManager.EntityExists(chunkEntity))
+            {
+                // Entity was removed while we were processing
+                return;
+            }
+
+            try
+            {
+                // Get the existing chunk data with a null check
+                ChunkData? existingChunkData = _worldSystem.GetChunk(chunkPosition);
+                if (existingChunkData == null)
+                {
+                    Console.WriteLine(
+                        $"Warning: Chunk data not found for position {chunkPosition}"
+                    );
+                    return;
+                }
+
+                // Generate new mesh data
+                ChunkMeshData? newMeshData = null;
+                try
+                {
+                    newMeshData = ChunkGenerator.GenerateChunkMesh(
+                        chunkPosition,
+                        _worldSystem,
+                        out ChunkData _ // Discard the output chunk data since we already have it
+                    );
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Failed to generate new mesh data: {e.Message}");
+                    return;
+                }
+
+                // Validate mesh data
+                if (!ValidateMeshData(newMeshData))
+                {
+                    Console.WriteLine($"Invalid mesh data generated for chunk at {chunkPosition}");
+                    return;
+                }
+
+                // Update the mesh component
+                var meshComponent = _entityManager.GetComponent<MeshComponent>(chunkEntity);
+                if (meshComponent == null)
+                {
+                    Console.WriteLine($"Warning: MeshComponent not found for entity {chunkEntity}");
+                    return;
+                }
+
+                try
+                {
+                    // Update the mesh data in a thread-safe manner
+                    lock (meshComponent)
+                    {
+                        // Update the mesh data
+                        meshComponent.Vertices = newMeshData.Vertices;
+                        meshComponent.UVs = newMeshData.UVs;
+                        meshComponent.Normals = newMeshData.Normals;
+                        meshComponent.Indices = newMeshData.Indices;
+
+                        // Force buffer recreation on next render
+                        meshComponent.ResetBuffers();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Failed to update mesh component: {e.Message}");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(
+                    $"Critical error during mesh regeneration for chunk {chunkPosition}: {e.Message}"
+                );
+            }
+        }
+
+        /// <summary>
+        /// Validates that the mesh data is complete and consistent
+        /// </summary>
+        private bool ValidateMeshData(ChunkMeshData meshData)
+        {
+            try
+            {
+                // Check for null data
+                if (
+                    meshData == null
+                    || meshData.Vertices == null
+                    || meshData.UVs == null
+                    || meshData.Normals == null
+                    || meshData.Indices == null
+                )
+                {
+                    return false;
+                }
+
+                // Check for empty collections
+                if (
+                    meshData.Vertices.Count == 0
+                    || meshData.UVs.Count == 0
+                    || meshData.Normals.Count == 0
+                    || meshData.Indices.Count == 0
+                )
+                {
+                    return false;
+                }
+
+                // Verify data consistency
+                if (
+                    meshData.Vertices.Count != meshData.Normals.Count
+                    || meshData.Vertices.Count != meshData.UVs.Count
+                )
+                {
+                    return false;
+                }
+
+                // Verify indices are within bounds
+                uint maxIndex = (uint)meshData.Vertices.Count - 1;
+                foreach (uint index in meshData.Indices)
+                {
+                    if (index > maxIndex)
+                    {
+                        return false;
+                    }
+                }
+
+                // Verify triangle count is valid (must be multiple of 3)
+                if (meshData.Indices.Count % 3 != 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         /// <summary>

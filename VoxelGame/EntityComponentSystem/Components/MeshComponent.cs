@@ -19,7 +19,12 @@ namespace VoxelGame.EntityComponentSystem.Components
 
         private bool buffersInitialized = false;
 
-        public MeshComponent(List<Vector3> vertices, List<Vector2> uvs, List<Vector3> normals, List<uint> indices)
+        public MeshComponent(
+            List<Vector3> vertices,
+            List<Vector2> uvs,
+            List<Vector3> normals,
+            List<uint> indices
+        )
         {
             Vertices = vertices;
             UVs = uvs;
@@ -56,6 +61,31 @@ namespace VoxelGame.EntityComponentSystem.Components
             VAO.Unbind();
 
             buffersInitialized = true;
+        }
+
+        /// <summary>
+        /// Resets the GPU buffers, forcing them to be recreated with new data on next render
+        /// </summary>
+        public void ResetBuffers()
+        {
+            if (buffersInitialized)
+            {
+                // Dispose existing buffers
+                VAO?.Dispose();
+                VBO?.Dispose();
+                UVBO?.Dispose();
+                NormalBO?.Dispose();
+                IBO?.Dispose();
+
+                // Reset buffer objects
+                VAO = null;
+                VBO = null;
+                UVBO = null;
+                NormalBO = null;
+                IBO = null;
+
+                buffersInitialized = false;
+            }
         }
 
         public void Dispose()
