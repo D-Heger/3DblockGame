@@ -1,5 +1,5 @@
-using VoxelGame.EntityComponentSystem;
 using OpenTK.Mathematics;
+using VoxelGame.EntityComponentSystem;
 
 namespace Tests.EntityComponentSystem
 {
@@ -66,10 +66,10 @@ namespace Tests.EntityComponentSystem
         {
             int entity = _entityManager.CreateEntity();
             var component = new TestComponent { Value = 42 };
-        
+
             _entityManager.AddComponent(entity, component);
             var retrievedComponent = _entityManager.GetComponent<TestComponent>(entity);
-        
+
             Assert.NotNull(retrievedComponent);
             Assert.Equal(42, retrievedComponent.Value);
         }
@@ -82,13 +82,17 @@ namespace Tests.EntityComponentSystem
         {
             int entity1 = _entityManager.CreateEntity();
             int entity2 = _entityManager.CreateEntity();
-        
+
             _entityManager.AddComponent(entity1, new TestComponent());
             _entityManager.AddComponent(entity2, new TestComponent());
             _entityManager.AddComponent(entity2, new SecondTestComponent());
 
-            var entitiesWithTest = _entityManager.GetEntitiesWithComponent<TestComponent>().ToList();
-            var entitiesWithSecond = _entityManager.GetEntitiesWithComponent<SecondTestComponent>().ToList();
+            var entitiesWithTest = _entityManager
+                .GetEntitiesWithComponent<TestComponent>()
+                .ToList();
+            var entitiesWithSecond = _entityManager
+                .GetEntitiesWithComponent<SecondTestComponent>()
+                .ToList();
 
             Assert.Equal(2, entitiesWithTest.Count);
             Assert.Contains(entity1, entitiesWithTest);
@@ -105,9 +109,9 @@ namespace Tests.EntityComponentSystem
         {
             int entity = _entityManager.CreateEntity();
             _entityManager.AddComponent(entity, new TestComponent());
-        
+
             _entityManager.RemoveEntity(entity);
-        
+
             Assert.False(_entityManager.EntityExists(entity));
             Assert.Null(_entityManager.GetComponent<TestComponent>(entity));
         }
@@ -120,12 +124,14 @@ namespace Tests.EntityComponentSystem
         {
             int entity1 = _entityManager.CreateEntity();
             int entity2 = _entityManager.CreateEntity();
-        
+
             _entityManager.AddComponent(entity1, new TestComponent());
             _entityManager.AddComponent(entity1, new SecondTestComponent());
             _entityManager.AddComponent(entity2, new TestComponent());
 
-            var entitiesWithBoth = _entityManager.GetEntitiesWithComponents<TestComponent, SecondTestComponent>().ToList();
+            var entitiesWithBoth = _entityManager
+                .GetEntitiesWithComponents<TestComponent, SecondTestComponent>()
+                .ToList();
 
             Assert.Single(entitiesWithBoth);
             Assert.Contains(entity1, entitiesWithBoth);

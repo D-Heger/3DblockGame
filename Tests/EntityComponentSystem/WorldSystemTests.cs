@@ -71,7 +71,7 @@ namespace Tests.EntityComponentSystem
             var position1 = new ChunkPosition(0, 0, 0);
             var position2 = new ChunkPosition(16, 0, 0);
             var blocks = new BlockType[Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE];
-        
+
             _worldSystem.AddChunk(position1, new ChunkData(blocks));
             _worldSystem.AddChunk(position2, new ChunkData(blocks));
 

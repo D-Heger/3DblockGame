@@ -1,10 +1,9 @@
-using VoxelGame.EntityComponentSystem;
-using VoxelGame.EntityComponentSystem.Systems;
-using VoxelGame.EntityComponentSystem.Components;
-using VoxelGame.World;
-using VoxelGame.World.Data;
-using VoxelGame.GraphicsPipeline;
 using OpenTK.Mathematics;
+using VoxelGame.EntityComponentSystem;
+using VoxelGame.EntityComponentSystem.Components;
+using VoxelGame.EntityComponentSystem.Systems;
+using VoxelGame.GraphicsPipeline;
+using VoxelGame.World;
 
 namespace Tests.EntityComponentSystem;
 
@@ -29,8 +28,11 @@ public class ChunkGenerationSystemTests : IDisposable
     /// </summary>
     private class MockTexture : Texture
     {
-        public MockTexture() : base("") { }  // Pass empty string to base to prevent file loading
+        public MockTexture()
+            : base("") { } // Pass empty string to base to prevent file loading
+
         public override void Bind() { }
+
         public override void Dispose() { }
     }
 
@@ -46,7 +48,11 @@ public class ChunkGenerationSystemTests : IDisposable
     {
         _entityManager = new EntityManager();
         _worldSystem = new WorldSystem();
-        _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager, _worldSystem, new MockTextureProvider());
+        _chunkGenerationSystem = new ChunkGenerationSystem(
+            _entityManager,
+            _worldSystem,
+            new MockTextureProvider()
+        );
     }
 
     /// <summary>
@@ -71,7 +77,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act
         _chunkGenerationSystem.GenerateInitialChunks(origin, radius);
-    
+
         // Process a few frames to allow chunk generation
         for (int i = 0; i < 10; i++)
         {
@@ -98,7 +104,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act - Initial generation
         _chunkGenerationSystem.UpdateChunks(playerInitialPosition, renderDistance);
-    
+
         // Process initial chunks
         for (int i = 0; i < 10; i++)
         {
@@ -123,7 +129,7 @@ public class ChunkGenerationSystemTests : IDisposable
         var newChunks = _worldSystem.GetAllChunkPositions().ToList();
         Assert.NotEmpty(newChunks); // Verify we have chunks
         Assert.DoesNotContain(new ChunkPosition(0, 0, 0), newChunks); // Old chunk should be removed
-    
+
         // Verify new chunks are around the new player position
         var expectedChunk = new ChunkPosition(Chunk.SIZE * 4, 0, Chunk.SIZE * 4);
         Assert.Contains(expectedChunk, newChunks);
@@ -138,10 +144,10 @@ public class ChunkGenerationSystemTests : IDisposable
     {
         // Arrange
         var chunkPosition = new ChunkPosition(0, 0, 0);
-    
+
         // Act
         _chunkGenerationSystem.GenerateInitialChunks(chunkPosition, 0); // Only generate one chunk
-    
+
         // Process generation
         for (int i = 0; i < 5; i++)
         {
@@ -151,13 +157,17 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Assert
         var entitiesWithMesh = _entityManager.GetEntitiesWithComponent<MeshComponent>().ToList();
-        var entitiesWithTransform = _entityManager.GetEntitiesWithComponent<TransformComponent>().ToList();
-        var entitiesWithTexture = _entityManager.GetEntitiesWithComponent<TextureComponent>().ToList();
+        var entitiesWithTransform = _entityManager
+            .GetEntitiesWithComponent<TransformComponent>()
+            .ToList();
+        var entitiesWithTexture = _entityManager
+            .GetEntitiesWithComponent<TextureComponent>()
+            .ToList();
 
         Assert.Single(entitiesWithMesh);
         Assert.Single(entitiesWithTransform);
         Assert.Single(entitiesWithTexture);
-    
+
         // Verify the transform position matches the chunk position
         var transform = _entityManager.GetComponent<TransformComponent>(entitiesWithTransform[0]);
         Assert.NotNull(transform);
@@ -179,7 +189,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act - Initial generation
         _chunkGenerationSystem.UpdateChunks(playerPosition, renderDistance);
-    
+
         // Process initial chunks
         for (int i = 0; i < 5; i++)
         {
@@ -191,7 +201,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Update with same position
         _chunkGenerationSystem.UpdateChunks(playerPosition, renderDistance);
-    
+
         // Process any potential updates
         for (int i = 0; i < 5; i++)
         {
@@ -218,7 +228,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act - Initial generation
         _chunkGenerationSystem.UpdateChunks(playerPosition, initialRenderDistance);
-    
+
         // Process initial chunks
         for (int i = 0; i < 5; i++)
         {
@@ -231,7 +241,7 @@ public class ChunkGenerationSystemTests : IDisposable
         // Update with larger render distance
         int newRenderDistance = 2;
         _chunkGenerationSystem.UpdateChunks(playerPosition, newRenderDistance);
-    
+
         // Process updates
         for (int i = 0; i < 10; i++)
         {
@@ -254,7 +264,7 @@ public class ChunkGenerationSystemTests : IDisposable
         // Arrange
         var chunkPosition = new ChunkPosition(0, 0, 0);
         _chunkGenerationSystem.GenerateInitialChunks(chunkPosition, 0);
-    
+
         // Process generation
         for (int i = 0; i < 5; i++)
         {
@@ -268,7 +278,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act - Move player far away to trigger chunk removal
         _chunkGenerationSystem.UpdateChunks(new Vector3(Chunk.SIZE * 10, 0, Chunk.SIZE * 10), 1);
-    
+
         // Process updates
         for (int i = 0; i < 5; i++)
         {
@@ -300,7 +310,7 @@ public class ChunkGenerationSystemTests : IDisposable
 
         // Act
         _chunkGenerationSystem.GenerateInitialChunks(origin, radius);
-    
+
         // Process generation with longer timeout due to larger area
         for (int i = 0; i < 20; i++)
         {
