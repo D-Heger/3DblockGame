@@ -4,6 +4,8 @@ A voxel-based game engine written in C# using OpenTK and Entity Component System
 
 See [Documentation](index.md) for more information.
 
+![public/screen1.png](public/screen1.png)
+
 ## Features
 
 - Procedural chunk generation
