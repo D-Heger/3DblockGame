@@ -1,10 +1,9 @@
 using OpenTK.Mathematics;
 
-namespace VoxelGame.World.Data
+namespace VoxelGame.World.Data;
+
+public struct FaceData
 {
-    public struct FaceData
-    {
-        public List<Vector3> Vertices;
-        public List<Vector2> TextureCoordinates;
-    }
+    public Vector3[] Vertices;
+    public Vector2[] TextureCoordinates;
 }

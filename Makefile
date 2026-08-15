@@ -1,7 +1,7 @@
 .PHONY: run build test clean docs check
 
 run: build
-	dotnet run --project VoxelGame/VoxelGame.csproj
+	dotnet run --project VoxelGame/VoxelGame.csproj --configuration Release
 
 build: check
 	dotnet build VoxelGame.sln --configuration Release

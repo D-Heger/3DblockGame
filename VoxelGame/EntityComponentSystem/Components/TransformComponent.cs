@@ -1,12 +1,11 @@
 using OpenTK.Mathematics;
 
-namespace VoxelGame.EntityComponentSystem.Components
+namespace VoxelGame.EntityComponentSystem.Components;
+
+public class TransformComponent(Vector3 position, Quaternion rotation, Vector3 scale)
+    : Component
 {
-    public class TransformComponent(Vector3 position, Quaternion rotation, Vector3 scale)
-        : Component
-    {
-        public Vector3 Position = position;
-        public Quaternion Rotation = rotation;
-        public Vector3 Scale = scale;
-    }
+    public Vector3 Position = position;
+    public Quaternion Rotation = rotation;
+    public Vector3 Scale = scale;
 }

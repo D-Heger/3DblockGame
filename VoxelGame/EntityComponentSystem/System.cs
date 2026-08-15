@@ -1,4 +1,3 @@
-namespace VoxelGame.EntityComponentSystem
-{
-    public abstract class System { }
-}
+namespace VoxelGame.EntityComponentSystem;
+
+public abstract class System { }

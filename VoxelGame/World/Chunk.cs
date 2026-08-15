@@ -1,8 +1,7 @@
-namespace VoxelGame.World
+namespace VoxelGame.World;
+
+public class Chunk
 {
-    public class Chunk
-    {
-        public const int SIZE = 16;
-        public const int HEIGHT = 384;
-    }
+    public const int SIZE = 16;
+    public const int HEIGHT = 384;
 }
