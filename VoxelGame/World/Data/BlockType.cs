@@ -1,14 +1,13 @@
-namespace VoxelGame.World.Data
+namespace VoxelGame.World.Data;
+
+public enum BlockType : byte
 {
-    public enum BlockType : byte
-    {
-        DIRT,
-        GRASS,
-        AIR,
-        STONE,
-        SAND,
-        WATER,
-        BEDROCK,
-        
-    }
+    DIRT,
+    GRASS,
+    AIR,
+    STONE,
+    SAND,
+    WATER,
+    BEDROCK,
+    
 }
