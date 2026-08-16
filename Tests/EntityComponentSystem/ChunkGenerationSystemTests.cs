@@ -1,15 +1,18 @@
+using System.Diagnostics;
 using OpenTK.Mathematics;
 using VoxelGame.EntityComponentSystem;
 using VoxelGame.EntityComponentSystem.Components;
 using VoxelGame.EntityComponentSystem.Systems;
 using VoxelGame.GraphicsPipeline;
 using VoxelGame.World;
+using VoxelGame.World.Data;
 
 namespace Tests.EntityComponentSystem;
 
 /// <summary>
-/// Test suite for the ChunkGenerationSystem class. Verifies chunk generation, management,
-/// and cleanup functionality in the voxel world.
+/// Test suite for the ChunkGenerationSystem streaming lifecycle: nearest-first
+/// prioritization, cancellation without resurrection, unload with full cleanup,
+/// unload hysteresis, and arrival re-meshing of neighbors.
 /// </summary>
 [Collection("MemorySensitive")]
 public class ChunkGenerationSystemTests : IDisposable
@@ -41,10 +44,6 @@ public class ChunkGenerationSystemTests : IDisposable
     private readonly WorldSystem _worldSystem;
     private readonly ChunkGenerationSystem _chunkGenerationSystem;
 
-    /// <summary>
-    /// Initializes a new instance of the ChunkGenerationSystemTests class.
-    /// Sets up the required systems for testing chunk generation.
-    /// </summary>
     public ChunkGenerationSystemTests()
     {
         _entityManager = new EntityManager();
@@ -52,277 +51,382 @@ public class ChunkGenerationSystemTests : IDisposable
         _chunkGenerationSystem = new ChunkGenerationSystem(
             _entityManager,
             _worldSystem,
-            new MockTextureProvider()
+            new MockTextureProvider(),
+            workerCount: 1
         );
     }
 
-    /// <summary>
-    /// Cleans up resources used by the test class.
-    /// </summary>
     public void Dispose()
     {
+        _chunkGenerationSystem.Dispose();
         _entityManager.Dispose();
         GC.SuppressFinalize(this);
     }
 
-    /// <summary>
-    /// Verifies that initial chunk generation correctly enqueues the expected number
-    /// of chunks in a square grid around the origin position.
-    /// </summary>
-    [Fact]
-    public void GenerateInitialChunks_EnqueuesCorrectChunks()
+    private bool WaitFor(Func<bool> condition, int timeoutMs = 30000)
     {
-        // Arrange
-        ChunkPosition origin = new(0, 0, 0);
-        int radius = 1;
-        int expectedChunkCount = (2 * radius + 1) * (2 * radius + 1); // 3x3 grid for radius 1
-
-        // Act
-        _chunkGenerationSystem.GenerateInitialChunks(origin, radius);
-
-        // Process a few frames to allow chunk generation
-        for (int i = 0; i < 10; i++)
+        Stopwatch stopwatch = Stopwatch.StartNew();
+        while (stopwatch.ElapsedMilliseconds < timeoutMs)
         {
             _chunkGenerationSystem.Update();
-            // Small delay to allow async processing
-            Thread.Sleep(100);
+            if (condition())
+            {
+                return true;
+            }
+            Thread.Sleep(5);
         }
+        _chunkGenerationSystem.Update();
+        return condition();
+    }
 
-        // Assert
-        List<ChunkPosition> existingChunks = [.. _worldSystem.GetAllChunkPositions()];
-        Assert.Equal(expectedChunkCount, existingChunks.Count);
+    private void PumpFrames(int frames)
+    {
+        for (int i = 0; i < frames; i++)
+        {
+            _chunkGenerationSystem.Update();
+            Thread.Sleep(5);
+        }
     }
 
     /// <summary>
-    /// Tests that chunks are properly added and removed as the player moves through
-    /// the world, maintaining the correct render distance around the player.
+    /// Verifies the pending queue dequeues nearest chunks first, keyed on
+    /// squared distance to the active center.
     /// </summary>
     [Fact]
-    public void UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition()
+    public void PendingChunks_AreOrderedNearestFirst()
     {
-        // Arrange
-        Vector3 playerInitialPosition = new(0, 0, 0);
-        int renderDistance = 1;
+        _chunkGenerationSystem.UpdateChunks(new ChunkPosition(0, 0), 2);
 
-        // Act - Initial generation
-        _chunkGenerationSystem.UpdateChunks(playerInitialPosition, renderDistance);
+        IReadOnlyList<ChunkPosition> pending = _chunkGenerationSystem.GetPendingOrder();
 
-        // Process initial chunks
-        for (int i = 0; i < 10; i++)
+        Assert.NotEmpty(pending);
+        long previousDistance = -1;
+        foreach (ChunkPosition position in pending)
         {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(100);
+            long distance =
+                (long)position.X * position.X + (long)position.Z * position.Z;
+            Assert.True(
+                distance >= previousDistance,
+                $"Chunk {position} at distance {distance} dequeues after distance {previousDistance}"
+            );
+            previousDistance = distance;
         }
-
-        _ = _worldSystem.GetAllChunkPositions().Count();
-
-        // Move player far away (4 chunks in X and Z direction)
-        Vector3 newPlayerPosition = new(Chunk.SIZE * 4, 0, Chunk.SIZE * 4);
-        _chunkGenerationSystem.UpdateChunks(newPlayerPosition, renderDistance);
-
-        // Process updates
-        for (int i = 0; i < 10; i++)
-        {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(100);
-        }
-
-        // Assert
-        List<ChunkPosition> newChunks = [.. _worldSystem.GetAllChunkPositions()];
-        Assert.NotEmpty(newChunks); // Verify we have chunks
-        Assert.DoesNotContain(new ChunkPosition(0, 0, 0), newChunks); // Old chunk should be removed
-
-        // Verify new chunks are around the new player position
-        ChunkPosition expectedChunk = new(Chunk.SIZE * 4, 0, Chunk.SIZE * 4);
-        Assert.Contains(expectedChunk, newChunks);
     }
 
     /// <summary>
-    /// Verifies that generated chunks have all required components (Mesh, Transform, Texture)
-    /// and that the components contain correct initial values.
+    /// Regression test: chunks cancelled before their upload must never be
+    /// resurrected by late-finishing generation work.
     /// </summary>
     [Fact]
-    public void ChunkGeneration_CreatesCorrectEntityComponents()
+    public void CancelledChunks_AreNeverResurrected()
     {
-        // Arrange
-        ChunkPosition chunkPosition = new(0, 0, 0);
+        ChunkPosition origin = new(0, 0);
+        ChunkPosition farCenter = new(30, 0);
 
-        // Act
-        _chunkGenerationSystem.GenerateInitialChunks(chunkPosition, 0); // Only generate one chunk
+        _chunkGenerationSystem.UpdateChunks(origin, 1);
+        // Move away before all queued chunks were uploaded; queued and
+        // in-flight work gets cancelled.
+        _chunkGenerationSystem.UpdateChunks(farCenter, 1);
 
-        // Process generation
-        for (int i = 0; i < 5; i++)
+        Assert.True(WaitFor(() => _chunkGenerationSystem.GetChunkState(farCenter) == ChunkState.Active));
+        // Drain any stray ready items that completed before cancellation landed.
+        PumpFrames(30);
+
+        for (int dx = -1; dx <= 1; dx++)
         {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(100);
+            for (int dz = -1; dz <= 1; dz++)
+            {
+                ChunkPosition position = new(origin.X + dx, origin.Z + dz);
+                Assert.False(_worldSystem.ChunkExists(position));
+                Assert.Null(_chunkGenerationSystem.GetChunkState(position));
+            }
         }
+    }
 
-        // Assert
-        List<int> entitiesWithMesh = [.. _entityManager.GetEntitiesWithComponent<MeshComponent>()];
-        List<int> entitiesWithTransform = [.. _entityManager.GetEntitiesWithComponent<TransformComponent>()];
-        List<int> entitiesWithTexture = [.. _entityManager.GetEntitiesWithComponent<TextureComponent>()];
+    /// <summary>
+    /// Verifies that unloading a chunk removes its entity, its world data, and
+    /// disposes its MeshComponent (leak-free GPU cleanup). Also verifies the
+    /// disposed component (and its mesh arrays) become collectable — historical
+    /// component pooling retained them forever, growing memory while walking.
+    /// </summary>
+    [Fact]
+    public void Unload_RemovesEntityAndWorldDataAndDisposesComponent()
+    {
+        ChunkPosition origin = new(0, 0);
+        _chunkGenerationSystem.UpdateChunks(origin, 1);
 
-        Assert.Single(entitiesWithMesh);
-        Assert.Single(entitiesWithTransform);
-        Assert.Single(entitiesWithTexture);
+        Assert.True(WaitFor(() => _chunkGenerationSystem.GetChunkState(origin) == ChunkState.Active));
 
-        // Verify the transform position matches the chunk position
-        TransformComponent? transform = _entityManager.GetComponent<TransformComponent>(entitiesWithTransform[0]);
+        (int entity, WeakReference meshRef) = TrackActiveChunkMesh(origin);
+
+        _chunkGenerationSystem.UpdateChunks(new ChunkPosition(30, 0), 1);
+
+        Assert.False(_worldSystem.ChunkExists(origin));
+        Assert.Null(_chunkGenerationSystem.GetChunkState(origin));
+        Assert.False(_entityManager.EntityExists(entity));
+        Assert.Null(_entityManager.GetComponent<MeshComponent>(entity));
+        AssertMeshDisposed(origin, meshRef);
+
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        GC.Collect();
+
+        Assert.False(meshRef.IsAlive);
+    }
+
+    [System.Runtime.CompilerServices.MethodImpl(
+        System.Runtime.CompilerServices.MethodImplOptions.NoInlining
+    )]
+    private (int Entity, WeakReference MeshRef) TrackActiveChunkMesh(ChunkPosition position)
+    {
+        int entity = _chunkGenerationSystem.GetChunkEntity(position);
+        Assert.NotEqual(-1, entity);
+        Assert.True(_entityManager.EntityExists(entity));
+        MeshComponent? meshComponent = _entityManager.GetComponent<MeshComponent>(entity);
+        Assert.NotNull(meshComponent);
+        return (entity, new WeakReference(meshComponent));
+    }
+
+    /// <summary>
+    /// Verifies the unloaded chunk's MeshComponent was disposed before release.
+    /// Runs while the component is normally still unreachable-but-uncollected;
+    /// if the GC beat us to it the object was already released, which is the
+    /// property under test anyway.
+    /// </summary>
+    [System.Runtime.CompilerServices.MethodImpl(
+        System.Runtime.CompilerServices.MethodImplOptions.NoInlining
+    )]
+    private static void AssertMeshDisposed(ChunkPosition position, WeakReference meshRef)
+    {
+        if (meshRef.Target is MeshComponent meshComponent)
+        {
+            Assert.True(meshComponent.IsDisposed, $"MeshComponent for {position} was not disposed on unload");
+        }
+    }
+
+    /// <summary>
+    /// Verifies unload hysteresis: a chunk at radius+1 stays active, while a
+    /// chunk beyond radius+hysteresis unloads.
+    /// </summary>
+    [Fact]
+    public void Hysteresis_KeepsChunksJustOutsideRadius_AndUnloadsBeyondHysteresis()
+    {
+        ChunkPosition edgeChunk = new(3, 0);
+        _chunkGenerationSystem.UpdateChunks(new ChunkPosition(0, 0), 3);
+
+        Assert.True(WaitFor(() => _chunkGenerationSystem.GetChunkState(edgeChunk) == ChunkState.Active));
+
+        // Move the center one chunk left: edgeChunk is now at distance 4,
+        // which is > radius (3) but <= radius + hysteresis (5) → stays loaded.
+        _chunkGenerationSystem.UpdateChunks(new ChunkPosition(-1, 0), 3);
+        PumpFrames(10);
+        Assert.Equal(ChunkState.Active, _chunkGenerationSystem.GetChunkState(edgeChunk));
+        Assert.True(_worldSystem.ChunkExists(edgeChunk));
+
+        // Move further: distance 7 > radius + hysteresis (5) → unloads.
+        _chunkGenerationSystem.UpdateChunks(new ChunkPosition(-4, 0), 3);
+        PumpFrames(10);
+        Assert.Null(_chunkGenerationSystem.GetChunkState(edgeChunk));
+        Assert.False(_worldSystem.ChunkExists(edgeChunk));
+    }
+
+    /// <summary>
+    /// Verifies that generating a new chunk re-meshes its active neighbors so
+    /// previously exposed border faces get culled (no world-edge holes).
+    /// </summary>
+    [Fact]
+    public void Arrival_RemeshesActiveNeighbors()
+    {
+        ChunkPosition center = new(0, 0);
+        _chunkGenerationSystem.UpdateChunks(center, 0);
+
+        Assert.True(WaitFor(() => _chunkGenerationSystem.GetChunkState(center) == ChunkState.Active));
+        PumpFrames(2);
+
+        int entity = _chunkGenerationSystem.GetChunkEntity(center);
+        MeshComponent meshComponent = _entityManager.GetComponent<MeshComponent>(entity)!;
+        ChunkMeshData originalMesh = meshComponent.MeshData;
+        int originalVertexCount = originalMesh.Vertices.Length;
+
+        // Grow the radius so 4 neighbors arrive around the lonely chunk.
+        _chunkGenerationSystem.UpdateChunks(center, 1);
+
+        Assert.True(WaitFor(() =>
+            _chunkGenerationSystem.GetChunkState(new ChunkPosition(1, 0)) == ChunkState.Active
+            && _chunkGenerationSystem.GetChunkState(new ChunkPosition(-1, 0)) == ChunkState.Active
+            && _chunkGenerationSystem.GetChunkState(new ChunkPosition(0, 1)) == ChunkState.Active
+            && _chunkGenerationSystem.GetChunkState(new ChunkPosition(0, -1)) == ChunkState.Active
+        ));
+        PumpFrames(2);
+
+        Assert.NotSame(originalMesh, meshComponent.MeshData);
+        // Faces toward the arrived neighbors are now culled, so the re-meshed
+        // chunk must have fewer vertices.
+        Assert.True(meshComponent.MeshData.Vertices.Length < originalVertexCount);
+    }
+
+    /// <summary>
+    /// Verifies that chunk streaming adds chunks around the player and removes
+    /// chunks left behind when the player moves.
+    /// </summary>
+    [Fact]
+    public void UpdateChunks_AddsAndRemovesChunksBasedOnCenter()
+    {
+        ChunkPosition origin = new(0, 0);
+        _chunkGenerationSystem.UpdateChunks(origin, 1);
+
+        Assert.True(WaitFor(() => _chunkGenerationSystem.ActiveChunkCount == 5));
+        Assert.True(_worldSystem.ChunkExists(origin));
+
+        ChunkPosition newCenter = new(4, 4);
+        _chunkGenerationSystem.UpdateChunks(newCenter, 1);
+
+        Assert.True(WaitFor(() =>
+            _chunkGenerationSystem.ActiveChunkCount == 5
+            && _chunkGenerationSystem.GetPendingOrder().Count == 0
+        ));
+
+        Assert.True(_worldSystem.ChunkExists(newCenter));
+        Assert.False(_worldSystem.ChunkExists(origin));
+    }
+
+    /// <summary>
+    /// Verifies that activating a chunk creates an entity with Mesh, Transform
+    /// (at the chunk's world origin), and Texture components.
+    /// </summary>
+    [Fact]
+    public void ChunkActivation_CreatesCorrectEntityComponents()
+    {
+        ChunkPosition center = new(2, 3);
+        _chunkGenerationSystem.UpdateChunks(center, 0);
+
+        Assert.True(WaitFor(() => _chunkGenerationSystem.GetChunkState(center) == ChunkState.Active));
+        PumpFrames(2);
+
+        List<int> meshEntities = [.. _entityManager.GetEntitiesWithComponent<MeshComponent>()];
+        List<int> transformEntities = [.. _entityManager.GetEntitiesWithComponent<TransformComponent>()];
+        List<int> textureEntities = [.. _entityManager.GetEntitiesWithComponent<TextureComponent>()];
+
+        Assert.Single(meshEntities);
+        Assert.Single(transformEntities);
+        Assert.Single(textureEntities);
+
+        TransformComponent? transform = _entityManager.GetComponent<TransformComponent>(transformEntities[0]);
         Assert.NotNull(transform);
-        Assert.Equal(chunkPosition.X, transform.Position.X);
-        Assert.Equal(chunkPosition.Y, transform.Position.Y);
-        Assert.Equal(chunkPosition.Z, transform.Position.Z);
+        Assert.Equal(new Vector3(center.WorldX, 0, center.WorldZ), transform.Position);
+
+        MeshComponent? meshComponent = _entityManager.GetComponent<MeshComponent>(meshEntities[0]);
+        Assert.NotNull(meshComponent);
+        Assert.False(meshComponent.MeshData.IsEmpty);
+        Assert.True(meshComponent.MeshData.Uses16BitIndices);
     }
 
     /// <summary>
-    /// Ensures that updating chunks with the same player position does not trigger
-    /// unnecessary chunk regeneration, optimizing performance.
+    /// Ensures that updating chunks with the same center and radius is a no-op
+    /// that does not enqueue duplicate work.
     /// </summary>
     [Fact]
-    public void UpdateChunks_WithSamePosition_DoesNotRegenerateChunks()
+    public void UpdateChunks_WithSameCenterAndRadius_DoesNothing()
     {
-        // Arrange
-        Vector3 playerPosition = new(0, 0, 0);
-        int renderDistance = 1;
+        ChunkPosition center = new(0, 0);
+        _chunkGenerationSystem.UpdateChunks(center, 1);
 
-        // Act - Initial generation
-        _chunkGenerationSystem.UpdateChunks(playerPosition, renderDistance);
+        Assert.True(WaitFor(() => _chunkGenerationSystem.ActiveChunkCount == 5));
 
-        // Process initial chunks
-        for (int i = 0; i < 5; i++)
-        {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(50);
-        }
+        int entityCountBefore = _entityManager.EntityCount;
 
-        List<ChunkPosition> initialChunks = [.. _worldSystem.GetAllChunkPositions()];
+        _chunkGenerationSystem.UpdateChunks(center, 1);
+        PumpFrames(10);
 
-        // Update with same position
-        _chunkGenerationSystem.UpdateChunks(playerPosition, renderDistance);
-
-        // Process any potential updates
-        for (int i = 0; i < 5; i++)
-        {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(50);
-        }
-
-        // Assert
-        List<ChunkPosition> finalChunks = [.. _worldSystem.GetAllChunkPositions()];
-        Assert.Equal(initialChunks.Count, finalChunks.Count);
-        Assert.All(initialChunks, chunk => Assert.Contains(chunk, finalChunks));
+        Assert.Empty(_chunkGenerationSystem.GetPendingOrder());
+        Assert.Equal(5, _chunkGenerationSystem.ActiveChunkCount);
+        Assert.Equal(entityCountBefore, _entityManager.EntityCount);
     }
 
     /// <summary>
-    /// Verifies that changing the render distance properly updates the number of
-    /// visible chunks around the player.
+    /// Verifies that a chunk whose generation fails transiently is re-enqueued
+    /// and eventually activates instead of leaving a permanent hole (the old
+    /// behavior dropped the handle on the first failure and never retried it
+    /// until the player moved).
     /// </summary>
     [Fact]
-    public void UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount()
+    public void TransientGenerationFailure_IsRetriedUntilSuccess()
     {
-        // Arrange
-        Vector3 playerPosition = new(0, 0, 0);
-        int initialRenderDistance = 1;
-
-        // Act - Initial generation
-        _chunkGenerationSystem.UpdateChunks(playerPosition, initialRenderDistance);
-
-        // Process initial chunks
-        for (int i = 0; i < 5; i++)
+        ChunkPosition target = new(0, 0);
+        int attempts = 0;
+        _chunkGenerationSystem.GenerationOverride = (position, worldSystem) =>
         {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(50);
-        }
+            if (position == target && Interlocked.Increment(ref attempts) <= 2)
+            {
+                throw new InvalidOperationException("simulated transient failure");
+            }
+            ChunkData data = ChunkGenerator.GenerateChunkData(position);
+            return (ChunkGenerator.GenerateChunkMesh(position, worldSystem, data), data);
+        };
 
-        int initialChunkCount = _worldSystem.GetAllChunkPositions().Count();
+        _chunkGenerationSystem.UpdateChunks(target, 0);
 
-        // Update with larger render distance
-        int newRenderDistance = 2;
-        _chunkGenerationSystem.UpdateChunks(playerPosition, newRenderDistance);
-
-        // Process updates
-        for (int i = 0; i < 10; i++)
-        {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(50);
-        }
-
-        // Assert
-        int finalChunkCount = _worldSystem.GetAllChunkPositions().Count();
-        Assert.True(finalChunkCount > initialChunkCount);
+        Assert.True(WaitFor(() => _chunkGenerationSystem.GetChunkState(target) == ChunkState.Active));
+        Assert.Equal(3, attempts);
+        Assert.True(_worldSystem.ChunkExists(target));
     }
 
     /// <summary>
-    /// Tests that chunk removal properly disposes of all associated components
-    /// and removes entities from the entity manager.
+    /// Verifies that a chunk whose generation always fails is given up on after
+    /// the bounded number of attempts — the handle is dropped instead of the
+    /// failure spinning the retry loop forever.
     /// </summary>
     [Fact]
-    public void RemoveChunk_DisposesComponentsCorrectly()
+    public void PersistentGenerationFailure_GivesUpAfterBoundedRetries()
     {
-        // Arrange
-        ChunkPosition chunkPosition = new(0, 0, 0);
-        _chunkGenerationSystem.GenerateInitialChunks(chunkPosition, 0);
-
-        // Process generation
-        for (int i = 0; i < 5; i++)
+        ChunkPosition target = new(5, 0);
+        int attempts = 0;
+        _chunkGenerationSystem.GenerationOverride = (position, worldSystem) =>
         {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(50);
-        }
+            if (position == target)
+            {
+                Interlocked.Increment(ref attempts);
+                throw new InvalidOperationException("simulated persistent failure");
+            }
+            ChunkData data = ChunkGenerator.GenerateChunkData(position);
+            return (ChunkGenerator.GenerateChunkMesh(position, worldSystem, data), data);
+        };
 
-        List<int> initialEntitiesWithComponents = [.. _entityManager.GetEntitiesWithComponents<MeshComponent, TransformComponent, TextureComponent>()];
+        _chunkGenerationSystem.UpdateChunks(target, 0);
 
-        // Act - Move player far away to trigger chunk removal
-        _chunkGenerationSystem.UpdateChunks(new Vector3(Chunk.SIZE * 10, 0, Chunk.SIZE * 10), 1);
-
-        // Process updates
-        for (int i = 0; i < 5; i++)
-        {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(50);
-        }
-
-        // Assert
-        foreach (int entity in initialEntitiesWithComponents)
-        {
-            Assert.False(_entityManager.EntityExists(entity));
-            Assert.Null(_entityManager.GetComponent<MeshComponent>(entity));
-            Assert.Null(_entityManager.GetComponent<TransformComponent>(entity));
-            Assert.Null(_entityManager.GetComponent<TextureComponent>(entity));
-        }
+        Assert.True(WaitFor(() => _chunkGenerationSystem.GetChunkState(target) == null));
+        Assert.Equal(3, attempts);
+        Assert.False(_worldSystem.ChunkExists(target));
+        Assert.Equal(-1, _chunkGenerationSystem.GetChunkEntity(target));
     }
 
     /// <summary>
-    /// Verifies that the system can handle generating a larger number of chunks
-    /// concurrently without errors or memory issues.
+    /// Verifies that disposing the streamer is a complete teardown: all active
+    /// chunks are unloaded (entities removed, mesh buffers disposed, world data
+    /// dropped), nothing outlives the system, and disposal is idempotent.
     /// </summary>
     [Fact]
-    public void GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly()
+    public void Dispose_FullyUnloadsAllChunksAndIsIdempotent()
     {
-        // Arrange
-        ChunkPosition origin = new(0, 0, 0);
-        int radius = 3; // Larger radius to test concurrent generation
-        int expectedChunkCount = (2 * radius + 1) * (2 * radius + 1);
+        ChunkPosition origin = new(0, 0);
+        _chunkGenerationSystem.UpdateChunks(origin, 1);
 
-        // Act
-        _chunkGenerationSystem.GenerateInitialChunks(origin, radius);
+        Assert.True(WaitFor(() => _chunkGenerationSystem.ActiveChunkCount == 5));
 
-        // Process generation with longer timeout due to larger area
-        for (int i = 0; i < 20; i++)
-        {
-            _chunkGenerationSystem.Update();
-            Thread.Sleep(100);
-        }
+        int originEntity = _chunkGenerationSystem.GetChunkEntity(origin);
+        MeshComponent? meshComponent = _entityManager.GetComponent<MeshComponent>(originEntity);
+        Assert.NotNull(meshComponent);
 
-        // Assert
-        List<ChunkPosition> chunks = [.. _worldSystem.GetAllChunkPositions()];
-        Assert.Equal(expectedChunkCount, chunks.Count);
+        _chunkGenerationSystem.Dispose();
 
-        // Verify chunk positions are within radius
-        foreach (ChunkPosition chunk in chunks)
-        {
-            Assert.True(Math.Abs(chunk.X / Chunk.SIZE) <= radius);
-            Assert.True(Math.Abs(chunk.Z / Chunk.SIZE) <= radius);
-        }
+        Assert.Equal(0, _chunkGenerationSystem.ActiveChunkCount);
+        Assert.Empty(_worldSystem.GetAllChunkPositions());
+        Assert.Equal(0, _entityManager.EntityCount);
+        Assert.False(_entityManager.EntityExists(originEntity));
+        Assert.True(meshComponent.IsDisposed);
+        Assert.Null(_chunkGenerationSystem.GetChunkState(new ChunkPosition(1, 0)));
+
+        // Disposal must be safely repeatable (Game.OnUnload may run again).
+        _chunkGenerationSystem.Dispose();
     }
 }

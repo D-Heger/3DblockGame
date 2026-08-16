@@ -12,15 +12,6 @@ public class VertexArrayObject
         GL.BindVertexArray(ID);
     }
 
-    public void LinkToVAO(int location, int size, VertexBufferObject vbo)
-    {
-        Bind();
-        vbo.Bind();
-        GL.VertexAttribPointer(location, size, VertexAttribPointerType.Float, false, 0, 0);
-        GL.EnableVertexAttribArray(location);
-        Unbind();
-    }
-
     public void Bind() => GL.BindVertexArray(ID);
 
     public static void Unbind() => GL.BindVertexArray(0);

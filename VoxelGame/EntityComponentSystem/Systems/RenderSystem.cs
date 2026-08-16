@@ -19,6 +19,12 @@ public class RenderSystem : System
     private readonly int _height;
     private bool _wireframeMode;
 
+    // Reused per-frame scratch state: entities grouped by texture id. Kept as
+    // fields and cleared each frame so steady-state rendering does not
+    // allocate grouping collections.
+    private readonly Dictionary<int, List<int>> _textureGroups = [];
+    private readonly List<int> _retiredTextureIds = [];
+
     public RenderSystem(int width, int height)
     {
         _width = width;
@@ -79,30 +85,49 @@ public class RenderSystem : System
             _currentShader.SetVector3("viewPos", cameraTransform.Position);
         }
 
-        // Group entities by texture to minimize texture binds
+        // Group entities by texture to minimize texture binds. The grouping
+        // maps/lists are pooled fields reused every frame: groups emptied in a
+        // prior frame are pruned (their texture left), the surviving groups are
+        // cleared, and refilled below — so steady-state rendering allocates no
+        // grouping collections.
+        foreach (KeyValuePair<int, List<int>> group in _textureGroups)
+        {
+            if (group.Value.Count == 0)
+            {
+                _retiredTextureIds.Add(group.Key);
+            }
+        }
+        foreach (int retired in _retiredTextureIds)
+        {
+            _textureGroups.Remove(retired);
+        }
+        _retiredTextureIds.Clear();
+        foreach (List<int> existingGroup in _textureGroups.Values)
+        {
+            existingGroup.Clear();
+        }
+
         IEnumerable<int> renderEntities = entityManager.GetEntitiesWithComponents<
             MeshComponent,
             TransformComponent,
             TextureComponent
         >();
-
-        Dictionary<int, List<int>> textureGroups = [];
         foreach (int entity in renderEntities)
         {
             TextureComponent? tex = entityManager.GetComponent<TextureComponent>(entity);
             if (tex?.Texture != null)
             {
                 int texId = tex.Texture.ID;
-                if (!textureGroups.TryGetValue(texId, out List<int>? group))
+                if (!_textureGroups.TryGetValue(texId, out List<int>? group))
                 {
                     group = [];
-                    textureGroups[texId] = group;
+                    _textureGroups[texId] = group;
                 }
                 group.Add(entity);
             }
         }
 
-        foreach (KeyValuePair<int, List<int>> group in textureGroups)
+        foreach (KeyValuePair<int, List<int>> group in _textureGroups)
         {
             // Bind texture once per group
             GL.BindTexture(TextureTarget.Texture2D, group.Key);
@@ -141,8 +166,10 @@ public class RenderSystem : System
                     meshComponent.VAO.Bind();
                     GL.DrawElements(
                         PrimitiveType.Triangles,
-                        meshComponent.Indices.Count,
-                        DrawElementsType.UnsignedInt,
+                        meshComponent.IndexCount,
+                        meshComponent.Uses16BitIndices
+                            ? DrawElementsType.UnsignedShort
+                            : DrawElementsType.UnsignedInt,
                         0
                     );
                 }

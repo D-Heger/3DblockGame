@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using VoxelGame.EntityComponentSystem;
 
 namespace Tests.EntityComponentSystem;
@@ -6,6 +7,7 @@ namespace Tests.EntityComponentSystem;
 /// Test suite for the EntityManager class. Verifies entity creation, component management,
 /// and entity lifecycle functionality in the entity component system.
 /// </summary>
+[Collection("MemorySensitive")]
 public class EntityManagerTests : IDisposable
 {
     private readonly EntityManager _entityManager;
@@ -110,6 +112,38 @@ public class EntityManagerTests : IDisposable
 
         Assert.False(_entityManager.EntityExists(entity));
         Assert.Null(_entityManager.GetComponent<TestComponent>(entity));
+    }
+
+    /// <summary>
+    /// Regression test: removed components must become collectable. A previous
+    /// component pool retained every removed component forever, pinning each
+    /// unloaded chunk's mesh arrays (~100 KB) and growing process memory
+    /// unboundedly while the player walked.
+    /// </summary>
+    [Fact]
+    public void RemovedComponents_AreNotRetainedForGarbageCollection()
+    {
+        WeakReference componentRef = TrackRemovedComponent(_entityManager);
+
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        GC.Collect();
+
+        Assert.False(componentRef.IsAlive);
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    private static WeakReference TrackRemovedComponent(EntityManager entityManager)
+    {
+        int entity = entityManager.CreateEntity();
+        TestComponent component = new() { Value = 7 };
+        entityManager.AddComponent(entity, component);
+        WeakReference componentRef = new(component);
+
+        entityManager.RemoveComponent<TestComponent>(entity);
+        entityManager.RemoveEntity(entity);
+
+        return componentRef;
     }
 
     /// <summary>

@@ -1,6 +1,7 @@
 using BenchmarkDotNet.Attributes;
 using VoxelGame.EntityComponentSystem.Systems;
 using VoxelGame.World;
+using VoxelGame.World.Data;
 
 namespace Benchmarks;
 
@@ -18,20 +19,22 @@ public class ChunkGridRetentionBenchmarks
     [GlobalSetup]
     public void Setup()
     {
-        int size = Chunk.SIZE;
         int side = 2 * SurroundRadius + 1;
         _surroundingPositions = new ChunkPosition[side * side];
         _surroundingChunks = new ChunkData[side * side];
 
-        // Pre-create solid surrounding chunks (default block = DIRT) so the
-        // generated grid chunks behave like interior chunks.
+        // Pre-create solid surrounding chunks (explicitly filled with DIRT,
+        // since AIR is now the zero default) so the generated grid chunks
+        // behave like interior chunks.
         int i = 0;
         for (int x = -SurroundRadius; x <= SurroundRadius; x++)
         {
             for (int z = -SurroundRadius; z <= SurroundRadius; z++)
             {
-                _surroundingPositions[i] = new ChunkPosition(x * size, 0, z * size);
-                _surroundingChunks[i] = new ChunkData(size, Chunk.HEIGHT, size);
+                _surroundingPositions[i] = new ChunkPosition(x, z);
+                ChunkData surround = new();
+                surround.Fill(BlockType.DIRT);
+                _surroundingChunks[i] = surround;
                 i++;
             }
         }
@@ -52,12 +55,11 @@ public class ChunkGridRetentionBenchmarks
     [Benchmark]
     public WorldSystem GenerateChunkGrid_5x5()
     {
-        int size = Chunk.SIZE;
         for (int x = -GridRadius; x <= GridRadius; x++)
         {
             for (int z = -GridRadius; z <= GridRadius; z++)
             {
-                ChunkPosition pos = new(x * size, 0, z * size);
+                ChunkPosition pos = new(x, z);
                 ChunkGenerator.GenerateChunkMesh(pos, _worldSystem, out ChunkData chunkData);
                 _worldSystem.AddChunk(pos, chunkData);
             }

@@ -1,44 +1,22 @@
-using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL4;
-using OpenTK.Mathematics;
 
 namespace VoxelGame.GraphicsPipeline;
 
-public class VertexBufferObject
+public class VertexBufferObject<T> where T : unmanaged
 {
     public int ID;
 
-    public VertexBufferObject(List<Vector3> data)
+    public VertexBufferObject(ReadOnlySpan<T> data)
     {
         ID = GL.GenBuffer();
         GL.BindBuffer(BufferTarget.ArrayBuffer, ID);
-        Span<Vector3> span = CollectionsMarshal.AsSpan(data);
         unsafe
         {
-            fixed (void* p = span)
+            fixed (T* p = data)
             {
                 GL.BufferData(
                     BufferTarget.ArrayBuffer,
-                    span.Length * Vector3.SizeInBytes,
-                    (IntPtr)p,
-                    BufferUsageHint.StaticDraw
-                );
-            }
-        }
-    }
-
-    public VertexBufferObject(List<Vector2> data)
-    {
-        ID = GL.GenBuffer();
-        GL.BindBuffer(BufferTarget.ArrayBuffer, ID);
-        Span<Vector2> span = CollectionsMarshal.AsSpan(data);
-        unsafe
-        {
-            fixed (void* p = span)
-            {
-                GL.BufferData(
-                    BufferTarget.ArrayBuffer,
-                    span.Length * Vector2.SizeInBytes,
+                    data.Length * sizeof(T),
                     (IntPtr)p,
                     BufferUsageHint.StaticDraw
                 );

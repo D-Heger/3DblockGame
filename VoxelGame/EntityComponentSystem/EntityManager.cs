@@ -9,7 +9,6 @@ public class EntityManager
     private int _nextEntityId;
     private readonly Dictionary<int, List<Component>> _entityComponents = [];
     private readonly Dictionary<Type, Dictionary<int, Component>> _componentsByType = [];
-    private readonly Dictionary<Type, Stack<Component>> _componentPools = [];
     private readonly Dictionary<int, Vector3> _entityPositions = [];
 
     // Archetype optimization
@@ -194,31 +193,24 @@ public class EntityManager
 
     public void RemoveEntity(int entityId)
     {
-        if (_entityComponents.TryGetValue(entityId, out List<Component>? components))
+        if (_entityComponents.Remove(entityId))
         {
-            // Return components to pool
-            foreach (Component component in components)
-            {
-                Type type = component.GetType();
-                if (!_componentPools.TryGetValue(type, out Stack<Component>? pool))
-                {
-                    pool = new Stack<Component>();
-                    _componentPools[type] = pool;
-                }
-                pool.Push(component);
-            }
-
             // Remove from archetype
-            ArchetypeKey archetype = _entityToArchetype[entityId];
-            if (_entityArchetypes.TryGetValue(archetype, out HashSet<int>? entitySet))
+            if (_entityToArchetype.Remove(entityId, out ArchetypeKey archetype))
             {
-                entitySet.Remove(entityId);
+                if (_entityArchetypes.TryGetValue(archetype, out HashSet<int>? entitySet))
+                {
+                    entitySet.Remove(entityId);
+                }
             }
-            _entityToArchetype.Remove(entityId);
 
-            _entityComponents.Remove(entityId);
             _entityPositions.Remove(entityId);
 
+            // Removing the index entries drops the last managed references to
+            // the components, so they (and any owned data, e.g. chunk mesh
+            // arrays) become garbage. They must NOT be retained in a pool:
+            // components are created with `new` at activation time, and
+            // retaining disposed components pins their payloads forever.
             foreach (Dictionary<int, Component> typeComponents in _componentsByType.Values)
             {
                 typeComponents.Remove(entityId);
@@ -234,18 +226,7 @@ public class EntityManager
         Type type = typeof(T);
         if (_componentsByType.TryGetValue(type, out Dictionary<int, Component>? components))
         {
-            if (components.TryGetValue(entityId, out Component? component))
-            {
-                components.Remove(entityId);
-
-                // Return to pool
-                if (!_componentPools.TryGetValue(type, out Stack<Component>? pool))
-                {
-                    pool = new Stack<Component>();
-                    _componentPools[type] = pool;
-                }
-                pool.Push(component);
-            }
+            components.Remove(entityId);
         }
 
         if (_entityComponents.TryGetValue(entityId, out List<Component>? entityComps))
@@ -261,21 +242,10 @@ public class EntityManager
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool EntityExists(int entityId) => _entityComponents.ContainsKey(entityId);
 
-    public T CreateComponent<T>() where T : Component, new()
-    {
-        Type type = typeof(T);
-        if (_componentPools.TryGetValue(type, out Stack<Component>? pool) && pool.Count > 0)
-        {
-            return (T)pool.Pop();
-        }
-        return new T();
-    }
-
     public void Dispose()
     {
         _entityComponents.Clear();
         _componentsByType.Clear();
-        _componentPools.Clear();
         _entityPositions.Clear();
         _entityArchetypes.Clear();
         _entityToArchetype.Clear();

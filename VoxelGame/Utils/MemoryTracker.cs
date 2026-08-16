@@ -17,10 +17,6 @@ public class MemoryTracker
 
         _lastUpdate = DateTime.Now;
 
-        // Force a garbage collection to get accurate readings
-        GC.Collect();
-        GC.WaitForPendingFinalizers();
-
         Process currentProcess = Process.GetCurrentProcess();
         long memoryUsageMB = currentProcess.WorkingSet64 / (1024 * 1024); // Convert to MB
 

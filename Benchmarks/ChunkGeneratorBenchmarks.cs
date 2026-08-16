@@ -15,14 +15,14 @@ public class ChunkGeneratorBenchmarks
     public void Setup()
     {
         _worldSystem = new WorldSystem();
-        ChunkPosition center = new(0, 0, 0);
-        _worldSystem.AddChunk(center, new ChunkData(Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE));
+        ChunkPosition center = new(0, 0);
+        _worldSystem.AddChunk(center, new ChunkData());
     }
 
     [Benchmark]
     public ChunkMeshData GenerateChunkMesh()
     {
-        ChunkPosition pos = new(0, 0, 0);
+        ChunkPosition pos = new(0, 0);
         return ChunkGenerator.GenerateChunkMesh(pos, _worldSystem, out _);
     }
 }

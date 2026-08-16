@@ -7,6 +7,7 @@ namespace VoxelGame.GraphicsPipeline;
 public class Texture
 {
     public int ID;
+    private bool _disposed;
 
     public Texture(string filepath)
     {
@@ -67,5 +68,14 @@ public class Texture
 
     public static void Unbind() => GL.BindTexture(TextureTarget.Texture2D, 0);
 
-    public virtual void Dispose() => GL.DeleteTexture(ID);
+    public virtual void Dispose()
+    {
+        if (_disposed || ID == 0)
+        {
+            return;
+        }
+        _disposed = true;
+        GL.DeleteTexture(ID);
+        ID = 0;
+    }
 }

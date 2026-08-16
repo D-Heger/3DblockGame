@@ -4,11 +4,13 @@ namespace VoxelGame.World.Data;
 
 public static class TextureData
 {
+    // Rows are indexed by BlockType value: AIR, DIRT, GRASS, STONE, SAND, WATER, BEDROCK.
+    // Columns are indexed by Faces value: FRONT, BACK, LEFT, RIGHT, TOP, BOTTOM.
     public static readonly Vector2[,] blockTypeUVCoord = new Vector2[7, 6]
     {
+        { new(0f, 0f), new(0f, 0f), new(0f, 0f), new(0f, 0f), new(0f, 0f), new(0f, 0f) },
         { new(2f, 15f), new(2f, 15f), new(2f, 15f), new(2f, 15f), new(2f, 15f), new(2f, 15f) },
         { new(3f, 15f), new(3f, 15f), new(3f, 15f), new(3f, 15f), new(7f, 13f), new(2f, 15f) },
-        { new(0f, 0f), new(0f, 0f), new(0f, 0f), new(0f, 0f), new(0f, 0f), new(0f, 0f) },
         { new(1f, 15f), new(1f, 15f), new(1f, 15f), new(1f, 15f), new(1f, 15f), new(1f, 15f) },
         { new(2f, 14f), new(2f, 14f), new(2f, 14f), new(2f, 14f), new(2f, 14f), new(2f, 14f) },
         { new(13f, 3f), new(13f, 3f), new(13f, 3f), new(13f, 3f), new(13f, 3f), new(13f, 3f) },

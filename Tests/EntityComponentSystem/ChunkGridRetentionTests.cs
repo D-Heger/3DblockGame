@@ -10,29 +10,37 @@ public class MemorySensitiveCollection { }
 /// <summary>
 /// Guard against per-chunk retained-memory regressions at chunk-grid scale.
 /// The per-chunk benchmark only measures single-chunk allocations and is blind
-/// to retained List capacity accumulated across thousands of live chunks.
+/// to retained capacity accumulated across thousands of live chunks. Measures
+/// steady-state retention (all neighbors present during meshing, as after
+/// arrival re-meshing in game): chunk block data + final mesh arrays.
 /// </summary>
 [Collection("MemorySensitive")]
 public class ChunkGridRetentionTests
 {
     private const int GridRadius = 2;
     private const int SurroundRadius = 3;
-    private const long PerChunkBudgetBytes = 180 * 1024;
+    private const long PerChunkBudgetBytes = 96 * 1024;
 
     [Fact]
     public void GenerateChunkGrid_RetainedMemory_StaysWithinPerChunkBudget()
     {
-        int size = Chunk.SIZE;
         WorldSystem worldSystem = new();
 
-        // Surround the grid with solid chunks (default block = DIRT) so faces
-        // facing outward are culled, mimicking interior chunks at real scale.
+        // Surround the grid with a solid RING of chunks (cells at radius 3,
+        // never overlapping the grid) so faces facing outward are culled,
+        // mimicking interior chunks at real scale. (Default block is AIR now,
+        // so the surround must be filled explicitly.)
         for (int x = -SurroundRadius; x <= SurroundRadius; x++)
         {
             for (int z = -SurroundRadius; z <= SurroundRadius; z++)
             {
-                ChunkPosition pos = new(x * size, 0, z * size);
-                worldSystem.AddChunk(pos, new ChunkData(size, Chunk.HEIGHT, size));
+                if (Math.Max(Math.Abs(x), Math.Abs(z)) != SurroundRadius)
+                {
+                    continue;
+                }
+                ChunkData surround = new();
+                surround.Fill(BlockType.DIRT);
+                worldSystem.AddChunk(new ChunkPosition(x, z), surround);
             }
         }
 
@@ -41,18 +49,26 @@ public class ChunkGridRetentionTests
         GC.Collect();
         long before = GC.GetTotalMemory(true);
 
-        List<ChunkMeshData> meshes = [];
-        int chunkCount = 0;
+        // Pass 1: generate + register all block data first.
+        List<ChunkPosition> gridPositions = [];
         for (int x = -GridRadius; x <= GridRadius; x++)
         {
             for (int z = -GridRadius; z <= GridRadius; z++)
             {
-                ChunkPosition pos = new(x * size, 0, z * size);
-                ChunkMeshData mesh = ChunkGenerator.GenerateChunkMesh(pos, worldSystem, out ChunkData? chunkData);
-                worldSystem.AddChunk(pos, chunkData);
-                meshes.Add(mesh);
-                chunkCount++;
+                ChunkPosition pos = new(x, z);
+                worldSystem.AddChunk(pos, ChunkGenerator.GenerateChunkData(pos));
+                gridPositions.Add(pos);
             }
+        }
+
+        // Pass 2: mesh every chunk with all neighbors present. This models the
+        // steady state the game converges to via arrival re-meshing, where all
+        // internal border faces are culled (initial single-pass generation keeps
+        // extra transient faces until neighbors arrive).
+        List<ChunkMeshData> meshes = [];
+        foreach (ChunkPosition pos in gridPositions)
+        {
+            meshes.Add(ChunkGenerator.GenerateChunkMesh(pos, worldSystem, out _));
         }
 
         GC.Collect();
@@ -60,8 +76,9 @@ public class ChunkGridRetentionTests
         GC.Collect();
         long after = GC.GetTotalMemory(true);
 
+        int chunkCount = gridPositions.Count;
         Assert.Equal(25, chunkCount);
-        Assert.All(meshes, mesh => Assert.True(mesh.Vertices.Count > 0));
+        Assert.All(meshes, mesh => Assert.False(mesh.IsEmpty));
 
         long perChunkBytes = (after - before) / chunkCount;
         Assert.True(

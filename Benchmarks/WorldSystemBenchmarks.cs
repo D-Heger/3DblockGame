@@ -21,8 +21,8 @@ public class WorldSystemBenchmarks
         _positions = new ChunkPosition[ChunkCount];
         for (int i = 0; i < ChunkCount; i++)
         {
-            _positions[i] = new ChunkPosition(i * Chunk.SIZE, 0, 0);
-            _worldSystem.AddChunk(_positions[i], new ChunkData(Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE));
+            _positions[i] = new ChunkPosition(i, 0);
+            _worldSystem.AddChunk(_positions[i], new ChunkData());
         }
     }
 

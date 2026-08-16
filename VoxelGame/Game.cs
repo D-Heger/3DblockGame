@@ -36,7 +36,6 @@ public class Game : GameWindow
     private readonly WorldSystem _worldSystem;
     private readonly ChunkGenerationSystem _chunkGenerationSystem;
 
-    private Vector3 _lastPlayerChunkPosition;
     private readonly int _viewDistance = 32;
 
     /// <summary>
@@ -93,10 +92,8 @@ public class Game : GameWindow
         _entityManager.AddComponent(cameraEntity, new CameraComponent());
         CursorState = CursorState.Grabbed;
 
-        // Generate initial chunks
-        _chunkGenerationSystem.GenerateInitialChunks(ChunkPosition.Zero(), _viewDistance);
-
-        _lastPlayerChunkPosition = Vector3.Zero;
+        // Route initial load through the chunk streamer (camera spawns at (8, 10, 8))
+        _chunkGenerationSystem.UpdateChunks(ChunkPosition.FromWorld(8, 8), _viewDistance);
     }
 
     /// <summary>
@@ -106,6 +103,11 @@ public class Game : GameWindow
     protected override void OnUnload()
     {
         base.OnUnload();
+
+        // Stop chunk workers and fully unload all chunks (joins worker threads,
+        // removes chunk entities/components, drops world data, and disposes the
+        // shared texture).
+        _chunkGenerationSystem?.Dispose();
 
         // Dispose of mesh buffers
         IEnumerable<int> meshEntities = _entityManager.GetEntitiesWithComponent<MeshComponent>();
@@ -201,14 +203,10 @@ public class Game : GameWindow
             return; // No transform component found
         }
 
-        Vector3 playerChunkPosition =
-            new(
-                (int)(cameraTransform.Position.X / Chunk.SIZE) * Chunk.SIZE,
-                0,
-                (int)(cameraTransform.Position.Z / Chunk.SIZE) * Chunk.SIZE
-            );
+        Vector3 playerPosition = cameraTransform.Position;
+        ChunkPosition playerChunkPosition = ChunkPosition.FromWorld(playerPosition.X, playerPosition.Z);
 
-        _chunkGenerationSystem?.Update();
         _chunkGenerationSystem?.UpdateChunks(playerChunkPosition, _viewDistance);
+        _chunkGenerationSystem?.Update();
     }
 }

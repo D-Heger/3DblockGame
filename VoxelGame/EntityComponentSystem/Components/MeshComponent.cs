@@ -1,32 +1,28 @@
 using OpenTK.Graphics.OpenGL4;
-using OpenTK.Mathematics;
 using VoxelGame.GraphicsPipeline;
+using VoxelGame.World.Data;
 
 namespace VoxelGame.EntityComponentSystem.Components;
 
-public class MeshComponent(
-    List<Vector3> vertices,
-    List<Vector2> uvs,
-    List<Vector3> normals,
-    List<uint> indices
-) : Component
+public class MeshComponent(ChunkMeshData meshData) : Component
 {
-    public List<Vector3> Vertices = vertices;
-    public List<Vector2> UVs = uvs;
-    public List<Vector3> Normals = normals;
-    public List<uint> Indices = indices;
+    public ChunkMeshData MeshData = meshData;
 
     public VertexArrayObject? VAO;
-    public VertexBufferObject? VBO;
-    public VertexBufferObject? UVBO;
-    public VertexBufferObject? NormalBO;
+    public VertexBufferObject<ChunkVertex>? VBO;
     public IndexBufferObject? IBO;
 
-    private bool buffersInitialized;
+    public bool IsDisposed { get; private set; }
+
+    public int IndexCount => MeshData.IndexCount;
+
+    public bool Uses16BitIndices => MeshData.Uses16BitIndices;
+
+    private bool _buffersInitialized;
 
     public void SetupBuffers()
     {
-        if (buffersInitialized)
+        if (_buffersInitialized || MeshData.IsEmpty)
         {
             return;
         }
@@ -34,27 +30,27 @@ public class MeshComponent(
         VAO = new VertexArrayObject();
         VAO.Bind();
 
-        VBO = new VertexBufferObject(Vertices);
+        VBO = new VertexBufferObject<ChunkVertex>(MeshData.Vertices);
         VBO.Bind();
-        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, 0);
+
+        const int stride = ChunkVertex.SizeInBytes;
+        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, stride, 0);
         GL.EnableVertexAttribArray(0);
 
-        UVBO = new VertexBufferObject(UVs);
-        UVBO.Bind();
-        GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 0, 0);
+        GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, stride, 12);
         GL.EnableVertexAttribArray(1);
 
-        NormalBO = new VertexBufferObject(Normals);
-        NormalBO.Bind();
-        GL.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, 0, 0);
+        GL.VertexAttribPointer(2, 4, VertexAttribPointerType.Byte, true, stride, 20);
         GL.EnableVertexAttribArray(2);
 
-        IBO = new IndexBufferObject(Indices);
+        IBO = MeshData.Indices16 != null
+            ? new IndexBufferObject<ushort>(MeshData.Indices16)
+            : new IndexBufferObject<uint>(MeshData.Indices32!);
         IBO.Bind();
 
         VertexArrayObject.Unbind();
 
-        buffersInitialized = true;
+        _buffersInitialized = true;
     }
 
     /// <summary>
@@ -62,38 +58,23 @@ public class MeshComponent(
     /// </summary>
     public void ResetBuffers()
     {
-        if (buffersInitialized)
+        if (_buffersInitialized)
         {
-            // Dispose existing buffers
             VAO?.Dispose();
             VBO?.Dispose();
-            UVBO?.Dispose();
-            NormalBO?.Dispose();
             IBO?.Dispose();
 
-            // Reset buffer objects
             VAO = null;
             VBO = null;
-            UVBO = null;
-            NormalBO = null;
             IBO = null;
 
-            buffersInitialized = false;
+            _buffersInitialized = false;
         }
     }
 
     public void Dispose()
     {
-        if (!buffersInitialized)
-        {
-            return;
-        }
-
-        VAO?.Dispose();
-        VBO?.Dispose();
-        UVBO?.Dispose();
-        NormalBO?.Dispose();
-        IBO?.Dispose();
-        buffersInitialized = false;
+        ResetBuffers();
+        IsDisposed = true;
     }
 }

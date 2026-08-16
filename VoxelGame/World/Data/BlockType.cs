@@ -2,12 +2,11 @@ namespace VoxelGame.World.Data;
 
 public enum BlockType : byte
 {
+    AIR,
     DIRT,
     GRASS,
-    AIR,
     STONE,
     SAND,
     WATER,
     BEDROCK,
-
 }

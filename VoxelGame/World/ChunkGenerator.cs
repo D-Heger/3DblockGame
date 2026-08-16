@@ -1,5 +1,5 @@
+using System.Runtime.InteropServices;
 using OpenTK.Mathematics;
-using VoxelGame.EntityComponentSystem.Systems;
 using VoxelGame.World.Data;
 
 namespace VoxelGame.World;
@@ -26,34 +26,61 @@ public static class ChunkGenerator
 
     public static ChunkMeshData GenerateChunkMesh(
         ChunkPosition chunkPosition,
-        WorldSystem worldSystem,
+        IChunkSource chunkSource,
         out ChunkData chunkData
     )
     {
-        ChunkMeshData chunkMeshData = new();
+        chunkData = GenerateChunkData(chunkPosition);
+        return GenerateChunkMesh(chunkPosition, chunkSource, chunkData);
+    }
 
-        float[,] heightMap = GenerateHeightMap((int)chunkPosition.X, (int)chunkPosition.Z);
-        BlockType[] blocks = GenerateBlocks(heightMap);
-        int size = Chunk.SIZE;
-        int height = Chunk.HEIGHT;
-        chunkData = new ChunkData(blocks, size, height, size);
-        GenerateFaces(chunkData, chunkPosition, chunkMeshData, worldSystem);
+    /// <summary>
+    /// Meshes already-generated block data. Used for neighbor re-meshing, where
+    /// the registered ChunkData is authoritative and regenerating it would
+    /// duplicate (then discard) the expensive block-generation pass.
+    /// </summary>
+    public static ChunkMeshData GenerateChunkMesh(
+        ChunkPosition chunkPosition,
+        IChunkSource chunkSource,
+        ChunkData chunkData
+    )
+    {
+        List<ChunkVertex> vertices = [];
+        List<uint> indices = [];
+        GenerateFaces(chunkData, chunkPosition, vertices, indices, chunkSource);
+        return BuildMeshData(vertices, indices);
+    }
 
-        chunkMeshData.Vertices.TrimExcess();
-        chunkMeshData.UVs.TrimExcess();
-        chunkMeshData.Normals.TrimExcess();
-        chunkMeshData.Indices.TrimExcess();
+    private static ChunkMeshData BuildMeshData(List<ChunkVertex> vertices, List<uint> indices)
+    {
+        ChunkMeshData chunkMeshData = new()
+        {
+            Vertices = CollectionsMarshal.AsSpan(vertices).ToArray(),
+        };
+
+        if (vertices.Count <= ChunkMeshData.Max16BitVertices)
+        {
+            ushort[] indices16 = new ushort[indices.Count];
+            for (int i = 0; i < indices.Count; i++)
+            {
+                indices16[i] = (ushort)indices[i];
+            }
+            chunkMeshData.Indices16 = indices16;
+        }
+        else
+        {
+            chunkMeshData.Indices32 = CollectionsMarshal.AsSpan(indices).ToArray();
+        }
 
         return chunkMeshData;
     }
 
     public static ChunkData GenerateChunkData(ChunkPosition chunkPosition)
     {
-        float[,] heightMap = GenerateHeightMap(chunkPosition.X, chunkPosition.Z);
-        BlockType[] blocks = GenerateBlocks(heightMap);
-        int size = Chunk.SIZE;
-        int height = Chunk.HEIGHT;
-        return new ChunkData(blocks, size, height, size);
+        float[,] heightMap = GenerateHeightMap(chunkPosition.WorldX, chunkPosition.WorldZ);
+        ChunkData chunkData = new();
+        GenerateBlocks(heightMap, chunkData);
+        return chunkData;
     }
 
     private static float[,] GenerateHeightMap(int offsetX, int offsetZ)
@@ -121,14 +148,12 @@ public static class ChunkGenerator
         return smoothedHeightMap;
     }
 
-    private static BlockType[] GenerateBlocks(float[,] heightMap)
+    private static void GenerateBlocks(float[,] heightMap, ChunkData chunkData)
     {
         heightMap = SmoothHeightMap(heightMap);
 
         int size = Chunk.SIZE;
-        int height = Chunk.HEIGHT;
         int minHeight = 5;
-        BlockType[] blocks = new BlockType[size * height * size];
 
         Parallel.For(
             0,
@@ -138,72 +163,68 @@ public static class ChunkGenerator
                 for (int z = 0; z < size; z++)
                 {
                     int columnHeight = minHeight + (int)(heightMap[x, z] / 32);
-                    for (int y = 0; y < height; y++)
+
+                    // Air above columnHeight + 3 stays implicit (null sections).
+                    chunkData.SetBlock(x, 0, z, BlockType.BEDROCK);
+                    for (int y = 1; y <= columnHeight; y++)
                     {
-                        int index = x * height * size + y * size + z;
-                        if (y <= 0)
-                        {
-                            blocks[index] = BlockType.BEDROCK;
-                        }
-                        else if (y <= columnHeight)
-                        {
-                            blocks[index] = BlockType.STONE;
-                        }
-                        else if (y == columnHeight + 1)
-                        {
-                            blocks[index] = BlockType.SAND;
-                        }
-                        else if (y == columnHeight + 2)
-                        {
-                            blocks[index] = BlockType.DIRT;
-                        }
-                        else if (y == columnHeight + 3)
-                        {
-                            blocks[index] = BlockType.GRASS;
-                        }
-                        else
-                        {
-                            blocks[index] = BlockType.AIR;
-                        }
+                        chunkData.SetBlock(x, y, z, BlockType.STONE);
                     }
+                    chunkData.SetBlock(x, columnHeight + 1, z, BlockType.SAND);
+                    chunkData.SetBlock(x, columnHeight + 2, z, BlockType.DIRT);
+                    chunkData.SetBlock(x, columnHeight + 3, z, BlockType.GRASS);
                 }
             }
         );
-
-        return blocks;
     }
 
     private static void GenerateFaces(
         ChunkData chunkData,
         ChunkPosition chunkPosition,
-        ChunkMeshData chunkMeshData,
-        WorldSystem worldSystem
+        List<ChunkVertex> vertices,
+        List<uint> indices,
+        IChunkSource chunkSource
     )
     {
-        int size = Chunk.SIZE;
-        int height = Chunk.HEIGHT;
         object lockObj = new();
 
         Parallel.For(
             0,
-            size,
+            ChunkData.SectionCount,
             () => new PerThreadMeshData(),
-            (x, state, localMeshData) =>
+            (sectionY, state, localMeshData) =>
             {
-                for (int z = 0; z < size; z++)
+                // Null sections are all air and contribute no faces.
+                ChunkSection? section = chunkData.Sections[sectionY];
+                if (section == null)
                 {
-                    for (int y = 0; y < height; y++)
+                    return localMeshData;
+                }
+
+                int yBase = sectionY << 4;
+                BlockType[] blocks = section.Blocks;
+
+                for (int x = 0; x < ChunkSection.Size; x++)
+                {
+                    for (int z = 0; z < ChunkSection.Size; z++)
                     {
-                        if (chunkData.GetBlock(x, y, z) != BlockType.AIR)
+                        for (int localY = 0; localY < ChunkSection.Size; localY++)
                         {
+                            BlockType blockType = blocks[(x << 8) | (localY << 4) | z];
+                            if (blockType == BlockType.AIR)
+                            {
+                                continue;
+                            }
+
                             AddVisibleFaces(
                                 x,
-                                y,
+                                yBase + localY,
                                 z,
+                                blockType,
                                 chunkData,
                                 chunkPosition,
                                 localMeshData,
-                                worldSystem
+                                chunkSource
                             );
                         }
                     }
@@ -214,15 +235,13 @@ public static class ChunkGenerator
             {
                 lock (lockObj)
                 {
-                    uint indexOffset = (uint)chunkMeshData.Vertices.Count;
-                    chunkMeshData.Vertices.AddRange(localMeshData.Vertices);
-                    chunkMeshData.UVs.AddRange(localMeshData.UVs);
-                    chunkMeshData.Normals.AddRange(localMeshData.Normals);
+                    uint indexOffset = (uint)vertices.Count;
+                    vertices.AddRange(CollectionsMarshal.AsSpan(localMeshData.Vertices));
 
                     // Adjust indices
                     foreach (uint index in localMeshData.Indices)
                     {
-                        chunkMeshData.Indices.Add(index + indexOffset);
+                        indices.Add(index + indexOffset);
                     }
                 }
             }
@@ -233,40 +252,39 @@ public static class ChunkGenerator
         int x,
         int y,
         int z,
+        BlockType blockType,
         ChunkData chunkData,
         ChunkPosition chunkPosition,
         PerThreadMeshData localMeshData,
-        WorldSystem worldSystem
+        IChunkSource chunkSource
     )
     {
-        BlockType blockType = chunkData.GetBlock(x, y, z);
-
-        if (IsFaceVisible(x, y, z + 1, chunkData, chunkPosition, worldSystem))
+        if (IsFaceVisible(x, y, z + 1, chunkData, chunkPosition, chunkSource))
         {
             AddFace(x, y, z, Faces.FRONT, blockType, localMeshData);
         }
 
-        if (IsFaceVisible(x, y, z - 1, chunkData, chunkPosition, worldSystem))
+        if (IsFaceVisible(x, y, z - 1, chunkData, chunkPosition, chunkSource))
         {
             AddFace(x, y, z, Faces.BACK, blockType, localMeshData);
         }
 
-        if (IsFaceVisible(x + 1, y, z, chunkData, chunkPosition, worldSystem))
+        if (IsFaceVisible(x + 1, y, z, chunkData, chunkPosition, chunkSource))
         {
             AddFace(x, y, z, Faces.RIGHT, blockType, localMeshData);
         }
 
-        if (IsFaceVisible(x - 1, y, z, chunkData, chunkPosition, worldSystem))
+        if (IsFaceVisible(x - 1, y, z, chunkData, chunkPosition, chunkSource))
         {
             AddFace(x, y, z, Faces.LEFT, blockType, localMeshData);
         }
 
-        if (IsFaceVisible(x, y + 1, z, chunkData, chunkPosition, worldSystem))
+        if (IsFaceVisible(x, y + 1, z, chunkData, chunkPosition, chunkSource))
         {
             AddFace(x, y, z, Faces.TOP, blockType, localMeshData);
         }
 
-        if (IsFaceVisible(x, y - 1, z, chunkData, chunkPosition, worldSystem))
+        if (IsFaceVisible(x, y - 1, z, chunkData, chunkPosition, chunkSource))
         {
             AddFace(x, y, z, Faces.BOTTOM, blockType, localMeshData);
         }
@@ -278,7 +296,7 @@ public static class ChunkGenerator
         int z,
         ChunkData chunkData,
         ChunkPosition chunkPosition,
-        WorldSystem worldSystem
+        IChunkSource chunkSource
     )
     {
         int size = Chunk.SIZE;
@@ -303,8 +321,7 @@ public static class ChunkGenerator
             if (x < 0)
             {
                 neighborChunkPosition = new ChunkPosition(
-                    neighborChunkPosition.X - size,
-                    neighborChunkPosition.Y,
+                    neighborChunkPosition.X - 1,
                     neighborChunkPosition.Z
                 );
                 neighborX = x + size; // Wrap to the other side of the neighboring chunk
@@ -312,8 +329,7 @@ public static class ChunkGenerator
             else if (x >= size)
             {
                 neighborChunkPosition = new ChunkPosition(
-                    neighborChunkPosition.X + size,
-                    neighborChunkPosition.Y,
+                    neighborChunkPosition.X + 1,
                     neighborChunkPosition.Z
                 );
                 neighborX = x - size; // Wrap to the other side of the neighboring chunk
@@ -330,8 +346,7 @@ public static class ChunkGenerator
             {
                 neighborChunkPosition = new ChunkPosition(
                     neighborChunkPosition.X,
-                    neighborChunkPosition.Y,
-                    neighborChunkPosition.Z - size
+                    neighborChunkPosition.Z - 1
                 );
                 neighborZ = z + size; // Wrap to the other side of the neighboring chunk
             }
@@ -339,31 +354,23 @@ public static class ChunkGenerator
             {
                 neighborChunkPosition = new ChunkPosition(
                     neighborChunkPosition.X,
-                    neighborChunkPosition.Y,
-                    neighborChunkPosition.Z + size
+                    neighborChunkPosition.Z + 1
                 );
                 neighborZ = z - size; // Wrap to the other side of the neighboring chunk
             }
 
-            // Check if the neighboring chunk exists in the world
-            if (worldSystem.ChunkExists(neighborChunkPosition))
+            // Look up the neighboring chunk. A missing neighbor keeps its
+            // border faces exposed until the neighbor arrives (the streaming
+            // system corrects them via arrival re-meshing).
+            ChunkData? neighborChunk = chunkSource.GetChunk(neighborChunkPosition);
+            if (neighborChunk == null)
             {
-                // Get the neighboring chunk's data
-                ChunkData? neighborChunk = worldSystem.GetChunk(neighborChunkPosition);
-
-                // If the chunk is null or the block is air, the face is visible
-                if (neighborChunk == null)
-                {
-                    return true;
-                }
-
-                // Check if the corresponding block in the neighboring chunk is air
-                return neighborChunk.GetBlock(neighborX, neighborY, neighborZ)
-                    == BlockType.AIR;
+                return true;
             }
 
-            // If the neighboring chunk does not exist, assume the face is visible
-            return true;
+            // The face is visible iff the adjacent block in the neighbor is air
+            return neighborChunk.GetBlock(neighborX, neighborY, neighborZ)
+                == BlockType.AIR;
         }
     }
 
@@ -380,21 +387,17 @@ public static class ChunkGenerator
         ReadOnlySpan<Vector3> faceVertices = FaceDataRaw.rawVertexData[(int)face];
 
         ref readonly Vector3 normal = ref FaceDataRaw.faceNormals[(int)face];
+        uint packedNormal = ChunkVertex.PackNormal(in normal);
 
         Vector3 offset = new(x, y, z);
-        foreach (ref readonly Vector3 vert in faceVertices)
-        {
-            localMeshData.Vertices.Add(vert + offset);
-            localMeshData.Normals.Add(normal);
-        }
-
         ReadOnlySpan<Vector2> uvCoords = TextureData.GetUVsSpan(blockType, face);
-        for (int i = 0; i < uvCoords.Length; i++)
+
+        for (int i = 0; i < faceVertices.Length; i++)
         {
-            localMeshData.UVs.Add(uvCoords[i]);
+            localMeshData.Vertices.Add(new ChunkVertex(faceVertices[i] + offset, uvCoords[i], packedNormal));
         }
 
-        uint baseIndex = localMeshData.TotalIndexCount;
+        uint baseIndex = (uint)localMeshData.Vertices.Count - 4;
 
         localMeshData.Indices.Add(0 + baseIndex);
         localMeshData.Indices.Add(1 + baseIndex);
@@ -402,17 +405,12 @@ public static class ChunkGenerator
         localMeshData.Indices.Add(2 + baseIndex);
         localMeshData.Indices.Add(3 + baseIndex);
         localMeshData.Indices.Add(0 + baseIndex);
-
-        localMeshData.TotalIndexCount += 4;
     }
 }
 
 // Class to hold per-thread mesh data
 internal class PerThreadMeshData
 {
-    public List<Vector3> Vertices = new(1024);
-    public List<Vector2> UVs = new(1024);
-    public List<Vector3> Normals = new(1024);
+    public List<ChunkVertex> Vertices = new(1024);
     public List<uint> Indices = new(3072);
-    public uint TotalIndexCount;
 }
