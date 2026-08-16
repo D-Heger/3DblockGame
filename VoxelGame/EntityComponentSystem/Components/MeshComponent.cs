@@ -22,12 +22,14 @@ public class MeshComponent(
     public VertexBufferObject? NormalBO;
     public IndexBufferObject? IBO;
 
-    private bool buffersInitialized = false;
+    private bool buffersInitialized;
 
     public void SetupBuffers()
     {
         if (buffersInitialized)
+        {
             return;
+        }
 
         VAO = new VertexArrayObject();
         VAO.Bind();
@@ -50,7 +52,7 @@ public class MeshComponent(
         IBO = new IndexBufferObject(Indices);
         IBO.Bind();
 
-        VAO.Unbind();
+        VertexArrayObject.Unbind();
 
         buffersInitialized = true;
     }
@@ -83,7 +85,10 @@ public class MeshComponent(
     public void Dispose()
     {
         if (!buffersInitialized)
+        {
             return;
+        }
+
         VAO?.Dispose();
         VBO?.Dispose();
         UVBO?.Dispose();

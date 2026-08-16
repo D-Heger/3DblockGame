@@ -1,4 +1,5 @@
-﻿using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL4;
+using StbImageSharp;
 using static VoxelGame.Utils.FileUtils;
 
 namespace VoxelGame.GraphicsPipeline;
@@ -9,7 +10,10 @@ public class Texture
 
     public Texture(string filepath)
     {
-        if (string.IsNullOrEmpty(filepath)) return;  // Allow empty constructor for mocking
+        if (string.IsNullOrEmpty(filepath))
+        {
+            return;  // Allow empty constructor for mocking
+        }
 
         ID = GL.GenTexture();
 
@@ -37,8 +41,9 @@ public class Texture
             (int)TextureMagFilter.Nearest
         );
 
-        var blockTexture = LoadTexture(filepath);
-        if (blockTexture == null) {
+        ImageResult blockTexture = LoadTexture(filepath);
+        if (blockTexture == null)
+        {
             Console.WriteLine("Texture loading failed!");
             return;
         }
@@ -58,18 +63,9 @@ public class Texture
         Unbind();
     }
 
-    public virtual void Bind()
-    {
-        GL.BindTexture(TextureTarget.Texture2D, ID);
-    }
+    public virtual void Bind() => GL.BindTexture(TextureTarget.Texture2D, ID);
 
-    public static void Unbind()
-    {
-        GL.BindTexture(TextureTarget.Texture2D, 0);
-    }
+    public static void Unbind() => GL.BindTexture(TextureTarget.Texture2D, 0);
 
-    public virtual void Dispose()
-    {
-        GL.DeleteTexture(ID);
-    }
+    public virtual void Dispose() => GL.DeleteTexture(ID);
 }

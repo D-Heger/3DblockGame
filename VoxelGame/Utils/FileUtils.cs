@@ -4,15 +4,9 @@ namespace VoxelGame.Utils;
 
 public static class FileUtils
 {
-    public static string LoadVertexShader(string filePath)
-    {
-        return LoadShaderSource(filePath, "vert");
-    }
+    public static string LoadVertexShader(string filePath) => LoadShaderSource(filePath, "vert");
 
-    public static string LoadFragmentShader(string filePath)
-    {
-        return LoadShaderSource(filePath, "frag");
-    }
+    public static string LoadFragmentShader(string filePath) => LoadShaderSource(filePath, "frag");
 
     public static string LoadShaderSource(string filePath, string shaderType)
     {

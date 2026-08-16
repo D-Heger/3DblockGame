@@ -8,16 +8,16 @@ namespace VoxelGame.EntityComponentSystem.Systems;
 
 public class RenderSystem : System
 {
-    private ShaderProgram _unlitShader;
-    private ShaderProgram _litShader;
+    private readonly ShaderProgram _unlitShader;
+    private readonly ShaderProgram _litShader;
     private ShaderProgram _currentShader;
-    private bool _useLighting = false;
+    private bool _useLighting;
     private Vector3 _lightPosition = new(1000f, 1000f, 1000f); // Sun-like distant light
     private Vector3 _lightColor = new(1.0f, 1.0f, 0.9f); // Warm sunlight
-    private Frustum _frustum;
-    private int _width;
-    private int _height;
-    private bool _wireframeMode = false;
+    private readonly Frustum _frustum;
+    private readonly int _width;
+    private readonly int _height;
+    private bool _wireframeMode;
 
     public RenderSystem(int width, int height)
     {
@@ -36,7 +36,7 @@ public class RenderSystem : System
 
     public void Render(EntityManager entityManager)
     {
-        var cameraEntities = entityManager.GetEntitiesWithComponents<
+        IEnumerable<int> cameraEntities = entityManager.GetEntitiesWithComponents<
             CameraComponent,
             TransformComponent
         >();
@@ -46,8 +46,8 @@ public class RenderSystem : System
         }
 
         int cameraEntity = cameraEntities.First();
-        var cameraTransform = entityManager.GetComponent<TransformComponent>(cameraEntity);
-        var cameraComponent = entityManager.GetComponent<CameraComponent>(cameraEntity);
+        TransformComponent? cameraTransform = entityManager.GetComponent<TransformComponent>(cameraEntity);
+        CameraComponent? cameraComponent = entityManager.GetComponent<CameraComponent>(cameraEntity);
 
         if (cameraTransform == null || cameraComponent == null)
         {
@@ -55,7 +55,7 @@ public class RenderSystem : System
         }
 
         Matrix4 view = cameraComponent.GetViewMatrix(cameraTransform.Position);
-        Matrix4 projection = cameraComponent.GetProjectionMatrix((float)_width / _height);
+        Matrix4 projection = CameraComponent.GetProjectionMatrix((float)_width / _height);
         Matrix4 viewProjection = view * projection;
 
         // Update frustum
@@ -80,34 +80,38 @@ public class RenderSystem : System
         }
 
         // Group entities by texture to minimize texture binds
-        var renderEntities = entityManager.GetEntitiesWithComponents<
+        IEnumerable<int> renderEntities = entityManager.GetEntitiesWithComponents<
             MeshComponent,
             TransformComponent,
             TextureComponent
         >();
-        var entitiesByTexture = renderEntities
-            .Select(e => new
-            {
-                Entity = e,
-                TextureComponent = entityManager.GetComponent<TextureComponent>(e),
-            })
-            .Where(x => x.TextureComponent?.Texture != null)
-            .GroupBy(x => x.TextureComponent!.Texture.ID);
 
-        foreach (var group in entitiesByTexture)
+        Dictionary<int, List<int>> textureGroups = [];
+        foreach (int entity in renderEntities)
+        {
+            TextureComponent? tex = entityManager.GetComponent<TextureComponent>(entity);
+            if (tex?.Texture != null)
+            {
+                int texId = tex.Texture.ID;
+                if (!textureGroups.TryGetValue(texId, out List<int>? group))
+                {
+                    group = [];
+                    textureGroups[texId] = group;
+                }
+                group.Add(entity);
+            }
+        }
+
+        foreach (KeyValuePair<int, List<int>> group in textureGroups)
         {
             // Bind texture once per group
             GL.BindTexture(TextureTarget.Texture2D, group.Key);
             _currentShader.SetInt("texture0", 0); // Set texture unit
 
-            foreach (var entityInfo in group)
+            foreach (int entity in group.Value)
             {
-                var meshComponent = entityManager.GetComponent<MeshComponent>(
-                    entityInfo.Entity
-                );
-                var transformComponent = entityManager.GetComponent<TransformComponent>(
-                    entityInfo.Entity
-                );
+                MeshComponent? meshComponent = entityManager.GetComponent<MeshComponent>(entity);
+                TransformComponent? transformComponent = entityManager.GetComponent<TransformComponent>(entity);
 
                 if (meshComponent == null || transformComponent == null)
                 {

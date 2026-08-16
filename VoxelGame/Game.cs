@@ -1,4 +1,4 @@
-﻿using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
@@ -6,10 +6,8 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 using VoxelGame.EntityComponentSystem;
 using VoxelGame.EntityComponentSystem.Components;
 using VoxelGame.EntityComponentSystem.Systems;
-using VoxelGame.GraphicsPipeline;
 using VoxelGame.Utils;
 using VoxelGame.World;
-using VoxelGame.World.Data;
 
 namespace VoxelGame;
 
@@ -31,16 +29,15 @@ public class Game : GameWindow
         _height;
     private double _time;
     private int _frames;
-    private string _title = "3D Voxel Game";
+    private readonly string _title = "3D Voxel Game";
 
-    private EntityManager _entityManager;
-    private RenderSystem _renderSystem;
-    private InputSystem _inputSystem;
-    private WorldSystem _worldSystem;
-    private ChunkGenerationSystem _chunkGenerationSystem;
+    private readonly EntityManager _entityManager;
+    private readonly RenderSystem _renderSystem;
+    private readonly WorldSystem _worldSystem;
+    private readonly ChunkGenerationSystem _chunkGenerationSystem;
 
     private Vector3 _lastPlayerChunkPosition;
-    private int _viewDistance = 32;
+    private readonly int _viewDistance = 32;
 
     /// <summary>
     /// Initializes a new instance of the Game class with specified window dimensions.
@@ -61,7 +58,6 @@ public class Game : GameWindow
         // Initialize core systems
         _entityManager = new EntityManager();
         _renderSystem = new RenderSystem(_width, _height);
-        _inputSystem = new InputSystem();
         _worldSystem = new WorldSystem();
         _chunkGenerationSystem = new ChunkGenerationSystem(_entityManager, _worldSystem);
     }
@@ -112,15 +108,15 @@ public class Game : GameWindow
         base.OnUnload();
 
         // Dispose of mesh buffers
-        var meshEntities = _entityManager.GetEntitiesWithComponent<MeshComponent>();
-        foreach (var entity in meshEntities)
+        IEnumerable<int> meshEntities = _entityManager.GetEntitiesWithComponent<MeshComponent>();
+        foreach (int entity in meshEntities)
         {
             _entityManager.GetComponent<MeshComponent>(entity)?.Dispose();
         }
 
         // Dispose of textures
-        var textureEntities = _entityManager.GetEntitiesWithComponent<TextureComponent>();
-        foreach (var entity in textureEntities)
+        IEnumerable<int> textureEntities = _entityManager.GetEntitiesWithComponent<TextureComponent>();
+        foreach (int entity in textureEntities)
         {
             _entityManager.GetComponent<TextureComponent>(entity)?.Texture?.Dispose();
         }
@@ -166,7 +162,7 @@ public class Game : GameWindow
         _frames++;
 
         MemoryTracker.Update();
-        var (current, average, peak) = MemoryTracker.GetMemoryStats();
+        (long current, long average, long peak) = MemoryTracker.GetMemoryStats();
 
         if (_time >= 1.0)
         {
@@ -179,7 +175,7 @@ public class Game : GameWindow
         KeyboardState kInput = KeyboardState;
         MouseState mInput = MouseState;
 
-        _inputSystem.Update(_entityManager, kInput, mInput, args);
+        InputSystem.Update(_entityManager, kInput, mInput, args);
 
         if (kInput.IsKeyPressed(Keys.F3))
         {
@@ -191,13 +187,13 @@ public class Game : GameWindow
             _renderSystem.ToggleLighting();
         }
 
-        var cameraEntities = _entityManager.GetEntitiesWithComponent<CameraComponent>();
+        IEnumerable<int> cameraEntities = _entityManager.GetEntitiesWithComponent<CameraComponent>();
         if (!cameraEntities.Any())
         {
             return; // No camera to update from
         }
 
-        var cameraTransform = _entityManager.GetComponent<TransformComponent>(
+        TransformComponent? cameraTransform = _entityManager.GetComponent<TransformComponent>(
             cameraEntities.First()
         );
         if (cameraTransform == null)

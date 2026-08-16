@@ -2,7 +2,7 @@ using OpenTK.Mathematics;
 
 namespace VoxelGame.World.Data;
 
-public struct FaceDataRaw
+public readonly struct FaceDataRaw
 {
     public static readonly Vector3[][] rawVertexData =
     [

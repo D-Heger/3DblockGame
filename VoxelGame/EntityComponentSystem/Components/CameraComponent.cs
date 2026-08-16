@@ -10,7 +10,7 @@ public class CameraComponent : Component
     public Vector3 Up = Vector3.UnitY;
     public Vector3 Right = Vector3.UnitX;
 
-    public float Pitch = 0f;
+    public float Pitch;
     public float Yaw = -90f;
 
     public bool FirstMove = true;
@@ -18,12 +18,9 @@ public class CameraComponent : Component
 
     public CameraComponent() { }
 
-    public Matrix4 GetViewMatrix(Vector3 position)
-    {
-        return Matrix4.LookAt(position, position + Front, Up);
-    }
+    public Matrix4 GetViewMatrix(Vector3 position) => Matrix4.LookAt(position, position + Front, Up);
 
-    public Matrix4 GetProjectionMatrix(float aspectRatio)
+    public static Matrix4 GetProjectionMatrix(float aspectRatio)
     {
         return Matrix4.CreatePerspectiveFieldOfView(
             MathHelper.DegreesToRadians(45f),

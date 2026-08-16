@@ -1,5 +1,4 @@
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Engines;
 using VoxelGame.EntityComponentSystem.Systems;
 using VoxelGame.World;
 using VoxelGame.World.Data;
@@ -7,6 +6,7 @@ using VoxelGame.World.Data;
 namespace Benchmarks;
 
 [MemoryDiagnoser]
+[ShortRunJob]
 public class ChunkGeneratorBenchmarks
 {
     private WorldSystem _worldSystem = null!;
@@ -15,15 +15,14 @@ public class ChunkGeneratorBenchmarks
     public void Setup()
     {
         _worldSystem = new WorldSystem();
-        var center = new ChunkPosition(0, 0, 0);
-        var blocks = new BlockType[Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE];
-        _worldSystem.AddChunk(center, new ChunkData(blocks));
+        ChunkPosition center = new(0, 0, 0);
+        _worldSystem.AddChunk(center, new ChunkData(Chunk.SIZE, Chunk.HEIGHT, Chunk.SIZE));
     }
 
     [Benchmark]
     public ChunkMeshData GenerateChunkMesh()
     {
-        var pos = new ChunkPosition(0, 0, 0);
+        ChunkPosition pos = new(0, 0, 0);
         return ChunkGenerator.GenerateChunkMesh(pos, _worldSystem, out _);
     }
 }

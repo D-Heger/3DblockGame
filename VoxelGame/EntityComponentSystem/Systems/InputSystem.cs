@@ -7,7 +7,7 @@ namespace VoxelGame.EntityComponentSystem.Systems;
 
 public class InputSystem : System
 {
-    public void Update(
+    public static void Update(
         EntityManager entityManager,
         KeyboardState kInput,
         MouseState mInput,
@@ -15,15 +15,15 @@ public class InputSystem : System
     )
     {
         // Handle input for camera entities
-        var cameraEntities = entityManager.GetEntitiesWithComponents<
+        IEnumerable<int> cameraEntities = entityManager.GetEntitiesWithComponents<
             CameraComponent,
             TransformComponent
         >();
 
-        foreach (var entity in cameraEntities)
+        foreach (int entity in cameraEntities)
         {
-            var cameraComponent = entityManager.GetComponent<CameraComponent>(entity);
-            var transformComponent = entityManager.GetComponent<TransformComponent>(entity);
+            CameraComponent? cameraComponent = entityManager.GetComponent<CameraComponent>(entity);
+            TransformComponent? transformComponent = entityManager.GetComponent<TransformComponent>(entity);
 
             if (cameraComponent == null || transformComponent == null)
             {
@@ -81,15 +81,11 @@ public class InputSystem : System
             }
 
             // Handle mouse input for rotation
-            HandleMouseInput(cameraComponent, mInput, args);
+            HandleMouseInput(cameraComponent, mInput);
         }
     }
 
-    private void HandleMouseInput(
-        CameraComponent cameraComponent,
-        MouseState mInput,
-        FrameEventArgs args
-    )
+    private static void HandleMouseInput(CameraComponent cameraComponent, MouseState mInput)
     {
         if (cameraComponent.FirstMove)
         {
@@ -98,23 +94,28 @@ public class InputSystem : System
         }
         else
         {
-            var deltaX = mInput.X - cameraComponent.LastMousePosition.X;
-            var deltaY = mInput.Y - cameraComponent.LastMousePosition.Y;
+            float deltaX = mInput.X - cameraComponent.LastMousePosition.X;
+            float deltaY = mInput.Y - cameraComponent.LastMousePosition.Y;
             cameraComponent.LastMousePosition = new Vector2(mInput.X, mInput.Y);
 
             cameraComponent.Yaw += deltaX * cameraComponent.Sensitivity;
             cameraComponent.Pitch -= deltaY * cameraComponent.Sensitivity;
 
             if (cameraComponent.Pitch > 89.0f)
+            {
                 cameraComponent.Pitch = 89.0f;
+            }
+
             if (cameraComponent.Pitch < -89.0f)
+            {
                 cameraComponent.Pitch = -89.0f;
+            }
 
             UpdateVectors(cameraComponent);
         }
     }
 
-    private void UpdateVectors(CameraComponent cameraComponent)
+    private static void UpdateVectors(CameraComponent cameraComponent)
     {
         cameraComponent.Front.X =
             MathF.Cos(MathHelper.DegreesToRadians(cameraComponent.Pitch))

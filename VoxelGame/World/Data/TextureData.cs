@@ -1,4 +1,4 @@
-﻿using OpenTK.Mathematics;
+using OpenTK.Mathematics;
 
 namespace VoxelGame.World.Data;
 
@@ -33,8 +33,5 @@ public static class TextureData
         }
     }
 
-    public static ReadOnlySpan<Vector2> GetUVsSpan(BlockType blockType, Faces face)
-    {
-        return _precomputedUVs.AsSpan((int)blockType * 24 + (int)face * 4, 4);
-    }
+    public static ReadOnlySpan<Vector2> GetUVsSpan(BlockType blockType, Faces face) => _precomputedUVs.AsSpan((int)blockType * 24 + (int)face * 4, 4);
 }

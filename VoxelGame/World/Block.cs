@@ -1,4 +1,4 @@
-﻿using OpenTK.Mathematics;
+using OpenTK.Mathematics;
 using VoxelGame.World.Data;
 
 namespace VoxelGame.World;
@@ -15,7 +15,7 @@ public class Block
         Type = blockType;
         Position = position;
 
-        Faces = new Dictionary<Faces, FaceData>();
+        Faces = [];
 
         if (blockType != BlockType.AIR)
         {
@@ -50,8 +50,5 @@ public class Block
         return transformedVertices;
     }
 
-    public FaceData GetFace(Faces face)
-    {
-        return Faces[face];
-    }
+    public FaceData GetFace(Faces face) => Faces[face];
 }

@@ -11,6 +11,7 @@ namespace Tests.EntityComponentSystem;
 /// Test suite for the ChunkGenerationSystem class. Verifies chunk generation, management,
 /// and cleanup functionality in the voxel world.
 /// </summary>
+[Collection("MemorySensitive")]
 public class ChunkGenerationSystemTests : IDisposable
 {
     /// <summary>
@@ -61,6 +62,7 @@ public class ChunkGenerationSystemTests : IDisposable
     public void Dispose()
     {
         _entityManager.Dispose();
+        GC.SuppressFinalize(this);
     }
 
     /// <summary>
@@ -71,7 +73,7 @@ public class ChunkGenerationSystemTests : IDisposable
     public void GenerateInitialChunks_EnqueuesCorrectChunks()
     {
         // Arrange
-        var origin = new ChunkPosition(0, 0, 0);
+        ChunkPosition origin = new(0, 0, 0);
         int radius = 1;
         int expectedChunkCount = (2 * radius + 1) * (2 * radius + 1); // 3x3 grid for radius 1
 
@@ -87,7 +89,7 @@ public class ChunkGenerationSystemTests : IDisposable
         }
 
         // Assert
-        var existingChunks = _worldSystem.GetAllChunkPositions().ToList();
+        List<ChunkPosition> existingChunks = [.. _worldSystem.GetAllChunkPositions()];
         Assert.Equal(expectedChunkCount, existingChunks.Count);
     }
 
@@ -99,7 +101,7 @@ public class ChunkGenerationSystemTests : IDisposable
     public void UpdateChunks_AddsAndRemovesChunksBasedOnPlayerPosition()
     {
         // Arrange
-        var playerInitialPosition = new Vector3(0, 0, 0);
+        Vector3 playerInitialPosition = new(0, 0, 0);
         int renderDistance = 1;
 
         // Act - Initial generation
@@ -112,10 +114,10 @@ public class ChunkGenerationSystemTests : IDisposable
             Thread.Sleep(100);
         }
 
-        var initialChunkCount = _worldSystem.GetAllChunkPositions().Count();
+        _ = _worldSystem.GetAllChunkPositions().Count();
 
         // Move player far away (4 chunks in X and Z direction)
-        var newPlayerPosition = new Vector3(Chunk.SIZE * 4, 0, Chunk.SIZE * 4);
+        Vector3 newPlayerPosition = new(Chunk.SIZE * 4, 0, Chunk.SIZE * 4);
         _chunkGenerationSystem.UpdateChunks(newPlayerPosition, renderDistance);
 
         // Process updates
@@ -126,12 +128,12 @@ public class ChunkGenerationSystemTests : IDisposable
         }
 
         // Assert
-        var newChunks = _worldSystem.GetAllChunkPositions().ToList();
+        List<ChunkPosition> newChunks = [.. _worldSystem.GetAllChunkPositions()];
         Assert.NotEmpty(newChunks); // Verify we have chunks
         Assert.DoesNotContain(new ChunkPosition(0, 0, 0), newChunks); // Old chunk should be removed
 
         // Verify new chunks are around the new player position
-        var expectedChunk = new ChunkPosition(Chunk.SIZE * 4, 0, Chunk.SIZE * 4);
+        ChunkPosition expectedChunk = new(Chunk.SIZE * 4, 0, Chunk.SIZE * 4);
         Assert.Contains(expectedChunk, newChunks);
     }
 
@@ -143,7 +145,7 @@ public class ChunkGenerationSystemTests : IDisposable
     public void ChunkGeneration_CreatesCorrectEntityComponents()
     {
         // Arrange
-        var chunkPosition = new ChunkPosition(0, 0, 0);
+        ChunkPosition chunkPosition = new(0, 0, 0);
 
         // Act
         _chunkGenerationSystem.GenerateInitialChunks(chunkPosition, 0); // Only generate one chunk
@@ -156,20 +158,16 @@ public class ChunkGenerationSystemTests : IDisposable
         }
 
         // Assert
-        var entitiesWithMesh = _entityManager.GetEntitiesWithComponent<MeshComponent>().ToList();
-        var entitiesWithTransform = _entityManager
-            .GetEntitiesWithComponent<TransformComponent>()
-            .ToList();
-        var entitiesWithTexture = _entityManager
-            .GetEntitiesWithComponent<TextureComponent>()
-            .ToList();
+        List<int> entitiesWithMesh = [.. _entityManager.GetEntitiesWithComponent<MeshComponent>()];
+        List<int> entitiesWithTransform = [.. _entityManager.GetEntitiesWithComponent<TransformComponent>()];
+        List<int> entitiesWithTexture = [.. _entityManager.GetEntitiesWithComponent<TextureComponent>()];
 
         Assert.Single(entitiesWithMesh);
         Assert.Single(entitiesWithTransform);
         Assert.Single(entitiesWithTexture);
 
         // Verify the transform position matches the chunk position
-        var transform = _entityManager.GetComponent<TransformComponent>(entitiesWithTransform[0]);
+        TransformComponent? transform = _entityManager.GetComponent<TransformComponent>(entitiesWithTransform[0]);
         Assert.NotNull(transform);
         Assert.Equal(chunkPosition.X, transform.Position.X);
         Assert.Equal(chunkPosition.Y, transform.Position.Y);
@@ -184,7 +182,7 @@ public class ChunkGenerationSystemTests : IDisposable
     public void UpdateChunks_WithSamePosition_DoesNotRegenerateChunks()
     {
         // Arrange
-        var playerPosition = new Vector3(0, 0, 0);
+        Vector3 playerPosition = new(0, 0, 0);
         int renderDistance = 1;
 
         // Act - Initial generation
@@ -197,7 +195,7 @@ public class ChunkGenerationSystemTests : IDisposable
             Thread.Sleep(50);
         }
 
-        var initialChunks = _worldSystem.GetAllChunkPositions().ToList();
+        List<ChunkPosition> initialChunks = [.. _worldSystem.GetAllChunkPositions()];
 
         // Update with same position
         _chunkGenerationSystem.UpdateChunks(playerPosition, renderDistance);
@@ -210,7 +208,7 @@ public class ChunkGenerationSystemTests : IDisposable
         }
 
         // Assert
-        var finalChunks = _worldSystem.GetAllChunkPositions().ToList();
+        List<ChunkPosition> finalChunks = [.. _worldSystem.GetAllChunkPositions()];
         Assert.Equal(initialChunks.Count, finalChunks.Count);
         Assert.All(initialChunks, chunk => Assert.Contains(chunk, finalChunks));
     }
@@ -223,7 +221,7 @@ public class ChunkGenerationSystemTests : IDisposable
     public void UpdateChunks_WithDifferentRenderDistance_UpdatesChunkCount()
     {
         // Arrange
-        var playerPosition = new Vector3(0, 0, 0);
+        Vector3 playerPosition = new(0, 0, 0);
         int initialRenderDistance = 1;
 
         // Act - Initial generation
@@ -236,7 +234,7 @@ public class ChunkGenerationSystemTests : IDisposable
             Thread.Sleep(50);
         }
 
-        var initialChunkCount = _worldSystem.GetAllChunkPositions().Count();
+        int initialChunkCount = _worldSystem.GetAllChunkPositions().Count();
 
         // Update with larger render distance
         int newRenderDistance = 2;
@@ -250,7 +248,7 @@ public class ChunkGenerationSystemTests : IDisposable
         }
 
         // Assert
-        var finalChunkCount = _worldSystem.GetAllChunkPositions().Count();
+        int finalChunkCount = _worldSystem.GetAllChunkPositions().Count();
         Assert.True(finalChunkCount > initialChunkCount);
     }
 
@@ -262,7 +260,7 @@ public class ChunkGenerationSystemTests : IDisposable
     public void RemoveChunk_DisposesComponentsCorrectly()
     {
         // Arrange
-        var chunkPosition = new ChunkPosition(0, 0, 0);
+        ChunkPosition chunkPosition = new(0, 0, 0);
         _chunkGenerationSystem.GenerateInitialChunks(chunkPosition, 0);
 
         // Process generation
@@ -272,9 +270,7 @@ public class ChunkGenerationSystemTests : IDisposable
             Thread.Sleep(50);
         }
 
-        var initialEntitiesWithComponents = _entityManager
-            .GetEntitiesWithComponents<MeshComponent, TransformComponent, TextureComponent>()
-            .ToList();
+        List<int> initialEntitiesWithComponents = [.. _entityManager.GetEntitiesWithComponents<MeshComponent, TransformComponent, TextureComponent>()];
 
         // Act - Move player far away to trigger chunk removal
         _chunkGenerationSystem.UpdateChunks(new Vector3(Chunk.SIZE * 10, 0, Chunk.SIZE * 10), 1);
@@ -287,7 +283,7 @@ public class ChunkGenerationSystemTests : IDisposable
         }
 
         // Assert
-        foreach (var entity in initialEntitiesWithComponents)
+        foreach (int entity in initialEntitiesWithComponents)
         {
             Assert.False(_entityManager.EntityExists(entity));
             Assert.Null(_entityManager.GetComponent<MeshComponent>(entity));
@@ -304,7 +300,7 @@ public class ChunkGenerationSystemTests : IDisposable
     public void GenerateInitialChunks_WithLargeRadius_HandlesLoadCorrectly()
     {
         // Arrange
-        var origin = new ChunkPosition(0, 0, 0);
+        ChunkPosition origin = new(0, 0, 0);
         int radius = 3; // Larger radius to test concurrent generation
         int expectedChunkCount = (2 * radius + 1) * (2 * radius + 1);
 
@@ -319,11 +315,11 @@ public class ChunkGenerationSystemTests : IDisposable
         }
 
         // Assert
-        var chunks = _worldSystem.GetAllChunkPositions().ToList();
+        List<ChunkPosition> chunks = [.. _worldSystem.GetAllChunkPositions()];
         Assert.Equal(expectedChunkCount, chunks.Count);
 
         // Verify chunk positions are within radius
-        foreach (var chunk in chunks)
+        foreach (ChunkPosition chunk in chunks)
         {
             Assert.True(Math.Abs(chunk.X / Chunk.SIZE) <= radius);
             Assert.True(Math.Abs(chunk.Z / Chunk.SIZE) <= radius);

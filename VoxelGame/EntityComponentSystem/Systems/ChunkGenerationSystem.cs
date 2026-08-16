@@ -1,10 +1,5 @@
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using OpenTK.Mathematics;
-using VoxelGame.EntityComponentSystem;
 using VoxelGame.EntityComponentSystem.Components;
 using VoxelGame.GraphicsPipeline;
 using VoxelGame.World;
@@ -14,7 +9,7 @@ namespace VoxelGame.EntityComponentSystem.Systems;
 
 public interface ITextureProvider
 {
-    Texture GetTexture(string name);
+    public Texture GetTexture(string name);
 }
 
 public class DefaultTextureProvider : ITextureProvider
@@ -51,7 +46,11 @@ public class ChunkGenerationSystem(
 
     // Shared texture for all chunks - lazy initialized
     private Texture? _sharedTexture;
-    private readonly object _textureLock = new();
+    private readonly Lock _textureLock = new();
+
+    // Last player chunk center and render distance processed by UpdateChunks
+    private ChunkPosition? _lastCenter;
+    private int? _lastRenderDistance;
 
     private Texture GetSharedTexture()
     {
@@ -59,10 +58,7 @@ public class ChunkGenerationSystem(
         {
             lock (_textureLock)
             {
-                if (_sharedTexture == null)
-                {
-                    _sharedTexture = _textureProvider.GetTexture("atlas");
-                }
+                _sharedTexture ??= _textureProvider.GetTexture("atlas");
             }
             return _sharedTexture;
         }
@@ -73,10 +69,10 @@ public class ChunkGenerationSystem(
     private const int MaxChunksToProcessPerFrame = 5;
 
     // Flag to indicate if chunk generation is in progress
-    private bool _isGenerating = false;
+    private bool _isGenerating;
 
     // Lock object for generation flag
-    private readonly object _generationLock = new();
+    private readonly Lock _generationLock = new();
 
     // Semaphore to limit the number of concurrent chunk generation tasks
     private readonly SemaphoreSlim _chunkGenerationSemaphore = new(Environment.ProcessorCount);
@@ -166,12 +162,14 @@ public class ChunkGenerationSystem(
     {
         // Check if the chunk already exists
         if (_chunkEntities.ContainsKey(chunkPosition))
+        {
             return;
+        }
 
         // Generate chunk mesh data and chunk data
-        var (meshData, generatedChunkData) = await Task.Run(() =>
+        (ChunkMeshData? meshData, ChunkData? generatedChunkData) = await Task.Run(() =>
         {
-            var mesh = ChunkGenerator.GenerateChunkMesh(
+            ChunkMeshData mesh = ChunkGenerator.GenerateChunkMesh(
                 chunkPosition,
                 _worldSystem,
                 out ChunkData outChunkData
@@ -195,10 +193,10 @@ public class ChunkGenerationSystem(
         // Process a limited number of chunks per frame to avoid frame drops
         while (
             chunksProcessed < MaxChunksToProcessPerFrame
-            && _chunksAwaitingMainThreadProcessing.TryDequeue(out var item)
+            && _chunksAwaitingMainThreadProcessing.TryDequeue(out (ChunkPosition chunkPosition, ChunkMeshData chunkMeshData, ChunkData chunkData) item)
         )
         {
-            var (chunkPosition, chunkMeshData, chunkData) = item;
+            (ChunkPosition chunkPosition, ChunkMeshData? chunkMeshData, ChunkData? chunkData) = item;
             CreateChunkEntity(chunkPosition, chunkMeshData, chunkData);
             chunksProcessed++;
         }
@@ -254,19 +252,19 @@ public class ChunkGenerationSystem(
         {
             int size = Chunk.SIZE;
             // Define the relative positions of neighboring chunks
-            var neighborOffsets = new[]
-            {
-                new ChunkPosition(size, 0, 0), // Right
-                new ChunkPosition(-size, 0, 0), // Left
-                new ChunkPosition(0, 0, size), // Front
-                new ChunkPosition(0, 0, -size), // Back
-            };
+            ReadOnlySpan<ChunkPosition> neighborOffsets =
+            [
+                new(size, 0, 0), // Right
+                new(-size, 0, 0), // Left
+                new(0, 0, size), // Front
+                new(0, 0, -size), // Back
+            ];
 
             // Create a list to track chunks that need updates
             List<(ChunkPosition, int)> chunksToUpdate = [];
 
             // First, identify all chunks that need updates
-            foreach (var offset in neighborOffsets)
+            foreach (ref readonly ChunkPosition offset in neighborOffsets)
             {
                 ChunkPosition neighborPos =
                     new(
@@ -287,7 +285,7 @@ public class ChunkGenerationSystem(
             }
 
             // Then update all chunks that were valid
-            foreach (var (neighborPos, neighborEntity) in chunksToUpdate)
+            foreach ((ChunkPosition neighborPos, int neighborEntity) in chunksToUpdate)
             {
                 try
                 {
@@ -355,7 +353,7 @@ public class ChunkGenerationSystem(
             }
 
             // Update the mesh component
-            var meshComponent = _entityManager.GetComponent<MeshComponent>(chunkEntity);
+            MeshComponent? meshComponent = _entityManager.GetComponent<MeshComponent>(chunkEntity);
             if (meshComponent == null)
             {
                 Console.WriteLine($"Warning: MeshComponent not found for entity {chunkEntity}");
@@ -393,7 +391,7 @@ public class ChunkGenerationSystem(
     /// <summary>
     /// Validates that the mesh data is complete and consistent
     /// </summary>
-    private bool ValidateMeshData(ChunkMeshData meshData)
+    private static bool ValidateMeshData(ChunkMeshData meshData)
     {
         try
         {
@@ -463,6 +461,16 @@ public class ChunkGenerationSystem(
         int playerChunkZ = (int)Math.Floor(playerPosition.Z / size) * size;
 
         ChunkPosition playerChunkPosition = new(playerChunkX, 0, playerChunkZ);
+
+        // Skip the full scan when neither the player's chunk nor the render distance changed
+        if (_lastCenter == playerChunkPosition && _lastRenderDistance == renderDistance)
+        {
+            return;
+        }
+
+        _lastCenter = playerChunkPosition;
+        _lastRenderDistance = renderDistance;
+
         ConcurrentDictionary<ChunkPosition, bool> newActiveChunks = [];
 
         // Determine which chunks should be active
@@ -487,7 +495,7 @@ public class ChunkGenerationSystem(
 
         // Identify and remove chunks that are no longer within render distance
         List<ChunkPosition> chunksToRemove = [];
-        foreach (var chunkPos in _activeChunkPositions)
+        foreach (KeyValuePair<ChunkPosition, bool> chunkPos in _activeChunkPositions)
         {
             if (!newActiveChunks.ContainsKey(chunkPos.Key))
             {
@@ -495,7 +503,7 @@ public class ChunkGenerationSystem(
             }
         }
 
-        foreach (var chunkPos in chunksToRemove)
+        foreach (ChunkPosition chunkPos in chunksToRemove)
         {
             RemoveChunk(chunkPos);
             _activeChunkPositions.TryRemove(chunkPos, out _);

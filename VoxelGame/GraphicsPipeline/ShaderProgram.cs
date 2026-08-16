@@ -1,4 +1,4 @@
-﻿using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 using static VoxelGame.Utils.FileUtils;
 
@@ -7,7 +7,7 @@ namespace VoxelGame.GraphicsPipeline;
 public class ShaderProgram
 {
     public int ID;
-    private readonly Dictionary<string, int> _uniformLocations = new();
+    private readonly Dictionary<string, int> _uniformLocations = [];
 
     public ShaderProgram(string vertexFilePath, string fragmentFilePath)
     {
@@ -18,14 +18,18 @@ public class ShaderProgram
         GL.CompileShader(vertexShader);
         GL.GetShader(vertexShader, ShaderParameter.CompileStatus, out int vertexStatus);
         if (vertexStatus == 0)
+        {
             Console.WriteLine($"Vertex Shader Error: {GL.GetShaderInfoLog(vertexShader)}");
+        }
 
         int fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
         GL.ShaderSource(fragmentShader, LoadFragmentShader(fragmentFilePath));
         GL.CompileShader(fragmentShader);
         GL.GetShader(fragmentShader, ShaderParameter.CompileStatus, out int fragmentStatus);
         if (fragmentStatus == 0)
+        {
             Console.WriteLine($"Fragment Shader Error: {GL.GetShaderInfoLog(fragmentShader)}");
+        }
 
         GL.AttachShader(ID, vertexShader);
         GL.AttachShader(ID, fragmentShader);
@@ -66,18 +70,9 @@ public class ShaderProgram
         GL.Uniform1(location, value);
     }
 
-    public void Bind()
-    {
-        GL.UseProgram(ID);
-    }
+    public void Bind() => GL.UseProgram(ID);
 
-    public static void Unbind()
-    {
-        GL.UseProgram(0);
-    }
+    public static void Unbind() => GL.UseProgram(0);
 
-    public void Dispose()
-    {
-        GL.DeleteProgram(ID);
-    }
+    public void Dispose() => GL.DeleteProgram(ID);
 }

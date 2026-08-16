@@ -4,7 +4,7 @@ namespace VoxelGame.GraphicsPipeline;
 
 public class Frustum
 {
-    private Plane[] _planes = new Plane[6];
+    private readonly Plane[] _planes = new Plane[6];
 
     public void UpdateFrustum(Matrix4 viewProjection)
     {
@@ -65,7 +65,7 @@ public class Frustum
 
     public bool IsBoxInsideFrustum(Vector3 min, Vector3 max)
     {
-        foreach (var plane in _planes)
+        foreach (Plane plane in _planes)
         {
             Vector3 positiveVertex = new(
                 plane.Normal.X >= 0 ? max.X : min.X,
@@ -82,16 +82,10 @@ public class Frustum
     }
 }
 
-public struct Plane
+public struct Plane(float a, float b, float c, float d)
 {
-    public Vector3 Normal;
-    public float D;
-
-    public Plane(float a, float b, float c, float d)
-    {
-        Normal = new Vector3(a, b, c);
-        D = d;
-    }
+    public Vector3 Normal = new(a, b, c);
+    public float D = d;
 
     public void Normalize()
     {
@@ -100,8 +94,5 @@ public struct Plane
         D /= length;
     }
 
-    public float GetDistanceToPoint(Vector3 point)
-    {
-        return Vector3.Dot(Normal, point) + D;
-    }
+    public readonly float GetDistanceToPoint(Vector3 point) => Vector3.Dot(Normal, point) + D;
 }

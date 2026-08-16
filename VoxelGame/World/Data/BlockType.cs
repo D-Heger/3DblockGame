@@ -9,5 +9,5 @@ public enum BlockType : byte
     SAND,
     WATER,
     BEDROCK,
-    
+
 }

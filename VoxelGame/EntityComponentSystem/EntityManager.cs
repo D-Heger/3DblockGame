@@ -1,31 +1,31 @@
-using OpenTK.Mathematics;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using OpenTK.Mathematics;
 
 namespace VoxelGame.EntityComponentSystem;
 
 public class EntityManager
 {
-    private int _nextEntityId = 0;
+    private int _nextEntityId;
     private readonly Dictionary<int, List<Component>> _entityComponents = [];
     private readonly Dictionary<Type, Dictionary<int, Component>> _componentsByType = [];
     private readonly Dictionary<Type, Stack<Component>> _componentPools = [];
     private readonly Dictionary<int, Vector3> _entityPositions = [];
 
     // Archetype optimization
-    private readonly Dictionary<string, HashSet<int>> _entityArchetypes = [];
-    private readonly Dictionary<int, string> _entityToArchetype = [];
+    private readonly Dictionary<ArchetypeKey, HashSet<int>> _entityArchetypes = [];
+    private readonly Dictionary<int, ArchetypeKey> _entityToArchetype = [];
 
     // Query result caching
-    private static readonly Dictionary<string, int[]> _queryCache = [];
+    private static readonly Dictionary<ArchetypeKey, int[]> _queryCache = [];
     private static readonly int[] EmptyIntArray = [];
     private static readonly HashSet<int> EntityQueryCache = [];
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private string GetArchetypeKey(params Type[] componentTypes)
+    private static ArchetypeKey GetArchetypeKey(params Type[] componentTypes)
     {
         Array.Sort(componentTypes, (a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal));
-        return string.Join(":", componentTypes.Select(t => t.Name));
+        return new ArchetypeKey(componentTypes);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -33,7 +33,7 @@ public class EntityManager
     {
         int entityId = _nextEntityId++;
         _entityComponents[entityId] = new(4);
-        _entityToArchetype[entityId] = "";
+        _entityToArchetype[entityId] = ArchetypeKey.Empty;
         return entityId;
     }
 
@@ -41,15 +41,15 @@ public class EntityManager
 
     public void AddComponent<T>(int entityId, T component) where T : Component
     {
-        if (!_entityComponents.ContainsKey(entityId))
+        if (!_entityComponents.TryGetValue(entityId, out List<Component>? value))
         {
             throw new Exception("Entity does not exist");
         }
 
-        _entityComponents[entityId].Add(component);
+        value.Add(component);
 
         Type type = typeof(T);
-        if (!_componentsByType.TryGetValue(type, out var componentDict))
+        if (!_componentsByType.TryGetValue(type, out Dictionary<int, Component>? componentDict))
         {
             componentDict = [];
             _componentsByType[type] = componentDict;
@@ -58,7 +58,7 @@ public class EntityManager
 
         // Update archetype
         UpdateEntityArchetype(entityId);
-        
+
         // Invalidate query cache
         _queryCache.Clear();
     }
@@ -66,22 +66,22 @@ public class EntityManager
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void UpdateEntityArchetype(int entityId)
     {
-        if (_entityComponents.TryGetValue(entityId, out var components))
+        if (_entityComponents.TryGetValue(entityId, out List<Component>? components))
         {
             // Remove from old archetype
-            string oldArchetype = _entityToArchetype[entityId];
-            if (_entityArchetypes.TryGetValue(oldArchetype, out var oldSet))
+            ArchetypeKey oldArchetype = _entityToArchetype[entityId];
+            if (_entityArchetypes.TryGetValue(oldArchetype, out HashSet<int>? oldSet))
             {
                 oldSet.Remove(entityId);
             }
 
             // Calculate new archetype
-            var types = components.Select(c => c.GetType()).ToArray();
-            string newArchetype = GetArchetypeKey(types);
+            Type[] types = [.. components.Select(c => c.GetType())];
+            ArchetypeKey newArchetype = GetArchetypeKey(types);
             _entityToArchetype[entityId] = newArchetype;
 
             // Add to new archetype
-            if (!_entityArchetypes.TryGetValue(newArchetype, out var entitySet))
+            if (!_entityArchetypes.TryGetValue(newArchetype, out HashSet<int>? entitySet))
             {
                 entitySet = [];
                 _entityArchetypes[newArchetype] = entitySet;
@@ -94,8 +94,8 @@ public class EntityManager
     public T? GetComponent<T>(int entityId) where T : Component
     {
         Type type = typeof(T);
-        if (_componentsByType.TryGetValue(type, out var components) && 
-            components.TryGetValue(entityId, out var component))
+        if (_componentsByType.TryGetValue(type, out Dictionary<int, Component>? components) &&
+            components.TryGetValue(entityId, out Component? component))
         {
             return (T)component;
         }
@@ -107,14 +107,14 @@ public class EntityManager
     public IEnumerable<int> GetEntitiesWithComponent<T>() where T : Component
     {
         Type type = typeof(T);
-        string cacheKey = GetArchetypeKey(type);
+        ArchetypeKey cacheKey = GetArchetypeKey(type);
 
-        if (_queryCache.TryGetValue(cacheKey, out var cached))
+        if (_queryCache.TryGetValue(cacheKey, out int[]? cached))
         {
             return cached;
         }
 
-        if (_componentsByType.TryGetValue(type, out var components))
+        if (_componentsByType.TryGetValue(type, out Dictionary<int, Component>? components))
         {
             int[] result = [.. components.Keys];
             _queryCache[cacheKey] = result;
@@ -127,7 +127,7 @@ public class EntityManager
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int GetEntityWithComponent<T>() where T : Component
     {
-        var entities = GetEntitiesWithComponent<T>();
+        IEnumerable<int> entities = GetEntitiesWithComponent<T>();
         return entities.Any() ? entities.First() : -1;
     }
 
@@ -135,17 +135,17 @@ public class EntityManager
         where T1 : Component
         where T2 : Component
     {
-        string cacheKey = GetArchetypeKey(typeof(T1), typeof(T2));
-        
-        if (_queryCache.TryGetValue(cacheKey, out var cached))
+        ArchetypeKey cacheKey = GetArchetypeKey(typeof(T1), typeof(T2));
+
+        if (_queryCache.TryGetValue(cacheKey, out int[]? cached))
         {
             return cached;
         }
 
         EntityQueryCache.Clear();
-        var entities1 = GetEntitiesWithComponent<T1>();
-        
-        foreach (var entity in entities1)
+        IEnumerable<int> entities1 = GetEntitiesWithComponent<T1>();
+
+        foreach (int entity in entities1)
         {
             if (GetComponent<T2>(entity) != null)
             {
@@ -163,17 +163,17 @@ public class EntityManager
         where T2 : Component
         where T3 : Component
     {
-        string cacheKey = GetArchetypeKey(typeof(T1), typeof(T2), typeof(T3));
-        
-        if (_queryCache.TryGetValue(cacheKey, out var cached))
+        ArchetypeKey cacheKey = GetArchetypeKey(typeof(T1), typeof(T2), typeof(T3));
+
+        if (_queryCache.TryGetValue(cacheKey, out int[]? cached))
         {
             return cached;
         }
 
         EntityQueryCache.Clear();
-        var entities = GetEntitiesWithComponents<T1, T2>();
-        
-        foreach (var entity in entities)
+        IEnumerable<int> entities = GetEntitiesWithComponents<T1, T2>();
+
+        foreach (int entity in entities)
         {
             if (GetComponent<T3>(entity) != null)
             {
@@ -187,45 +187,39 @@ public class EntityManager
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void SetEntityPosition(int entityId, Vector3 position)
-    {
-        _entityPositions[entityId] = position;
-    }
+    public void SetEntityPosition(int entityId, Vector3 position) => _entityPositions[entityId] = position;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Vector3 GetEntityPosition(int entityId)
-    {
-        return _entityPositions[entityId];
-    }
+    public Vector3 GetEntityPosition(int entityId) => _entityPositions[entityId];
 
     public void RemoveEntity(int entityId)
     {
-        if (_entityComponents.TryGetValue(entityId, out var components))
+        if (_entityComponents.TryGetValue(entityId, out List<Component>? components))
         {
             // Return components to pool
-            foreach (var component in components)
+            foreach (Component component in components)
             {
                 Type type = component.GetType();
-                if (!_componentPools.TryGetValue(type, out var pool))
+                if (!_componentPools.TryGetValue(type, out Stack<Component>? pool))
                 {
                     pool = new Stack<Component>();
                     _componentPools[type] = pool;
                 }
                 pool.Push(component);
             }
-            
+
             // Remove from archetype
-            string archetype = _entityToArchetype[entityId];
-            if (_entityArchetypes.TryGetValue(archetype, out var entitySet))
+            ArchetypeKey archetype = _entityToArchetype[entityId];
+            if (_entityArchetypes.TryGetValue(archetype, out HashSet<int>? entitySet))
             {
                 entitySet.Remove(entityId);
             }
             _entityToArchetype.Remove(entityId);
-            
+
             _entityComponents.Remove(entityId);
             _entityPositions.Remove(entityId);
-            
-            foreach (var typeComponents in _componentsByType.Values)
+
+            foreach (Dictionary<int, Component> typeComponents in _componentsByType.Values)
             {
                 typeComponents.Remove(entityId);
             }
@@ -238,14 +232,14 @@ public class EntityManager
     public void RemoveComponent<T>(int entityId) where T : Component
     {
         Type type = typeof(T);
-        if (_componentsByType.TryGetValue(type, out var components))
+        if (_componentsByType.TryGetValue(type, out Dictionary<int, Component>? components))
         {
-            if (components.TryGetValue(entityId, out var component))
+            if (components.TryGetValue(entityId, out Component? component))
             {
                 components.Remove(entityId);
-                
+
                 // Return to pool
-                if (!_componentPools.TryGetValue(type, out var pool))
+                if (!_componentPools.TryGetValue(type, out Stack<Component>? pool))
                 {
                     pool = new Stack<Component>();
                     _componentPools[type] = pool;
@@ -254,7 +248,7 @@ public class EntityManager
             }
         }
 
-        if (_entityComponents.TryGetValue(entityId, out var entityComps))
+        if (_entityComponents.TryGetValue(entityId, out List<Component>? entityComps))
         {
             entityComps.RemoveAll(c => c is T);
             UpdateEntityArchetype(entityId);
@@ -265,15 +259,12 @@ public class EntityManager
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public bool EntityExists(int entityId)
-    {
-        return _entityComponents.ContainsKey(entityId);
-    }
+    public bool EntityExists(int entityId) => _entityComponents.ContainsKey(entityId);
 
     public T CreateComponent<T>() where T : Component, new()
     {
         Type type = typeof(T);
-        if (_componentPools.TryGetValue(type, out var pool) && pool.Count > 0)
+        if (_componentPools.TryGetValue(type, out Stack<Component>? pool) && pool.Count > 0)
         {
             return (T)pool.Pop();
         }
@@ -291,4 +282,50 @@ public class EntityManager
         _queryCache.Clear();
         EntityQueryCache.Clear();
     }
+}
+
+public readonly struct ArchetypeKey(Type[] types) : IEquatable<ArchetypeKey>
+{
+    public static readonly ArchetypeKey Empty = new([]);
+
+    private readonly Type[] _types = types;
+    private readonly int _hashCode = ComputeHashCode(types);
+
+    private static int ComputeHashCode(Type[] types)
+    {
+        unchecked
+        {
+            int hash = 17;
+            foreach (Type type in types)
+            {
+                hash = hash * 31 + type.GetHashCode();
+            }
+            return hash;
+        }
+    }
+
+    public bool Equals(ArchetypeKey other)
+    {
+        if (_types.Length != other._types.Length)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < _types.Length; i++)
+        {
+            if (_types[i] != other._types[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public override bool Equals(object? obj) => obj is ArchetypeKey other && Equals(other);
+
+    public override int GetHashCode() => _hashCode;
+
+    public static bool operator ==(ArchetypeKey left, ArchetypeKey right) => left.Equals(right);
+
+    public static bool operator !=(ArchetypeKey left, ArchetypeKey right) => !(left == right);
 }

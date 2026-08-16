@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 
 namespace VoxelGame.Utils;
@@ -12,26 +11,32 @@ public class MemoryTracker
     public static void Update()
     {
         if (DateTime.Now - _lastUpdate < UpdateInterval)
+        {
             return;
+        }
 
         _lastUpdate = DateTime.Now;
-        
+
         // Force a garbage collection to get accurate readings
         GC.Collect();
         GC.WaitForPendingFinalizers();
-        
+
         Process currentProcess = Process.GetCurrentProcess();
         long memoryUsageMB = currentProcess.WorkingSet64 / (1024 * 1024); // Convert to MB
-        
+
         _memoryHistory.Enqueue(memoryUsageMB);
         if (_memoryHistory.Count > 60)
+        {
             _memoryHistory.Dequeue();
+        }
     }
 
     public static (long Current, long Average, long Peak) GetMemoryStats()
     {
         if (_memoryHistory.Count == 0)
+        {
             return (0, 0, 0);
+        }
 
         long current = _memoryHistory.Last();
         long average = (long)_memoryHistory.Average();
